@@ -8,7 +8,7 @@ Create a new folder in `%appdata%/Roaming` and call it mpv. <br>Dump the content
 **Linux:**<br>
 TBA
 
-## Dependancies:
+## Dependencies:
 
 * [Youtube-dl](https://github.com/ytdl-org/youtube-dl)
 * [Various prescalers](https://github.com/bjin/mpv-prescalers)
