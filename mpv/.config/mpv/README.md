@@ -1,6 +1,6 @@
 My configuration for mpv. Note that this is a setup used and written by a video encoder, so some stuff some users might prefer (like overlaid static noise or automatic debanding on every source) are either not included, commented out, or bound to a toggle. Feel free to modify this to your liking, including uncommenting or changing settings however you please.
 
-By default FSRCNN and Krigbilateral are used for upscaling. If you notice heavy frame drops, please comment the imports for those and uncomment ravu-r3
+By default FSRCNN and Krigbilateral are used for upscaling. If you notice heavy frame drops, please comment the imports for those and uncomment ravu-r3 instead.
 
 ## Included shaders/scripts:
 
@@ -14,6 +14,7 @@ By default FSRCNN and Krigbilateral are used for upscaling. If you notice heavy 
 * [repl](https://github.com/rossy/mpv-repl)
 * [status-line](https://github.com/mpv-player/mpv/blob/master/TOOLS/lua/status-line.lua)
 * [visualizer](https://github.com/mfcc64/mpv-scripts/blob/master/visualizer.lua)
+
 
 * [FSRCNN](https://github.com/igv/FSRCNN-TensorFlow/releases)
 * [KrigBilateral](https://gist.github.com/igv/a015fc885d5c22e6891820ad89555637)
