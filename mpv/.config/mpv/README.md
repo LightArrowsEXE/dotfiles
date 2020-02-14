@@ -1,5 +1,3 @@
-# mpv.conf
-
 My configuration for mpv. Note that this is a setup used and written by a video encoder, so some stuff some users might prefer (like overlaid static noise or automatic debanding on every source) are either not included, commented out, or bound to a toggle. Feel free to modify this to your liking, including uncommenting or changing settings however you please.
 
 By default FSRCNN and Krigbilateral are used for upscaling. If you notice heavy frame drops, please comment the imports for those and uncomment ravu-r3
