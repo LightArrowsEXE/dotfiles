@@ -2,6 +2,21 @@ My configuration for mpv. Note that this is a setup used and written by a video 
 
 By default FSRCNN and Krigbilateral are used for upscaling. If you notice heavy frame drops, please comment the imports for those and uncomment ravu-r3 instead.
 
+YouTube-DL is not included. You can install it from its official repository. Link below.
+
+## How to install:
+
+**Windows:**<br>
+Create a new folder in `%appdata%/Roaming` and call it mpv. <br>Dump the contents of this directory in there. <br>Change the paths as necessary in `mpv.conf`
+
+**Linux:**<br>
+TBA
+
+## Dependencies:
+
+* [Youtube-dl](https://github.com/ytdl-org/youtube-dl/releases)
+* [Gandhi Sans](https://www.fontsquirrel.com/fonts/gandhi-sans) and [Noto Sans](https://fonts.google.com/specimen/Noto+Sans)
+
 ## Included shaders/scripts:
 
 * [acompressor](https://github.com/mpv-player/mpv/blob/master/TOOLS/lua/acompressor.lua)
@@ -21,19 +36,7 @@ By default FSRCNN and Krigbilateral are used for upscaling. If you notice heavy 
 * [Static Noise Luma](https://pastebin.com/yacMe6EZ)
 * [ravu-r3](https://github.com/bjin/mpv-prescalers)
 
-## How to install:
 
-**Windows:**<br>
-Create a new folder in `%appdata%/Roaming` and call it mpv. <br>Dump the contents of this directory in there. <br>Change the paths as necessary in `mpv.conf`
-
-**Linux:**<br>
-TBA
-
-## Dependencies:
-
-* [Youtube-dl](https://github.com/ytdl-org/youtube-dl)
-* [Gandhi Sans](https://www.fontsquirrel.com/fonts/gandhi-sans) and [Noto Sans](https://fonts.google.com/specimen/Noto+Sans)
-
-For additional shaders and scripts, check out the following sources:
+*For additional shaders and scripts, check out the following sources:*
 * [Shaders](https://github.com/mpv-player/mpv/wiki/User-Scripts#user-shaders)
 * [Scripts](https://github.com/mpv-player/mpv/wiki/User-Scripts#lua-scripts)
