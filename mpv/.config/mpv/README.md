@@ -2,41 +2,40 @@ My configuration for mpv. Note that this is a setup used and written by a video 
 
 By default FSRCNN and KrigBilateral are used for upscaling the luma and chroma respectively. If you notice heavy frame drops, please comment the imports for those and uncomment ravu-r3 instead.
 
-youtube-dl is not included. You can install it from its official repository. Link below.
-
 ## How to install:
 
-**Windows:**<br>
-Create a new folder in `%appdata%/Roaming` and call it mpv. <br>Dump the contents of this directory in there. <br>Change the paths as necessary in `mpv.conf`.
+**Windows:**
+1) Create a new folder in `%appdata%/Roaming` and call it mpv.
+2) Dump the contents of this directory in there.
+3) Change the paths as necessary in `mpv.conf`.
+4) Install any additional third-party dependencies.
 
 **Linux:**<br>
 TBA
 
-## Dependencies:
-
+## Additional Third-Party Dependencies:
+* [Gandhi Sans](https://www.fontsquirrel.com/fonts/gandhi-sans)
+* [Noto Sans](https://fonts.google.com/specimen/Noto+Sans)
 * [youtube-dl](https://github.com/ytdl-org/youtube-dl/releases)
-* [Gandhi Sans](https://www.fontsquirrel.com/fonts/gandhi-sans) and [Noto Sans](https://fonts.google.com/specimen/Noto+Sans)
 
-## Included shaders/scripts:
-
+## Included Third-Party Shaders/Scripts:
 * [acompressor](https://github.com/mpv-player/mpv/blob/master/TOOLS/lua/acompressor.lua)
+* [auto-profiles](https://github.com/wiiaboo/mpv-scripts/blob/master/auto-profiles.lua)
 * [autocrop](https://github.com/mpv-player/mpv/blob/master/TOOLS/lua/autocrop.lua)
 * [autoload](https://github.com/mpv-player/mpv/blob/master/TOOLS/lua/autoload.lua)
-* [auto-profiles](https://github.com/wiiaboo/mpv-scripts/blob/master/auto-profiles.lua)
 * [boss-key](https://github.com/detuur/mpv-scripts)
 * [playlistmanager](https://github.com/jonniek/mpv-playlistmanager)
 * [reload](https://github.com/4e6/mpv-reload)
 * [repl](https://github.com/rossy/mpv-repl)
 * [status-line](https://github.com/mpv-player/mpv/blob/master/TOOLS/lua/status-line.lua)
 * [visualizer](https://github.com/mfcc64/mpv-scripts/blob/master/visualizer.lua)
-
-
+<br><br>
 * [FSRCNN](https://github.com/igv/FSRCNN-TensorFlow/releases)
 * [KrigBilateral](https://gist.github.com/igv/a015fc885d5c22e6891820ad89555637)
-* [Static Noise Luma](https://pastebin.com/yacMe6EZ)
 * [ravu-r3](https://github.com/bjin/mpv-prescalers)
+* [Static Noise Luma](https://pastebin.com/yacMe6EZ)
 
 
 *For additional shaders and scripts, check out the following sources:*
-* [Shaders](https://github.com/mpv-player/mpv/wiki/User-Scripts#user-shaders)
 * [Scripts](https://github.com/mpv-player/mpv/wiki/User-Scripts#lua-scripts)
+* [Shaders](https://github.com/mpv-player/mpv/wiki/User-Scripts#user-shaders)
