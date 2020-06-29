@@ -95,7 +95,7 @@ vec4 hook() {
 //!WIDTH LUMA.w
 //!HEIGHT LUMA.h
 //!WHEN CHROMA.w LUMA.w <
-//!OFFSET ALIGN
+//!OFFSET 0 0
 //!DESC KrigBilateral Upscaling UV
 
 // -- Convenience --
