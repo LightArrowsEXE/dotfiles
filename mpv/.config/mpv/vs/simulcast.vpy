@@ -4,7 +4,7 @@ from vsutil import join, plane
 
 import vapoursynth as vs
 
-core = vs.get_core()
+core = vs.core
 
 
 deband_args = dict(iterations=2, threshold=4, radius=16)
