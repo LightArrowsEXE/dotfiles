@@ -9,10 +9,10 @@ The included updater.bat is taken from [shinchiro's SourceForge build of mpv](ht
 ## How to install:
 
 **Windows:**<br>
-Create a new folder in `%appdata%/Roaming` and call it mpv. <br>
-Dump the contents of this directory in there. <br>
-Change the paths as necessary in `mpv.conf`.<br>
-**OPTIONAL:** Run `updater.bat` as Administrator to update your mpv.
+1) Create a new folder in `%appdata%` and call it mpv. <br>
+2) Dump the contents of this directory in there. <br>
+3) Change the paths as necessary in `mpv.conf`.<br>
+4) **OPTIONAL:** Run `updater.bat` as Administrator to update your mpv.
 
 **Linux:**<br>
 TBA
