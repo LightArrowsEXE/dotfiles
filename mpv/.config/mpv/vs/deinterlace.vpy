@@ -17,7 +17,7 @@ def deinterlace(n, f, clip, nn3):
 
 src = video_in
 
-src = core.resize.Bicubic(src, format=vs.YUV444P8)
+src = core.resize.Bicubic(src, format=vs.YUV420P8)
 vfm = core.vivtc.VFM(src, True)
 nn3 = core.nnedi3cl.NNEDI3CL(src, True)
 

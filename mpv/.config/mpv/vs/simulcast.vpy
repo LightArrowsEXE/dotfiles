@@ -32,7 +32,7 @@ src = video_in
 if src.width <= 810:
     deband_args.update(threshold=3, radius=12)
 
-src = core.resize.Bicubic(src, format=vs.YUV444P16)
+src = core.resize.Bicubic(src, format=vs.YUV420P16)
 
 
 detail_mask = lvf.denoise.detail_mask(

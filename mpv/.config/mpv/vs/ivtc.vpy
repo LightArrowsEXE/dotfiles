@@ -9,7 +9,7 @@ core = vs.core
 
 src = video_in
 
-src = core.resize.Bicubic(src, format=vs.YUV444P8)
+src = core.resize.Bicubic(src, format=vs.YUV420P8)
 vfm = core.vivtc.VFM(src, True)
 
 vfm.set_output()
