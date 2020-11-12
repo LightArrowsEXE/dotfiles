@@ -6,7 +6,7 @@ YouTube-DL is not included. You can install it from its official repository. Lin
 
 The included updater.bat is taken from [shinchiro's SourceForge build of mpv](https://sourceforge.net/projects/mpv-player-windows/files/). It does not update the mpv.conf, but instead mpv itself. I highly suggest updating as frequently as possible.
 
-## How to install:
+## How to install the base setup:
 
 **Windows:**<br>
 1) Create a new folder in `%appdata%` and call it mpv. <br>
@@ -16,6 +16,18 @@ The included updater.bat is taken from [shinchiro's SourceForge build of mpv](ht
 
 **Linux:**<br>
 TBA
+
+
+## How to install VapourSynth and the filtering dependencies:
+1) Install the [latest version of VapourSynth](https://github.com/vapoursynth/vapoursynth/releases).<br>
+1.5. Install the latest required version of [Python](https://www.python.org/downloads/), and make sure it's added to PATH.<br>
+2) Locate the following directories:<br>
+ \* C:\Users\[your username]\AppData\Roaming\VapourSynth\plugins64<br>
+ \* C:\Users\[your username]\AppData\Local\Programs\Python\Python38\Lib\site-packages<br>
+3) Check the .vpy scripts in the repo (in the `vs` directory) and follow the links to the listed dependencies.
+4) Download and move the required files to the relevant directories (Python modules go to the `site-packages` directory, everything else goes in the `plugins64` directory).
+5) Verify that the scripts are running as intended by cycling through the profiles and pressing the `~` key during playback. It should tell you if it failed, and if it did what the missing dependencies are.
+
 
 ## Dependencies:
 
