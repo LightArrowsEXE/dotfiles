@@ -1,6 +1,5 @@
-from typing import Any, Dict
-from functools import partial
 import vapoursynth as vs
+
 core = vs.core
 
 # Experimental script for inverse telecining and deinterlacing

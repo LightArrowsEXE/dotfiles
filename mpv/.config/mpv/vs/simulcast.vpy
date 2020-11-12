@@ -1,7 +1,9 @@
 from typing import Any
-import vapoursynth as vs
+
 import lvsfunc as lvf
-from vsutil import depth, get_depth, join, plane, scale_value
+import vapoursynth as vs
+from vsutil import get_depth, join, plane, scale_value
+
 core = vs.core
 
 # A general-purpose filtering script for shitty simulcast video
