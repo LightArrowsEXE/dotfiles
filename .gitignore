@@ -2,3 +2,7 @@ scripts/shared/
 watch_later/
 cookies2.txt
 *.db
+
+# Custom ignores (because fuck are they annoying)
+mpv/.config/mpv/scripts/shared/sponsorblock.py
+mpv/.config/mpv/scripts/shared/sponsorblock.txt
