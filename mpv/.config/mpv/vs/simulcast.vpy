@@ -8,6 +8,9 @@ from vsutil import depth, get_depth, join, plane, scale_value
 
 core = vs.core
 
+# This script is currently BROKEN ('NoneType' object has no attribute 'set_output').
+# If you know how to fix this, please send in a Pull Request/Issue. Thank you.
+
 """
     Generic debanding with detail masking script.
 
@@ -35,12 +38,7 @@ def generate_detail_mask(clip: vs.VideoNode,
 
         :return:            Detail mask
     """
-    return lvf.denoise.detail_mask(clip,
-        brz_a=scale_value(brz_a, 32, clip.format.bits_per_sample)
-            if brz_a is float else brz_a,
-        brz_b=scale_value(brz_b, 32, clip.format.bits_per_sample)
-            if brz_b is float else brz_b,
-        **kwargs)
+    return lvf.denoise.detail_mask(clip, brz_a, brz_b, **kwargs)
 
 
 def debander(clip: vs.VideoNode,
@@ -77,10 +75,7 @@ deband_args: Any = dict(iterations=2, threshold=4, radius=16)
 if video_in_dh <= 810:
     deband_args.update(threshold=3, radius=12)
 
-
-clip = depth(video_in, 16)
-detail_mask = generate_detail_mask(clip, brz_a=0.045, brz_b=0.06)
-deband = debander(clip, luma_grain=4.0, **deband_args)
-deband = core.std.MaskedMerge(deband, clip, detail_mask).set_output()
-
-depth(deband, get_depth(video_in)).set_output()
+detail_mask = generate_detail_mask(video_in, brz_a=0.045, brz_b=0.06)
+deband = debander(video_in, luma_grain=4.0, **deband_args)
+deband = core.std.MaskedMerge(deband, video_in, detail_mask).set_output()
+deband.set_output()
