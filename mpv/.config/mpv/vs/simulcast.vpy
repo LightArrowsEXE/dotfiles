@@ -8,9 +8,6 @@ from vsutil import depth, get_depth, join, plane, scale_value
 
 core = vs.core
 
-# This script is currently BROKEN ('NoneType' object has no attribute 'set_output').
-# If you know how to fix this, please send in a Pull Request/Issue. Thank you.
-
 """
     Generic debanding with detail masking script.
 
