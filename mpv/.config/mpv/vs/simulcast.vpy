@@ -72,11 +72,9 @@ deband_args: Any = dict(iterations=2, threshold=4, radius=16)
 if video_in_dh <= 810:
     deband_args.update(threshold=3, radius=12)
 
-video_in = depth(video_in, 8)
+video_in = depth(video_in, 16)
 
 detail_mask = generate_detail_mask(video_in, brz_a=0.045, brz_b=0.06)
 deband = debander(video_in, luma_grain=4.0, **deband_args)
 deband = core.std.MaskedMerge(deband, video_in, detail_mask)
-
-final = deband
-final.set_output()
+depth(deband, 8).set_output()
