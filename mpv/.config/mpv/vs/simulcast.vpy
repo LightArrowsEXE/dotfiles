@@ -20,24 +20,6 @@ core = vs.core
 """
 
 
-def generate_detail_mask(clip: vs.VideoNode,
-                         brz_a: float = 0.045,
-                         brz_b: float = 0.060,
-                         **kwargs: Any) -> vs.VideoNode:
-    """
-        Generates a detail mask.
-        If a float value is passed, it'll be scaled to the clip's bitdepth.
-
-        :param clip:        Input clip
-        :param brz_a:       Binarizing for the detail mask
-        :param brz_b:       Binarizing for the edge mask
-        :param kwargs:      Additional parameters passed to lvf.denoise.detail_mask
-
-        :return:            Detail mask
-    """
-    return lvf.denoise.detail_mask(clip, brz_a, brz_b, **kwargs)
-
-
 def debander(clip: vs.VideoNode,
              luma_grain: float = 4.0,
              **kwargs: Any) -> vs.VideoNode:
@@ -72,9 +54,9 @@ deband_args: Any = dict(iterations=2, threshold=4, radius=16)
 if video_in_dh <= 810:
     deband_args.update(threshold=3, radius=12)
 
-video_in = depth(video_in, 16)
+vid = depth(video_in, 16)
 
-detail_mask = generate_detail_mask(video_in, brz_a=0.045, brz_b=0.06)
-deband = debander(video_in, luma_grain=4.0, **deband_args)
-deband = core.std.MaskedMerge(deband, video_in, detail_mask)
-depth(deband, 8).set_output()
+detail_mask = lvf.mask.detail_mask(vid, brz_a=0.045, brz_b=0.06)
+deband = debander(vid, luma_grain=4.0, **deband_args)
+deband = core.std.MaskedMerge(deband, vid, detail_mask)
+depth(deband, get_depth(video_in)).set_output()
