@@ -34,6 +34,15 @@ TBA
 * [Youtube-dl](https://github.com/ytdl-org/youtube-dl/releases)
 * [Gandhi Sans](https://www.fontsquirrel.com/fonts/gandhi-sans) and [Noto Sans](https://fonts.google.com/specimen/Noto+Sans)
 
+*Optional: VapourSynth scripts*
+* [VapourSynth](https://github.com/vapoursynth/vapoursynth/releases)
+* [awarpSharp2](https://github.com/dubhater/vapoursynth-awarpsharp2/releases/tag/v4)
+* [havsfunc](https://github.com/HomeOfVapourSynthEvolution/havsfunc/releases)
+* [lvsfunc](https://pypi.org/project/lvsfunc/)
+* [NNEDI3CL](https://github.com/HomeOfVapourSynthEvolution/VapourSynth-NNEDI3CL/releases)
+* [vs-placebo](https://github.com/Lypheo/vs-placebo/releases)
+* [vsutil](https://pypi.org/project/vsutil/)
+
 ## Included shaders/scripts:
 
 * [acompressor](https://github.com/mpv-player/mpv/blob/master/TOOLS/lua/acompressor.lua)
@@ -45,18 +54,18 @@ TBA
 * [reload](https://github.com/4e6/mpv-reload)
 * [repl](https://github.com/rossy/mpv-repl)
 * [status-line](https://github.com/mpv-player/mpv/blob/master/TOOLS/lua/status-line.lua)
-* [visualizer](https://github.com/mfcc64/mpv-scripts/blob/master/visualizer.lua)
-
-
+* [visualizer](https://github.com/mfcc64/mpv-scripts/blob/master/visualizer.lua)<br><br>
 * [FSRCNNX](https://github.com/igv/FSRCNN-TensorFlow/releases)
 * [KrigBilateral](https://gist.github.com/igv/a015fc885d5c22e6891820ad89555637)
-* [Static Noise Luma](https://pastebin.com/yacMe6EZ)
+* [nnedi3]((https://github.com/bjin/mpv-prescalers))
 * [ravu-r3](https://github.com/bjin/mpv-prescalers)
+* [Static Noise Luma](https://pastebin.com/yacMe6EZ)
 
 
 Other:
 * [Shinchiro's mpv updater](https://sourceforge.net/projects/mpv-player-windows/files/)
 
 *For additional shaders and scripts, check out the following sources:*
-* [Shaders](https://github.com/mpv-player/mpv/wiki/User-Scripts#user-shaders)
-* [Scripts](https://github.com/mpv-player/mpv/wiki/User-Scripts#lua-scripts)
+* [mpv shaders](https://github.com/mpv-player/mpv/wiki/User-Scripts#user-shaders)
+* [mpv scripts](https://github.com/mpv-player/mpv/wiki/User-Scripts#lua-scripts)
+* [VapourSynth scripts](https://github.com/LightArrowsEXE/Encoding-Projects/)
