@@ -2,23 +2,39 @@ import vapoursynth as vs
 core = vs.core
 
 """
-Print basic frame information
+Print basic frame information.
+
+Text positioning is dependent on clip height.
+More checks for weird resolutions may be added at a future date.
+
+Text is scaled at 1 except for 4k, where it's scaled at 2,
+and 8k, where it's scaled at 4.
+
+
+TO-DO:  Calculations to determine stuff like framerate, matrix?
+        Maybe even figure out a way to get the path from mpv
+        and parse it through mediainfo? Depends on if
+        it reruns the vpy over every single frame or just one
+        (I assume just once like it would usually).
+        I could also run a frameeval to get just information
+        that's useful for your average user, but that's
+        incredibly slow. Can't think of a nice way to do it
+        short of writing my own plugin, unfortunately.
 """
 
 clip = video_in.std.PlaneStats()
 h = clip.height
-warning = "Note:\nInformation provided\nmay be limite due to mpv's API!"
-thr = h < 900
-thr_sd = h < 576
+disclaimer = "Disclaimer:\nInformation provided\nmay be limited or potentially even WRONG\ndue to mpv's limited API!"
+scale = 4 if h > 4000 and h <= 1400 else 2 if h > 1400 else 1
 
-if not thr_sd:
-    clip.text.FrameProps(alignment=9) \
-        .text.ClipInfo(alignment=3 if thr else 6) \
-        .text.CoreInfo(alignment=1 if thr else 3) \
-        .text.Text(warning) \
+if h < 576:  # Dropping CoreInfo because text is waaay too cramped if I keep it
+    clip.text.ClipInfo(alignment=7) \
+        .text.FrameProps(alignment=9) \
+        .text.Text(disclaimer, alignment=1) \
         .set_output()
-else:  # The text is simply too cramped on SD content, and ``scale`` only takes ints :(
-    clip.text.FrameProps(alignment=7) \
-        .text.ClipInfo(alignment=9) \
-        .text.Text(warning, alignment=1) \
-        .set_output()
+else:
+    clip.text.ClipInfo(alignment=9, scale=scale) \
+    .text.FrameProps(alignment=3 if h < 900 else 6, scale=scale) \
+    .text.CoreInfo(alignment=1 if h < 900 else 3, scale=scale) \
+    .text.Text(disclaimer, scale=scale) \
+    .set_output()
