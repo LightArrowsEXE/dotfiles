@@ -24,7 +24,7 @@ TO-DO:  Calculations to determine stuff like framerate, matrix?
 
 clip = video_in.std.PlaneStats()
 h = clip.height
-disclaimer = "Disclaimer:\nInformation provided\nmay be limited or potentially even WRONG\ndue to mpv's limited API!"
+disclaimer = "Disclaimer:\nInformation provided may be limited\nor potentially even WRONG due to mpv's limited API!"
 scale = 4 if h > 4000 and h <= 1400 else 2 if h > 1400 else 1
 
 if h < 576:  # Dropping CoreInfo because text is waaay too cramped if I keep it
