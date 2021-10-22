@@ -12,7 +12,7 @@ core = vs.core
     I at least try to limit it to keep myself slightly sane.
 
     If you have any resemblance of sanity, you should not use this.
-    Requires VapourSynth <http://www.vapoursynth.com/doc/about.html>
+    Requires VapourSynth <http://www.vapoursynth.com/about/>
 
     Additional dependencies:
         * awarpsharp2 <https://github.com/dubhater/vapoursynth-awarpsharp2>
