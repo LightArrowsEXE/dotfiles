@@ -1,8 +1,2 @@
-# Ignore cookies file, since I'm not sure if that should or should not be public
-cookies2.txt
-
 # Some dependencies. Grab them from their official git's instead (check README.md)
 youtube-dl.exe
-
-# Other random shit
-watch_later/*

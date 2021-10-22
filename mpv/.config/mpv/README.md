@@ -33,7 +33,7 @@ TBA
 
 ## Dependencies
 
-* [Youtube-dl](https://github.com/ytdl-org/youtube-dl/releases)
+* [yt-dlp](https://github.com/yt-dlp/yt-dlp/releases/tag/2021.10.10) (Rename it to "youtube-dl.exe")
 * [Gandhi Sans](https://www.fontsquirrel.com/fonts/gandhi-sans) and [Noto Sans](https://fonts.google.com/specimen/Noto+Sans)
 
 ### *Optional VapourSynth scripts*
