@@ -1,3 +1,5 @@
-mpv/.config/mpv/scripts/shared/*
+mpv/.config/mpv/scripts/*shared*/*
 mpv/.config/mpv/watch_later/*
 *cookies*.txt
+*.7z
+mpv/.config/mpv/lua-settings/myshows.conf
