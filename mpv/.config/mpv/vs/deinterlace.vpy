@@ -51,7 +51,7 @@ clip = video_in  # noqa
 down = depth(clip, 8)  # Must be 8bit for VFM to work
 
 vfm = core.vivtc.VFM(down, order=tff, field=tff, clip2=clip, chroma=False, **perf_args)
-nn3 = core.nnedi3.nnedi3(clip, field=tff)
+nn3 = core.znedi3.nnedi3(clip, field=tff)
 
 deint = core.std.FrameEval(vfm, partial(deinterlace, clip=vfm, nn3=nn3), prop_src=vfm)
 out = depth(deint, get_depth(clip))
