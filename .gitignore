@@ -1,8 +1,5 @@
-scripts/shared/
-watch_later/
-cookies2.txt
-*.db
-
-# Custom ignores (because fuck are they annoying)
-mpv/.config/mpv/scripts/shared/sponsorblock.py
-mpv/.config/mpv/scripts/shared/sponsorblock.txt
+mpv/.config/mpv/scripts/*shared*/*
+mpv/.config/mpv/watch_later/*
+*cookies*.txt
+*.7z
+mpv/.config/mpv/lua-settings/myshows.conf

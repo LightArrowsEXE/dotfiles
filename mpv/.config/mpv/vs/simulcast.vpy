@@ -11,12 +11,12 @@ core = vs.core
 """
     Generic debanding with detail masking script.
 
-    Requires VapourSynth <http://www.vapoursynth.com/doc/about.html>
+    Requires VapourSynth <http://www.vapoursynth.com/about/>
 
     Additional dependencies:
         * lvsfunc <https://github.com/Irrational-Encoding-Wizardry/lvsfunc>
         * vs-placebo <https://github.com/Lypheo/vs-placebo>
-        * vs-util <https://github.com/Irrational-Encoding-Wizardry/vsutil>
+        * vs-util <https://pypi.org/project/vsutil/>
 """
 
 
