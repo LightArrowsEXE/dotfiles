@@ -3,3 +3,5 @@ mpv/.config/mpv/watch_later/*
 *cookies*.txt
 *.7z
 mpv/.config/mpv/lua-settings/myshows.conf
+mpv/.config/mpv/7z/*
+*.pyc
