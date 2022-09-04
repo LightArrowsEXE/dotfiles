@@ -6,6 +6,38 @@ YouTube-DL is not included. You can install it from its official repository. Lin
 
 The included updater.bat is taken from [shinchiro's SourceForge build of mpv](https://sourceforge.net/projects/mpv-player-windows/files/). It does not update the mpv.conf, but instead mpv itself. I highly suggest updating as frequently as possible.
 
+## Custom keybinds
+
+* `k` - Subtitle style override [yes, force, no]
+* `o` - Leave video unscaled [yes, downscale-big, no]
+* `l` - Loop video [yes, no]
+* `j` - Cycle screenshot format [jpeg, png]
+* `alt+j` - Enable secondary track overlay [yes, no]
+
+<br>
+
+* `WHEEL_UP` - volume + 2
+* `WHEEL_DOWN` - volume - 2
+* `WHEEL_LEFT` - Seek 10
+* `WHEEL_RIGHT` - Seek -10
+
+<br>
+
+* `h` - Enable deband [yes, no]
+* `i` - Enable interpolation [yes, no]
+* `d` - Enable IVTC, deinterlacing (nnedi3, combed frames only) [yes, no]
+* `p` - Enable warpsharpening, line darkening [yes, no]
+
+<br>
+
+* `Z` - Enable QuickTime gamma bug correction [yes, no]
+* `X` - Enable dynamic range compression fix [yes, no]
+* `C` - Enable colorspace mistag fix [709->601, 601->709, no]
+
+<br>
+
+* `~` - Enable various diagnostic tools [videoinfo, python_globals, no]
+
 ## How to install the base setup
 
 **Windows:**<br>
@@ -36,13 +68,15 @@ TBA
 * [yt-dlp](https://github.com/yt-dlp/yt-dlp/releases/tag/2021.10.10) (Rename it to "youtube-dl.exe")
 * [Gandhi Sans](https://www.fontsquirrel.com/fonts/gandhi-sans) and [Noto Sans](https://fonts.google.com/specimen/Noto+Sans)
 
-### *Optional VapourSynth scripts*
+### *Optional VapourSynth-related dependencies*
 
 * [VapourSynth](https://github.com/vapoursynth/vapoursynth/releases)
 * [awarpSharp2](https://github.com/dubhater/vapoursynth-awarpsharp2/releases/tag/v4)
 * [havsfunc](https://github.com/HomeOfVapourSynthEvolution/havsfunc/releases)
 * [lvsfunc](https://pypi.org/project/lvsfunc/)
 * [NNEDI3CL](https://github.com/HomeOfVapourSynthEvolution/VapourSynth-NNEDI3CL/releases)
+* [TIVTC](https://github.com/dubhater/vapoursynth-tivtc/releases)
+* [vs-kernels](https://pypi.org/project/vskernels/)
 * [vs-placebo](https://github.com/Lypheo/vs-placebo/releases)
 * [vsutil](https://pypi.org/project/vsutil/)
 
