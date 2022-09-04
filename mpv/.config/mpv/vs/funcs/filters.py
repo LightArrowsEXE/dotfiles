@@ -3,7 +3,7 @@ from typing import Any
 
 import vapoursynth as vs
 from vskernels import get_prop
-from vsutil import depth, get_depth
+from vsutil import get_depth
 
 core = vs.core
 
@@ -33,14 +33,11 @@ def deinterlace(clip: vs.VideoNode, tff: bool = True) -> vs.VideoNode:
         """Only run and apply nnedi3 when the frame demands it"""
         return nn3 if get_prop(f, "_Combed", int) > 0 else clip
 
-    # Params set to boost performance. Adjust as necessary depending on your specs
-    perf_args: dict[str, Any] = {'mchroma': False}
-
     # Perform deinterlacing
-    vfm = core.vivtc.TFM(clip, order=tff, field=tff, hroma=False, **perf_args)
+    vfm = core.tivtc.TFM(clip, order=tff, field=tff, chroma=False)
     nn3 = core.znedi3.nnedi3(clip, field=tff)
 
-    return core.std.FrameEval(vfm, partial(deinterlace, clip=vfm, nn3=nn3), vfm)
+    return core.std.FrameEval(vfm, partial(_deinterlace, clip=vfm, nn3=nn3), vfm)
 
 
 def warpsharp(clip: vs.VideoNode, thresh: int = 128, blur: int = 3,
