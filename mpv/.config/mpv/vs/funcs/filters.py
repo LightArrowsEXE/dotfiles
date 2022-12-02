@@ -1,11 +1,6 @@
 from functools import partial
-from typing import Any
 
-import vapoursynth as vs
-from vskernels import get_prop
-from vsutil import get_depth
-
-core = vs.core
+from vstools import core, get_depth, get_prop, vs
 
 
 def deinterlace(clip: vs.VideoNode, tff: bool = True) -> vs.VideoNode:
@@ -70,7 +65,7 @@ def warpsharp(clip: vs.VideoNode, thresh: int = 128, blur: int = 3,
 
     :return:                    Sharpened clip
     """
-    from havsfunc import FastLineDarkenMOD
+    from havsfunc import FastLineDarkenMOD  # type:ignore
 
     mask = core.warp.ASobel(clip, thresh=thresh).warp.ABlur(blur=blur, type=type)
     warp = core.warp.AWarpSharp2(clip, thresh=thresh, blur=blur, type=type, depth=depth)

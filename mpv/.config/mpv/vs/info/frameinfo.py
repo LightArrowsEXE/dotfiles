@@ -1,19 +1,14 @@
-import importlib
-import importlib.util
+from funcs import diagnostics
 import sys
+from importlib.util import module_from_spec, spec_from_file_location
 from pathlib import Path
 
-import vapoursynth as vs
-
-core = vs.core
-
 # This is hacky, but ya gotta do what you gotta do
-spec = importlib.util.spec_from_file_location("funcs", f"{Path(__file__).parents[1]}/funcs/__init__.py")
-module = importlib.util.module_from_spec(spec)
-sys.modules[spec.name] = module
-spec.loader.exec_module(module)
+spec = spec_from_file_location("funcs", f"{Path(__file__).parents[1]}/funcs/__init__.py")
+module = module_from_spec(spec)  # type:ignore
+sys.modules[spec.name] = module  # type:ignore
+spec.loader.exec_module(module)  # type:ignore
 
-from funcs import diagnostics
 
 g = globals()
 

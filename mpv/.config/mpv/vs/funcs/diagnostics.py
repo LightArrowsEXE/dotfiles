@@ -1,23 +1,23 @@
 from __future__ import annotations
 
 from fractions import Fraction
-from typing import Any
 from pprint import pformat
+from typing import Any
 
-import vapoursynth as vs
-from vskernels import get_prop
-from vsutil import get_depth
-
-core = vs.core
+from vstools import get_depth, get_prop, vs
 
 
 def get_scale(clip: vs.VideoNode) -> int:
     h = clip.height
 
+    scale: int = 1
+
     match h:
-        case _ if h > 4000 and h <= 1400: return 4
-        case _ if h > 1400: return 2
-        case _: return 1
+        case _ if h > 4000 and h <= 1400: scale = 4
+        case _ if h > 1400: scale = 2
+        case _: scale = 1
+
+    return scale
 
 
 def assume_framerate(fps: float) -> Fraction | None:
@@ -80,7 +80,7 @@ def video_props(clip: vs.VideoNode, globals: dict[str, Any]) -> vs.VideoNode:
 
     # format props
     original_props = pformat({"VideoNode": '', '_P': dict(frame.props)}, sort_dicts=True)
-    props = pformat({"Mpv": '', '_P': props}, sort_dicts=True)
+    props = pformat({"Mpv": '', '_P': props}, sort_dicts=True)  # type:ignore
 
     if clip.height < 576:  # Dropping CoreInfo because text is waaay too cramped if I keep it
         return clip \

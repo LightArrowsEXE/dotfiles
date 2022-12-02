@@ -1,5 +1,4 @@
-import vapoursynth as vs
-from vsutil import depth, get_depth, scale_value
+from vstools import depth, get_depth, scale_value, vs
 
 core = vs.core
 

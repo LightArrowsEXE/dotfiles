@@ -2,61 +2,41 @@
 
 from typing import Any
 
-import lvsfunc as lvf
-import vapoursynth as vs
-from vsutil import depth, get_depth, join, plane, scale_value
-
-core = vs.core
+from vsdeband import F3kdb, Placebo, adaptive_grain, deband_detail_mask
+from vstools import core, depth, get_depth
 
 """
     Generic debanding with detail masking script.
 
-    Requires VapourSynth <http://www.vapoursynth.com/about/>
+    Requires VapourSynth <http://www.vapoursynth.com/about/> and a couple additional packages.
 
-    Additional dependencies:
-        * lvsfunc <https://github.com/Irrational-Encoding-Wizardry/lvsfunc>
+    Please run the following command before trying to use this script:
+    pip install vsdeband vstools
+
+    And install these additional dependencies in your VS plugin directory:
         * vs-placebo <https://github.com/Lypheo/vs-placebo>
-        * vs-util <https://pypi.org/project/vsutil/>
+        * f3kdb <https://f3kdb.readthedocs.io/en/latest/>
 """
 
+grain_strength: tuple[float, float] = (0.15, 0.0)
+# Post-graining strength. Sane values are between 0 and ~0.5 for `addGrain`.
+# First value is for the luma grain, the second for the chroma grain.
 
-def debander(clip: vs.VideoNode,
-             luma_grain: float = 4.0,
-             **kwargs: Any) -> vs.VideoNode:
-    """
-        A quick 'n dirty generic debanding function.
-        To be more specific, it would appear that it's faster to
-        deband every plane separately (don't ask me why).
+f3kdb_arg: dict[str, Any] = dict(radius=18, threshold=24, grain=0)
+placebo_args: dict[str, Any] = dict(iterations=2, threshold=4, radius=16, grains=0)
 
-        To abuse this, we split up the clip into planes beforehand,
-        and then join them back together again at the end.
+if video_in_dh <= 810:  # type:ignore
+    f3kdb_arg.update(radius=16, threshold=16)
+    placebo_args.update(threshold=3, radius=12)
 
-        Although the vast, vast majority of video will be YUV,
-        a sanity check for plane amount is done as well, just to be safe.
+vid = depth(video_in, 16)  # type:ignore
 
-        :param clip:        Input clip
-        :param luma_grain:  Grain added to the luma plane
-        :param kwargs:        Additional parameters passed to placebo.Deband
+detail_mask = deband_detail_mask(vid, brz=(int(0.045, * 255) << 8, int(0.06, * 255) << 8))
 
-        :return:            Debanded clip
-    """
-    if clip.format.num_planes == 0:
-        return core.placebo.Deband(clip, grain=luma_grain, **kwargs)
-    return join([
-        core.placebo.Deband(plane(clip, 0), grain=luma_grain, **kwargs),
-        core.placebo.Deband(plane(clip, 1), grain=0, **kwargs),
-        core.placebo.Deband(plane(clip, 2), grain=0, **kwargs)
-    ])
+deband_f3kdb = F3kdb.deband(vid, )
+deband_placebo = Placebo.deband(vid, **placebo_args)
+deband = core.std.MaskedMerge(deband_placebo, deband_f3kdb, detail_mask)
 
+grain = adaptive_grain(deband, strength=list(grain_strength), luma_scaling=0)
 
-deband_args: Any = dict(iterations=2, threshold=4, radius=16)
-
-if video_in_dh <= 810:
-    deband_args.update(threshold=3, radius=12)
-
-vid = depth(video_in, 16)
-
-detail_mask = lvf.mask.detail_mask(vid, brz_a=0.045, brz_b=0.06)
-deband = debander(vid, luma_grain=4.0, **deband_args)
-deband = core.std.MaskedMerge(deband, vid, detail_mask)
-depth(deband, get_depth(video_in)).set_output()
+depth(deband, get_depth(video_in)).set_output()  # type:ignore
