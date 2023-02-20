@@ -1,4 +1,3 @@
-from funcs import diagnostics
 import sys
 from importlib.util import module_from_spec, spec_from_file_location
 from pathlib import Path
@@ -9,6 +8,7 @@ module = module_from_spec(spec)  # type:ignore
 sys.modules[spec.name] = module  # type:ignore
 spec.loader.exec_module(module)  # type:ignore
 
+from funcs import diagnostics
 
 g = globals()
 

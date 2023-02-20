@@ -2,9 +2,7 @@ import sys
 from pathlib import Path
 from pprint import pformat
 
-import vapoursynth as vs
-
-core = vs.core
+from vstools import vs, core
 
 keys = [
     '__builtins__',
@@ -32,5 +30,7 @@ if 'video_in' in globals():
         ___ignore_me.pop(_, None)
 
     ___ignore_me |= {'__': '', '___': ''}
+
+    assert isinstance(clip, vs.VideoNode)
 
     clip.text.Text(pformat(___ignore_me, depth=4, sort_dicts=True)).set_output()
