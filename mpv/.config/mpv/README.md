@@ -67,15 +67,16 @@ TBA
 
 * [yt-dlp](https://github.com/yt-dlp/yt-dlp/releases/tag/2021.10.10) (Rename it to "youtube-dl.exe")
 * [Gandhi Sans](https://www.fontsquirrel.com/fonts/gandhi-sans) and [Noto Sans](https://fonts.google.com/specimen/Noto+Sans)
+* [VapourSynth](https://github.com/vapoursynth/vapoursynth/releases)
 
 ### *Optional VapourSynth-related dependencies*
 
-* [VapourSynth](https://github.com/vapoursynth/vapoursynth/releases)
 * [awarpSharp2](https://github.com/dubhater/vapoursynth-awarpsharp2/releases/tag/v4)
 * [havsfunc](https://github.com/HomeOfVapourSynthEvolution/havsfunc/releases)
 * [lvsfunc](https://pypi.org/project/lvsfunc/)
 * [NNEDI3CL](https://github.com/HomeOfVapourSynthEvolution/VapourSynth-NNEDI3CL/releases)
 * [TIVTC](https://github.com/dubhater/vapoursynth-tivtc/releases)
+* [vapoursynth-histogram](https://github.com/dubhater/vapoursynth-histogram)
 * [vs-kernels](https://pypi.org/project/vskernels/)
 * [vs-placebo](https://github.com/Lypheo/vs-placebo/releases)
 * [vsutil](https://pypi.org/project/vsutil/)
