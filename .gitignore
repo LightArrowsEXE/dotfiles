@@ -5,3 +5,9 @@ mpv/.config/mpv/watch_later/*
 mpv/.config/mpv/lua-settings/myshows.conf
 mpv/.config/mpv/7z/*
 *.pyc
+*.exe
+*.bat
+mpv/.config/mpv/installer/updater.ps1
+mpv/.config/mpv/settings.xml
+*.com
+mpv/.config/mpv/d3dcompiler_43.dll

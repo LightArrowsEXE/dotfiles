@@ -1,2 +1,5 @@
 # Some dependencies. Grab them from their official git's instead (check README.md)
 youtube-dl.exe
+
+installer/**/*
+doc/**/*
