@@ -79,6 +79,9 @@
 		"audio/stop" : [
 			"H"
 		],
+		"automation/lua/phos.TimingAssistant/Timing Assistant/Time" : [
+			"F"
+		],
 		"time/lead/in" : [
 			"C"
 		],
@@ -293,6 +296,9 @@
 		"automation/lua/arch.AegisubChain/AegisubChain Chains/Gradient (All)" : [
 			"Ctrl-Shift-F"
 		],
+		"automation/lua/arch.AegisubChain/AegisubChain Chains/Util/Toggle Comments" : [
+			"`"
+		],
 		"automation/lua/l0.Nudge/Nudge/Position Down (+1)" : [
 			"Ctrl-Alt-Down"
 		],
@@ -304,6 +310,9 @@
 		],
 		"automation/lua/l0.Nudge/Nudge/Position Up (-1)" : [
 			"Ctrl-Alt-Up"
+		],
+		"automation/lua/phos.TimingAssistant/Timing Assistant/Time" : [
+			"F"
 		],
 		"grid/fold/toggle" : [
 			"Enter"
