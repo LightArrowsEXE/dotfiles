@@ -1,1 +1,225 @@
-{"__version":"0.5.0","nudgers":[{"name":"Position Right (+1)","value":[1,0],"operation":"Add","noDefault":false,"keepEmptySections":true,"targetValue":0,"id":"d0dad24e-515e-40ab-a120-7b8d24ecbad0","targetName":"Tag Section","tag":"position"},{"name":"Position Left (-1)","value":[-1,0],"operation":"Add","noDefault":false,"keepEmptySections":true,"targetValue":0,"id":"0c6ff644-ef9c-405a-bb12-032694d432c0","targetName":"Tag Section","tag":"position"},{"name":"Position Up (-1)","value":[0,-1],"operation":"Add","noDefault":false,"keepEmptySections":true,"targetValue":0,"id":"cb2ec6c1-a8c1-48b8-8a13-cafadf55ffdd","targetName":"Tag Section","tag":"position"},{"name":"Position Down (+1)","value":[0,1],"operation":"Add","noDefault":false,"keepEmptySections":true,"targetValue":0,"id":"cb9c1a5b-6910-4fb2-b457-a9c72a392d90","targetName":"Tag Section","tag":"position"},{"name":"Cycle Blur","value":[[0.6],[0.8],[1],[1.2],[1.5],[2],[3],[4],[5],[8]],"operation":"Cycle","noDefault":false,"keepEmptySections":true,"targetValue":0,"id":"c900ef51-88dd-413d-8380-cebb7a59c793","targetName":"Tag Section","tag":"blur"},{"name":"Cycle Alpha","value":[[255],[0],[16],[48],[96],[128],[160],[192],[224]],"operation":"Cycle","noDefault":false,"keepEmptySections":true,"targetValue":0,"id":"d338cbca-1575-4795-9b80-3680130cce62","targetName":"Tag Section","tag":"alpha"},{"name":"Toggle Bold","value":{},"operation":"Toggle","noDefault":false,"keepEmptySections":true,"targetValue":0,"id":"974c3af9-ef51-45f5-a992-4850cb006743","targetName":"Tag Section","tag":"bold"},{"name":"Cycle Wrap Styles","value":{},"operation":"Auto Cycle","noDefault":false,"keepEmptySections":true,"targetValue":0,"id":"aa74461a-477b-47de-bbf4-16ef1ee568f5","targetName":"Tag Section","tag":"wrapstyle"},{"name":"Align Up","value":[true],"operation":"Align Up","noDefault":false,"keepEmptySections":true,"targetValue":0,"id":"254bf380-22bc-457b-abb7-3d1f85b90eef","targetName":"Tag Section","tag":"align"},{"name":"Align Down","value":[true],"operation":"Align Down","noDefault":false,"keepEmptySections":true,"targetValue":0,"id":"260318dc-5bdd-4975-9feb-8c95b41e7b5b","targetName":"Tag Section","tag":"align"},{"name":"Align Left","value":[true],"operation":"Align Left","noDefault":false,"keepEmptySections":true,"targetValue":0,"id":"e6aeca35-d4e0-4ff4-81ac-8d3a853d5a9c","targetName":"Tag Section","tag":"align"},{"name":"Align Right","value":[true],"operation":"Align Right","noDefault":false,"keepEmptySections":true,"targetValue":0,"id":"dd80e1c5-7c07-478c-bc90-7c473c3abe49","targetName":"Tag Section","tag":"align"},{"name":"Add Edgeblur","value":[1],"operation":"Set","noDefault":false,"keepEmptySections":true,"targetValue":0,"id":"18a27245-5306-4990-865c-ae7f0062083a","targetName":"Tag Section","tag":"blur_edges"},{"name":"Default Origin","value":[1],"operation":"Set Default","noDefault":false,"keepEmptySections":true,"targetValue":0,"id":"bb4967a7-fb8a-4907-b5e8-395ea67c0a52","targetName":"Tag Section","tag":"origin"},{"name":"Brightness Up","value":[0,0,0.1],"operation":"Add HSV","noDefault":false,"keepEmptySections":true,"targetValue":0,"id":"015cd09b-3c2b-458e-a65a-80b80bb951b1","targetName":"Tag Section","tag":"Colors"},{"name":"Brightness Down","value":[0,0,-0.1],"operation":"Add HSV","noDefault":false,"keepEmptySections":true,"targetValue":0,"id":"93f07885-c3f7-41bb-b319-0542e6fd52d7","targetName":"Tag Section","tag":"Colors"},{"name":"Invert First Clip","value":{},"operation":"Invert Clip","noDefault":true,"keepEmptySections":true,"targetValue":"1","id":"e719120a-e45a-44d4-b76a-62943f47d2c5","targetName":"Matched Tag","tag":"Clips"},{"name":"Remove Comments & Junk","value":{},"operation":"Remove","noDefault":true,"keepEmptySections":true,"targetValue":0,"id":"4dfc33fd-3090-498b-8922-7e1eb4515257","targetName":"Tag Section","tag":"Comments\/Junk"},{"name":"Strip Tags","value":{},"operation":"Remove","noDefault":true,"keepEmptySections":false,"targetValue":0,"id":"bc642b90-8ebf-45e8-a160-98b4658721bd","targetName":"Tag Section","tag":"Any Tag"},{"name":"Clips -> Drawing","value":[false,false],"operation":"Convert To Drawing","noDefault":true,"keepEmptySections":true,"targetValue":0,"id":"9cf44e64-9ce9-402e-8097-9e189014c9c1","targetName":"Tag Section","tag":"Clips"}]}
+{
+  "__version": "0.5.0",
+  "nudgers": [
+    {
+      "name": "Position Right (+1)",
+      "value": [1, 0],
+      "operation": "Add",
+      "noDefault": false,
+      "keepEmptySections": true,
+      "targetValue": 0,
+      "id": "d0dad24e-515e-40ab-a120-7b8d24ecbad0",
+      "targetName": "Tag Section",
+      "tag": "position"
+    },
+    {
+      "name": "Position Left (-1)",
+      "value": [-1, 0],
+      "operation": "Add",
+      "noDefault": false,
+      "keepEmptySections": true,
+      "targetValue": 0,
+      "id": "0c6ff644-ef9c-405a-bb12-032694d432c0",
+      "targetName": "Tag Section",
+      "tag": "position"
+    },
+    {
+      "name": "Position Up (-1)",
+      "value": [0, -1],
+      "operation": "Add",
+      "noDefault": false,
+      "keepEmptySections": true,
+      "targetValue": 0,
+      "id": "cb2ec6c1-a8c1-48b8-8a13-cafadf55ffdd",
+      "targetName": "Tag Section",
+      "tag": "position"
+    },
+    {
+      "name": "Position Down (+1)",
+      "value": [0, 1],
+      "operation": "Add",
+      "noDefault": false,
+      "keepEmptySections": true,
+      "targetValue": 0,
+      "id": "cb9c1a5b-6910-4fb2-b457-a9c72a392d90",
+      "targetName": "Tag Section",
+      "tag": "position"
+    },
+    {
+      "name": "Cycle Blur",
+      "value": [[0.6], [0.8], [1], [1.2], [1.5], [2], [3], [4], [5], [8]],
+      "operation": "Cycle",
+      "noDefault": false,
+      "keepEmptySections": true,
+      "targetValue": 0,
+      "id": "c900ef51-88dd-413d-8380-cebb7a59c793",
+      "targetName": "Tag Section",
+      "tag": "blur"
+    },
+    {
+      "name": "Cycle Alpha",
+      "value": [[255], [0], [16], [48], [96], [128], [160], [192], [224]],
+      "operation": "Cycle",
+      "noDefault": false,
+      "keepEmptySections": true,
+      "targetValue": 0,
+      "id": "d338cbca-1575-4795-9b80-3680130cce62",
+      "targetName": "Tag Section",
+      "tag": "alpha"
+    },
+    {
+      "name": "Toggle Bold",
+      "value": {},
+      "operation": "Toggle",
+      "noDefault": false,
+      "keepEmptySections": true,
+      "targetValue": 0,
+      "id": "974c3af9-ef51-45f5-a992-4850cb006743",
+      "targetName": "Tag Section",
+      "tag": "bold"
+    },
+    {
+      "name": "Cycle Wrap Styles",
+      "value": {},
+      "operation": "Auto Cycle",
+      "noDefault": false,
+      "keepEmptySections": true,
+      "targetValue": 0,
+      "id": "aa74461a-477b-47de-bbf4-16ef1ee568f5",
+      "targetName": "Tag Section",
+      "tag": "wrapstyle"
+    },
+    {
+      "name": "Align Up",
+      "value": [true],
+      "operation": "Align Up",
+      "noDefault": false,
+      "keepEmptySections": true,
+      "targetValue": 0,
+      "id": "254bf380-22bc-457b-abb7-3d1f85b90eef",
+      "targetName": "Tag Section",
+      "tag": "align"
+    },
+    {
+      "name": "Align Down",
+      "value": [true],
+      "operation": "Align Down",
+      "noDefault": false,
+      "keepEmptySections": true,
+      "targetValue": 0,
+      "id": "260318dc-5bdd-4975-9feb-8c95b41e7b5b",
+      "targetName": "Tag Section",
+      "tag": "align"
+    },
+    {
+      "name": "Align Left",
+      "value": [true],
+      "operation": "Align Left",
+      "noDefault": false,
+      "keepEmptySections": true,
+      "targetValue": 0,
+      "id": "e6aeca35-d4e0-4ff4-81ac-8d3a853d5a9c",
+      "targetName": "Tag Section",
+      "tag": "align"
+    },
+    {
+      "name": "Align Right",
+      "value": [true],
+      "operation": "Align Right",
+      "noDefault": false,
+      "keepEmptySections": true,
+      "targetValue": 0,
+      "id": "dd80e1c5-7c07-478c-bc90-7c473c3abe49",
+      "targetName": "Tag Section",
+      "tag": "align"
+    },
+    {
+      "name": "Add Edgeblur",
+      "value": [1],
+      "operation": "Set",
+      "noDefault": false,
+      "keepEmptySections": true,
+      "targetValue": 0,
+      "id": "18a27245-5306-4990-865c-ae7f0062083a",
+      "targetName": "Tag Section",
+      "tag": "blur_edges"
+    },
+    {
+      "name": "Default Origin",
+      "value": [1],
+      "operation": "Set Default",
+      "noDefault": false,
+      "keepEmptySections": true,
+      "targetValue": 0,
+      "id": "bb4967a7-fb8a-4907-b5e8-395ea67c0a52",
+      "targetName": "Tag Section",
+      "tag": "origin"
+    },
+    {
+      "name": "Brightness Up",
+      "value": [0, 0, 0.1],
+      "operation": "Add HSV",
+      "noDefault": false,
+      "keepEmptySections": true,
+      "targetValue": 0,
+      "id": "015cd09b-3c2b-458e-a65a-80b80bb951b1",
+      "targetName": "Tag Section",
+      "tag": "Colors"
+    },
+    {
+      "name": "Brightness Down",
+      "value": [0, 0, -0.1],
+      "operation": "Add HSV",
+      "noDefault": false,
+      "keepEmptySections": true,
+      "targetValue": 0,
+      "id": "93f07885-c3f7-41bb-b319-0542e6fd52d7",
+      "targetName": "Tag Section",
+      "tag": "Colors"
+    },
+    {
+      "name": "Invert First Clip",
+      "value": {},
+      "operation": "Invert Clip",
+      "noDefault": true,
+      "keepEmptySections": true,
+      "targetValue": "1",
+      "id": "e719120a-e45a-44d4-b76a-62943f47d2c5",
+      "targetName": "Matched Tag",
+      "tag": "Clips"
+    },
+    {
+      "name": "Remove Comments & Junk",
+      "value": {},
+      "operation": "Remove",
+      "noDefault": true,
+      "keepEmptySections": true,
+      "targetValue": 0,
+      "id": "4dfc33fd-3090-498b-8922-7e1eb4515257",
+      "targetName": "Tag Section",
+      "tag": "Comments\/Junk"
+    },
+    {
+      "name": "Strip Tags",
+      "value": {},
+      "operation": "Remove",
+      "noDefault": true,
+      "keepEmptySections": false,
+      "targetValue": 0,
+      "id": "bc642b90-8ebf-45e8-a160-98b4658721bd",
+      "targetName": "Tag Section",
+      "tag": "Any Tag"
+    },
+    {
+      "name": "Clips -> Drawing",
+      "value": [false, false],
+      "operation": "Convert To Drawing",
+      "noDefault": true,
+      "keepEmptySections": true,
+      "targetValue": 0,
+      "id": "9cf44e64-9ce9-402e-8097-9e189014c9c1",
+      "targetName": "Tag Section",
+      "tag": "Clips"
+    }
+  ]
+}

@@ -1,1 +1,18 @@
-{"currentPreset":"Kaleido","presets":{"Default":{},"Kaleido":{"automove":true,"gap":0,"debug":false,"startKeysnapAfter":100,"startLink":620,"endLeadOut":400,"endKeysnapBefore":300,"startLeadIn":120,"endKeysnapAfter":900,"startKeysnapBefore":350}}}
+{
+  "currentPreset": "Kaleido",
+  "presets": {
+    "Default": {},
+    "Kaleido": {
+      "automove": true,
+      "gap": 0,
+      "debug": false,
+      "startKeysnapAfter": 100,
+      "startLink": 620,
+      "endLeadOut": 400,
+      "endKeysnapBefore": 300,
+      "startLeadIn": 120,
+      "endKeysnapAfter": 900,
+      "startKeysnapBefore": 350
+    }
+  }
+}

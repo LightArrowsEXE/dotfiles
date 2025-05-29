@@ -1,1 +1,106 @@
-{"config":{"chains":{"Util\/Toggle Comments":[{"dialogs":[{"values":{"pre_sel":{"value":"Commenting - Toggle comment","mode":"const"}},"button":{"value":"Load","mode":"const"}},{"values":{},"button":{"value":"Run","mode":"const"}}],"select":"macro","macro":"Lua Interpreter"}],"Gradient (All)":[{"dialogs":[{"values":{"pre_sel":{"value":"Commenting - Uncomment selected lines","mode":"const"}},"button":{"value":"Load","mode":"const"}},{"values":{},"button":{"value":"Run","mode":"const"}}],"macro":"Lua Interpreter","select":"macro"},{"dialogs":[{"values":{"strip":{"flabel":"Pixels per strip","min":1,"mode":"user","y":0,"width":1,"height":1,"value":1,"class":"intedit","x":0},"4c":{"value":true,"mode":"const"},"2c":{"value":true,"mode":"const"},"yshad":{"value":true,"mode":"const"},"shad":{"value":true,"mode":"const"},"xbord":{"value":true,"mode":"const"},"ybord":{"value":true,"mode":"const"},"bord":{"value":true,"mode":"const"},"org":{"value":true,"mode":"const"},"xshad":{"value":true,"mode":"const"},"be":{"value":true,"mode":"const"},"blur":{"value":true,"mode":"const"},"2a":{"value":true,"mode":"const"},"fs":{"value":true,"mode":"const"},"hv_select":{"flabel":"Direction","items":["Horizontal","Vertical"],"mode":"user","y":0,"width":1,"height":1,"value":"Horizontal","class":"dropdown","x":1},"c":{"value":true,"mode":"const"},"alpha":{"value":true,"mode":"const"},"frz":{"value":true,"mode":"const"},"4a":{"value":true,"mode":"const"},"3c":{"value":true,"mode":"const"},"pos":{"value":true,"mode":"const"},"fry":{"value":true,"mode":"const"},"fsp":{"value":true,"mode":"const"},"3a":{"value":true,"mode":"const"},"fscx":{"value":true,"mode":"const"},"fscy":{"value":true,"mode":"const"},"fax":{"value":true,"mode":"const"},"fay":{"value":true,"mode":"const"},"frx":{"value":true,"mode":"const"},"1a":{"value":true,"mode":"const"}},"button":{"value":"OK","mode":"const"}}],"macro":"Gradient Everything\/Gradient Everything","select":"macro"},{"dialogs":{},"macro":"Combine Gradient Lines","select":"macro"}]},"show_in_menu":true,"chain_slots":["New Chain","","","",""]}}
+{
+  "config": {
+    "chains": {
+      "Util\/Toggle Comments": [
+        {
+          "dialogs": [
+            {
+              "values": {
+                "pre_sel": {
+                  "value": "Commenting - Toggle comment",
+                  "mode": "const"
+                }
+              },
+              "button": { "value": "Load", "mode": "const" }
+            },
+            { "values": {}, "button": { "value": "Run", "mode": "const" } }
+          ],
+          "select": "macro",
+          "macro": "Lua Interpreter"
+        }
+      ],
+      "Gradient (All)": [
+        {
+          "dialogs": [
+            {
+              "values": {
+                "pre_sel": {
+                  "value": "Commenting - Uncomment selected lines",
+                  "mode": "const"
+                }
+              },
+              "button": { "value": "Load", "mode": "const" }
+            },
+            { "values": {}, "button": { "value": "Run", "mode": "const" } }
+          ],
+          "macro": "Lua Interpreter",
+          "select": "macro"
+        },
+        {
+          "dialogs": [
+            {
+              "values": {
+                "strip": {
+                  "flabel": "Pixels per strip",
+                  "min": 1,
+                  "mode": "user",
+                  "y": 0,
+                  "width": 1,
+                  "height": 1,
+                  "value": 1,
+                  "class": "intedit",
+                  "x": 0
+                },
+                "4c": { "value": true, "mode": "const" },
+                "2c": { "value": true, "mode": "const" },
+                "yshad": { "value": true, "mode": "const" },
+                "shad": { "value": true, "mode": "const" },
+                "xbord": { "value": true, "mode": "const" },
+                "ybord": { "value": true, "mode": "const" },
+                "bord": { "value": true, "mode": "const" },
+                "org": { "value": true, "mode": "const" },
+                "xshad": { "value": true, "mode": "const" },
+                "be": { "value": true, "mode": "const" },
+                "blur": { "value": true, "mode": "const" },
+                "2a": { "value": true, "mode": "const" },
+                "fs": { "value": true, "mode": "const" },
+                "hv_select": {
+                  "flabel": "Direction",
+                  "items": ["Horizontal", "Vertical"],
+                  "mode": "user",
+                  "y": 0,
+                  "width": 1,
+                  "height": 1,
+                  "value": "Horizontal",
+                  "class": "dropdown",
+                  "x": 1
+                },
+                "c": { "value": true, "mode": "const" },
+                "alpha": { "value": true, "mode": "const" },
+                "frz": { "value": true, "mode": "const" },
+                "4a": { "value": true, "mode": "const" },
+                "3c": { "value": true, "mode": "const" },
+                "pos": { "value": true, "mode": "const" },
+                "fry": { "value": true, "mode": "const" },
+                "fsp": { "value": true, "mode": "const" },
+                "3a": { "value": true, "mode": "const" },
+                "fscx": { "value": true, "mode": "const" },
+                "fscy": { "value": true, "mode": "const" },
+                "fax": { "value": true, "mode": "const" },
+                "fay": { "value": true, "mode": "const" },
+                "frx": { "value": true, "mode": "const" },
+                "1a": { "value": true, "mode": "const" }
+              },
+              "button": { "value": "OK", "mode": "const" }
+            }
+          ],
+          "macro": "Gradient Everything\/Gradient Everything",
+          "select": "macro"
+        },
+        { "dialogs": {}, "macro": "Combine Gradient Lines", "select": "macro" }
+      ]
+    },
+    "show_in_menu": true,
+    "chain_slots": ["New Chain", "", "", "", ""]
+  }
+}
