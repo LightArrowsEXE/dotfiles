@@ -1,0 +1,1 @@
+C:/Users/light/Documents/GitHub/Aegisub-Scripts/macros/lightarrowsexe.tagstripper.moon

@@ -1,0 +1,13 @@
+# Autosaves and backups
+autoback/**/*
+autosave/**/*
+
+# Logs
+/feedDump/**/*
+/log/**/*
+
+# Random files
+mru.json
+shift_history.json
+config_tmp_*.json
+
