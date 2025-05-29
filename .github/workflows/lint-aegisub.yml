@@ -1,0 +1,45 @@
+name: Lint and Fix Aegisub JSON config files
+
+on:
+  push:
+    paths:
+      - 'Aegisub/**/*.json'
+      - '.github/workflows/**'
+      - '.prettierrc.json'
+  pull_request:
+    paths:
+      - 'Aegisub/**/*.json'
+      - '.github/workflows/**'
+      - '.prettierrc.json'
+
+jobs:
+  auto-fix:
+    name: Auto-fix JSON formatting on push
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Prettier
+        run: npm install -g prettier
+
+      - name: Format JSON files with Prettier
+        run: |
+          prettier --write "Aegisub/**/*.json"
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add Aegisub/**/*.json
+          git diff --cached --quiet || git commit -m "style: auto-format JSON files with Prettier"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
