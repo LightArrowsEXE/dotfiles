@@ -321,7 +321,7 @@
 			"Include" : "?user/automation/include/|?data/automation/include/"
 		},
 		"Dictionary" : "?user/dictionaries",
-		"Fonts Collector Destination" : "?script",
+		"Fonts Collector Destination" : "?script\\fonts",
 		"Last" : {
 			"Audio" : "",
 			"Automation" : "",

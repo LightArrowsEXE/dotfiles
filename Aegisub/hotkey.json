@@ -195,14 +195,8 @@
 		"time/shift" : [
 			"Ctrl-I"
 		],
-		"time/snap/end_video" : [
-			"Ctrl-4"
-		],
 		"time/snap/scene" : [
 			"Ctrl-5"
-		],
-		"time/snap/start_video" : [
-			"Ctrl-3"
 		],
 		"video/focus_seek" : [
 			"Ctrl-Space"
@@ -260,7 +254,32 @@
 		"automation/lua/ILL.Shapery/: Shapery macros :/Clip to shape" : [
 			"Ctrl-M"
 		],
+		"automation/lua/ILL.Shapery/: Shapery macros :/Shape expand" : [
+			"F6"
+		],
+		"automation/lua/ILL.Shapery/Shapery/Manipulate" : [
+			"F8"
+		],
+		"automation/lua/ILL.Shapery/Shapery/Offsetting" : [
+			"F7"
+		],
+		"automation/lua/ILL.Shapery/Shapery/Pathfinder" : [
+			"F10"
+		],
+		"automation/lua/ILL.Shapery/Shapery/Transform" : [
+			"F9"
+		],
+		"automation/lua/ILL.Shapery/Shapery/Utilities" : [
+			"F11"
+		],
+		"automation/lua/arch.AegisubChain/AegisubChain Chains/Util/Apply shadtrick" : [
+			"Ctrl-Q"
+		],
+		"automation/lua/l0.ASSWipe/ASSWipe" : [
+			"Ctrl-Shift-A"
+		],
 		"automation/lua/l0.Nudge/Nudge/Position Down (+1)" : [
+			"Ctrl-Alt-Down",
 			"Ctrl-Alt-Down"
 		],
 		"automation/lua/l0.Nudge/Nudge/Position Left (-1)" : [
@@ -271,9 +290,6 @@
 		],
 		"automation/lua/l0.Nudge/Nudge/Position Up (-1)" : [
 			"Ctrl-Alt-Up"
-		],
-		"automation/lua/phos.AutoFade/Auto Fade" : [
-			"Ctrl-Alt-Down"
 		],
 		"edit/color/outline" : [
 			"Alt-3"
@@ -293,11 +309,35 @@
 		]
 	},
 	"Subtitle Grid" : {
+		"automation/lua/ILL.Shapery/: Shapery macros :/Shape expand" : [
+			"F6"
+		],
+		"automation/lua/ILL.Shapery/Shapery/Manipulate" : [
+			"F8"
+		],
+		"automation/lua/ILL.Shapery/Shapery/Offsetting" : [
+			"F7"
+		],
+		"automation/lua/ILL.Shapery/Shapery/Pathfinder" : [
+			"F10"
+		],
+		"automation/lua/ILL.Shapery/Shapery/Transform" : [
+			"F9"
+		],
+		"automation/lua/ILL.Shapery/Shapery/Utilities" : [
+			"F11"
+		],
 		"automation/lua/arch.AegisubChain/AegisubChain Chains/Gradient (All)" : [
 			"Ctrl-Shift-F"
 		],
+		"automation/lua/arch.AegisubChain/AegisubChain Chains/Util/Apply shadtrick" : [
+			"Ctrl-Q"
+		],
 		"automation/lua/arch.AegisubChain/AegisubChain Chains/Util/Toggle Comments" : [
-			"`"
+			"Ctrl-/"
+		],
+		"automation/lua/l0.ASSWipe/ASSWipe" : [
+			"Ctrl-Shift-A"
 		],
 		"automation/lua/l0.Nudge/Nudge/Position Down (+1)" : [
 			"Ctrl-Alt-Down"
@@ -322,6 +362,12 @@
 		],
 		"time/align" : [
 			"KP_TAB"
+		],
+		"time/snap/end_video" : [
+			"]"
+		],
+		"time/snap/start_video" : [
+			"["
 		],
 		"video/frame/next" : [
 			"Right"
@@ -376,6 +422,30 @@
 		"automation/lua/ILL.Shapery/: Shapery macros :/Clip to shape" : [
 			"Ctrl-M"
 		],
+		"automation/lua/ILL.Shapery/: Shapery macros :/Shape expand" : [
+			"F6"
+		],
+		"automation/lua/ILL.Shapery/Shapery/Manipulate" : [
+			"F8"
+		],
+		"automation/lua/ILL.Shapery/Shapery/Offsetting" : [
+			"F7"
+		],
+		"automation/lua/ILL.Shapery/Shapery/Pathfinder" : [
+			"F10"
+		],
+		"automation/lua/ILL.Shapery/Shapery/Transform" : [
+			"F9"
+		],
+		"automation/lua/ILL.Shapery/Shapery/Utilities" : [
+			"F11"
+		],
+		"automation/lua/arch.AegisubChain/AegisubChain Chains/Util/Apply shadtrick" : [
+			"Ctrl-Q"
+		],
+		"automation/lua/l0.ASSWipe/ASSWipe" : [
+			"Ctrl-Shift-A"
+		],
 		"automation/lua/l0.Nudge/Nudge/Position Down (+1)" : [
 			"Ctrl-Alt-Down"
 		],
@@ -390,6 +460,12 @@
 		],
 		"time/align" : [
 			"KP_TAB"
+		],
+		"time/snap/end_video" : [
+			"]"
+		],
+		"time/snap/start_video" : [
+			"["
 		],
 		"video/frame/next" : [
 			"Right"
