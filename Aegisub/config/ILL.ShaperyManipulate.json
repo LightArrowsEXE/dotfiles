@@ -1,1 +1,8 @@
-{"recreateBezier":true,"enableClip":false,"tolerance":0.5,"angleThreshold":170,"__VERSION__":"2.6.0","distance":1}
+{
+  "recreateBezier": true,
+  "enableClip": false,
+  "tolerance": 0.5,
+  "angleThreshold": 170,
+  "__VERSION__": "2.6.0",
+  "distance": 1
+}
