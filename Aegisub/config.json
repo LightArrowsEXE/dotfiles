@@ -680,7 +680,7 @@
 		},
 		"Spell Checker" : {
 			"Backend" : "hunspell",
-			"Language" : "en_US",
+			"Language" : "en_GB",
 			"Skip Comments" : false,
 			"Skip Uppercase" : false
 		},
