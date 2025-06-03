@@ -106,11 +106,11 @@
 		"Track Cursor" : {
 			"Font Face" : ""
 		},
-		"Volume" : 45,
+		"Volume" : 43,
 		"Wheel Default to Zoom" : false,
 		"Zoom" : {
-			"Horizontal" : 6,
-			"Vertical" : 73
+			"Horizontal" : 25,
+			"Vertical" : 90
 		}
 	},
 	"Automation" : {
@@ -326,7 +326,7 @@
 			"Audio" : "",
 			"Automation" : "",
 			"Keyframes" : "",
-			"Subtitles" : "C:\\Users\\light\\Videos\\Fansubs\\Kaleido\\summer-pockets\\08",
+			"Subtitles" : "C:\\Users\\light\\Videos\\Fansubs\\Kaleido\\little-busters\\01",
 			"Timecodes" : "",
 			"Video" : ""
 		},
@@ -499,6 +499,66 @@
 			"Mode" : 4,
 			"Recent Colours" : [
 				{
+					"color" : "rgb(248, 161, 103)"
+				},
+				{
+					"color" : "rgb(255, 0, 0)"
+				},
+				{
+					"color" : "rgb(251, 249, 244)"
+				},
+				{
+					"color" : "rgb(248, 161, 103)"
+				},
+				{
+					"color" : "rgb(255, 112, 72)"
+				},
+				{
+					"color" : "rgb(0, 0, 0)"
+				},
+				{
+					"color" : "rgb(0, 0, 0)"
+				},
+				{
+					"color" : "rgb(191, 191, 193)"
+				},
+				{
+					"color" : "rgb(101, 142, 150)"
+				},
+				{
+					"color" : "rgb(130, 168, 174)"
+				},
+				{
+					"color" : "rgb(0, 0, 0)"
+				},
+				{
+					"color" : "rgb(255, 255, 255)"
+				},
+				{
+					"color" : "rgb(0, 0, 0)"
+				},
+				{
+					"color" : "rgb(175, 108, 124)"
+				},
+				{
+					"color" : "rgb(90, 37, 50)"
+				},
+				{
+					"color" : "rgb(145, 85, 99)"
+				},
+				{
+					"color" : "rgb(117, 54, 70)"
+				},
+				{
+					"color" : "rgb(127, 60, 75)"
+				},
+				{
+					"color" : "rgb(167, 90, 120)"
+				},
+				{
+					"color" : "rgb(175, 160, 107)"
+				},
+				{
 					"color" : "rgb(121, 58, 71)"
 				},
 				{
@@ -533,72 +593,12 @@
 				},
 				{
 					"color" : "rgb(0, 0, 0)"
-				},
-				{
-					"color" : "rgb(0, 0, 0)"
-				},
-				{
-					"color" : "rgb(0, 0, 0)"
-				},
-				{
-					"color" : "rgb(0, 0, 0)"
-				},
-				{
-					"color" : "rgb(0, 0, 0)"
-				},
-				{
-					"color" : "rgb(0, 0, 0)"
-				},
-				{
-					"color" : "rgb(0, 0, 0)"
-				},
-				{
-					"color" : "rgb(0, 0, 0)"
-				},
-				{
-					"color" : "rgb(0, 0, 0)"
-				},
-				{
-					"color" : "rgb(0, 0, 0)"
-				},
-				{
-					"color" : "rgb(0, 0, 0)"
-				},
-				{
-					"color" : "rgb(0, 0, 0)"
-				},
-				{
-					"color" : "rgb(0, 0, 0)"
-				},
-				{
-					"color" : "rgb(0, 0, 0)"
-				},
-				{
-					"color" : "rgb(0, 0, 0)"
-				},
-				{
-					"color" : "rgb(0, 0, 0)"
-				},
-				{
-					"color" : "rgb(0, 0, 0)"
-				},
-				{
-					"color" : "rgb(0, 0, 0)"
-				},
-				{
-					"color" : "rgb(0, 0, 0)"
-				},
-				{
-					"color" : "rgb(0, 0, 0)"
-				},
-				{
-					"color" : "rgb(0, 0, 0)"
 				}
 			],
 			"Restrict to Window" : false
 		},
 		"Fonts Collector" : {
-			"Action" : 0
+			"Action" : 1
 		},
 		"Import" : {
 			"Text" : {
@@ -619,31 +619,31 @@
 					"bool" : false
 				},
 				{
-					"bool" : false
-				},
-				{
-					"bool" : false
-				},
-				{
-					"bool" : false
-				},
-				{
-					"bool" : false
-				},
-				{
-					"bool" : false
-				},
-				{
-					"bool" : false
-				},
-				{
-					"bool" : false
-				},
-				{
-					"bool" : false
+					"bool" : true
 				},
 				{
 					"bool" : true
+				},
+				{
+					"bool" : false
+				},
+				{
+					"bool" : false
+				},
+				{
+					"bool" : false
+				},
+				{
+					"bool" : false
+				},
+				{
+					"bool" : false
+				},
+				{
+					"bool" : false
+				},
+				{
+					"bool" : false
 				}
 			]
 		},
@@ -654,7 +654,7 @@
 			"Affect" : 0,
 			"Field" : 0,
 			"Match Case" : false,
-			"RegExp" : false,
+			"RegExp" : true,
 			"Skip Comments" : false,
 			"Skip Tags" : false
 		},
@@ -673,7 +673,7 @@
 		"Shift Times" : {
 			"Affect" : 0,
 			"ByTime" : false,
-			"Direction" : true,
+			"Direction" : false,
 			"Frames" : 0,
 			"Time" : 0,
 			"Type" : 0
@@ -686,8 +686,8 @@
 		},
 		"Style Editor" : {
 			"Last" : {
-				"Height" : -1,
-				"Width" : -1,
+				"Height" : 369,
+				"Width" : 676,
 				"X" : -1,
 				"Y" : -1
 			},
@@ -747,15 +747,15 @@
 			"Autohide" : false,
 			"Perspective" : {
 				"Grid" : false,
-				"Org Mode" : 0,
-				"Outer" : false,
+				"Org Mode" : 16,
+				"Outer" : true,
 				"Outer Locked" : false
 			},
 			"Shape Handle Size" : 3
 		}
 	},
 	"Version" : {
-		"Last Version" : 9841,
+		"Last Version" : 9844,
 		"Next Check" : 0
 	},
 	"Video" : {

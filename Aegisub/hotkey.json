@@ -15,6 +15,9 @@
 		"audio/stop" : [
 			"KP_8"
 		],
+		"automation/lua/petzku.ToggleTemplates/Toggle Templates" : [
+			"Ctrl-/"
+		],
 		"time/length/decrease" : [
 			"KP_7"
 		],
@@ -78,6 +81,12 @@
 		],
 		"audio/stop" : [
 			"H"
+		],
+		"automation/lua/0x.KaraTemplater/0x539's Templater" : [
+			"Ctrl-Alt-Backspace"
+		],
+		"automation/lua/0x.KaraTemplater/Remove generated fx" : [
+			"Ctrl-Shift-Backspace"
 		],
 		"automation/lua/phos.TimingAssistant/Timing Assistant/Time" : [
 			"F"
@@ -170,6 +179,9 @@
 		"help/contents" : [
 			"F1"
 		],
+		"recent/subtitle/0" : [
+			"F5"
+		],
 		"subtitle/find" : [
 			"Ctrl-F"
 		],
@@ -251,6 +263,12 @@
 		]
 	},
 	"Subtitle Edit Box" : {
+		"automation/lua/0x.KaraTemplater/0x539's Templater" : [
+			"Ctrl-Alt-Backspace"
+		],
+		"automation/lua/0x.KaraTemplater/Remove generated fx" : [
+			"Ctrl-Shift-Backspace"
+		],
 		"automation/lua/ILL.Shapery/: Shapery macros :/Clip to shape" : [
 			"Ctrl-M"
 		],
@@ -291,6 +309,9 @@
 		"automation/lua/l0.Nudge/Nudge/Position Up (-1)" : [
 			"Ctrl-Alt-Up"
 		],
+		"automation/lua/petzku.ToggleTemplates/Toggle Templates" : [
+			"Ctrl-/"
+		],
 		"edit/color/outline" : [
 			"Alt-3"
 		],
@@ -309,6 +330,12 @@
 		]
 	},
 	"Subtitle Grid" : {
+		"automation/lua/0x.KaraTemplater/0x539's Templater" : [
+			"Ctrl-Alt-Backspace"
+		],
+		"automation/lua/0x.KaraTemplater/Remove generated fx" : [
+			"Ctrl-Shift-Backspace"
+		],
 		"automation/lua/ILL.Shapery/: Shapery macros :/Shape expand" : [
 			"F6"
 		],
@@ -350,6 +377,9 @@
 		],
 		"automation/lua/l0.Nudge/Nudge/Position Up (-1)" : [
 			"Ctrl-Alt-Up"
+		],
+		"automation/lua/petzku.ToggleTemplates/Toggle Templates" : [
+			"Ctrl-/"
 		],
 		"automation/lua/phos.TimingAssistant/Timing Assistant/Time" : [
 			"F"
@@ -419,6 +449,12 @@
 		]
 	},
 	"Video" : {
+		"automation/lua/0x.KaraTemplater/0x539's Templater" : [
+			"Ctrl-Alt-Backspace"
+		],
+		"automation/lua/0x.KaraTemplater/Remove generated fx" : [
+			"Ctrl-Shift-Backspace"
+		],
 		"automation/lua/ILL.Shapery/: Shapery macros :/Clip to shape" : [
 			"Ctrl-M"
 		],
@@ -457,6 +493,12 @@
 		],
 		"automation/lua/l0.Nudge/Nudge/Position Up (-1)" : [
 			"Ctrl-Alt-Up"
+		],
+		"automation/lua/petzku.ToggleTemplates/Toggle Templates" : [
+			"Ctrl-/"
+		],
+		"automation/lua/phos.TimingAssistant/Timing Assistant/Time" : [
+			"F"
 		],
 		"time/align" : [
 			"KP_TAB"
