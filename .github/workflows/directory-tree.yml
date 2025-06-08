@@ -41,7 +41,6 @@ jobs:
           done
 
       - name: Commit directory structure
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
