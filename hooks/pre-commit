@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Function to generate tree for a directory
+generate_tree() {
+  local dir=$1
+  local output_file="$dir/TREE.md"
+  echo "# $dir Directory Structure" > "$output_file"
+  echo "" >> "$output_file"
+  echo "Last updated: $(date)" >> "$output_file"
+  echo "" >> "$output_file"
+  echo '```' >> "$output_file"
+  find "$dir" -not -path '*/\.*' | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/|-\1/" >> "$output_file"
+  echo '```' >> "$output_file"
+}
+
+# List of directories to process
+directories=("VapourSynth")
+
+# Generate trees for each directory
+for dir in "${directories[@]}"; do
+  if [ -d "$dir" ]; then
+    generate_tree "$dir"
+  fi
+done
