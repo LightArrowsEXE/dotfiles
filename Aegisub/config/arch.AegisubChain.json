@@ -6,7 +6,10 @@
         {
           "dialogs": [
             {
-              "button": { "mode": "const", "value": "Load" },
+              "button": {
+                "mode": "const",
+                "value": "Load"
+              },
               "values": {
                 "pre_sel": {
                   "mode": "const",
@@ -14,17 +17,26 @@
                 }
               }
             },
-            { "button": { "mode": "const", "value": "Run" }, "values": {} }
+            {
+              "button": {
+                "mode": "const",
+                "value": "Run"
+              },
+              "values": {}
+            }
           ],
           "select": "macro",
-          "macro": "Lua Interpreter"
+          "macro": ":: Hotkeys/Lua Interpreter"
         }
       ],
       "Gradient (All)": [
         {
           "dialogs": [
             {
-              "button": { "mode": "const", "value": "Load" },
+              "button": {
+                "mode": "const",
+                "value": "Load"
+              },
               "values": {
                 "pre_sel": {
                   "mode": "const",
@@ -32,22 +44,49 @@
                 }
               }
             },
-            { "button": { "mode": "const", "value": "Run" }, "values": {} }
+            {
+              "button": {
+                "mode": "const",
+                "value": "Run"
+              },
+              "values": {}
+            }
           ],
           "select": "macro",
-          "macro": "Lua Interpreter"
+          "macro": ":: Hotkeys/Lua Interpreter"
         },
         {
           "dialogs": [
             {
-              "button": { "mode": "const", "value": "OK" },
+              "button": {
+                "mode": "const",
+                "value": "OK"
+              },
               "values": {
-                "fscy": { "mode": "const", "value": true },
-                "fax": { "mode": "const", "value": true },
-                "c": { "mode": "const", "value": true },
-                "frx": { "mode": "const", "value": true },
-                "1a": { "mode": "const", "value": true },
-                "fay": { "mode": "const", "value": true },
+                "fscy": {
+                  "mode": "const",
+                  "value": true
+                },
+                "fax": {
+                  "mode": "const",
+                  "value": true
+                },
+                "c": {
+                  "mode": "const",
+                  "value": true
+                },
+                "frx": {
+                  "mode": "const",
+                  "value": true
+                },
+                "1a": {
+                  "mode": "const",
+                  "value": true
+                },
+                "fay": {
+                  "mode": "const",
+                  "value": true
+                },
                 "hv_select": {
                   "mode": "user",
                   "flabel": "Direction",
@@ -59,8 +98,14 @@
                   "height": 1,
                   "class": "dropdown"
                 },
-                "2a": { "mode": "const", "value": true },
-                "alpha": { "mode": "const", "value": true },
+                "2a": {
+                  "mode": "const",
+                  "value": true
+                },
+                "alpha": {
+                  "mode": "const",
+                  "value": true
+                },
                 "strip": {
                   "mode": "user",
                   "flabel": "Pixels per strip",
@@ -72,46 +117,122 @@
                   "height": 1,
                   "class": "intedit"
                 },
-                "fs": { "mode": "const", "value": true },
-                "4c": { "mode": "const", "value": true },
-                "2c": { "mode": "const", "value": true },
-                "yshad": { "mode": "const", "value": true },
-                "shad": { "mode": "const", "value": true },
-                "xbord": { "mode": "const", "value": true },
-                "ybord": { "mode": "const", "value": true },
-                "bord": { "mode": "const", "value": true },
-                "org": { "mode": "const", "value": true },
-                "xshad": { "mode": "const", "value": true },
-                "be": { "mode": "const", "value": true },
-                "blur": { "mode": "const", "value": true },
-                "pos": { "mode": "const", "value": true },
-                "frz": { "mode": "const", "value": true },
-                "4a": { "mode": "const", "value": true },
-                "3c": { "mode": "const", "value": true },
-                "fry": { "mode": "const", "value": true },
-                "fsp": { "mode": "const", "value": true },
-                "3a": { "mode": "const", "value": true },
-                "fscx": { "mode": "const", "value": true }
+                "fs": {
+                  "mode": "const",
+                  "value": true
+                },
+                "4c": {
+                  "mode": "const",
+                  "value": true
+                },
+                "2c": {
+                  "mode": "const",
+                  "value": true
+                },
+                "yshad": {
+                  "mode": "const",
+                  "value": true
+                },
+                "shad": {
+                  "mode": "const",
+                  "value": true
+                },
+                "xbord": {
+                  "mode": "const",
+                  "value": true
+                },
+                "ybord": {
+                  "mode": "const",
+                  "value": true
+                },
+                "bord": {
+                  "mode": "const",
+                  "value": true
+                },
+                "org": {
+                  "mode": "const",
+                  "value": true
+                },
+                "xshad": {
+                  "mode": "const",
+                  "value": true
+                },
+                "be": {
+                  "mode": "const",
+                  "value": true
+                },
+                "blur": {
+                  "mode": "const",
+                  "value": true
+                },
+                "pos": {
+                  "mode": "const",
+                  "value": true
+                },
+                "frz": {
+                  "mode": "const",
+                  "value": true
+                },
+                "4a": {
+                  "mode": "const",
+                  "value": true
+                },
+                "3c": {
+                  "mode": "const",
+                  "value": true
+                },
+                "fry": {
+                  "mode": "const",
+                  "value": true
+                },
+                "fsp": {
+                  "mode": "const",
+                  "value": true
+                },
+                "3a": {
+                  "mode": "const",
+                  "value": true
+                },
+                "fscx": {
+                  "mode": "const",
+                  "value": true
+                }
               }
             }
           ],
           "select": "macro",
-          "macro": "Gradient Everything\/Gradient Everything"
+          "macro": ":: Gradients/Gradient Everything\/Gradient Everything"
         },
-        { "dialogs": {}, "select": "macro", "macro": "Combine Gradient Lines" }
+        {
+          "dialogs": {},
+          "select": "macro",
+          "macro": ":: Gradients/Combine Gradient Lines"
+        }
       ],
       "Util\/Apply shadtrick": [
         {
           "dialogs": [
             {
-              "button": { "mode": "const", "value": "Load" },
+              "button": {
+                "mode": "const",
+                "value": "Load"
+              },
               "values": {
-                "pre_sel": { "mode": "const", "value": "Shadtricks" }
+                "pre_sel": {
+                  "mode": "const",
+                  "value": "Shadtricks"
+                }
               }
             },
-            { "button": { "mode": "const", "value": "Run" }, "values": {} }
+            {
+              "button": {
+                "mode": "const",
+                "value": "Run"
+              },
+              "values": {}
+            }
           ],
-          "macro": "Lua Interpreter",
+          "macro": ":: Hotkeys/Lua Interpreter",
           "select": "macro"
         }
       ]

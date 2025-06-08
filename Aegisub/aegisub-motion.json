@@ -1,0 +1,42 @@
+{
+  "main": {
+    "absPos": false,
+    "xScale": true,
+    "clipOnly": false,
+    "shadow": true,
+    "blur": true,
+    "vectClip": true,
+    "blurScale": 1,
+    "xPosition": true,
+    "killTrans": true,
+    "zRotation": false,
+    "linear": false,
+    "yPosition": true,
+    "startFrame": 1,
+    "writeConf": false,
+    "origin": false,
+    "rcToVc": false,
+    "relative": true,
+    "rectClip": true,
+    "border": true
+  },
+  "clip": {
+    "startFrame": 1,
+    "rcToVc": false,
+    "xPosition": true,
+    "xScale": true,
+    "zRotation": false,
+    "rectClip": true,
+    "vectClip": true,
+    "yPosition": true
+  },
+  "__version": "1.0.9",
+  "trim": {
+    "makePfix": true,
+    "encBin": "C:\\Users\\light\\scoop\\shims\\ffmpeg.exe",
+    "preset": "ffmpeg",
+    "command": "mkdir -Force \"#{prefix}\\#{startf}-#{endf}\"; & #{encbin} -ss #{startt} -an -sn -i \"#{inpath}\/#{input}\" -q:v 1 -vsync passthrough -frames:v #{lenf} \"#{prefix}\/#{startf}-#{endf}\/#{output}-%05d.png\"",
+    "writeLog": true,
+    "prefix": "?script\/amo"
+  }
+}

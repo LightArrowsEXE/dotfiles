@@ -1,0 +1,72 @@
+{
+  "presets": {
+    "All": {
+      "tags": {
+        "fay": true,
+        "frx": true,
+        "fry": true,
+        "frz": true,
+        "bord": true,
+        "shad": true,
+        "fs": true,
+        "fsp": true,
+        "xbord": true,
+        "ybord": true,
+        "xshad": true,
+        "yshad": true,
+        "blur": true,
+        "be": true,
+        "org": true,
+        "clip": true,
+        "pos": true,
+        "c": true,
+        "2c": true,
+        "3c": true,
+        "4c": true,
+        "alpha": true,
+        "1a": true,
+        "2a": true,
+        "3a": true,
+        "4a": true,
+        "fscx": true,
+        "fscy": true,
+        "fax": true
+      }
+    },
+    "Default": {},
+    "[Last Settings]": {
+      "tags": {
+        "fay": true,
+        "frx": true,
+        "fry": true,
+        "frz": true,
+        "bord": true,
+        "shad": true,
+        "fs": true,
+        "fsp": true,
+        "xbord": true,
+        "ybord": true,
+        "xshad": true,
+        "yshad": true,
+        "blur": true,
+        "be": true,
+        "org": true,
+        "clip": true,
+        "c": true,
+        "pos": true,
+        "2c": true,
+        "3c": true,
+        "4c": true,
+        "alpha": true,
+        "1a": true,
+        "2a": true,
+        "3a": true,
+        "4a": true,
+        "fscx": true,
+        "fscy": true,
+        "fax": true
+      },
+      "description": "Repeats the last Frame-by-frame transform operation"
+    }
+  }
+}

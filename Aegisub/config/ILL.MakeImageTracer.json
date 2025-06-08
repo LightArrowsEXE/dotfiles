@@ -1,0 +1,18 @@
+{
+  "numberofcolors": 65535,
+  "__VERSION__": "2.1.1",
+  "preset": "Artistic 4",
+  "colorquantcycles": 3,
+  "layering": true,
+  "ltres": 1,
+  "strokewidth": 1,
+  "qtres": 1,
+  "pathomit": 1,
+  "roundcoords": 1,
+  "blurradius": 0,
+  "rightangleenhance": true,
+  "colorsampling": "Random",
+  "blurdelta": 20,
+  "scale": 100,
+  "mincolorratio": 0
+}

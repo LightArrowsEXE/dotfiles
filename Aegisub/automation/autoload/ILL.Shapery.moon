@@ -1,6 +1,6 @@
 export script_name        = "Shapery"
 export script_description = "Does several types of shape manipulations from the simplest to the most complex"
-export script_version     = "2.6.0"
+export script_version     = "2.6.1"
 export script_author      = "ILLTeam"
 export script_namespace   = "ILL.Shapery"
 
@@ -49,6 +49,9 @@ interfaces = {
 		{class: "checkbox", label: "Comment Current Lines", x: 0, y: 3, name: "saveLines", value: false}
 		{class: "label", label: "Reset Macro", x: 0, y: 5}
 		{class: "dropdown", items: {"All", "Config", "Pathfinder", "Offsetting", "Manipulate", "Transform", "Utilities"}, x: 0, y: 6, name: "reset", value: "All"}
+		{class: "label", label: "Reverse points", x: 4, y: 0}
+		{class: "checkbox", label: "Shape", x: 4, y: 1, name: "reverseShape", value: true}
+		{class: "checkbox", label: "Clip", x: 4, y: 2, name: "reverseClip", value: true}
 	}
 	pathfinder: -> {
 		{class: "label", label: "Operation:", x: 0, y: 0}
@@ -678,6 +681,21 @@ ShaperyMacrosDialog = (macro) ->
 						ass\setLine l, s
 					else
 						ass\warning s, "Expected a shape"
+				when "Reverse points"
+					if cfg.reverseShape and l.isShape
+						newPath = Path l.shape
+						newPath\reverse!
+						l.shape = newPath\export!
+					if cfg.reverseClip and l.data.clip
+						newPath = Path l.data.clip
+						newPath\reverse!
+						clip = newPath\export!
+						if l.data.isIclip
+							l.tags\insert {{"iclip", clip}}
+						else
+							l.tags\insert {{"clip", clip}}
+						l.text\modifyBlock l.tags
+					ass\setLine l, s
 		return ass\getNewSelection!
 
 if haveDepCtrl
@@ -707,6 +725,7 @@ if haveDepCtrl
 		{"Shape to center",           "", ShaperyMacrosDialog "Shape to center"}
 		{"Shape without holes",       "", ShaperyMacrosDialog "Shape without holes"}
 		{"Shape bounding box",        "", ShaperyMacrosDialog "Shape bounding box"}
+		{"Reverse points",            "", ShaperyMacrosDialog "Reverse points"}
 	}, ": Shapery macros :"
 else
 	aegisub.register_macro "#{script_name}/Pathfinder",    "", PathfinderDialog
@@ -732,3 +751,4 @@ else
 	aegisub.register_macro ": Shapery macros :/Shape to center",           "", ShaperyMacrosDialog "Shape to center"
 	aegisub.register_macro ": Shapery macros :/Shape without holes",       "", ShaperyMacrosDialog "Shape without holes"
 	aegisub.register_macro ": Shapery macros :/Shape bounding box",        "", ShaperyMacrosDialog "Shape bounding box"
+	aegisub.register_macro ": Shapery macros :/Reverse points",            "", ShaperyMacrosDialog "Reverse points"

@@ -451,7 +451,7 @@ class Configuration
 
   registerMacros: =>
     for nudger in *@nudgers
-      aegisub.register_macro "#{script_name}/#{nudger.name}", script_description,
+      aegisub.register_macro ":: Hotkeys/#{script_name}/#{nudger.name}", script_description,
         (sub, sel) -> nudger\nudge sub, sel
 
   run: (noReload) =>

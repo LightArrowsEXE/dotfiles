@@ -1,18 +1,30 @@
 {
   "presets": {
-    "Default": {},
     "Kaleido": {
-      "automove": false,
-      "startLeadIn": 120,
-      "startKeysnapBefore": 300,
-      "startKeysnapAfter": 100,
-      "startLink": 500,
       "endLeadOut": 350,
       "endKeysnapBefore": 100,
       "endKeysnapAfter": 700,
+      "automove": false,
+      "startLeadIn": 120,
+      "startKeysnapBefore": 300,
+      "startLink": 500,
+      "startKeysnapAfter": 100,
       "gap": 0,
       "debug": false
-    }
+    },
+    "Caption": {
+      "endLeadOut": 350,
+      "endKeysnapBefore": 100,
+      "endKeysnapAfter": 700,
+      "automove": true,
+      "startLeadIn": 120,
+      "startKeysnapBefore": 300,
+      "debug": false,
+      "startKeysnapAfter": 100,
+      "gap": 0,
+      "startLink": 500
+    },
+    "Default": {}
   },
   "currentPreset": "Kaleido"
 }

@@ -1,0 +1,9 @@
+{
+  "lineType": "Straight",
+  "rows": 2,
+  "cols": 2,
+  "tolerance": 1,
+  "perspective": false,
+  "keepMesh": false,
+  "__VERSION__": "1.1.3"
+}

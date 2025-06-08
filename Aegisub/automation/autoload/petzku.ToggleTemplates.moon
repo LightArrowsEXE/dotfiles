@@ -28,4 +28,4 @@ can_run = (sub, sel) ->
         return true if is_component sub[i]
     return false
 
-aegisub.register_macro script_name, script_description, main
+aegisub.register_macro ":: Hotkeys/" .. script_name, script_description, main

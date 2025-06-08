@@ -1091,8 +1091,8 @@ can_remove = (subs, _sel, _active) ->
 			return true
 	return false
 
-aegisub.register_macro script_name, 'Run the templater', main, can_apply
-aegisub.register_macro 'Remove generated fx', 'Remove non-commented lines whose Effect field is `fx`', remove_fx_main, can_remove
+aegisub.register_macro ":: Hotkeys/#{script_name}", 'Run the templater', main, can_apply
+aegisub.register_macro ":: Hotkeys/Remove generated fx", 'Remove non-commented lines whose Effect field is `fx`', remove_fx_main, can_remove
 
 print_stacktrace = ->
 	moon =

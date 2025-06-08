@@ -1,264 +1,1344 @@
 {
-  "modules": {
-    "aka.config2": {
-      "author": "Akatsumekusa and contributors",
-      "configFile": "aka.config2.json",
-      "moduleName": "aka.config2",
+  "macros": {
+    "l0.Nudge": {
+      "lastChannel": "release",
+      "name": "Nudge",
+      "configFile": "l0.Nudge.json",
+      "moduleName": false,
       "requiredModules": [
-        { "version": "1.0.0", "moduleName": "aka.outcome" },
-        { "moduleName": "aegisub.re" },
-        { "moduleName": "aegisub.unicode" },
-        { "moduleName": "lfs" }
-      ],
-      "version": 65547,
-      "feed": "https:\/\/raw.githubusercontent.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts\/master\/DependencyControl.json",
-      "lastUpdateCheck": 1748936413,
-      "url": "https:\/\/github.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts",
-      "namespace": "aka.config2",
-      "name": "aka.config2"
-    },
-    "DM.DownloadManager": {
-      "author": "torque",
-      "configFile": "DM.DownloadManager.json",
-      "moduleName": "DM.DownloadManager",
-      "requiredModules": {},
-      "version": 1280,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ffi-experiments\/master\/DependencyControl.json",
-      "lastUpdateCheck": 1748927623,
-      "url": "https:\/\/github.com\/TypesettingTools\/ffi-experiments",
-      "namespace": "DM.DownloadManager",
-      "name": "DownloadManager"
-    },
-    "a-mo.Log": {
-      "configFile": "a-mo.Log.json",
-      "moduleName": "a-mo.Log",
-      "requiredModules": {},
-      "version": 65536,
-      "name": "a-mo.Log",
-      "namespace": "a-mo.Log",
-      "unmanaged": true
-    },
-    "PT.PreciseTimer": {
-      "author": "torque",
-      "configFile": "PT.PreciseTimer.json",
-      "moduleName": "PT.PreciseTimer",
-      "requiredModules": {},
-      "version": 262,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ffi-experiments\/master\/DependencyControl.json",
-      "lastUpdateCheck": 1748927623,
-      "url": "https:\/\/github.com\/TypesettingTools\/ffi-experiments",
-      "namespace": "PT.PreciseTimer",
-      "name": "PreciseTimer"
-    },
-    "a-mo.Tags": {
-      "author": "torque",
-      "configFile": "a-mo.Tags.json",
-      "moduleName": "a-mo.Tags",
-      "requiredModules": [
-        { "version": "1.0.0", "moduleName": "a-mo.Log" },
-        { "version": "1.2.3", "moduleName": "a-mo.Transform" }
-      ],
-      "version": 66308,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-      "lastUpdateCheck": 1748927624,
-      "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
-      "namespace": "a-mo.Tags",
-      "name": "Tags"
-    },
-    "a-mo.Transform": {
-      "author": "torque",
-      "configFile": "a-mo.Transform.json",
-      "moduleName": "a-mo.Transform",
-      "requiredModules": [
-        { "version": "1.0.0", "moduleName": "a-mo.Log" },
-        { "version": "1.0.0", "moduleName": "a-mo.Math" },
-        { "version": "1.3.4", "moduleName": "a-mo.Tags" }
-      ],
-      "version": 66052,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-      "lastUpdateCheck": 1748927624,
-      "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
-      "namespace": "a-mo.Transform",
-      "name": "Transform"
-    },
-    "a-mo.Statistics": {
-      "author": "torque",
-      "configFile": "a-mo.Statistics.json",
-      "moduleName": "a-mo.Statistics",
-      "requiredModules": [
+        { "moduleName": "aegisub.clipboard" },
         { "moduleName": "json" },
-        { "version": "1.0.0", "moduleName": "a-mo.Log" }
+        {
+          "moduleName": "a-mo.LineCollection",
+          "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
+          "version": "1.3.0"
+        },
+        {
+          "moduleName": "l0.ASSFoundation",
+          "url": "https:\/\/github.com\/TypesettingTools\/ASSFoundation",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
+          "version": "0.4.0"
+        },
+        {
+          "moduleName": "l0.Functional",
+          "url": "https:\/\/github.com\/TypesettingTools\/Functional",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
+          "version": "0.5.0"
+        }
       ],
-      "version": 259,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-      "lastUpdateCheck": 1748936414,
-      "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
-      "namespace": "a-mo.Statistics",
-      "name": "Statistics"
+      "namespace": "l0.Nudge",
+      "customMenu": ":: Hotkeys",
+      "channels": ["master", "release"],
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/line0-Aegisub-Scripts\/master\/DependencyControl.json",
+      "author": "line0",
+      "version": 1280
     },
-    "arch.Math": {
-      "author": "arch1t3cht",
-      "configFile": "arch.Math.json",
-      "moduleName": "arch.Math",
+    "l0.DependencyControl.Toolbox": {
+      "name": "DependencyControl Toolbox",
+      "namespace": "l0.DependencyControl.Toolbox",
+      "author": "line0",
+      "configFile": "l0.DependencyControl.Toolbox.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/DependencyControl\/master\/DependencyControl.json",
       "requiredModules": {},
-      "version": 266,
-      "lastUpdateCheck": 1748936412,
-      "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
-      "namespace": "arch.Math",
-      "name": "ArchMath"
+      "lastUpdateCheck": 1749405556,
+      "version": 259
     },
-    "SubInspector.Inspector": {
-      "author": "torque",
-      "configFile": "SubInspector.Inspector.json",
-      "moduleName": "SubInspector.Inspector",
-      "requiredModules": [
-        { "moduleName": "ffi" },
-        { "version": "0.1.1", "moduleName": "requireffi.requireffi" }
-      ],
-      "version": 1794,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/SubInspector\/master\/DependencyControl.json",
-      "lastUpdateCheck": 1748927624,
-      "url": "https:\/\/github.com\/TypesettingTools\/SubInspector",
-      "namespace": "SubInspector.Inspector",
-      "name": "SubInspector"
-    },
-    "petzku.util": {
+    "petzku.Phantom": {
       "author": "petzku",
-      "configFile": "petzku.util.json",
-      "moduleName": "petzku.util",
+      "customMenu": ":: Uncommonly Used",
+      "name": "Phantom",
+      "configFile": "petzku.Phantom.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/petzku\/Aegisub-Scripts\/stable\/DependencyControl.json",
+      "requiredModules": {},
+      "namespace": "petzku.Phantom",
+      "version": 65793
+    },
+    "phos.ChromaticAbberation": {
+      "lastChannel": "main",
+      "name": "Chromatic Abberation",
+      "configFile": "phos.ChromaticAbberation.json",
+      "moduleName": false,
       "requiredModules": [
+        {
+          "moduleName": "a-mo.LineCollection",
+          "url": "https: \/\/github.com\/TypesettingTools\/Aegisub-Motion",
+          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+          "version": "1.3.0"
+        },
+        {
+          "moduleName": "l0.ASSFoundation",
+          "url": "https: \/\/github.com\/TypesettingTools\/ASSFoundation",
+          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
+          "version": "0.5.0"
+        },
+        {
+          "moduleName": "phos.AssfPlus",
+          "url": "https:\/\/github.com\/PhosCity\/Aegisub-Scripts",
+          "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
+          "version": "1.0.2"
+        },
+        {
+          "moduleName": "phos.AegiGui",
+          "url": "https:\/\/github.com\/PhosCity\/Aegisub-Scripts",
+          "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
+          "version": "1.0.0"
+        },
+        { "moduleName": "aegisub.util" }
+      ],
+      "namespace": "phos.ChromaticAbberation",
+      "customMenu": ":: Uncommonly Used",
+      "channels": ["main"],
+      "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
+      "author": "PhosCity",
+      "version": 65540
+    },
+    "ua.ChangeCase": {
+      "lastChannel": "master",
+      "name": "Change Case",
+      "configFile": "ua.ChangeCase.json",
+      "moduleName": false,
+      "requiredModules": {},
+      "namespace": "ua.ChangeCase",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/unanimated-Aegisub-Scripts\/master\/DependencyControl.json",
+      "channels": ["master"],
+      "author": "unanimated",
+      "lastUpdateCheck": 1749148693,
+      "version": 196608
+    },
+    "ILL.EnvelopeDistort": {
+      "lastChannel": "main",
+      "author": "ILLTeam",
+      "configFile": "ILL.EnvelopeDistort.json",
+      "moduleName": false,
+      "requiredModules": [
+        {
+          "moduleName": "ILL.ILL",
+          "url": "https:\/\/github.com\/TypesettingTools\/ILL-Aegisub-Scripts\/",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
+          "version": "1.4.4"
+        }
+      ],
+      "namespace": "ILL.EnvelopeDistort",
+      "customMenu": ":: Shape Manipulation",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
+      "channels": ["main"],
+      "name": "Envelope Distort",
+      "lastUpdateCheck": 1749152312,
+      "version": 65795
+    },
+    "phos.AddGrain": {
+      "lastChannel": "main",
+      "name": "Add Grain",
+      "configFile": "phos.AddGrain.json",
+      "moduleName": false,
+      "requiredModules": [
+        {
+          "moduleName": "a-mo.LineCollection",
+          "url": "https: \/\/github.com\/TypesettingTools\/Aegisub-Motion",
+          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+          "version": "1.3.0"
+        },
+        {
+          "moduleName": "l0.ASSFoundation",
+          "url": "https: \/\/github.com\/TypesettingTools\/ASSFoundation",
+          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
+          "version": "0.5.0"
+        },
+        {
+          "moduleName": "l0.Functional",
+          "url": "https:\/\/github.com\/TypesettingTools\/Functional",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
+          "version": "0.6.0"
+        },
+        { "moduleName": "Yutils" }
+      ],
+      "namespace": "phos.AddGrain",
+      "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
+      "channels": ["main"],
+      "author": "PhosCity",
+      "lastUpdateCheck": 1749006040,
+      "version": 65796
+    },
+    "petzku.CombineGradientLines": {
+      "author": "petzku",
+      "configFile": "petzku.CombineGradientLines.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/petzku\/Aegisub-Scripts\/stable\/DependencyControl.json",
+      "requiredModules": {},
+      "namespace": "petzku.CombineGradientLines",
+      "customMenu": ":: Gradients",
+      "name": "Combine Gradient Lines",
+      "lastUpdateCheck": 1749400067,
+      "version": 517
+    },
+    "phos.kfx": {
+      "author": "PhosCity",
+      "configFile": "phos.kfx.json",
+      "feed": "",
+      "requiredModules": [
+        {
+          "moduleName": "l0.Functional",
+          "url": "https:\/\/github.com\/TypesettingTools\/Functional",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
+          "version": "0.6.0"
+        }
+      ],
+      "namespace": "phos.kfx",
+      "customMenu": ":: Uncommonly Used",
+      "name": "KFX",
+      "lastUpdateCheck": 1749406341,
+      "version": 65536
+    },
+    "zah.aegi-color-track": {
+      "lastChannel": "main",
+      "name": "Aegisub-Color-Tracking",
+      "configFile": "zah.aegi-color-track.json",
+      "moduleName": false,
+      "requiredModules": [
+        {
+          "moduleName": "petzku.util",
+          "url": "https:\/\/github.com\/petzku\/Aegisub-Scripts",
+          "feed": "https:\/\/raw.githubusercontent.com\/petzku\/Aegisub-Scripts\/stable\/DependencyControl.json",
+          "version": "0.3.0"
+        },
+        {
+          "moduleName": "a-mo.ConfigHandler",
+          "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+          "version": "1.1.4"
+        },
+        { "moduleName": "aegisub.util" }
+      ],
+      "namespace": "zah.aegi-color-track",
+      "feed": "https:\/\/raw.githubusercontent.com\/Zahuczky\/Zahuczkys-Aegisub-Scripts\/main\/DependencyControl.json",
+      "channels": ["main"],
+      "author": "Zahuczky, garret",
+      "lastUpdateCheck": 1749050998,
+      "version": 131328
+    },
+    "arch.FocusLines": {
+      "author": "arch1t3cht",
+      "customMenu": ":: Uncommonly Used",
+      "name": "Focus Lines",
+      "configFile": "arch.FocusLines.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
+      "requiredModules": [
+        {
+          "moduleName": "arch.Math",
+          "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
+          "version": "0.1.0"
+        }
+      ],
+      "namespace": "arch.FocusLines",
+      "version": 65537
+    },
+    "phos.RotateGradient": {
+      "lastChannel": "main",
+      "name": "Rotate Gradient",
+      "configFile": "phos.RotateGradient.json",
+      "moduleName": false,
+      "requiredModules": [
+        {
+          "moduleName": "a-mo.LineCollection",
+          "url": "https: \/\/github.com\/TypesettingTools\/Aegisub-Motion",
+          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+          "version": "1.3.0"
+        },
+        {
+          "moduleName": "a-mo.Line",
+          "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+          "version": "1.5.3"
+        },
+        {
+          "moduleName": "l0.ASSFoundation",
+          "url": "https: \/\/github.com\/TypesettingTools\/ASSFoundation",
+          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
+          "version": "0.5.0"
+        },
+        {
+          "moduleName": "l0.Functional",
+          "url": "https:\/\/github.com\/TypesettingTools\/Functional",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
+          "version": "0.6.0"
+        }
+      ],
+      "namespace": "phos.RotateGradient",
+      "customMenu": ":: Gradients",
+      "channels": ["main"],
+      "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
+      "author": "PhosCity",
+      "version": 131074
+    },
+    "phos.ExtrapolateTracking": {
+      "lastChannel": "main",
+      "author": "PhosCity",
+      "configFile": "phos.ExtrapolateTracking.json",
+      "moduleName": false,
+      "requiredModules": [
+        {
+          "moduleName": "a-mo.LineCollection",
+          "url": "https: \/\/github.com\/TypesettingTools\/Aegisub-Motion",
+          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+          "version": "1.3.0"
+        },
+        {
+          "moduleName": "a-mo.DataWrapper",
+          "url": "https: \/\/github.com\/TypesettingTools\/Aegisub-Motion",
+          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+          "version": "1.0.2"
+        },
+        {
+          "moduleName": "a-mo.MotionHandler",
+          "url": "https: \/\/github.com\/TypesettingTools\/Aegisub-Motion",
+          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+          "version": "1.1.8"
+        },
+        {
+          "moduleName": "l0.ASSFoundation",
+          "url": "https: \/\/github.com\/TypesettingTools\/ASSFoundation",
+          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
+          "version": "0.5.0"
+        },
+        {
+          "moduleName": "arch.Math",
+          "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
+          "version": "0.1.8"
+        }
+      ],
+      "namespace": "phos.ExtrapolateTracking",
+      "customMenu": ":: Extrapolate",
+      "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
+      "channels": ["main"],
+      "name": "Extrapolate Tracking",
+      "lastUpdateCheck": 1749001588,
+      "version": 65538
+    },
+    "petzku.PosToMargin": {
+      "author": "petzku",
+      "name": "Margin Position",
+      "configFile": "petzku.PosToMargin.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/petzku\/Aegisub-Scripts\/stable\/DependencyControl.json",
+      "requiredModules": [{ "moduleName": "karaskel" }],
+      "namespace": "petzku.PosToMargin",
+      "version": 131073
+    },
+    "ILL.Shapery": {
+      "lastChannel": "main",
+      "author": "ILLTeam",
+      "configFile": "ILL.Shapery.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
+      "requiredModules": [
+        {
+          "moduleName": "clipper2.clipper2",
+          "url": "https:\/\/github.com\/TypesettingTools\/ILL-Aegisub-Scripts\/",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
+          "version": "1.3.2"
+        },
+        {
+          "moduleName": "ILL.ILL",
+          "url": "https:\/\/github.com\/TypesettingTools\/ILL-Aegisub-Scripts\/",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
+          "version": "1.6.5"
+        }
+      ],
+      "namespace": "ILL.Shapery",
+      "customMenu": ":: Hotkeys",
+      "channels": ["main"],
+      "name": "Shapery",
+      "lastUpdateCheck": 1749399700,
+      "version": 132609
+    },
+    "zah.autoclip": {
+      "lastChannel": "main",
+      "name": "AutoClip",
+      "configFile": "zah.autoclip.json",
+      "moduleName": false,
+      "requiredModules": [
+        {
+          "moduleName": "ILL.ILL",
+          "url": "https:\/\/github.com\/TypesettingTools\/ILL-Aegisub-Scripts",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
+          "version": "1.1.0"
+        },
+        {
+          "moduleName": "aka.uikit",
+          "url": "https:\/\/github.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts",
+          "feed": "https:\/\/raw.githubusercontent.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts\/master\/DependencyControl.json",
+          "version": "1.0.0"
+        },
+        {
+          "moduleName": "aka.config",
+          "url": "https:\/\/github.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts",
+          "feed": "https:\/\/raw.githubusercontent.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts\/master\/DependencyControl.json",
+          "version": "1.0.0"
+        },
+        {
+          "moduleName": "aka.outcome",
+          "url": "https:\/\/github.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts",
+          "feed": "https:\/\/raw.githubusercontent.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts\/master\/DependencyControl.json",
+          "version": "1.0.0"
+        },
+        { "moduleName": "lfs" },
+        {
+          "moduleName": "aka.command",
+          "url": "https:\/\/github.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts",
+          "feed": "https:\/\/raw.githubusercontent.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts\/master\/DependencyControl.json",
+          "version": "1.0.0"
+        },
+        {
+          "moduleName": "aka.unsemantic",
+          "url": "https:\/\/github.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts",
+          "feed": "https:\/\/raw.githubusercontent.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts\/master\/DependencyControl.json",
+          "version": "1.1.0"
+        }
+      ],
+      "namespace": "zah.autoclip",
+      "channels": ["main"],
+      "feed": "https:\/\/raw.githubusercontent.com\/Zahuczky\/Zahuczkys-Aegisub-Scripts\/main\/DependencyControl.json",
+      "author": "Zahuczky, Akatsumekusa",
+      "version": 131329
+    },
+    "arch.Resample": {
+      "name": "Resample Perspective",
+      "namespace": "arch.Resample",
+      "author": "arch1t3cht",
+      "configFile": "arch.Resample.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
+      "requiredModules": [
+        {
+          "moduleName": "a-mo.LineCollection",
+          "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+          "version": "1.3.0"
+        },
+        {
+          "moduleName": "l0.ASSFoundation",
+          "url": "https:\/\/github.com\/TypesettingTools\/ASSFoundation",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
+          "version": "0.5.0"
+        },
+        {
+          "moduleName": "arch.Math",
+          "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
+          "version": "0.1.8"
+        },
+        {
+          "moduleName": "arch.Perspective",
+          "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
+          "version": "1.0.0"
+        }
+      ],
+      "lastUpdateCheck": 1748818075,
+      "version": 131328
+    },
+    "ua.Selectrix": {
+      "lastChannel": "master",
+      "author": "unanimated",
+      "configFile": "ua.Selectrix.json",
+      "moduleName": false,
+      "requiredModules": {},
+      "namespace": "ua.Selectrix",
+      "customMenu": ":: Uncommonly Used",
+      "feed": "https:\/\/raw.githubusercontent.com\/unanimated\/luaegisub\/master\/DependencyControl.json",
+      "channels": ["master"],
+      "name": "Selectricks",
+      "lastUpdateCheck": 1748544225,
+      "version": 197632
+    },
+    "petzku.SplitTimer": {
+      "author": "petzku",
+      "name": "SplitTimer",
+      "configFile": "petzku.SplitTimer.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/petzku\/Aegisub-Scripts\/stable\/DependencyControl.json",
+      "requiredModules": [
+        { "moduleName": "aegisub.util" },
+        {
+          "moduleName": "petzku.util",
+          "url": "https:\/\/github.com\/petzku\/Aegisub-Scripts",
+          "feed": "https:\/\/raw.githubusercontent.com\/petzku\/Aegisub-Scripts\/stable\/DependencyControl.json",
+          "version": "0.4.2"
+        }
+      ],
+      "namespace": "petzku.SplitTimer",
+      "version": 66050
+    },
+    "lyger.GradientEverything": {
+      "lastChannel": "master",
+      "name": "Gradient Everything",
+      "configFile": "lyger.GradientEverything.json",
+      "moduleName": false,
+      "requiredModules": [
+        {
+          "moduleName": "lyger.LibLyger",
+          "url": "http:\/\/github.com\/TypesettingTools\/lyger-Aegisub-Scripts",
+          "version": "2.0.1"
+        },
+        {
+          "moduleName": "l0.Functional",
+          "url": "https:\/\/github.com\/TypesettingTools\/Functional",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
+          "version": "0.3.0"
+        },
+        {
+          "url": "https:\/\/github.com\/TypesettingTools\/SubInspector",
+          "optional": true,
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/SubInspector\/master\/DependencyControl.json",
+          "moduleName": "SubInspector.Inspector",
+          "version": "0.6.0"
+        }
+      ],
+      "namespace": "lyger.GradientEverything",
+      "customMenu": ":: Gradients",
+      "channels": ["master"],
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/lyger-Aegisub-Scripts\/master\/DependencyControl.json",
+      "lastUpdateCheck": 1749400067,
+      "version": 131075
+    },
+    "aka.Sandbox": {
+      "lastChannel": "master",
+      "author": "Akatsumekusa and contributors",
+      "configFile": "aka.Sandbox.json",
+      "moduleName": false,
+      "requiredModules": [
+        { "moduleName": "aegisub.re" },
+        { "moduleName": "aka.StackTracePlus", "version": "1.0.0" },
+        { "moduleName": "aka.outcome", "version": "1.0.0" },
+        { "moduleName": "aka.config", "version": "1.0.0" },
+        { "moduleName": "aka.uikit", "version": "1.0.0" },
+        { "moduleName": "ILL.ILL", "version": "1.0.0" },
+        { "moduleName": "moonscript" },
+        { "moduleName": "a-mo.LineCollection", "version": "1.0.0" },
+        { "moduleName": "l0.ASSFoundation", "version": "0.1.0" },
+        { "moduleName": "Yutils" },
+        { "moduleName": "arch.Math", "version": "0.1.0" },
+        { "moduleName": "arch.Perspective", "version": "0.1.0" },
+        { "moduleName": "arch.Util", "version": "0.1.0" },
+        { "moduleName": "l0.Functional", "version": "0.1.0" },
+        { "moduleName": "aka.unicode", "version": "1.0.0" },
+        { "moduleName": "aegisub.util" },
+        { "moduleName": "petzku.util", "version": "0.1.0" }
+      ],
+      "namespace": "aka.Sandbox",
+      "customMenu": ":: Uncommonly Used",
+      "feed": "https:\/\/raw.githubusercontent.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts\/master\/DependencyControl.json",
+      "channels": ["master"],
+      "name": "Sandbox",
+      "lastUpdateCheck": 1748564199,
+      "version": 65796
+    },
+    "lyger.GradientByChar": {
+      "lastChannel": "master",
+      "author": "lyger",
+      "configFile": "lyger.GradientByChar.json",
+      "moduleName": false,
+      "requiredModules": [
+        {
+          "moduleName": "lyger.LibLyger",
+          "url": "http:\/\/github.com\/TypesettingTools\/lyger-Aegisub-Scripts",
+          "version": "2.0.0"
+        },
         { "moduleName": "aegisub.util" },
         { "moduleName": "aegisub.re" }
       ],
-      "version": 1028,
+      "namespace": "lyger.GradientByChar",
+      "customMenu": ":: Hotkeys",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/lyger-Aegisub-Scripts\/master\/DependencyControl.json",
+      "channels": ["master"],
+      "name": "Gradient by character",
+      "lastUpdateCheck": 1748566638,
+      "version": 66305
+    },
+    "petzku.NewClipShape": {
+      "author": "petzku",
+      "customMenu": ":: Hotkeys",
+      "name": "New Clip Shape",
+      "configFile": "petzku.NewClipShape.json",
       "feed": "https:\/\/raw.githubusercontent.com\/petzku\/Aegisub-Scripts\/stable\/DependencyControl.json",
-      "lastUpdateCheck": 1748936412,
-      "url": "https:\/\/github.com\/petzku\/Aegisub-Scripts",
-      "namespace": "petzku.util",
-      "name": "petzkuLib"
-    },
-    "aka.StackTracePlus": {
-      "author": "Ignacio Burgueño",
-      "configFile": "aka.StackTracePlus.json",
-      "moduleName": "aka.StackTracePlus",
       "requiredModules": {},
-      "version": 65542,
-      "feed": "https:\/\/raw.githubusercontent.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts\/master\/DependencyControl.json",
-      "lastUpdateCheck": 1748927625,
-      "url": "https:\/\/github.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts",
-      "namespace": "aka.StackTracePlus",
-      "name": "StackTracePlus"
+      "namespace": "petzku.NewClipShape",
+      "version": 770
     },
-    "lyger.LibLyger": {
-      "author": "lyger",
-      "configFile": "lyger.LibLyger.json",
-      "moduleName": "lyger.LibLyger",
+    "arch.Line2Fbf": {
+      "author": "arch1t3cht",
+      "customMenu": ":: Hotkeys",
+      "name": "FBF-ifier",
+      "configFile": "arch.Line2Fbf.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
       "requiredModules": [
-        { "moduleName": "aegisub.util" },
+        {
+          "moduleName": "a-mo.LineCollection",
+          "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+          "version": "1.3.0"
+        },
+        {
+          "moduleName": "l0.ASSFoundation",
+          "url": "https:\/\/github.com\/TypesettingTools\/ASSFoundation",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
+          "version": "0.5.0"
+        },
+        {
+          "moduleName": "arch.Util",
+          "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
+          "version": "0.1.0"
+        }
+      ],
+      "namespace": "arch.Line2Fbf",
+      "version": 256
+    },
+    "phos.AutoGradient": {
+      "author": "PhosCity",
+      "name": "Auto Gradient",
+      "configFile": "phos.AutoGradient.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
+      "requiredModules": [
+        {
+          "moduleName": "a-mo.LineCollection",
+          "url": "https: \/\/github.com\/TypesettingTools\/Aegisub-Motion",
+          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+          "version": "1.3.0"
+        },
+        {
+          "moduleName": "l0.ASSFoundation",
+          "url": "https: \/\/github.com\/TypesettingTools\/ASSFoundation",
+          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
+          "version": "0.5.0"
+        },
+        {
+          "moduleName": "l0.Functional",
+          "url": "https:\/\/github.com\/TypesettingTools\/Functional",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
+          "version": "0.6.0"
+        },
+        {
+          "moduleName": "phos.AssfPlus",
+          "url": "https:\/\/github.com\/PhosCity\/Aegisub-Scripts",
+          "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
+          "version": "1.0.2"
+        }
+      ],
+      "namespace": "phos.AutoGradient",
+      "version": 6
+    },
+    "phos.ASS2SVG": {
+      "author": "PhosCity",
+      "customMenu": ":: Shapes from image",
+      "name": "ASS2SVG",
+      "configFile": "phos.ASS2SVG.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
+      "requiredModules": [
+        {
+          "moduleName": "ILL.ILL",
+          "url": "https:\/\/github.com\/TypesettingTools\/ILL-Aegisub-Scripts\/",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
+          "version": "1.5.1"
+        }
+      ],
+      "namespace": "phos.ASS2SVG",
+      "version": 65536
+    },
+    "phos.TimingAssistant": {
+      "lastChannel": "main",
+      "author": "PhosCity",
+      "configFile": "phos.TimingAssistant.json",
+      "moduleName": false,
+      "requiredModules": [
+        {
+          "moduleName": "phos.AegiGui",
+          "url": "https:\/\/github.com\/PhosCity\/Aegisub-Scripts",
+          "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
+          "version": "1.0.0"
+        }
+      ],
+      "namespace": "phos.TimingAssistant",
+      "customMenu": ":: Hotkeys",
+      "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
+      "channels": ["main"],
+      "name": "Timing Assistant",
+      "lastUpdateCheck": 1748983555,
+      "version": 131072
+    },
+    "ua.FadeWorks": {
+      "lastChannel": "master",
+      "name": "FadeWorkS",
+      "configFile": "ua.FadeWorks.json",
+      "moduleName": false,
+      "requiredModules": {},
+      "namespace": "ua.FadeWorks",
+      "customMenu": ":: Uncommonly Used",
+      "channels": ["master"],
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/unanimated-Aegisub-Scripts\/master\/DependencyControl.json",
+      "version": 327680
+    },
+    "arch.GitSigns": {
+      "author": "arch1t3cht",
+      "customMenu": ":: Uncommonly Used",
+      "name": "Git Signs",
+      "configFile": "arch.GitSigns.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
+      "requiredModules": [
+        {
+          "moduleName": "l0.Functional",
+          "url": "https:\/\/github.com\/TypesettingTools\/Functional",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
+          "version": "0.6.0"
+        }
+      ],
+      "namespace": "arch.GitSigns",
+      "version": 516
+    },
+    "l0.CombineDrawings": {
+      "author": "PhosCity",
+      "configFile": "l0.CombineDrawings.json",
+      "feed": "",
+      "requiredModules": [
+        {
+          "moduleName": "a-mo.LineCollection",
+          "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+          "version": "1.3.0"
+        },
+        {
+          "moduleName": "l0.ASSFoundation",
+          "url": "https:\/\/github.com\/TypesettingTools\/ASSFoundation",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
+          "version": "0.4.0"
+        },
+        {
+          "moduleName": "l0.Functional",
+          "url": "https:\/\/github.com\/TypesettingTools\/Functional",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
+          "version": "0.3.0"
+        }
+      ],
+      "namespace": "l0.CombineDrawings",
+      "customMenu": ":: Uncommonly Used",
+      "name": "Combine Drawings",
+      "lastUpdateCheck": 1749007690,
+      "version": 257
+    },
+    "ua.Fadeworks": {
+      "author": "unanimated",
+      "configFile": "ua.Fadeworks.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/unanimated\/luaegisub\/master\/DependencyControl.json",
+      "requiredModules": {},
+      "namespace": "ua.Fadeworks",
+      "customMenu": ":: Uncommonly Used",
+      "name": "FadeWorkS",
+      "lastUpdateCheck": 1749150720,
+      "version": 327680
+    },
+    "ua.Recalculator": {
+      "lastChannel": "master",
+      "author": "unanimated",
+      "configFile": "ua.Recalculator.json",
+      "moduleName": false,
+      "requiredModules": {},
+      "namespace": "ua.Recalculator",
+      "customMenu": ":: Hotkeys",
+      "feed": "https:\/\/raw.githubusercontent.com\/unanimated\/luaegisub\/master\/DependencyControl.json",
+      "channels": ["master"],
+      "name": "Recalculator",
+      "lastUpdateCheck": 1749399822,
+      "version": 262144
+    },
+    "petzku.EncodeClip": {
+      "name": "Encode Clip",
+      "namespace": "petzku.EncodeClip",
+      "author": "petzku",
+      "configFile": "petzku.EncodeClip.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/petzku\/Aegisub-Scripts\/stable\/DependencyControl.json",
+      "requiredModules": [
+        {
+          "moduleName": "petzku.util",
+          "url": "https:\/\/github.com\/petzku\/Aegisub-Scripts",
+          "feed": "https:\/\/raw.githubusercontent.com\/petzku\/Aegisub-Scripts\/stable\/DependencyControl.json",
+          "version": "0.4.1"
+        },
+        {
+          "moduleName": "a-mo.ConfigHandler",
+          "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+          "version": "1.1.4"
+        }
+      ],
+      "lastUpdateCheck": 1748927848,
+      "version": 65794
+    },
+    "phos.FitTextInClip": {
+      "author": "PhosCity",
+      "customMenu": ":: Uncommonly Used",
+      "name": "Fit Text in Clip",
+      "configFile": "phos.FitTextInClip.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
+      "requiredModules": [
+        {
+          "moduleName": "a-mo.LineCollection",
+          "url": "https: \/\/github.com\/TypesettingTools\/Aegisub-Motion",
+          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+          "version": "1.3.0"
+        },
+        {
+          "moduleName": "l0.ASSFoundation",
+          "url": "https: \/\/github.com\/TypesettingTools\/ASSFoundation",
+          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
+          "version": "0.5.0"
+        },
+        {
+          "moduleName": "l0.Functional",
+          "url": "https:\/\/github.com\/TypesettingTools\/Functional",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
+          "version": "0.6.0"
+        }
+      ],
+      "namespace": "phos.FitTextInClip",
+      "version": 4
+    },
+    "ILL.MakeImage": {
+      "author": "ILLTeam",
+      "configFile": "ILL.MakeImage.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
+      "requiredModules": [
+        {
+          "moduleName": "ILL.IMG",
+          "url": "https:\/\/github.com\/TypesettingTools\/ILL-Aegisub-Scripts",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
+          "version": "1.0.1"
+        },
+        {
+          "moduleName": "ILL.ILL",
+          "url": "https:\/\/github.com\/TypesettingTools\/ILL-Aegisub-Scripts",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
+          "version": "1.4.4"
+        }
+      ],
+      "namespace": "ILL.MakeImage",
+      "customMenu": ":: Shapes from image",
+      "name": "Make Image",
+      "lastUpdateCheck": 1749003934,
+      "version": 131329
+    },
+    "phos.AutoFade": {
+      "lastChannel": "main",
+      "name": "Auto Fade",
+      "configFile": "phos.AutoFade.json",
+      "moduleName": false,
+      "requiredModules": [
+        {
+          "moduleName": "a-mo.LineCollection",
+          "url": "https: \/\/github.com\/TypesettingTools\/Aegisub-Motion",
+          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+          "version": "1.3.0"
+        },
+        {
+          "moduleName": "a-mo.DataWrapper",
+          "url": "https: \/\/github.com\/TypesettingTools\/Aegisub-Motion",
+          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+          "version": "1.0.2"
+        },
+        {
+          "moduleName": "l0.ASSFoundation",
+          "url": "https: \/\/github.com\/TypesettingTools\/ASSFoundation",
+          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
+          "version": "0.5.0"
+        },
+        { "moduleName": "aegisub.clipboard" }
+      ],
+      "namespace": "phos.AutoFade",
+      "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
+      "channels": ["main"],
+      "author": "PhosCity",
+      "lastUpdateCheck": 1748995763,
+      "version": 65794
+    },
+    "lightarrowsexe.tagstripper": {
+      "author": "lightarrowsexe",
+      "configFile": "lightarrowsexe.tagstripper.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/LightArrowsEXE\/Aegisub-Scripts\/main\/DependencyControl.json",
+      "requiredModules": {},
+      "namespace": "lightarrowsexe.tagstripper",
+      "customMenu": ":: Hotkeys",
+      "name": "TagStripper",
+      "lastUpdateCheck": 1748935005,
+      "version": 65536
+    },
+    "arch.AegisubChain": {
+      "lastChannel": "release",
+      "author": "arch1t3cht",
+      "configFile": "arch.AegisubChain.json",
+      "moduleName": false,
+      "requiredModules": [
+        {
+          "moduleName": "l0.Functional",
+          "url": "https:\/\/github.com\/TypesettingTools\/Functional",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
+          "version": "0.6.0"
+        },
+        { "moduleName": "lfs" },
+        { "moduleName": "json" },
+        { "moduleName": "moonscript.base" }
+      ],
+      "namespace": "arch.AegisubChain",
+      "customMenu": ":: Hotkeys",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
+      "channels": ["release"],
+      "name": "AegisubChain",
+      "lastUpdateCheck": 1749400065,
+      "version": 1025
+    },
+    "phos.img2ass": {
+      "author": "PhosCity",
+      "configFile": "phos.img2ass.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
+      "requiredModules": [
+        {
+          "url": "https:\/\/github.com\/TypesettingTools\/zeref-Aegisub-Scripts",
+          "moduleName": "ZF.main",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/zeref-Aegisub-Scripts\/main\/DependencyControl.json"
+        },
+        {
+          "moduleName": "l0.Functional",
+          "url": "https:\/\/github.com\/TypesettingTools\/Functional",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
+          "version": "0.6.0"
+        }
+      ],
+      "namespace": "phos.img2ass",
+      "customMenu": ":: Shapes from image",
+      "name": "Phos-img2ass",
+      "lastUpdateCheck": 1749004707,
+      "version": 262
+    },
+    "phos.wave": {
+      "author": "PhosCity",
+      "customMenu": ":: Uncommonly Used",
+      "name": "Wave",
+      "configFile": "phos.wave.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
+      "requiredModules": [{ "moduleName": "karaskel" }],
+      "namespace": "phos.wave",
+      "version": 65539
+    },
+    "arch.DerivePerspTrack": {
+      "name": "Derive Perspective Track",
+      "namespace": "arch.DerivePerspTrack",
+      "author": "arch1t3cht",
+      "configFile": "arch.DerivePerspTrack.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
+      "requiredModules": [
+        {
+          "moduleName": "l0.Functional",
+          "url": "https:\/\/github.com\/TypesettingTools\/Functional",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
+          "version": "0.6.0"
+        },
+        {
+          "moduleName": "a-mo.LineCollection",
+          "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+          "version": "1.3.0"
+        },
+        {
+          "moduleName": "l0.ASSFoundation",
+          "url": "https:\/\/github.com\/TypesettingTools\/ASSFoundation",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
+          "version": "0.5.0"
+        },
+        {
+          "moduleName": "arch.Math",
+          "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
+          "version": "0.1.10"
+        },
+        {
+          "moduleName": "arch.Perspective",
+          "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
+          "version": "0.2.3"
+        },
         { "moduleName": "karaskel" }
       ],
-      "version": 131075,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/lyger-Aegisub-Scripts\/master\/DependencyControl.json",
-      "lastUpdateCheck": 1748927623,
-      "url": "http:\/\/github.com\/TypesettingTools\/lyger-Aegisub-Scripts",
-      "namespace": "lyger.LibLyger",
-      "name": "LibLyger"
+      "lastUpdateCheck": 1749406553,
+      "version": 65794
     },
-    "a-mo.ShakeShapeHandler": {
-      "author": "torque",
-      "configFile": "a-mo.ShakeShapeHandler.json",
-      "moduleName": "a-mo.ShakeShapeHandler",
-      "requiredModules": [{ "version": "1.0.0", "moduleName": "a-mo.Log" }],
-      "version": 65538,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-      "lastUpdateCheck": 1748936412,
-      "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
-      "namespace": "a-mo.ShakeShapeHandler",
-      "name": "ShakeShapeHandler"
-    },
-    "a-mo.Math": {
-      "configFile": "a-mo.Math.json",
-      "moduleName": "a-mo.Math",
-      "requiredModules": {},
-      "version": 65536,
-      "name": "a-mo.Math",
-      "namespace": "a-mo.Math",
-      "unmanaged": true
-    },
-    "aka.unsemantic": {
-      "author": "Akatsumekusa and contributors",
-      "configFile": "aka.unsemantic.json",
-      "moduleName": "aka.unsemantic",
-      "requiredModules": [{ "moduleName": "lpeg" }],
-      "version": 65794,
-      "feed": "https:\/\/raw.githubusercontent.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts\/master\/DependencyControl.json",
-      "lastUpdateCheck": 1748936417,
-      "url": "https:\/\/github.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts",
-      "namespace": "aka.unsemantic",
-      "name": "aka.unsemantic"
-    },
-    "aka.unicode": {
-      "author": "Akatsumekusa and contributors",
-      "configFile": "aka.unicode.json",
-      "moduleName": "aka.unicode",
-      "requiredModules": [
-        { "moduleName": "aegisub.unicode" },
-        { "moduleName": "bit" }
-      ],
-      "version": 65546,
-      "feed": "https:\/\/raw.githubusercontent.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts\/master\/DependencyControl.json",
-      "lastUpdateCheck": 1748936415,
-      "url": "https:\/\/github.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts",
-      "namespace": "aka.unicode",
-      "name": "aka.unicode"
-    },
-    "aka.uikit": {
-      "author": "Akatsumekusa and contributors",
-      "configFile": "aka.uikit.json",
-      "moduleName": "aka.uikit",
-      "requiredModules": [
-        { "version": "1.0.0", "moduleName": "aka.outcome" },
-        { "moduleName": "aegisub.re" },
-        { "version": "1.0.0", "moduleName": "ILL.ILL" },
-        { "version": "1.0.0", "moduleName": "aka.config2" }
-      ],
-      "version": 65550,
-      "feed": "https:\/\/raw.githubusercontent.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts\/master\/DependencyControl.json",
-      "lastUpdateCheck": 1748936413,
-      "url": "https:\/\/github.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts",
-      "namespace": "aka.uikit",
-      "name": "aka.uikit"
-    },
-    "a-mo.MotionHandler": {
-      "author": "torque",
-      "configFile": "a-mo.MotionHandler.json",
-      "moduleName": "a-mo.MotionHandler",
-      "requiredModules": [
-        { "version": "1.0.0", "moduleName": "a-mo.Log" },
-        { "version": "1.5.3", "moduleName": "a-mo.Line" },
-        { "version": "1.3.0", "moduleName": "a-mo.LineCollection" },
-        { "version": "1.0.0", "moduleName": "a-mo.Math" },
-        { "version": "1.3.4", "moduleName": "a-mo.Tags" },
-        { "version": "1.2.4", "moduleName": "a-mo.Transform" }
-      ],
-      "version": 65800,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-      "lastUpdateCheck": 1748936414,
-      "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
-      "namespace": "a-mo.MotionHandler",
-      "name": "MotionHandler"
-    },
-    "ILL.ILL": {
+    "ILL.ChangeAlign": {
+      "name": "Change Alignment",
+      "namespace": "ILL.ChangeAlign",
       "author": "ILLTeam",
-      "configFile": "ILL.ILL.json",
-      "moduleName": "ILL.ILL",
-      "requiredModules": {},
-      "version": 67077,
+      "configFile": "ILL.ChangeAlign.json",
       "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
-      "url": "https:\/\/github.com\/TypesettingTools\/ILL-Aegisub-Scripts\/",
-      "namespace": "ILL.ILL",
+      "requiredModules": [
+        {
+          "moduleName": "ILL.ILL",
+          "url": "https:\/\/github.com\/TypesettingTools\/ILL-Aegisub-Scripts\/",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
+          "version": "1.4.4"
+        }
+      ],
+      "lastUpdateCheck": 1749406545,
+      "version": 65793
+    },
+    "phos.wobble": {
+      "author": "PhosCity",
+      "customMenu": ":: Uncommonly Used",
+      "name": "Wobble",
+      "configFile": "phos.wobble.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
+      "requiredModules": [
+        {
+          "moduleName": "a-mo.LineCollection",
+          "url": "https: \/\/github.com\/TypesettingTools\/Aegisub-Motion",
+          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+          "version": "1.3.0"
+        },
+        {
+          "moduleName": "l0.ASSFoundation",
+          "url": "https: \/\/github.com\/TypesettingTools\/ASSFoundation",
+          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
+          "version": "0.5.0"
+        },
+        { "moduleName": "Yutils" }
+      ],
+      "namespace": "phos.wobble",
+      "version": 131078
+    },
+    "l0.SimpleNudge": {
+      "author": "lightarrowsexe",
+      "customMenu": ":: Hotkeys",
+      "name": "Simple Nudge",
+      "configFile": "l0.SimpleNudge.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/line0-Aegisub-Scripts\/master\/DependencyControl.json",
+      "requiredModules": [
+        { "moduleName": "l0.ASSFoundation", "version": "0.4.0" },
+        { "moduleName": "l0.Functional", "version": "0.5.0" }
+      ],
+      "namespace": "l0.SimpleNudge",
+      "version": 65536
+    },
+    "lightarrowsexe.weebswap": {
+      "author": "lightarrowsexe",
+      "configFile": "lightarrowsexe.weebswap.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/LightArrowsEXE\/Aegisub-Scripts\/main\/DependencyControl.json",
+      "requiredModules": {},
+      "namespace": "lightarrowsexe.weebswap",
+      "customMenu": ":: Hotkeys",
+      "name": "WeebSwap",
+      "lastUpdateCheck": 1748628958,
+      "version": 65536
+    },
+    "ILL.SplitText": {
+      "author": "ILLTeam",
+      "customMenu": ":: Uncommonly Used",
+      "name": "ILL - Split Text",
+      "configFile": "ILL.SplitText.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
+      "requiredModules": [
+        {
+          "moduleName": "ILL.ILL",
+          "url": "https:\/\/github.com\/TypesettingTools\/ILL-Aegisub-Scripts\/",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
+          "version": "1.6.4"
+        }
+      ],
+      "namespace": "ILL.SplitText",
+      "version": 131330
+    },
+    "petzku.Autowrapper": {
+      "author": "petzku",
+      "configFile": "petzku.Autowrapper.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/petzku\/Aegisub-Scripts\/stable\/DependencyControl.json",
+      "requiredModules": [{ "moduleName": "karaskel" }],
+      "namespace": "petzku.Autowrapper",
+      "customMenu": ":: Post-Validation",
+      "name": "Autowrapper",
+      "lastUpdateCheck": 1748628908,
+      "version": 1281
+    },
+    "a-mo.Aegisub-Motion": {
+      "lastChannel": "DepCtrl",
+      "name": "Aegisub-Motion",
+      "configFile": "a-mo.Aegisub-Motion.json",
+      "moduleName": false,
+      "requiredModules": [
+        { "moduleName": "aegisub.clipboard" },
+        { "moduleName": "json" },
+        { "moduleName": "a-mo.ConfigHandler", "version": "1.1.4" },
+        { "moduleName": "a-mo.DataWrapper", "version": "1.0.2" },
+        { "moduleName": "a-mo.LineCollection", "version": "1.3.0" },
+        { "moduleName": "a-mo.Log", "version": "1.0.0" },
+        { "moduleName": "a-mo.Math", "version": "1.0.0" },
+        { "moduleName": "a-mo.MotionHandler", "version": "1.1.8" },
+        { "moduleName": "a-mo.Statistics", "version": "0.1.3" },
+        { "moduleName": "a-mo.TrimHandler", "version": "1.0.5" },
+        { "moduleName": "a-mo.Tags", "version": "1.3.4" }
+      ],
+      "namespace": "a-mo.Aegisub-Motion",
+      "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+      "channels": ["DepCtrl"],
+      "author": "torque",
+      "lastUpdateCheck": 1749402611,
+      "version": 65545
+    },
+    "l0.ASSWipe": {
+      "lastChannel": "master",
+      "author": "line0",
+      "configFile": "l0.ASSWipe.json",
+      "moduleName": false,
+      "requiredModules": [
+        {
+          "moduleName": "a-mo.LineCollection",
+          "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+          "version": "1.3.0"
+        },
+        {
+          "moduleName": "a-mo.ConfigHandler",
+          "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+          "version": "1.1.4"
+        },
+        {
+          "moduleName": "l0.ASSFoundation",
+          "url": "https:\/\/github.com\/TypesettingTools\/ASSFoundation",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
+          "version": "0.5.0"
+        },
+        {
+          "moduleName": "l0.Functional",
+          "url": "https:\/\/github.com\/TypesettingTools\/Functional",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
+          "version": "0.5.0"
+        },
+        {
+          "moduleName": "SubInspector.Inspector",
+          "url": "https:\/\/github.com\/TypesettingTools\/SubInspector",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/SubInspector\/master\/DependencyControl.json",
+          "version": "0.7.2"
+        },
+        { "moduleName": "json" }
+      ],
+      "namespace": "l0.ASSWipe",
+      "customMenu": ":: Post-Validation",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/line0-Aegisub-Scripts\/master\/DependencyControl.json",
+      "channels": ["master", "release"],
+      "name": "ASSWipe",
+      "lastUpdateCheck": 1749399816,
+      "version": 1280
+    },
+    "lyger.LuaInterpret": {
+      "lastChannel": "master",
+      "author": "lyger",
+      "configFile": "lyger.LuaInterpret.json",
+      "moduleName": false,
+      "requiredModules": [
+        {
+          "moduleName": "lyger.LibLyger",
+          "url": "http:\/\/github.com\/TypesettingTools\/lyger-Aegisub-Scripts",
+          "version": "2.0.0"
+        },
+        { "moduleName": "aegisub.util" }
+      ],
+      "namespace": "lyger.LuaInterpret",
+      "customMenu": ":: Hotkeys",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/lyger-Aegisub-Scripts\/master\/DependencyControl.json",
+      "channels": ["master"],
+      "name": "Lua Interpreter",
+      "lastUpdateCheck": 1749400066,
+      "version": 66305
+    },
+    "arch.PerspectiveMotion": {
+      "lastChannel": "release",
+      "name": "Aegisub Perspective-Motion",
+      "configFile": "arch.PerspectiveMotion.json",
+      "moduleName": false,
+      "requiredModules": [
+        {
+          "moduleName": "a-mo.LineCollection",
+          "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+          "version": "1.3.0"
+        },
+        {
+          "moduleName": "l0.ASSFoundation",
+          "url": "https:\/\/github.com\/TypesettingTools\/ASSFoundation",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
+          "version": "0.5.0"
+        },
+        {
+          "moduleName": "arch.Math",
+          "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
+          "version": "0.1.10"
+        },
+        {
+          "moduleName": "arch.Perspective",
+          "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
+          "version": "1.2.0"
+        },
+        {
+          "moduleName": "arch.Util",
+          "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
+          "version": "0.1.0"
+        },
+        { "moduleName": "aegisub.clipboard" }
+      ],
+      "namespace": "arch.PerspectiveMotion",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
+      "channels": ["release"],
+      "author": "arch1t3cht",
+      "lastUpdateCheck": 1749000039,
+      "version": 768
+    },
+    "lightarrowsexe.nudger": {
+      "author": "lightarrowsexe",
+      "configFile": "lightarrowsexe.nudger.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/line0-Aegisub-Scripts\/master\/DependencyControl.json",
+      "requiredModules": [
+        { "moduleName": "l0.ASSFoundation", "version": "0.5.0" },
+        { "moduleName": "l0.Functional", "version": "0.5.0" },
+        { "moduleName": "a-mo.Line", "version": "1.5.3" }
+      ],
+      "namespace": "lightarrowsexe.nudger",
+      "customMenu": ":: Hotkeys",
+      "name": "Nudger",
+      "lastUpdateCheck": 1748281656,
+      "version": 65536
+    },
+    "phos.VectorGradient": {
+      "author": "PhosCity",
+      "name": "Vector Gradient",
+      "configFile": "phos.VectorGradient.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
+      "requiredModules": [
+        {
+          "moduleName": "a-mo.LineCollection",
+          "url": "https: \/\/github.com\/TypesettingTools\/Aegisub-Motion",
+          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+          "version": "1.3.0"
+        },
+        {
+          "moduleName": "l0.ASSFoundation",
+          "url": "https: \/\/github.com\/TypesettingTools\/ASSFoundation",
+          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
+          "version": "0.5.0"
+        },
+        {
+          "moduleName": "l0.Functional",
+          "url": "https:\/\/github.com\/TypesettingTools\/Functional",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
+          "version": "0.6.0"
+        }
+      ],
+      "namespace": "phos.VectorGradient",
+      "version": 1
+    },
+    "phos.svg2ass": {
+      "lastChannel": "main",
+      "name": "svg2ass",
+      "configFile": "phos.svg2ass.json",
+      "moduleName": false,
+      "requiredModules": [
+        {
+          "moduleName": "a-mo.LineCollection",
+          "url": "https: \/\/github.com\/TypesettingTools\/Aegisub-Motion",
+          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+          "version": "1.3.0"
+        },
+        {
+          "moduleName": "l0.ASSFoundation",
+          "url": "https: \/\/github.com\/TypesettingTools\/ASSFoundation",
+          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
+          "version": "0.5.0"
+        },
+        {
+          "moduleName": "l0.Functional",
+          "url": "https:\/\/github.com\/TypesettingTools\/Functional",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
+          "version": "0.6.0"
+        }
+      ],
+      "namespace": "phos.svg2ass",
+      "customMenu": ":: Shapes from image",
+      "channels": ["main"],
+      "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
+      "author": "PhosCity",
+      "version": 66053
+    },
+    "lyger.FbfTransform": {
+      "lastChannel": "master",
+      "name": "Frame-by-frame transform",
+      "configFile": "lyger.FbfTransform.json",
+      "moduleName": false,
+      "requiredModules": [
+        {
+          "moduleName": "lyger.LibLyger",
+          "url": "http:\/\/github.com\/TypesettingTools\/lyger-Aegisub-Scripts",
+          "version": "2.0.0"
+        },
+        {
+          "moduleName": "l0.Functional",
+          "url": "https:\/\/github.com\/TypesettingTools\/ASSFoundation",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
+          "version": "0.3.0"
+        }
+      ],
+      "namespace": "lyger.FbfTransform",
+      "channels": ["master"],
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/lyger-Aegisub-Scripts\/master\/DependencyControl.json",
+      "lastUpdateCheck": 1749001837,
+      "version": 131073
+    },
+    "petzku.ExtrapolateMove": {
+      "author": "petzku",
+      "customMenu": ":: Extrapolate",
+      "name": "Extrapolate Move",
+      "configFile": "petzku.ExtrapolateMove.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/petzku\/Aegisub-Scripts\/stable\/DependencyControl.json",
+      "requiredModules": [{ "moduleName": "karaskel" }],
+      "namespace": "petzku.ExtrapolateMove",
+      "version": 261
+    }
+  },
+  "modules": {
+    "requireffi.requireffi": {
+      "author": "torque",
+      "configFile": "requireffi.requireffi.json",
+      "moduleName": "requireffi.requireffi",
+      "requiredModules": {},
+      "namespace": "requireffi.requireffi",
+      "url": "https:\/\/github.com\/TypesettingTools\/ffi-experiments",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ffi-experiments\/master\/DependencyControl.json",
+      "name": "requireffi",
+      "lastUpdateCheck": 1749398892,
+      "version": 258
+    },
+    "petzku.tags": {
+      "author": "petzku",
+      "configFile": "petzku.tags.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/petzku\/Aegisub-Scripts\/stable\/DependencyControl.json",
+      "requiredModules": {},
+      "namespace": "petzku.tags",
+      "url": "https:\/\/github.com\/petzku\/Aegisub-Scripts",
+      "moduleName": "petzku.tags",
+      "name": "Tags",
+      "version": 768
+    },
+    "a-mo.Log": {
+      "namespace": "a-mo.Log",
+      "name": "a-mo.Log",
+      "configFile": "a-mo.Log.json",
+      "moduleName": "a-mo.Log",
+      "requiredModules": {},
       "unmanaged": true,
-      "name": "ILL.ILL"
+      "version": 65536
     },
     "l0.DependencyControl": {
       "author": "line0",
@@ -266,168 +1346,62 @@
       "moduleName": "l0.DependencyControl",
       "requiredModules": [
         {
-          "version": "0.3.1",
           "moduleName": "DM.DownloadManager",
-          "feed": "https:\/\/raw.githubusercontent.com\/torque\/ffi-experiments\/master\/DependencyControl.json"
+          "feed": "https:\/\/raw.githubusercontent.com\/torque\/ffi-experiments\/master\/DependencyControl.json",
+          "version": "0.3.1"
         },
         {
-          "version": "0.1.3",
           "moduleName": "BM.BadMutex",
-          "feed": "https:\/\/raw.githubusercontent.com\/torque\/ffi-experiments\/master\/DependencyControl.json"
+          "feed": "https:\/\/raw.githubusercontent.com\/torque\/ffi-experiments\/master\/DependencyControl.json",
+          "version": "0.1.3"
         },
         {
-          "version": "0.1.5",
           "moduleName": "PT.PreciseTimer",
-          "feed": "https:\/\/raw.githubusercontent.com\/torque\/ffi-experiments\/master\/DependencyControl.json"
+          "feed": "https:\/\/raw.githubusercontent.com\/torque\/ffi-experiments\/master\/DependencyControl.json",
+          "version": "0.1.5"
         },
         {
-          "version": "0.1.1",
           "moduleName": "requireffi.requireffi",
-          "feed": "https:\/\/raw.githubusercontent.com\/torque\/ffi-experiments\/master\/DependencyControl.json"
+          "feed": "https:\/\/raw.githubusercontent.com\/torque\/ffi-experiments\/master\/DependencyControl.json",
+          "version": "0.1.1"
         }
       ],
-      "version": 1539,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/DependencyControl\/master\/DependencyControl.json",
-      "lastUpdateCheck": 1748927623,
-      "url": "http:\/\/github.com\/TypesettingTools\/DependencyControl",
       "namespace": "l0.DependencyControl",
-      "name": "DependencyControl"
+      "url": "http:\/\/github.com\/TypesettingTools\/DependencyControl",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/DependencyControl\/master\/DependencyControl.json",
+      "name": "DependencyControl",
+      "lastUpdateCheck": 1749313457,
+      "version": 1539
     },
-    "phos.AegiGui": {
-      "author": "PhosCity",
-      "configFile": "phos.AegiGui.json",
-      "moduleName": "phos.AegiGui",
-      "requiredModules": [
-        {
-          "version": "0.6.0",
-          "url": "https:\/\/github.com\/TypesettingTools\/Functional",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
-          "moduleName": "l0.Functional"
-        }
-      ],
-      "version": 65536,
-      "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
-      "lastUpdateCheck": 1748936412,
-      "url": "https:\/\/github.com\/PhosCity\/Aegisub-Scripts",
-      "namespace": "phos.AegiGui",
-      "name": "AegiGui"
+    "arch.Math": {
+      "author": "arch1t3cht",
+      "configFile": "arch.Math.json",
+      "moduleName": "arch.Math",
+      "requiredModules": {},
+      "namespace": "arch.Math",
+      "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
+      "name": "ArchMath",
+      "lastUpdateCheck": 1749313460,
+      "version": 266
     },
-    "a-mo.ConfigHandler": {
+    "a-mo.MotionHandler": {
       "author": "torque",
-      "configFile": "a-mo.ConfigHandler.json",
-      "moduleName": "a-mo.ConfigHandler",
+      "configFile": "a-mo.MotionHandler.json",
+      "moduleName": "a-mo.MotionHandler",
       "requiredModules": [
-        { "moduleName": "json" },
-        { "version": "1.0.0", "moduleName": "a-mo.Log" }
+        { "moduleName": "a-mo.Log", "version": "1.0.0" },
+        { "moduleName": "a-mo.Line", "version": "1.5.3" },
+        { "moduleName": "a-mo.LineCollection", "version": "1.3.0" },
+        { "moduleName": "a-mo.Math", "version": "1.0.0" },
+        { "moduleName": "a-mo.Tags", "version": "1.3.4" },
+        { "moduleName": "a-mo.Transform", "version": "1.2.4" }
       ],
-      "version": 65796,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-      "lastUpdateCheck": 1748927624,
+      "namespace": "a-mo.MotionHandler",
       "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
-      "namespace": "a-mo.ConfigHandler",
-      "name": "ConfigHandler"
-    },
-    "a-mo.LineCollection": {
-      "author": "torque",
-      "configFile": "a-mo.LineCollection.json",
-      "moduleName": "a-mo.LineCollection",
-      "requiredModules": [
-        { "version": "1.0.0", "moduleName": "a-mo.Log" },
-        { "version": "1.5.3", "moduleName": "a-mo.Line" }
-      ],
-      "version": 66304,
       "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-      "lastUpdateCheck": 1748927626,
-      "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
-      "namespace": "a-mo.LineCollection",
-      "name": "LineCollection"
-    },
-    "clipper2.clipper2": {
-      "author": "ILLTeam",
-      "configFile": "clipper2.clipper2.json",
-      "moduleName": "clipper2.clipper2",
-      "requiredModules": {},
-      "version": 66560,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
-      "url": "https:\/\/github.com\/TypesettingTools\/ILL-Aegisub-Scripts",
-      "namespace": "clipper2.clipper2",
-      "unmanaged": true,
-      "name": "clipper2.clipper2"
-    },
-    "BM.BadMutex": {
-      "author": "torque",
-      "configFile": "BM.BadMutex.json",
-      "moduleName": "BM.BadMutex",
-      "requiredModules": {},
-      "version": 259,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ffi-experiments\/master\/DependencyControl.json",
-      "lastUpdateCheck": 1748927623,
-      "url": "https:\/\/github.com\/TypesettingTools\/ffi-experiments",
-      "namespace": "BM.BadMutex",
-      "name": "BadMutex"
-    },
-    "aka.outcome": {
-      "author": "Michael Dowling, modified by Akatsumekusa",
-      "configFile": "aka.outcome.json",
-      "moduleName": "aka.outcome",
-      "requiredModules": {},
-      "version": 65547,
-      "feed": "https:\/\/raw.githubusercontent.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts\/master\/DependencyControl.json",
-      "lastUpdateCheck": 1748936411,
-      "url": "https:\/\/github.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts",
-      "namespace": "aka.outcome",
-      "name": "aka.outcome"
-    },
-    "ILL.IMG": {
-      "author": "Zeref",
-      "configFile": "ILL.IMG.json",
-      "moduleName": "ILL.IMG",
-      "requiredModules": {},
-      "version": 65538,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
-      "url": "https:\/\/github.com\/TypesettingTools\/ILL-Aegisub-Scripts",
-      "namespace": "ILL.IMG",
-      "unmanaged": true,
-      "name": "ILL.IMG"
-    },
-    "petzku.tags": {
-      "author": "petzku",
-      "configFile": "petzku.tags.json",
-      "moduleName": "petzku.tags",
-      "requiredModules": {},
-      "version": 768,
-      "feed": "https:\/\/raw.githubusercontent.com\/petzku\/Aegisub-Scripts\/stable\/DependencyControl.json",
-      "url": "https:\/\/github.com\/petzku\/Aegisub-Scripts",
-      "namespace": "petzku.tags",
-      "name": "Tags"
-    },
-    "a-mo.DataWrapper": {
-      "author": "torque",
-      "configFile": "a-mo.DataWrapper.json",
-      "moduleName": "a-mo.DataWrapper",
-      "requiredModules": [
-        { "version": "1.0.0", "moduleName": "a-mo.Log" },
-        { "version": "1.0.5", "moduleName": "a-mo.DataHandler" },
-        { "version": "1.0.2", "moduleName": "a-mo.ShakeShapeHandler" }
-      ],
-      "version": 65538,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-      "lastUpdateCheck": 1748936412,
-      "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
-      "namespace": "a-mo.DataWrapper",
-      "name": "DataWrapper"
-    },
-    "requireffi.requireffi": {
-      "author": "torque",
-      "configFile": "requireffi.requireffi.json",
-      "moduleName": "requireffi.requireffi",
-      "requiredModules": {},
-      "version": 258,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ffi-experiments\/master\/DependencyControl.json",
-      "lastUpdateCheck": 1748927623,
-      "url": "https:\/\/github.com\/TypesettingTools\/ffi-experiments",
-      "namespace": "requireffi.requireffi",
-      "name": "requireffi"
+      "name": "MotionHandler",
+      "lastUpdateCheck": 1749313463,
+      "version": 65800
     },
     "l0.Functional": {
       "author": "line0",
@@ -438,169 +1412,108 @@
         { "moduleName": "aegisub.unicode" },
         { "moduleName": "aegisub.re" }
       ],
-      "version": 1536,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
-      "lastUpdateCheck": 1748927624,
-      "url": "https:\/\/github.com\/TypesettingTools\/Functional",
       "namespace": "l0.Functional",
-      "name": "(Almost) Functional Suite"
+      "url": "https:\/\/github.com\/TypesettingTools\/Functional",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
+      "name": "(Almost) Functional Suite",
+      "lastUpdateCheck": 1749313458,
+      "version": 1536
     },
-    "a-mo.DataHandler": {
+    "a-mo.Statistics": {
       "author": "torque",
-      "configFile": "a-mo.DataHandler.json",
-      "moduleName": "a-mo.DataHandler",
-      "requiredModules": [{ "version": "1.0.0", "moduleName": "a-mo.Log" }],
-      "version": 65541,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-      "lastUpdateCheck": 1748936412,
+      "configFile": "a-mo.Statistics.json",
+      "moduleName": "a-mo.Statistics",
+      "requiredModules": [
+        { "moduleName": "json" },
+        { "moduleName": "a-mo.Log", "version": "1.0.0" }
+      ],
+      "namespace": "a-mo.Statistics",
       "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
-      "namespace": "a-mo.DataHandler",
-      "name": "DataHandler"
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+      "name": "Statistics",
+      "lastUpdateCheck": 1749313465,
+      "version": 259
     },
-    "phos.AssfPlus": {
-      "author": "PhosCity",
-      "configFile": "phos.AssfPlus.json",
-      "moduleName": "phos.AssfPlus",
-      "requiredModules": [
-        {
-          "version": "0.5.0",
-          "url": "https: \/\/github.com\/TypesettingTools\/ASSFoundation",
-          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
-          "moduleName": "l0.ASSFoundation"
-        },
-        {
-          "version": "0.6.0",
-          "url": "https:\/\/github.com\/TypesettingTools\/Functional",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
-          "moduleName": "l0.Functional"
-        },
-        {
-          "version": "1.0.0",
-          "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
-          "moduleName": "arch.Perspective"
-        },
-        { "moduleName": "Yutils" },
-        { "moduleName": "json" }
-      ],
-      "version": 65541,
-      "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
-      "lastUpdateCheck": 1748936415,
-      "url": "https:\/\/github.com\/PhosCity\/Aegisub-Scripts",
-      "namespace": "phos.AssfPlus",
-      "name": "AssfPlus"
+    "a-mo.TrimHandler": {
+      "author": "torque",
+      "configFile": "a-mo.TrimHandler.json",
+      "moduleName": "a-mo.TrimHandler",
+      "requiredModules": [{ "moduleName": "a-mo.Log", "version": "1.0.0" }],
+      "namespace": "a-mo.TrimHandler",
+      "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+      "name": "TrimHandler",
+      "lastUpdateCheck": 1749313465,
+      "version": 65541
     },
-    "arch.Perspective": {
-      "author": "arch1t3cht",
-      "configFile": "arch.Perspective.json",
-      "moduleName": "arch.Perspective",
+    "a-mo.Tags": {
+      "author": "torque",
+      "configFile": "a-mo.Tags.json",
+      "moduleName": "a-mo.Tags",
       "requiredModules": [
-        {
-          "version": "0.1.8",
-          "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
-          "moduleName": "arch.Math"
-        }
+        { "moduleName": "a-mo.Log", "version": "1.0.0" },
+        { "moduleName": "a-mo.Transform", "version": "1.2.3" }
       ],
-      "version": 66048,
-      "lastUpdateCheck": 1748936414,
-      "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
-      "namespace": "arch.Perspective",
-      "name": "Perspective"
+      "namespace": "a-mo.Tags",
+      "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+      "name": "Tags",
+      "lastUpdateCheck": 1749313457,
+      "version": 66308
     },
-    "aka.config": {
-      "author": "Akatsumekusa and contributors",
-      "configFile": "aka.config.json",
-      "moduleName": "aka.config",
-      "requiredModules": [
-        { "version": "1.0.0", "moduleName": "aka.config2" },
-        { "version": "1.0.0", "moduleName": "aka.outcome" },
-        { "version": "1.0.0", "moduleName": "aka.unicode" },
-        { "moduleName": "aegisub.re" }
-      ],
-      "version": 65550,
-      "feed": "https:\/\/raw.githubusercontent.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts\/master\/DependencyControl.json",
-      "lastUpdateCheck": 1748936416,
-      "url": "https:\/\/github.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts",
-      "namespace": "aka.config",
-      "name": "aka.config"
-    },
-    "arch.Util": {
-      "author": "arch1t3cht",
-      "configFile": "arch.Util.json",
-      "moduleName": "arch.Util",
-      "requiredModules": [
-        {
-          "version": "1.5.3",
-          "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-          "moduleName": "a-mo.Line"
-        },
-        {
-          "version": "0.5.0",
-          "url": "https:\/\/github.com\/TypesettingTools\/ASSFoundation",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
-          "moduleName": "l0.ASSFoundation"
-        }
-      ],
-      "version": 256,
-      "lastUpdateCheck": 1748936417,
-      "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
-      "namespace": "arch.Util",
-      "name": "Util"
-    },
-    "myaa.ASSParser": {
-      "author": "Myaamori",
-      "configFile": "myaa.ASSParser.json",
-      "moduleName": "myaa.ASSParser",
-      "requiredModules": [
-        { "moduleName": "aegisub.re" },
-        { "moduleName": "aegisub.util" },
-        {
-          "version": "0.6.0",
-          "url": "https:\/\/github.com\/TypesettingTools\/Functional",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
-          "moduleName": "l0.Functional"
-        }
-      ],
-      "version": 4,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Myaamori-Aegisub-Scripts\/master\/DependencyControl.json",
-      "url": "http:\/\/github.com\/TypesettingTools\/Myaamori-Aegisub-Scripts",
-      "namespace": "myaa.ASSParser",
-      "name": "ASSParser"
+    "clipper2.clipper2": {
+      "author": "ILLTeam",
+      "configFile": "clipper2.clipper2.json",
+      "moduleName": "clipper2.clipper2",
+      "requiredModules": {},
+      "namespace": "clipper2.clipper2",
+      "url": "https:\/\/github.com\/TypesettingTools\/ILL-Aegisub-Scripts",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
+      "name": "clipper2.clipper2",
+      "unmanaged": true,
+      "version": 66560
     },
     "aka.command": {
       "author": "Akatsumekusa and contributors",
       "configFile": "aka.command.json",
       "moduleName": "aka.command",
       "requiredModules": [
-        { "version": "0.1.0", "moduleName": "petzku.util" },
+        { "moduleName": "petzku.util", "version": "0.1.0" },
         { "moduleName": "aegisub.re" }
       ],
-      "version": 65538,
-      "feed": "https:\/\/raw.githubusercontent.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts\/master\/DependencyControl.json",
-      "lastUpdateCheck": 1748936416,
-      "url": "https:\/\/github.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts",
       "namespace": "aka.command",
-      "name": "aka.command"
+      "url": "https:\/\/github.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts",
+      "feed": "https:\/\/raw.githubusercontent.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts\/master\/DependencyControl.json",
+      "name": "aka.command",
+      "lastUpdateCheck": 1749313466,
+      "version": 65538
     },
-    "a-mo.Line": {
-      "author": "torque",
-      "configFile": "a-mo.Line.json",
-      "moduleName": "a-mo.Line",
+    "aka.unsemantic": {
+      "author": "Akatsumekusa and contributors",
+      "configFile": "aka.unsemantic.json",
+      "moduleName": "aka.unsemantic",
+      "requiredModules": [{ "moduleName": "lpeg" }],
+      "namespace": "aka.unsemantic",
+      "url": "https:\/\/github.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts",
+      "feed": "https:\/\/raw.githubusercontent.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts\/master\/DependencyControl.json",
+      "name": "aka.unsemantic",
+      "lastUpdateCheck": 1749313466,
+      "version": 65794
+    },
+    "lyger.LibLyger": {
+      "author": "lyger",
+      "configFile": "lyger.LibLyger.json",
+      "moduleName": "lyger.LibLyger",
       "requiredModules": [
         { "moduleName": "aegisub.util" },
-        { "moduleName": "json" },
-        { "version": "1.0.0", "moduleName": "a-mo.Log" },
-        { "version": "1.3.4", "moduleName": "a-mo.Tags" },
-        { "version": "1.2.4", "moduleName": "a-mo.Transform" }
+        { "moduleName": "karaskel" }
       ],
-      "version": 66819,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-      "lastUpdateCheck": 1748927626,
-      "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
-      "namespace": "a-mo.Line",
-      "name": "Line"
+      "namespace": "lyger.LibLyger",
+      "url": "http:\/\/github.com\/TypesettingTools\/lyger-Aegisub-Scripts",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/lyger-Aegisub-Scripts\/master\/DependencyControl.json",
+      "name": "LibLyger",
+      "lastUpdateCheck": 1749313456,
+      "version": 131075
     },
     "l0.ASSFoundation": {
       "author": "line0",
@@ -609,1073 +1522,490 @@
       "requiredModules": [
         { "moduleName": "l0.ASSFoundation.ClassFactory" },
         {
-          "version": "1.3.0",
+          "moduleName": "a-mo.LineCollection",
           "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
           "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-          "moduleName": "a-mo.LineCollection"
+          "version": "1.3.0"
         },
         {
-          "version": "1.5.3",
+          "moduleName": "a-mo.Line",
           "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
           "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-          "moduleName": "a-mo.Line"
+          "version": "1.5.3"
         },
         {
-          "version": "0.7.2",
+          "moduleName": "SubInspector.Inspector",
           "url": "https:\/\/github.com\/TypesettingTools\/SubInspector",
           "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/SubInspector\/master\/DependencyControl.json",
-          "moduleName": "SubInspector.Inspector"
+          "version": "0.7.2"
         },
         {
-          "version": "0.5.0",
+          "moduleName": "l0.Functional",
           "url": "https:\/\/github.com\/TypesettingTools\/Functional",
           "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
-          "moduleName": "l0.Functional"
+          "version": "0.5.0"
         },
         { "moduleName": "Yutils", "optional": true }
       ],
-      "version": 1280,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
-      "lastUpdateCheck": 1748927626,
-      "url": "http:\/\/github.com\/TypesettingTools\/ASSFoundation",
       "namespace": "l0.ASSFoundation",
-      "name": "ASSFoundation"
+      "url": "http:\/\/github.com\/TypesettingTools\/ASSFoundation",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
+      "name": "ASSFoundation",
+      "lastUpdateCheck": 1749313458,
+      "version": 1280
     },
-    "a-mo.TrimHandler": {
+    "arch.Perspective": {
+      "author": "arch1t3cht",
+      "configFile": "arch.Perspective.json",
+      "moduleName": "arch.Perspective",
+      "requiredModules": [
+        {
+          "moduleName": "arch.Math",
+          "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
+          "version": "0.1.8"
+        }
+      ],
+      "namespace": "arch.Perspective",
+      "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
+      "name": "Perspective",
+      "lastUpdateCheck": 1749313460,
+      "version": 66048
+    },
+    "phos.AegiGui": {
+      "author": "PhosCity",
+      "configFile": "phos.AegiGui.json",
+      "moduleName": "phos.AegiGui",
+      "requiredModules": [
+        {
+          "moduleName": "l0.Functional",
+          "url": "https:\/\/github.com\/TypesettingTools\/Functional",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
+          "version": "0.6.0"
+        }
+      ],
+      "namespace": "phos.AegiGui",
+      "url": "https:\/\/github.com\/PhosCity\/Aegisub-Scripts",
+      "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
+      "name": "AegiGui",
+      "lastUpdateCheck": 1749313458,
+      "version": 65536
+    },
+    "a-mo.Transform": {
       "author": "torque",
-      "configFile": "a-mo.TrimHandler.json",
-      "moduleName": "a-mo.TrimHandler",
-      "requiredModules": [{ "version": "1.0.0", "moduleName": "a-mo.Log" }],
-      "version": 65541,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-      "lastUpdateCheck": 1748936415,
+      "configFile": "a-mo.Transform.json",
+      "moduleName": "a-mo.Transform",
+      "requiredModules": [
+        { "moduleName": "a-mo.Log", "version": "1.0.0" },
+        { "moduleName": "a-mo.Math", "version": "1.0.0" },
+        { "moduleName": "a-mo.Tags", "version": "1.3.4" }
+      ],
+      "namespace": "a-mo.Transform",
       "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
-      "namespace": "a-mo.TrimHandler",
-      "name": "TrimHandler"
-    }
-  },
-  "config": { "updaterRunning": false },
-  "macros": {
-    "ua.Selectrix": {
-      "author": "unanimated",
-      "configFile": "ua.Selectrix.json",
-      "moduleName": false,
-      "requiredModules": {},
-      "version": 197632,
-      "feed": "https:\/\/raw.githubusercontent.com\/unanimated\/luaegisub\/master\/DependencyControl.json",
-      "lastUpdateCheck": 1748544225,
-      "name": "Selectricks",
-      "lastChannel": "master",
-      "namespace": "ua.Selectrix",
-      "channels": ["master"]
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+      "name": "Transform",
+      "lastUpdateCheck": 1749313457,
+      "version": 66052
     },
-    "arch.PerspectiveMotion": {
+    "aka.outcome": {
+      "author": "Michael Dowling, modified by Akatsumekusa",
+      "configFile": "aka.outcome.json",
+      "moduleName": "aka.outcome",
+      "requiredModules": {},
+      "namespace": "aka.outcome",
+      "url": "https:\/\/github.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts",
+      "feed": "https:\/\/raw.githubusercontent.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts\/master\/DependencyControl.json",
+      "name": "aka.outcome",
+      "lastUpdateCheck": 1749313458,
+      "version": 65547
+    },
+    "arch.Util": {
       "author": "arch1t3cht",
-      "configFile": "arch.PerspectiveMotion.json",
-      "moduleName": false,
+      "configFile": "arch.Util.json",
+      "moduleName": "arch.Util",
       "requiredModules": [
         {
-          "version": "1.3.0",
+          "moduleName": "a-mo.Line",
           "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
           "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-          "moduleName": "a-mo.LineCollection"
+          "version": "1.5.3"
         },
         {
-          "version": "0.5.0",
+          "moduleName": "l0.ASSFoundation",
           "url": "https:\/\/github.com\/TypesettingTools\/ASSFoundation",
           "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
-          "moduleName": "l0.ASSFoundation"
-        },
-        {
-          "version": "0.1.10",
-          "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
-          "moduleName": "arch.Math"
-        },
-        {
-          "version": "1.2.0",
-          "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
-          "moduleName": "arch.Perspective"
-        },
-        {
-          "version": "0.1.0",
-          "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
-          "moduleName": "arch.Util"
-        },
-        { "moduleName": "aegisub.clipboard" }
+          "version": "0.5.0"
+        }
       ],
-      "version": 768,
-      "lastChannel": "release",
-      "name": "Aegisub Perspective-Motion",
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
-      "channels": ["release"],
-      "namespace": "arch.PerspectiveMotion"
+      "namespace": "arch.Util",
+      "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
+      "name": "Util",
+      "lastUpdateCheck": 1749313467,
+      "version": 256
     },
-    "zah.aegi-color-track": {
-      "author": "Zahuczky, garret",
-      "configFile": "zah.aegi-color-track.json",
-      "moduleName": false,
-      "requiredModules": [
-        {
-          "version": "0.3.0",
-          "url": "https:\/\/github.com\/petzku\/Aegisub-Scripts",
-          "feed": "https:\/\/raw.githubusercontent.com\/petzku\/Aegisub-Scripts\/stable\/DependencyControl.json",
-          "moduleName": "petzku.util"
-        },
-        {
-          "version": "1.1.4",
-          "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-          "moduleName": "a-mo.ConfigHandler"
-        },
-        { "moduleName": "aegisub.util" }
-      ],
-      "version": 131328,
-      "lastChannel": "main",
-      "name": "Aegisub-Color-Tracking",
-      "feed": "https:\/\/raw.githubusercontent.com\/Zahuczky\/Zahuczkys-Aegisub-Scripts\/main\/DependencyControl.json",
-      "channels": ["main"],
-      "namespace": "zah.aegi-color-track"
+    "a-mo.DataHandler": {
+      "author": "torque",
+      "configFile": "a-mo.DataHandler.json",
+      "moduleName": "a-mo.DataHandler",
+      "requiredModules": [{ "moduleName": "a-mo.Log", "version": "1.0.0" }],
+      "namespace": "a-mo.DataHandler",
+      "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+      "name": "DataHandler",
+      "lastUpdateCheck": 1749313460,
+      "version": 65541
     },
-    "petzku.ExtrapolateMove": {
+    "petzku.util": {
       "author": "petzku",
-      "configFile": "petzku.ExtrapolateMove.json",
-      "name": "Extrapolate Move",
-      "requiredModules": [{ "moduleName": "karaskel" }],
-      "version": 261,
-      "feed": "https:\/\/raw.githubusercontent.com\/petzku\/Aegisub-Scripts\/stable\/DependencyControl.json",
-      "namespace": "petzku.ExtrapolateMove"
-    },
-    "zah.autoclip": {
-      "author": "Zahuczky, Akatsumekusa",
-      "configFile": "zah.autoclip.json",
-      "moduleName": false,
+      "configFile": "petzku.util.json",
+      "moduleName": "petzku.util",
       "requiredModules": [
-        {
-          "version": "1.1.0",
-          "url": "https:\/\/github.com\/TypesettingTools\/ILL-Aegisub-Scripts",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
-          "moduleName": "ILL.ILL"
-        },
-        {
-          "version": "1.0.0",
-          "url": "https:\/\/github.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts",
-          "feed": "https:\/\/raw.githubusercontent.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts\/master\/DependencyControl.json",
-          "moduleName": "aka.uikit"
-        },
-        {
-          "version": "1.0.0",
-          "url": "https:\/\/github.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts",
-          "feed": "https:\/\/raw.githubusercontent.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts\/master\/DependencyControl.json",
-          "moduleName": "aka.config"
-        },
-        {
-          "version": "1.0.0",
-          "url": "https:\/\/github.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts",
-          "feed": "https:\/\/raw.githubusercontent.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts\/master\/DependencyControl.json",
-          "moduleName": "aka.outcome"
-        },
-        { "moduleName": "lfs" },
-        {
-          "version": "1.0.0",
-          "url": "https:\/\/github.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts",
-          "feed": "https:\/\/raw.githubusercontent.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts\/master\/DependencyControl.json",
-          "moduleName": "aka.command"
-        },
-        {
-          "version": "1.1.0",
-          "url": "https:\/\/github.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts",
-          "feed": "https:\/\/raw.githubusercontent.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts\/master\/DependencyControl.json",
-          "moduleName": "aka.unsemantic"
-        }
-      ],
-      "version": 131329,
-      "lastChannel": "main",
-      "name": "AutoClip",
-      "feed": "https:\/\/raw.githubusercontent.com\/Zahuczky\/Zahuczkys-Aegisub-Scripts\/main\/DependencyControl.json",
-      "channels": ["main"],
-      "namespace": "zah.autoclip"
-    },
-    "arch.GitSigns": {
-      "author": "arch1t3cht",
-      "configFile": "arch.GitSigns.json",
-      "name": "Git Signs",
-      "requiredModules": [
-        {
-          "version": "0.6.0",
-          "url": "https:\/\/github.com\/TypesettingTools\/Functional",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
-          "moduleName": "l0.Functional"
-        }
-      ],
-      "version": 516,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
-      "namespace": "arch.GitSigns"
-    },
-    "l0.SimpleNudge": {
-      "author": "lightarrowsexe",
-      "configFile": "l0.SimpleNudge.json",
-      "name": "Simple Nudge",
-      "requiredModules": [
-        { "version": "0.4.0", "moduleName": "l0.ASSFoundation" },
-        { "version": "0.5.0", "moduleName": "l0.Functional" }
-      ],
-      "version": 65536,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/line0-Aegisub-Scripts\/master\/DependencyControl.json",
-      "namespace": "l0.SimpleNudge"
-    },
-    "l0.ASSWipe": {
-      "author": "line0",
-      "configFile": "l0.ASSWipe.json",
-      "moduleName": false,
-      "requiredModules": [
-        {
-          "version": "1.3.0",
-          "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-          "moduleName": "a-mo.LineCollection"
-        },
-        {
-          "version": "1.1.4",
-          "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-          "moduleName": "a-mo.ConfigHandler"
-        },
-        {
-          "version": "0.5.0",
-          "url": "https:\/\/github.com\/TypesettingTools\/ASSFoundation",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
-          "moduleName": "l0.ASSFoundation"
-        },
-        {
-          "version": "0.5.0",
-          "url": "https:\/\/github.com\/TypesettingTools\/Functional",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
-          "moduleName": "l0.Functional"
-        },
-        {
-          "version": "0.7.2",
-          "url": "https:\/\/github.com\/TypesettingTools\/SubInspector",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/SubInspector\/master\/DependencyControl.json",
-          "moduleName": "SubInspector.Inspector"
-        },
-        { "moduleName": "json" }
-      ],
-      "version": 1280,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/line0-Aegisub-Scripts\/master\/DependencyControl.json",
-      "lastUpdateCheck": 1748546916,
-      "name": "ASSWipe",
-      "lastChannel": "master",
-      "namespace": "l0.ASSWipe",
-      "channels": ["master", "release"]
-    },
-    "ILL.SplitText": {
-      "author": "ILLTeam",
-      "configFile": "ILL.SplitText.json",
-      "name": "ILL - Split Text",
-      "requiredModules": [
-        {
-          "version": "1.6.4",
-          "url": "https:\/\/github.com\/TypesettingTools\/ILL-Aegisub-Scripts\/",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
-          "moduleName": "ILL.ILL"
-        }
-      ],
-      "version": 131330,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
-      "namespace": "ILL.SplitText"
-    },
-    "ILL.EnvelopeDistort": {
-      "author": "ILLTeam",
-      "configFile": "ILL.EnvelopeDistort.json",
-      "moduleName": false,
-      "requiredModules": [
-        {
-          "version": "1.4.4",
-          "url": "https:\/\/github.com\/TypesettingTools\/ILL-Aegisub-Scripts\/",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
-          "moduleName": "ILL.ILL"
-        }
-      ],
-      "version": 65795,
-      "lastChannel": "main",
-      "name": "Envelope Distort",
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
-      "channels": ["main"],
-      "namespace": "ILL.EnvelopeDistort"
-    },
-    "l0.Nudge": {
-      "author": "line0",
-      "configFile": "l0.Nudge.json",
-      "moduleName": false,
-      "requiredModules": [
-        { "moduleName": "aegisub.clipboard" },
-        { "moduleName": "json" },
-        {
-          "version": "1.3.0",
-          "moduleName": "a-mo.LineCollection",
-          "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion"
-        },
-        {
-          "version": "0.4.0",
-          "url": "https:\/\/github.com\/TypesettingTools\/ASSFoundation",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
-          "moduleName": "l0.ASSFoundation"
-        },
-        {
-          "version": "0.5.0",
-          "url": "https:\/\/github.com\/TypesettingTools\/Functional",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
-          "moduleName": "l0.Functional"
-        }
-      ],
-      "version": 1280,
-      "lastChannel": "release",
-      "name": "Nudge",
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/line0-Aegisub-Scripts\/master\/DependencyControl.json",
-      "channels": ["master", "release"],
-      "namespace": "l0.Nudge"
-    },
-    "lightarrowsexe.weebswap": {
-      "lastUpdateCheck": 1748628958,
-      "configFile": "lightarrowsexe.weebswap.json",
-      "name": "WeebSwap",
-      "requiredModules": {},
-      "version": 65536,
-      "author": "lightarrowsexe",
-      "feed": "https:\/\/raw.githubusercontent.com\/LightArrowsEXE\/Aegisub-Scripts\/main\/DependencyControl.json",
-      "namespace": "lightarrowsexe.weebswap"
-    },
-    "ua.Recalculator": {
-      "author": "unanimated",
-      "configFile": "ua.Recalculator.json",
-      "moduleName": false,
-      "requiredModules": {},
-      "version": 262144,
-      "feed": "https:\/\/raw.githubusercontent.com\/unanimated\/luaegisub\/master\/DependencyControl.json",
-      "lastUpdateCheck": 1748543035,
-      "name": "Recalculator",
-      "lastChannel": "master",
-      "namespace": "ua.Recalculator",
-      "channels": ["master"]
-    },
-    "l0.DependencyControl.Toolbox": {
-      "lastUpdateCheck": 1748542781,
-      "configFile": "l0.DependencyControl.Toolbox.json",
-      "name": "DependencyControl Toolbox",
-      "requiredModules": {},
-      "version": 259,
-      "author": "line0",
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/DependencyControl\/master\/DependencyControl.json",
-      "namespace": "l0.DependencyControl.Toolbox"
-    },
-    "petzku.CombineGradientLines": {
-      "lastUpdateCheck": 1748543274,
-      "configFile": "petzku.CombineGradientLines.json",
-      "name": "Combine Gradient Lines",
-      "requiredModules": {},
-      "version": 517,
-      "author": "petzku",
-      "feed": "https:\/\/raw.githubusercontent.com\/petzku\/Aegisub-Scripts\/stable\/DependencyControl.json",
-      "namespace": "petzku.CombineGradientLines"
-    },
-    "arch.Line2Fbf": {
-      "author": "arch1t3cht",
-      "configFile": "arch.Line2Fbf.json",
-      "name": "FBF-ifier",
-      "requiredModules": [
-        {
-          "version": "1.3.0",
-          "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-          "moduleName": "a-mo.LineCollection"
-        },
-        {
-          "version": "0.5.0",
-          "url": "https:\/\/github.com\/TypesettingTools\/ASSFoundation",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
-          "moduleName": "l0.ASSFoundation"
-        },
-        {
-          "version": "0.1.0",
-          "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
-          "moduleName": "arch.Util"
-        }
-      ],
-      "version": 256,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
-      "namespace": "arch.Line2Fbf"
-    },
-    "lyger.GradientByChar": {
-      "author": "lyger",
-      "configFile": "lyger.GradientByChar.json",
-      "moduleName": false,
-      "requiredModules": [
-        {
-          "version": "2.0.0",
-          "moduleName": "lyger.LibLyger",
-          "url": "http:\/\/github.com\/TypesettingTools\/lyger-Aegisub-Scripts"
-        },
         { "moduleName": "aegisub.util" },
         { "moduleName": "aegisub.re" }
       ],
-      "version": 66305,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/lyger-Aegisub-Scripts\/master\/DependencyControl.json",
-      "lastUpdateCheck": 1748566638,
-      "name": "Gradient by character",
-      "lastChannel": "master",
-      "namespace": "lyger.GradientByChar",
-      "channels": ["master"]
-    },
-    "phos.ChromaticAbberation": {
-      "author": "PhosCity",
-      "configFile": "phos.ChromaticAbberation.json",
-      "moduleName": false,
-      "requiredModules": [
-        {
-          "version": "1.3.0",
-          "url": "https: \/\/github.com\/TypesettingTools\/Aegisub-Motion",
-          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-          "moduleName": "a-mo.LineCollection"
-        },
-        {
-          "version": "0.5.0",
-          "url": "https: \/\/github.com\/TypesettingTools\/ASSFoundation",
-          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
-          "moduleName": "l0.ASSFoundation"
-        },
-        {
-          "version": "1.0.2",
-          "url": "https:\/\/github.com\/PhosCity\/Aegisub-Scripts",
-          "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
-          "moduleName": "phos.AssfPlus"
-        },
-        {
-          "version": "1.0.0",
-          "url": "https:\/\/github.com\/PhosCity\/Aegisub-Scripts",
-          "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
-          "moduleName": "phos.AegiGui"
-        },
-        { "moduleName": "aegisub.util" }
-      ],
-      "version": 65540,
-      "lastChannel": "main",
-      "name": "Chromatic Abberation",
-      "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
-      "channels": ["main"],
-      "namespace": "phos.ChromaticAbberation"
-    },
-    "phos.svg2ass": {
-      "author": "PhosCity",
-      "configFile": "phos.svg2ass.json",
-      "moduleName": false,
-      "requiredModules": [
-        {
-          "version": "1.3.0",
-          "url": "https: \/\/github.com\/TypesettingTools\/Aegisub-Motion",
-          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-          "moduleName": "a-mo.LineCollection"
-        },
-        {
-          "version": "0.5.0",
-          "url": "https: \/\/github.com\/TypesettingTools\/ASSFoundation",
-          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
-          "moduleName": "l0.ASSFoundation"
-        },
-        {
-          "version": "0.6.0",
-          "url": "https:\/\/github.com\/TypesettingTools\/Functional",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
-          "moduleName": "l0.Functional"
-        }
-      ],
-      "version": 66053,
-      "lastChannel": "main",
-      "name": "svg2ass",
-      "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
-      "channels": ["main"],
-      "namespace": "phos.svg2ass"
-    },
-    "petzku.Phantom": {
-      "author": "petzku",
-      "configFile": "petzku.Phantom.json",
-      "name": "Phantom",
-      "requiredModules": {},
-      "version": 65793,
+      "namespace": "petzku.util",
+      "url": "https:\/\/github.com\/petzku\/Aegisub-Scripts",
       "feed": "https:\/\/raw.githubusercontent.com\/petzku\/Aegisub-Scripts\/stable\/DependencyControl.json",
-      "namespace": "petzku.Phantom"
+      "name": "petzkuLib",
+      "lastUpdateCheck": 1749313457,
+      "version": 1028
     },
-    "lightarrowsexe.tagstripper": {
-      "lastUpdateCheck": 1748935005,
-      "configFile": "lightarrowsexe.tagstripper.json",
-      "name": "TagStripper",
-      "requiredModules": {},
-      "version": 65536,
-      "author": "lightarrowsexe",
-      "feed": "https:\/\/raw.githubusercontent.com\/LightArrowsEXE\/Aegisub-Scripts\/main\/DependencyControl.json",
-      "namespace": "lightarrowsexe.tagstripper"
-    },
-    "petzku.NewClipShape": {
-      "author": "petzku",
-      "configFile": "petzku.NewClipShape.json",
-      "name": "New Clip Shape",
-      "requiredModules": {},
-      "version": 770,
-      "feed": "https:\/\/raw.githubusercontent.com\/petzku\/Aegisub-Scripts\/stable\/DependencyControl.json",
-      "namespace": "petzku.NewClipShape"
-    },
-    "petzku.EncodeClip": {
-      "lastUpdateCheck": 1748927848,
-      "configFile": "petzku.EncodeClip.json",
-      "name": "Encode Clip",
-      "requiredModules": [
-        {
-          "version": "0.4.1",
-          "url": "https:\/\/github.com\/petzku\/Aegisub-Scripts",
-          "feed": "https:\/\/raw.githubusercontent.com\/petzku\/Aegisub-Scripts\/stable\/DependencyControl.json",
-          "moduleName": "petzku.util"
-        },
-        {
-          "version": "1.1.4",
-          "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-          "moduleName": "a-mo.ConfigHandler"
-        }
-      ],
-      "version": 65794,
-      "author": "petzku",
-      "feed": "https:\/\/raw.githubusercontent.com\/petzku\/Aegisub-Scripts\/stable\/DependencyControl.json",
-      "namespace": "petzku.EncodeClip"
-    },
-    "lyger.LuaInterpret": {
-      "author": "lyger",
-      "configFile": "lyger.LuaInterpret.json",
-      "moduleName": false,
-      "requiredModules": [
-        {
-          "version": "2.0.0",
-          "moduleName": "lyger.LibLyger",
-          "url": "http:\/\/github.com\/TypesettingTools\/lyger-Aegisub-Scripts"
-        },
-        { "moduleName": "aegisub.util" }
-      ],
-      "version": 66305,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/lyger-Aegisub-Scripts\/master\/DependencyControl.json",
-      "lastUpdateCheck": 1748544596,
-      "name": "Lua Interpreter",
-      "lastChannel": "master",
-      "namespace": "lyger.LuaInterpret",
-      "channels": ["master"]
-    },
-    "a-mo.Aegisub-Motion": {
-      "author": "torque",
-      "configFile": "a-mo.Aegisub-Motion.json",
-      "moduleName": false,
-      "requiredModules": [
-        { "moduleName": "aegisub.clipboard" },
-        { "moduleName": "json" },
-        { "version": "1.1.4", "moduleName": "a-mo.ConfigHandler" },
-        { "version": "1.0.2", "moduleName": "a-mo.DataWrapper" },
-        { "version": "1.3.0", "moduleName": "a-mo.LineCollection" },
-        { "version": "1.0.0", "moduleName": "a-mo.Log" },
-        { "version": "1.0.0", "moduleName": "a-mo.Math" },
-        { "version": "1.1.8", "moduleName": "a-mo.MotionHandler" },
-        { "version": "0.1.3", "moduleName": "a-mo.Statistics" },
-        { "version": "1.0.5", "moduleName": "a-mo.TrimHandler" },
-        { "version": "1.3.4", "moduleName": "a-mo.Tags" }
-      ],
-      "version": 65545,
-      "lastChannel": "DepCtrl",
-      "name": "Aegisub-Motion",
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-      "namespace": "a-mo.Aegisub-Motion",
-      "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
-      "channels": ["DepCtrl"]
-    },
-    "lightarrowsexe.nudger": {
-      "lastUpdateCheck": 1748281656,
-      "configFile": "lightarrowsexe.nudger.json",
-      "name": "Nudger",
-      "requiredModules": [
-        { "version": "0.5.0", "moduleName": "l0.ASSFoundation" },
-        { "version": "0.5.0", "moduleName": "l0.Functional" },
-        { "version": "1.5.3", "moduleName": "a-mo.Line" }
-      ],
-      "version": 65536,
-      "author": "lightarrowsexe",
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/line0-Aegisub-Scripts\/master\/DependencyControl.json",
-      "namespace": "lightarrowsexe.nudger"
-    },
-    "phos.AutoFade": {
-      "author": "PhosCity",
-      "configFile": "phos.AutoFade.json",
-      "moduleName": false,
-      "requiredModules": [
-        {
-          "version": "1.3.0",
-          "url": "https: \/\/github.com\/TypesettingTools\/Aegisub-Motion",
-          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-          "moduleName": "a-mo.LineCollection"
-        },
-        {
-          "version": "1.0.2",
-          "url": "https: \/\/github.com\/TypesettingTools\/Aegisub-Motion",
-          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-          "moduleName": "a-mo.DataWrapper"
-        },
-        {
-          "version": "0.5.0",
-          "url": "https: \/\/github.com\/TypesettingTools\/ASSFoundation",
-          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
-          "moduleName": "l0.ASSFoundation"
-        },
-        { "moduleName": "aegisub.clipboard" }
-      ],
-      "version": 65794,
-      "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
-      "lastUpdateCheck": 1748562414,
-      "name": "Auto Fade",
-      "lastChannel": "main",
-      "namespace": "phos.AutoFade",
-      "channels": ["main"]
-    },
-    "petzku.PosToMargin": {
-      "author": "petzku",
-      "configFile": "petzku.PosToMargin.json",
-      "name": "Margin Position",
-      "requiredModules": [{ "moduleName": "karaskel" }],
-      "version": 131073,
-      "feed": "https:\/\/raw.githubusercontent.com\/petzku\/Aegisub-Scripts\/stable\/DependencyControl.json",
-      "namespace": "petzku.PosToMargin"
-    },
-    "arch.DerivePerspTrack": {
-      "author": "arch1t3cht",
-      "configFile": "arch.DerivePerspTrack.json",
-      "name": "Derive Perspective Track",
-      "requiredModules": [
-        {
-          "version": "0.6.0",
-          "url": "https:\/\/github.com\/TypesettingTools\/Functional",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
-          "moduleName": "l0.Functional"
-        },
-        {
-          "version": "1.3.0",
-          "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-          "moduleName": "a-mo.LineCollection"
-        },
-        {
-          "version": "0.5.0",
-          "url": "https:\/\/github.com\/TypesettingTools\/ASSFoundation",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
-          "moduleName": "l0.ASSFoundation"
-        },
-        {
-          "version": "0.1.10",
-          "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
-          "moduleName": "arch.Math"
-        },
-        {
-          "version": "0.2.3",
-          "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
-          "moduleName": "arch.Perspective"
-        },
-        { "moduleName": "karaskel" }
-      ],
-      "version": 65794,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
-      "namespace": "arch.DerivePerspTrack"
-    },
-    "ILL.Shapery": {
-      "lastUpdateCheck": 1748541575,
-      "configFile": "ILL.Shapery.json",
-      "name": "Shapery",
-      "requiredModules": [
-        {
-          "version": "1.3.2",
-          "url": "https:\/\/github.com\/TypesettingTools\/ILL-Aegisub-Scripts\/",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
-          "moduleName": "clipper2.clipper2"
-        },
-        {
-          "version": "1.6.5",
-          "url": "https:\/\/github.com\/TypesettingTools\/ILL-Aegisub-Scripts\/",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
-          "moduleName": "ILL.ILL"
-        }
-      ],
-      "version": 132608,
-      "author": "ILLTeam",
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
-      "namespace": "ILL.Shapery"
-    },
-    "lyger.GradientEverything": {
-      "configFile": "lyger.GradientEverything.json",
-      "moduleName": false,
-      "namespace": "lyger.GradientEverything",
-      "version": 131075,
-      "lastChannel": "master",
-      "lastUpdateCheck": 1748543173,
-      "name": "Gradient Everything",
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/lyger-Aegisub-Scripts\/master\/DependencyControl.json",
-      "channels": ["master"],
-      "requiredModules": [
-        {
-          "version": "2.0.1",
-          "moduleName": "lyger.LibLyger",
-          "url": "http:\/\/github.com\/TypesettingTools\/lyger-Aegisub-Scripts"
-        },
-        {
-          "version": "0.3.0",
-          "url": "https:\/\/github.com\/TypesettingTools\/Functional",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
-          "moduleName": "l0.Functional"
-        },
-        {
-          "url": "https:\/\/github.com\/TypesettingTools\/SubInspector",
-          "version": "0.6.0",
-          "optional": true,
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/SubInspector\/master\/DependencyControl.json",
-          "moduleName": "SubInspector.Inspector"
-        }
-      ]
-    },
-    "ILL.ChangeAlign": {
-      "author": "ILLTeam",
-      "configFile": "ILL.ChangeAlign.json",
-      "name": "Change Alignment",
-      "requiredModules": [
-        {
-          "version": "1.4.4",
-          "url": "https:\/\/github.com\/TypesettingTools\/ILL-Aegisub-Scripts\/",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
-          "moduleName": "ILL.ILL"
-        }
-      ],
-      "version": 65793,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
-      "namespace": "ILL.ChangeAlign"
-    },
-    "aka.Sandbox": {
+    "aka.config": {
       "author": "Akatsumekusa and contributors",
-      "configFile": "aka.Sandbox.json",
-      "moduleName": false,
+      "configFile": "aka.config.json",
+      "moduleName": "aka.config",
+      "requiredModules": [
+        { "moduleName": "aka.config2", "version": "1.0.0" },
+        { "moduleName": "aka.outcome", "version": "1.0.0" },
+        { "moduleName": "aka.unicode", "version": "1.0.0" },
+        { "moduleName": "aegisub.re" }
+      ],
+      "namespace": "aka.config",
+      "url": "https:\/\/github.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts",
+      "feed": "https:\/\/raw.githubusercontent.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts\/master\/DependencyControl.json",
+      "name": "aka.config",
+      "lastUpdateCheck": 1749313459,
+      "version": 65550
+    },
+    "DM.DownloadManager": {
+      "author": "torque",
+      "configFile": "DM.DownloadManager.json",
+      "moduleName": "DM.DownloadManager",
+      "requiredModules": {},
+      "namespace": "DM.DownloadManager",
+      "url": "https:\/\/github.com\/TypesettingTools\/ffi-experiments",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ffi-experiments\/master\/DependencyControl.json",
+      "name": "DownloadManager",
+      "lastUpdateCheck": 1749313455,
+      "version": 1280
+    },
+    "a-mo.ShakeShapeHandler": {
+      "author": "torque",
+      "configFile": "a-mo.ShakeShapeHandler.json",
+      "moduleName": "a-mo.ShakeShapeHandler",
+      "requiredModules": [{ "moduleName": "a-mo.Log", "version": "1.0.0" }],
+      "namespace": "a-mo.ShakeShapeHandler",
+      "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+      "name": "ShakeShapeHandler",
+      "lastUpdateCheck": 1749313461,
+      "version": 65538
+    },
+    "aka.StackTracePlus": {
+      "author": "Ignacio Burgueño",
+      "configFile": "aka.StackTracePlus.json",
+      "moduleName": "aka.StackTracePlus",
+      "requiredModules": {},
+      "namespace": "aka.StackTracePlus",
+      "url": "https:\/\/github.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts",
+      "feed": "https:\/\/raw.githubusercontent.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts\/master\/DependencyControl.json",
+      "name": "StackTracePlus",
+      "lastUpdateCheck": 1749313458,
+      "version": 65542
+    },
+    "aka.config2": {
+      "author": "Akatsumekusa and contributors",
+      "configFile": "aka.config2.json",
+      "moduleName": "aka.config2",
+      "requiredModules": [
+        { "moduleName": "aka.outcome", "version": "1.0.0" },
+        { "moduleName": "aegisub.re" },
+        { "moduleName": "aegisub.unicode" },
+        { "moduleName": "lfs" }
+      ],
+      "namespace": "aka.config2",
+      "url": "https:\/\/github.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts",
+      "feed": "https:\/\/raw.githubusercontent.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts\/master\/DependencyControl.json",
+      "name": "aka.config2",
+      "lastUpdateCheck": 1749313464,
+      "version": 65547
+    },
+    "zimg.main": {
+      "author": "Zeref",
+      "configFile": "zimg.main.json",
+      "moduleName": "zimg.main",
+      "requiredModules": [
+        { "moduleName": "ffi" },
+        { "moduleName": "requireffi.requireffi", "version": "0.1.2" }
+      ],
+      "namespace": "zimg.main",
+      "url": "https:\/\/github.com\/TypesettingTools\/zeref-Aegisub-Scripts",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/zeref-Aegisub-Scripts\/main\/DependencyControl.json",
+      "name": "zimg",
+      "unmanaged": true,
+      "version": 65536
+    },
+    "myaa.ASSParser": {
+      "author": "Myaamori",
+      "configFile": "myaa.ASSParser.json",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Myaamori-Aegisub-Scripts\/master\/DependencyControl.json",
       "requiredModules": [
         { "moduleName": "aegisub.re" },
-        { "version": "1.0.0", "moduleName": "aka.StackTracePlus" },
-        { "version": "1.0.0", "moduleName": "aka.outcome" },
-        { "version": "1.0.0", "moduleName": "aka.config" },
-        { "version": "1.0.0", "moduleName": "aka.uikit" },
-        { "version": "1.0.0", "moduleName": "ILL.ILL" },
-        { "moduleName": "moonscript" },
-        { "version": "1.0.0", "moduleName": "a-mo.LineCollection" },
-        { "version": "0.1.0", "moduleName": "l0.ASSFoundation" },
-        { "moduleName": "Yutils" },
-        { "version": "0.1.0", "moduleName": "arch.Math" },
-        { "version": "0.1.0", "moduleName": "arch.Perspective" },
-        { "version": "0.1.0", "moduleName": "arch.Util" },
-        { "version": "0.1.0", "moduleName": "l0.Functional" },
-        { "version": "1.0.0", "moduleName": "aka.unicode" },
         { "moduleName": "aegisub.util" },
-        { "version": "0.1.0", "moduleName": "petzku.util" }
-      ],
-      "version": 65796,
-      "feed": "https:\/\/raw.githubusercontent.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts\/master\/DependencyControl.json",
-      "lastUpdateCheck": 1748564199,
-      "name": "Sandbox",
-      "lastChannel": "master",
-      "namespace": "aka.Sandbox",
-      "channels": ["master"]
-    },
-    "phos.AddGrain": {
-      "author": "PhosCity",
-      "configFile": "phos.AddGrain.json",
-      "moduleName": false,
-      "requiredModules": [
         {
-          "version": "1.3.0",
-          "url": "https: \/\/github.com\/TypesettingTools\/Aegisub-Motion",
-          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-          "moduleName": "a-mo.LineCollection"
-        },
-        {
-          "version": "0.5.0",
-          "url": "https: \/\/github.com\/TypesettingTools\/ASSFoundation",
-          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
-          "moduleName": "l0.ASSFoundation"
-        },
-        {
-          "version": "0.6.0",
+          "moduleName": "l0.Functional",
           "url": "https:\/\/github.com\/TypesettingTools\/Functional",
           "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
-          "moduleName": "l0.Functional"
-        },
+          "version": "0.6.0"
+        }
+      ],
+      "namespace": "myaa.ASSParser",
+      "url": "http:\/\/github.com\/TypesettingTools\/Myaamori-Aegisub-Scripts",
+      "moduleName": "myaa.ASSParser",
+      "name": "ASSParser",
+      "version": 4
+    },
+    "a-mo.Math": {
+      "namespace": "a-mo.Math",
+      "name": "a-mo.Math",
+      "configFile": "a-mo.Math.json",
+      "moduleName": "a-mo.Math",
+      "requiredModules": {},
+      "unmanaged": true,
+      "version": 65536
+    },
+    "SubInspector.Inspector": {
+      "author": "torque",
+      "configFile": "SubInspector.Inspector.json",
+      "moduleName": "SubInspector.Inspector",
+      "requiredModules": [
+        { "moduleName": "ffi" },
+        { "moduleName": "requireffi.requireffi", "version": "0.1.1" }
+      ],
+      "namespace": "SubInspector.Inspector",
+      "url": "https:\/\/github.com\/TypesettingTools\/SubInspector",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/SubInspector\/master\/DependencyControl.json",
+      "name": "SubInspector",
+      "lastUpdateCheck": 1749313457,
+      "version": 1794
+    },
+    "a-mo.Line": {
+      "author": "torque",
+      "configFile": "a-mo.Line.json",
+      "moduleName": "a-mo.Line",
+      "requiredModules": [
+        { "moduleName": "aegisub.util" },
+        { "moduleName": "json" },
+        { "moduleName": "a-mo.Log", "version": "1.0.0" },
+        { "moduleName": "a-mo.Tags", "version": "1.3.4" },
+        { "moduleName": "a-mo.Transform", "version": "1.2.4" }
+      ],
+      "namespace": "a-mo.Line",
+      "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+      "name": "Line",
+      "lastUpdateCheck": 1749313467,
+      "version": 66819
+    },
+    "aka.uikit": {
+      "author": "Akatsumekusa and contributors",
+      "configFile": "aka.uikit.json",
+      "moduleName": "aka.uikit",
+      "requiredModules": [
+        { "moduleName": "aka.outcome", "version": "1.0.0" },
+        { "moduleName": "aegisub.re" },
+        { "moduleName": "ILL.ILL", "version": "1.0.0" },
+        { "moduleName": "aka.config2", "version": "1.0.0" }
+      ],
+      "namespace": "aka.uikit",
+      "url": "https:\/\/github.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts",
+      "feed": "https:\/\/raw.githubusercontent.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts\/master\/DependencyControl.json",
+      "name": "aka.uikit",
+      "lastUpdateCheck": 1749313464,
+      "version": 65550
+    },
+    "PT.PreciseTimer": {
+      "author": "torque",
+      "configFile": "PT.PreciseTimer.json",
+      "moduleName": "PT.PreciseTimer",
+      "requiredModules": {},
+      "namespace": "PT.PreciseTimer",
+      "url": "https:\/\/github.com\/TypesettingTools\/ffi-experiments",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ffi-experiments\/master\/DependencyControl.json",
+      "name": "PreciseTimer",
+      "lastUpdateCheck": 1749313455,
+      "version": 262
+    },
+    "ZF.main": {
+      "author": "Zeref",
+      "configFile": "ZF.main.json",
+      "moduleName": "ZF.main",
+      "requiredModules": [
+        { "moduleName": "karaskel" },
         { "moduleName": "Yutils" }
       ],
-      "version": 65796,
-      "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
-      "lastUpdateCheck": 1748563317,
-      "name": "Add Grain",
-      "lastChannel": "main",
-      "namespace": "phos.AddGrain",
-      "channels": ["main"]
+      "namespace": "ZF.main",
+      "url": "https:\/\/github.com\/TypesettingTools\/zeref-Aegisub-Scripts",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/zeref-Aegisub-Scripts\/main\/DependencyControl.json",
+      "name": "ZF main",
+      "unmanaged": true,
+      "version": 131840
     },
-    "arch.Resample": {
-      "lastUpdateCheck": 1748818075,
-      "configFile": "arch.Resample.json",
-      "name": "Resample Perspective",
-      "requiredModules": [
-        {
-          "version": "1.3.0",
-          "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-          "moduleName": "a-mo.LineCollection"
-        },
-        {
-          "version": "0.5.0",
-          "url": "https:\/\/github.com\/TypesettingTools\/ASSFoundation",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
-          "moduleName": "l0.ASSFoundation"
-        },
-        {
-          "version": "0.1.8",
-          "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
-          "moduleName": "arch.Math"
-        },
-        {
-          "version": "1.0.0",
-          "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
-          "moduleName": "arch.Perspective"
-        }
-      ],
-      "version": 131328,
-      "author": "arch1t3cht",
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
-      "namespace": "arch.Resample"
-    },
-    "phos.TimingAssistant": {
-      "author": "PhosCity",
-      "configFile": "phos.TimingAssistant.json",
-      "moduleName": false,
-      "requiredModules": [
-        {
-          "version": "1.0.0",
-          "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
-          "url": "https:\/\/github.com\/PhosCity\/Aegisub-Scripts",
-          "moduleName": "phos.AegiGui"
-        }
-      ],
-      "version": 131072,
-      "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
-      "lastUpdateCheck": 1748983555,
-      "name": "Timing Assistant",
-      "lastChannel": "main",
-      "namespace": "phos.TimingAssistant",
-      "channels": ["main"]
-    },
-    "petzku.Autowrapper": {
-      "lastUpdateCheck": 1748628908,
-      "configFile": "petzku.Autowrapper.json",
-      "name": "Autowrapper",
-      "requiredModules": [{ "moduleName": "karaskel" }],
-      "version": 1281,
-      "author": "petzku",
-      "feed": "https:\/\/raw.githubusercontent.com\/petzku\/Aegisub-Scripts\/stable\/DependencyControl.json",
-      "namespace": "petzku.Autowrapper"
-    },
-    "arch.FocusLines": {
-      "author": "arch1t3cht",
-      "configFile": "arch.FocusLines.json",
-      "name": "Focus Lines",
-      "requiredModules": [
-        {
-          "version": "0.1.0",
-          "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
-          "moduleName": "arch.Math"
-        }
-      ],
-      "version": 65537,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
-      "namespace": "arch.FocusLines"
-    },
-    "phos.ExtrapolateTracking": {
-      "author": "PhosCity",
-      "configFile": "phos.ExtrapolateTracking.json",
-      "moduleName": false,
-      "requiredModules": [
-        {
-          "version": "1.3.0",
-          "url": "https: \/\/github.com\/TypesettingTools\/Aegisub-Motion",
-          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-          "moduleName": "a-mo.LineCollection"
-        },
-        {
-          "version": "1.0.2",
-          "url": "https: \/\/github.com\/TypesettingTools\/Aegisub-Motion",
-          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-          "moduleName": "a-mo.DataWrapper"
-        },
-        {
-          "version": "1.1.8",
-          "url": "https: \/\/github.com\/TypesettingTools\/Aegisub-Motion",
-          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-          "moduleName": "a-mo.MotionHandler"
-        },
-        {
-          "version": "0.5.0",
-          "url": "https: \/\/github.com\/TypesettingTools\/ASSFoundation",
-          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
-          "moduleName": "l0.ASSFoundation"
-        },
-        {
-          "version": "0.1.8",
-          "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
-          "moduleName": "arch.Math"
-        }
-      ],
-      "version": 65538,
-      "lastChannel": "main",
-      "name": "Extrapolate Tracking",
-      "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
-      "channels": ["main"],
-      "namespace": "phos.ExtrapolateTracking"
-    },
-    "phos.FitTextInClip": {
-      "author": "PhosCity",
-      "configFile": "phos.FitTextInClip.json",
-      "name": "Fit Text in Clip",
-      "requiredModules": [
-        {
-          "version": "1.3.0",
-          "url": "https: \/\/github.com\/TypesettingTools\/Aegisub-Motion",
-          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-          "moduleName": "a-mo.LineCollection"
-        },
-        {
-          "version": "0.5.0",
-          "url": "https: \/\/github.com\/TypesettingTools\/ASSFoundation",
-          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
-          "moduleName": "l0.ASSFoundation"
-        },
-        {
-          "version": "0.6.0",
-          "url": "https:\/\/github.com\/TypesettingTools\/Functional",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
-          "moduleName": "l0.Functional"
-        }
-      ],
-      "version": 4,
-      "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
-      "namespace": "phos.FitTextInClip"
-    },
-    "petzku.SplitTimer": {
-      "author": "petzku",
-      "configFile": "petzku.SplitTimer.json",
-      "name": "SplitTimer",
-      "requiredModules": [
-        { "moduleName": "aegisub.util" },
-        {
-          "version": "0.4.2",
-          "url": "https:\/\/github.com\/petzku\/Aegisub-Scripts",
-          "feed": "https:\/\/raw.githubusercontent.com\/petzku\/Aegisub-Scripts\/stable\/DependencyControl.json",
-          "moduleName": "petzku.util"
-        }
-      ],
-      "version": 66050,
-      "feed": "https:\/\/raw.githubusercontent.com\/petzku\/Aegisub-Scripts\/stable\/DependencyControl.json",
-      "namespace": "petzku.SplitTimer"
-    },
-    "ILL.MakeImage": {
+    "ILL.ILL": {
       "author": "ILLTeam",
-      "configFile": "ILL.MakeImage.json",
-      "name": "Make Image",
-      "requiredModules": [
-        {
-          "version": "1.0.1",
-          "url": "https:\/\/github.com\/TypesettingTools\/ILL-Aegisub-Scripts",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
-          "moduleName": "ILL.IMG"
-        },
-        {
-          "version": "1.4.4",
-          "url": "https:\/\/github.com\/TypesettingTools\/ILL-Aegisub-Scripts",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
-          "moduleName": "ILL.ILL"
-        }
-      ],
-      "version": 131329,
+      "configFile": "ILL.ILL.json",
+      "moduleName": "ILL.ILL",
+      "requiredModules": {},
+      "namespace": "ILL.ILL",
+      "url": "https:\/\/github.com\/TypesettingTools\/ILL-Aegisub-Scripts\/",
       "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
-      "namespace": "ILL.MakeImage"
+      "name": "ILL.ILL",
+      "unmanaged": true,
+      "version": 67077
     },
-    "arch.AegisubChain": {
-      "author": "arch1t3cht",
-      "configFile": "arch.AegisubChain.json",
-      "moduleName": false,
-      "requiredModules": [
-        {
-          "version": "0.6.0",
-          "url": "https:\/\/github.com\/TypesettingTools\/Functional",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
-          "moduleName": "l0.Functional"
-        },
-        { "moduleName": "lfs" },
-        { "moduleName": "json" },
-        { "moduleName": "moonscript.base" }
-      ],
-      "version": 1025,
-      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
-      "lastUpdateCheck": 1748543155,
-      "name": "AegisubChain",
-      "lastChannel": "release",
-      "namespace": "arch.AegisubChain",
-      "channels": ["release"]
-    },
-    "phos.RotateGradient": {
+    "phos.AssfPlus": {
       "author": "PhosCity",
-      "configFile": "phos.RotateGradient.json",
-      "moduleName": false,
+      "configFile": "phos.AssfPlus.json",
+      "moduleName": "phos.AssfPlus",
       "requiredModules": [
         {
-          "version": "1.3.0",
-          "url": "https: \/\/github.com\/TypesettingTools\/Aegisub-Motion",
-          "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-          "moduleName": "a-mo.LineCollection"
-        },
-        {
-          "version": "1.5.3",
-          "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
-          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
-          "moduleName": "a-mo.Line"
-        },
-        {
-          "version": "0.5.0",
+          "moduleName": "l0.ASSFoundation",
           "url": "https: \/\/github.com\/TypesettingTools\/ASSFoundation",
           "feed": "https: \/\/raw.githubusercontent.com\/TypesettingTools\/ASSFoundation\/master\/DependencyControl.json",
-          "moduleName": "l0.ASSFoundation"
+          "version": "0.5.0"
         },
         {
-          "version": "0.6.0",
+          "moduleName": "l0.Functional",
           "url": "https:\/\/github.com\/TypesettingTools\/Functional",
           "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Functional\/master\/DependencyControl.json",
-          "moduleName": "l0.Functional"
-        }
+          "version": "0.6.0"
+        },
+        {
+          "moduleName": "arch.Perspective",
+          "url": "https:\/\/github.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts",
+          "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/arch1t3cht-Aegisub-Scripts\/main\/DependencyControl.json",
+          "version": "1.0.0"
+        },
+        { "moduleName": "Yutils" },
+        { "moduleName": "json" }
       ],
-      "version": 131074,
-      "lastChannel": "main",
-      "name": "Rotate Gradient",
+      "namespace": "phos.AssfPlus",
+      "url": "https:\/\/github.com\/PhosCity\/Aegisub-Scripts",
       "feed": "https:\/\/raw.githubusercontent.com\/PhosCity\/Aegisub-Scripts\/main\/DependencyControl.json",
-      "channels": ["main"],
-      "namespace": "phos.RotateGradient"
+      "name": "AssfPlus",
+      "lastUpdateCheck": 1749313461,
+      "version": 65541
+    },
+    "ILL.IMG": {
+      "author": "Zeref",
+      "configFile": "ILL.IMG.json",
+      "moduleName": "ILL.IMG",
+      "requiredModules": {},
+      "namespace": "ILL.IMG",
+      "url": "https:\/\/github.com\/TypesettingTools\/ILL-Aegisub-Scripts",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ILL-Aegisub-Scripts\/main\/DependencyControl.json",
+      "name": "ILL.IMG",
+      "unmanaged": true,
+      "version": 65538
+    },
+    "zpolyclipping.polyclipping": {
+      "author": "Zeref",
+      "configFile": "zpolyclipping.polyclipping.json",
+      "moduleName": "zpolyclipping.polyclipping",
+      "requiredModules": [
+        { "moduleName": "ffi" },
+        { "moduleName": "requireffi.requireffi", "version": "0.1.2" }
+      ],
+      "namespace": "zpolyclipping.polyclipping",
+      "url": "https:\/\/github.com\/TypesettingTools\/zeref-Aegisub-Scripts",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/zeref-Aegisub-Scripts\/main\/DependencyControl.json",
+      "name": "clipper",
+      "unmanaged": true,
+      "version": 394242
+    },
+    "a-mo.LineCollection": {
+      "author": "torque",
+      "configFile": "a-mo.LineCollection.json",
+      "moduleName": "a-mo.LineCollection",
+      "requiredModules": [
+        { "moduleName": "a-mo.Log", "version": "1.0.0" },
+        { "moduleName": "a-mo.Line", "version": "1.5.3" }
+      ],
+      "namespace": "a-mo.LineCollection",
+      "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+      "name": "LineCollection",
+      "lastUpdateCheck": 1749398899,
+      "version": 66304
+    },
+    "a-mo.ConfigHandler": {
+      "author": "torque",
+      "configFile": "a-mo.ConfigHandler.json",
+      "moduleName": "a-mo.ConfigHandler",
+      "requiredModules": [
+        { "moduleName": "json" },
+        { "moduleName": "a-mo.Log", "version": "1.0.0" }
+      ],
+      "namespace": "a-mo.ConfigHandler",
+      "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+      "name": "ConfigHandler",
+      "lastUpdateCheck": 1749313457,
+      "version": 65796
+    },
+    "BM.BadMutex": {
+      "author": "torque",
+      "configFile": "BM.BadMutex.json",
+      "moduleName": "BM.BadMutex",
+      "requiredModules": {},
+      "namespace": "BM.BadMutex",
+      "url": "https:\/\/github.com\/TypesettingTools\/ffi-experiments",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/ffi-experiments\/master\/DependencyControl.json",
+      "name": "BadMutex",
+      "lastUpdateCheck": 1749313455,
+      "version": 259
+    },
+    "a-mo.DataWrapper": {
+      "author": "torque",
+      "configFile": "a-mo.DataWrapper.json",
+      "moduleName": "a-mo.DataWrapper",
+      "requiredModules": [
+        { "moduleName": "a-mo.Log", "version": "1.0.0" },
+        { "moduleName": "a-mo.DataHandler", "version": "1.0.5" },
+        { "moduleName": "a-mo.ShakeShapeHandler", "version": "1.0.2" }
+      ],
+      "namespace": "a-mo.DataWrapper",
+      "url": "https:\/\/github.com\/TypesettingTools\/Aegisub-Motion",
+      "feed": "https:\/\/raw.githubusercontent.com\/TypesettingTools\/Aegisub-Motion\/DepCtrl\/DependencyControl.json",
+      "name": "DataWrapper",
+      "lastUpdateCheck": 1749313462,
+      "version": 65538
+    },
+    "aka.unicode": {
+      "author": "Akatsumekusa and contributors",
+      "configFile": "aka.unicode.json",
+      "moduleName": "aka.unicode",
+      "requiredModules": [
+        { "moduleName": "aegisub.unicode" },
+        { "moduleName": "bit" }
+      ],
+      "namespace": "aka.unicode",
+      "url": "https:\/\/github.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts",
+      "feed": "https:\/\/raw.githubusercontent.com\/Akatmks\/Akatsumekusa-Aegisub-Scripts\/master\/DependencyControl.json",
+      "name": "aka.unicode",
+      "lastUpdateCheck": 1749313459,
+      "version": 65546
     }
-  }
+  },
+  "config": { "updaterRunning": false }
 }

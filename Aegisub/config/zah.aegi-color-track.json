@@ -1,0 +1,22 @@
+{
+  "main": {
+    "c": false,
+    "c4": true,
+    "c3": false,
+    "setting": "Defined pixels",
+    "pixX": 1086,
+    "c2": false,
+    "pixY": 352
+  },
+  "__version": "2.1.0",
+  "alpha": {
+    "a4": false,
+    "all": true,
+    "a2": false,
+    "pixX": 0,
+    "setting": "Defined pixels",
+    "a": true,
+    "a3": false,
+    "pixY": 0
+  }
+}
