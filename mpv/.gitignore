@@ -1,6 +1,9 @@
-# Some dependencies. Grab them from their official git's instead (check README.md)
+# External dependencies. Download these from their official repositories (see README.md)
 youtube-dl.exe
+yt-dlp.exe
 
+# Generated and build directories
+.config/**/*
 installer/**/*
 doc/**/*
 mpv/**/*
