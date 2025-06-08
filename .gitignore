@@ -1,14 +1,19 @@
-mpv/.config/mpv/scripts/*shared*/*
-mpv/.config/mpv/watch_later/*
-*cookies*.txt
+# Binary and archive files
 *.7z
-mpv/.config/mpv/lua-settings/myshows.conf
-mpv/.config/mpv/7z/*
-*.pyc
-*.exe
 *.bat
-mpv/.config/mpv/installer/updater.ps1
-mpv/.config/mpv/settings.xml
 *.com
-mpv/.config/mpv/d3dcompiler_43.dll
+*.exe
+*.pyc
+
+# Config and data files
+*cookies*.txt
 Aegisub/config.json
+
+# MPV specific files
+mpv/.config/mpv/7z/*
+mpv/.config/mpv/d3dcompiler_43.dll
+mpv/.config/mpv/installer/updater.ps1
+mpv/.config/mpv/lua-settings/myshows.conf
+mpv/.config/mpv/scripts/*shared*/*
+mpv/.config/mpv/settings.xml
+mpv/.config/mpv/watch_later/*
