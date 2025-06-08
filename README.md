@@ -7,10 +7,6 @@ but has now been made more generic.
 Recommendations for settings to change are always welcome,
 so feel free to send in a [pull request](https://github.com/LightArrowsEXE/dotfiles/pulls).
 
-## Hooks
-
-See [hooks/README.md](hooks/README.md) for more information.
-
 ## License
 
 My custom configuration files (like `mpv.conf`) are licensed under MIT,
