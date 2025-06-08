@@ -1,0 +1,21 @@
+# VapourSynth plugins are too massive to store in git.
+# These are instead stored on my server.
+
+# Binary files
+*.ax
+*.bin
+*.dll
+*.lib
+
+# Model files
+*.caffemodel
+*.engine*
+*.model
+*.onnx
+*.param
+*.pld
+*.pkl*
+*.protobin
+
+# Other
+*.orig

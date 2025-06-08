@@ -1,0 +1,1 @@
+Note: The actual VapourSynth plugins and filters are not included in this repository due to their large size. This repository only contains configuration files and scripts. The plugins themselves need to be downloaded and installed separately.
