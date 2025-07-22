@@ -8,3 +8,5 @@
 # Config and data files
 *cookies*.txt
 Aegisub/config.json
+*.dmp
+/Aegisub/recovered

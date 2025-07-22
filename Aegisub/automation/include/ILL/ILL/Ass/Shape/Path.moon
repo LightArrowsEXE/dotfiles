@@ -1304,13 +1304,13 @@ Path.Simplifier = (paths, tolerance, filterNoise, recreateBezier, angleThreshold
 
 	simplifyBezier = (points, tolerance, angleThreshold) ->
 		at1, at2 = angleThreshold, 360 - angleThreshold
-		final = {}
 
-		insert points, 1, points[#points]
-		insert points, points[2]
-
+		insert points, 1, points[#points]\clone!
+		insert points, points[2]\clone!
 		lastSegmentLength = points[1]\distance(points[2])
-		section = {points[1]}
+
+		final = {points[2]\clone!}
+		section = {}
 
 		for i = 2, #points - 1
 			insert section, points[i]
@@ -1328,7 +1328,8 @@ Path.Simplifier = (paths, tolerance, filterNoise, recreateBezier, angleThreshold
 				continue
 			
 			lastSegmentLength = currSegmentLength
-
+		
+		elaborateSection(section, final, tolerance)
 		return final
 
 	for i = 1, #paths
