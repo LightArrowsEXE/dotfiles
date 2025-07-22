@@ -112,6 +112,9 @@
     "automation/lua/ILL.Shapery/:: Hotkeys/: Shapery macros :/Clip to shape": [
       "Ctrl-M"
     ],
+    "automation/lua/ILL.Shapery/:: Hotkeys/: Shapery macros :/Shape clipper": [
+      "F12"
+    ],
     "automation/lua/ILL.Shapery/:: Hotkeys/: Shapery macros :/Shape expand": [
       "F6"
     ],
@@ -137,8 +140,12 @@
     "automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Up (-1)": [
       "Ctrl-Alt-Up"
     ],
+    "automation/lua/petzku.SplitTimer/SplitTimer/N frames...": ["Ctrl-Shift-H"],
     "automation/lua/petzku.ToggleTemplates/:: Hotkeys/Toggle Templates": [
       "Ctrl-/"
+    ],
+    "automation/lua/ua.Selectrix/:: Uncommonly Used/Selectricks": [
+      "Ctrl-Shift-H"
     ],
     "edit/color/outline": ["Alt-3"],
     "edit/color/primary": ["Alt-1"],
@@ -152,6 +159,9 @@
     ],
     "automation/lua/0x.KaraTemplater/:: Hotkeys/Remove generated fx": [
       "Ctrl-Shift-Backspace"
+    ],
+    "automation/lua/ILL.Shapery/:: Hotkeys/: Shapery macros :/Shape clipper": [
+      "F12"
     ],
     "automation/lua/ILL.Shapery/:: Hotkeys/: Shapery macros :/Shape expand": [
       "F6"
@@ -183,12 +193,14 @@
     "automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Up (-1)": [
       "Ctrl-Alt-Up"
     ],
+    "automation/lua/petzku.SplitTimer/SplitTimer/N frames...": ["Ctrl-Shift-H"],
     "automation/lua/petzku.ToggleTemplates/:: Hotkeys/Toggle Templates": [
       "Ctrl-/"
     ],
     "automation/lua/phos.TimingAssistant/:: Hotkeys/Timing Assistant/Time": [
       "F"
     ],
+    "edit/line/join/keep_first": ["Alt-J"],
     "grid/fold/toggle": ["Enter"],
     "subtitle/select/all": ["Ctrl-A"],
     "time/align": ["KP_TAB"],
@@ -222,6 +234,9 @@
     "automation/lua/ILL.Shapery/:: Hotkeys/: Shapery macros :/Clip to shape": [
       "Ctrl-M"
     ],
+    "automation/lua/ILL.Shapery/:: Hotkeys/: Shapery macros :/Shape clipper": [
+      "F12"
+    ],
     "automation/lua/ILL.Shapery/:: Hotkeys/: Shapery macros :/Shape expand": [
       "F6"
     ],
@@ -246,6 +261,7 @@
     "automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Up (-1)": [
       "Ctrl-Alt-Up"
     ],
+    "automation/lua/petzku.SplitTimer/SplitTimer/N frames...": ["Ctrl-Shift-H"],
     "automation/lua/petzku.ToggleTemplates/:: Hotkeys/Toggle Templates": [
       "Ctrl-/"
     ],

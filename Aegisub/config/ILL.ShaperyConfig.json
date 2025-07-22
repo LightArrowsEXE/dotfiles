@@ -1,7 +1,9 @@
 {
+  "reset": "All",
   "expandBordShadow": false,
   "cutBordShadow": 1,
+  "reverseShape": true,
   "saveLines": false,
-  "__VERSION__": "2.6.0",
-  "reset": "All"
+  "__VERSION__": "2.6.1",
+  "reverseClip": true
 }

@@ -1,23 +1,23 @@
 {
+  "__version": "0.5.0",
   "main": {
+    "mergeConsecutive": true,
+    "quirksMode": "libass",
+    "mergeConsecutiveExcept": "\\k, \\ko, \\kf",
     "cleanLevel": 4,
     "tagsToKeep": "\\pos",
     "filterClips": true,
-    "mergeConsecutive": true,
+    "removeInvisible": true,
     "combineLines": true,
-    "quirksMode": "libass",
-    "mergeConsecutiveExcept": "\\k, \\ko, \\kf",
-    "extraDataFilter": "",
+    "removeJunk": true,
+    "extraDataMode": "Keep all",
     "scale2float": true,
     "tagSortOrder": "\\an, \\pos, \\move, \\org, \\fscx, \\fscy, \\frz, \\fry, \\frx, \\fax, \\fay, \\fn, \\fs, \\fsp, \\b, \\i, \\u, \\s, \\bord, \\xbord, \\ybord,\n\\shad, \\xshad, \\yshad, \\1c, \\2c, \\3c, \\4c, \\alpha, \\1a, \\2a, \\3a, \\4a, \\blur, \\be, \\fad, \\fade, clip_rect, iclip_rect,\nclip_vect, iclip_vect, \\q, \\p, \\k, \\kf, \\K, \\ko, junk, unknown\n",
     "fixDrawings": false,
     "purgeContoursDraw": false,
     "purgeContoursClip": false,
-    "removeJunk": true,
     "stripComments": true,
-    "removeInvisible": true,
     "purgeContoursIgnoreHashMismatch": false,
-    "extraDataMode": "Keep all"
-  },
-  "__version": "0.5.0"
+    "extraDataFilter": ""
+  }
 }
