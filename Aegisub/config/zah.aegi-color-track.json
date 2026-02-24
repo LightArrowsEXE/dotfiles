@@ -1,1 +1,22 @@
-{"__version":"2.1.0","main":{"c4":false,"setting":"Tracking Data","pixX":552,"c2":false,"pixY":190,"c3":false,"c":true},"alpha":{"a":true,"all":true,"setting":"Defined pixels","pixX":0,"a3":false,"pixY":0,"a4":false,"a2":false}}
+{
+  "__version": "2.1.0",
+  "main": {
+    "c4": false,
+    "setting": "Tracking Data",
+    "pixX": 552,
+    "c2": false,
+    "pixY": 190,
+    "c3": false,
+    "c": true
+  },
+  "alpha": {
+    "a": true,
+    "all": true,
+    "setting": "Defined pixels",
+    "pixX": 0,
+    "a3": false,
+    "pixY": 0,
+    "a4": false,
+    "a2": false
+  }
+}

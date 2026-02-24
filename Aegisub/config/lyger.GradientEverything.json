@@ -1,1 +1,74 @@
-{"presets":{"Default":{},"Horizontal all":{"tags":{"xshad":true,"blur":true,"frz":true,"4a":true,"3c":true,"fry":true,"fsp":true,"3a":true,"fscx":true,"alpha":true,"fscy":true,"fax":true,"frx":true,"1a":true,"fay":true,"fs":true,"org":true,"c":true,"2a":true,"bord":true,"be":true,"pos":true,"4c":true,"2c":true,"yshad":true,"shad":true,"xbord":true,"ybord":true}},"[Last Settings]":{"flip_rot":false,"tags":{"xshad":true,"blur":true,"frz":true,"4a":true,"3c":true,"fry":true,"fsp":true,"3a":true,"fscx":true,"alpha":true,"fscy":true,"fax":true,"frx":true,"1a":true,"fay":true,"fs":true,"org":true,"c":true,"2a":true,"bord":true,"be":true,"pos":true,"4c":true,"2c":true,"yshad":true,"shad":true,"xbord":true,"ybord":true},"description":"Repeats the last Gradient Everything operation","hv_select":"Vertical","accel":1,"strip":1}}}
+{
+  "presets": {
+    "Default": {},
+    "Horizontal all": {
+      "tags": {
+        "xshad": true,
+        "blur": true,
+        "frz": true,
+        "4a": true,
+        "3c": true,
+        "fry": true,
+        "fsp": true,
+        "3a": true,
+        "fscx": true,
+        "alpha": true,
+        "fscy": true,
+        "fax": true,
+        "frx": true,
+        "1a": true,
+        "fay": true,
+        "fs": true,
+        "org": true,
+        "c": true,
+        "2a": true,
+        "bord": true,
+        "be": true,
+        "pos": true,
+        "4c": true,
+        "2c": true,
+        "yshad": true,
+        "shad": true,
+        "xbord": true,
+        "ybord": true
+      }
+    },
+    "[Last Settings]": {
+      "flip_rot": false,
+      "tags": {
+        "xshad": true,
+        "blur": true,
+        "frz": true,
+        "4a": true,
+        "3c": true,
+        "fry": true,
+        "fsp": true,
+        "3a": true,
+        "fscx": true,
+        "alpha": true,
+        "fscy": true,
+        "fax": true,
+        "frx": true,
+        "1a": true,
+        "fay": true,
+        "fs": true,
+        "org": true,
+        "c": true,
+        "2a": true,
+        "bord": true,
+        "be": true,
+        "pos": true,
+        "4c": true,
+        "2c": true,
+        "yshad": true,
+        "shad": true,
+        "xbord": true,
+        "ybord": true
+      },
+      "description": "Repeats the last Gradient Everything operation",
+      "hv_select": "Vertical",
+      "accel": 1,
+      "strip": 1
+    }
+  }
+}

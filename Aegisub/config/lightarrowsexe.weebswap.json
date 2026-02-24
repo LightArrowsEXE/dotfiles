@@ -1,1 +1,7 @@
-{"currentPreset":"Signs\/Songs","presets":{"Signs&Songs":{"delimiter":"\/","styles":"All Styles"},"Default":{}}}
+{
+  "currentPreset": "Signs\/Songs",
+  "presets": {
+    "Signs&Songs": { "delimiter": "\/", "styles": "All Styles" },
+    "Default": {}
+  }
+}

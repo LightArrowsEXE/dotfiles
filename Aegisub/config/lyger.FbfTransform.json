@@ -1,1 +1,75 @@
-{"presets":{"[Last Settings]":{"tags":{"c":false,"2c":false,"3c":false,"4c":false,"alpha":false,"1a":false,"2a":false,"3a":false,"4a":false,"fscx":false,"fscy":false,"fax":false,"fay":false,"frx":false,"fry":false,"frz":false,"bord":false,"shad":false,"fs":false,"fsp":false,"xbord":false,"ybord":false,"xshad":false,"yshad":false,"blur":true,"be":false,"org":false,"clip":false,"pos":false},"skiptext":false,"description":"Repeats the last Frame-by-frame transform operation","flip_rot":false,"accel":1},"All":{"tags":{"c":true,"2c":true,"3c":true,"4c":true,"alpha":true,"1a":true,"2a":true,"3a":true,"4a":true,"fscx":true,"fscy":true,"fax":true,"fay":true,"frx":true,"fry":true,"frz":true,"bord":true,"shad":true,"fs":true,"fsp":true,"xbord":true,"ybord":true,"xshad":true,"yshad":true,"blur":true,"be":true,"org":true,"clip":true,"pos":true}},"Default":{}}}
+{
+  "presets": {
+    "[Last Settings]": {
+      "tags": {
+        "c": false,
+        "2c": false,
+        "3c": false,
+        "4c": false,
+        "alpha": false,
+        "1a": false,
+        "2a": false,
+        "3a": false,
+        "4a": false,
+        "fscx": false,
+        "fscy": false,
+        "fax": false,
+        "fay": false,
+        "frx": false,
+        "fry": false,
+        "frz": false,
+        "bord": false,
+        "shad": false,
+        "fs": false,
+        "fsp": false,
+        "xbord": false,
+        "ybord": false,
+        "xshad": false,
+        "yshad": false,
+        "blur": true,
+        "be": false,
+        "org": false,
+        "clip": false,
+        "pos": false
+      },
+      "skiptext": false,
+      "description": "Repeats the last Frame-by-frame transform operation",
+      "flip_rot": false,
+      "accel": 1
+    },
+    "All": {
+      "tags": {
+        "c": true,
+        "2c": true,
+        "3c": true,
+        "4c": true,
+        "alpha": true,
+        "1a": true,
+        "2a": true,
+        "3a": true,
+        "4a": true,
+        "fscx": true,
+        "fscy": true,
+        "fax": true,
+        "fay": true,
+        "frx": true,
+        "fry": true,
+        "frz": true,
+        "bord": true,
+        "shad": true,
+        "fs": true,
+        "fsp": true,
+        "xbord": true,
+        "ybord": true,
+        "xshad": true,
+        "yshad": true,
+        "blur": true,
+        "be": true,
+        "org": true,
+        "clip": true,
+        "pos": true
+      }
+    },
+    "Default": {}
+  }
+}
