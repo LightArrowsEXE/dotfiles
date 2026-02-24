@@ -1,7 +1,1 @@
-{
-  "cornerStyle": "Inverted Round",
-  "__VERSION__": "2.6.0",
-  "radius": 2,
-  "shadow": "Inner shadow",
-  "rounding": "Absolute"
-}
+{"rounding":"Absolute","cornerStyle":"Rounded","shadow":"Inner shadow","__VERSION__":"2.6.1","radius":0}

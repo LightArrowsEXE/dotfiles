@@ -12,7 +12,7 @@ local util, re
 if haveDepCtrl
     depctrl = DependencyControl {
         name: 'petzkuLib',
-        version: '0.4.4',
+        version: '0.5.3',
         description: [[Various utility functions for use with petzku's Aegisub macros]],
         author: "petzku",
         url: "https://github.com/petzku/Aegisub-Scripts",
@@ -59,6 +59,7 @@ with lib
         calc_accel: (val0, valhalf, val1) ->
             accel = .math.log_n 0.5, math.abs (valhalf - val0) / (val1 - val0)
             -- clamp to a sensible interval just in case
+            .io.trace "Raw computed accel value for %s,%s,%s: %s", val0, valhalf, val1, accel
             .math.clamp accel, 0.01, 100
 
         -- Retime transforms, move tags and fades
@@ -73,15 +74,27 @@ with lib
         retime: (line, delta, duration) ->
             str = line
             if type(line) == 'table'
+                .io.trace "Given line table, reading properties from line"
                 line = util.copy line
                 duration = line.end_time - line.start_time
                 str = line.text
+                .io.trace "Duration: %s", duration
+            elseif not duration
+                .io.warn "Duration not given for string input, simple tags cannot be shifted"
+
+            -- \t and \move treat t2=0 as "end-of-line" rather than start
+            -- no other values get special handling like this (except double-negative \move mentioned below)
+            fix_zero_t2 = (t2) ->
+                if t2 == "0"
+                    duration
+                else
+                    t2
 
             -- rt = retime, s = simple, a = accel
-            rt_t = (t1, t2) -> string.format "\\t(%d,%d,", t1+delta, t2+delta
+            rt_t = (t1, t2) -> string.format "\\t(%d,%d,", t1+delta, fix_zero_t2(t2)+delta
             rt_at = (a) -> rt_t(0, duration) .. a .. ",\\"
             rt_st = () -> rt_t(0, duration) .. "\\"
-            rt_move = (x,y,xx,yy,t1,t2) -> string.format "\\move(%s,%s,%s,%s,%d,%d)", x,y,xx,yy, t1+delta, t2+delta
+            rt_move = (x,y,xx,yy,t1,t2) -> string.format "\\move(%s,%s,%s,%s,%d,%d)", x,y,xx,yy, t1+delta, fix_zero_t2(t2)+delta
             rt_smove = (x,y,xx,yy) -> rt_move x,y,xx,yy,0,duration
             rt_fade = (a1,a2,a3,t1,t2,t3,t4) -> string.format "\\fade(%s,%s,%s,%d,%d,%d,%d)", a1,a2,a3, t1+delta, t2+delta, t3+delta, t4+delta
             rt_sfade = (t_start, t_end) -> rt_fade 255,0,255, 0,t_start, duration-t_end,duration
@@ -96,26 +109,41 @@ with lib
             p_fade  = "\\fade?%(("..n.."),("..n.."),("..n.."),("..n.."),("..n.."),("..n.."),("..n..")%)"
             p_sfade = "\\fade?%(("..n.."),("..n..")%)"
 
-            str = str\gsub(p_t, rt_t)\gsub(p_at, rt_at)\gsub(p_st, rt_st)\gsub(p_move, rt_move)\gsub(p_smove, rt_smove)\gsub(p_fade, rt_fade)\gsub(p_sfade, rt_sfade)
+            .io.trace "Shifting: %s", str
+            str = str\gsub(p_t, rt_t)\gsub(p_move, rt_move)\gsub(p_fade, rt_fade)
+            if duration
+                .io.trace "Shifting simple tags: %s", str
+                str = str\gsub(p_at, rt_at)\gsub(p_st, rt_st)\gsub(p_smove, rt_smove)\gsub(p_sfade, rt_sfade)
+
             -- if move has two negative times, it behaves as if the times were both omitted.
             -- i.e. \move(x,y,xx,yy,-123,-456) is treated the same as \move(x,y,xx,yy).
             -- it _should_ just act the same as `\pos(xx,yy)`, so replace it with that.
-            str = str\gsub "\\move%("..n..","..n..",("..n.."),("..n.."),%-%d+,%-%d+%)", "\\pos(%1,%2)"
+            if str\match "\\move%([^)]+%-%d+,%-%d+%)"
+                .io.trace "Replacing negative-times move with pos: %s", str
+                str = str\gsub "\\move%("..n..","..n..",("..n.."),("..n.."),%-%d+,%-%d+%)", "\\pos(%1,%2)"
+
+            .io.trace "Result: %s", str
 
             if type(line) == 'table'
+                .io.trace "Returning modified line"
                 line.text = str
                 line
             else
+                .io.trace "Returning line text only"
                 str
     }
 
     .io = {
         :pathsep,
         run_cmd: (cmd, quiet) ->
-            aegisub.log 5, 'Running: %s\n', cmd unless quiet
+            -- if quiet, we want to silence debug logs
+            -- but trace output is always good to have
+            LOG = quiet and .io.trace or .io.debug
+            LOG 'Running: %s', cmd
 
             local runner_path
             output_path = os.tmpname()
+            .io.trace "Using output file: %s", output_path
             if pathsep == '\\'
                 -- windows
                 -- command lines over 256 bytes don't get run correctly, make a temporary file as a workaround
@@ -139,43 +167,50 @@ with lib
                 f\close!
             else
                 runner_path = aegisub.decode_path('?temp/petzku.sh')
-                pipe_path = os.tmpname()
                 -- create shell script
                 f = io.open runner_path, 'w'
                 f\write "#!/bin/sh\n"
-                f\write "mkfifo \"#{pipe_path}\"\n"
-                f\write "tee \"#{output_path}\" <\"#{pipe_path}\" &\n"
-                f\write "#{cmd} >\"#{pipe_path}\" 2>&1\n"
+                f\write "#{cmd} >\"#{output_path}\" 2>&1\n"
                 f\write "exit $?\n"
                 f\close!
                 -- make the script executable
                 os.execute "chmod +x \"#{runner_path}\""
 
+            .io.trace "Using runner file: %s", runner_path
             
+            -- status is true if **successful**, unlike with system(3)
             status, reason, exit_code = os.execute runner_path
 
             f = io.open output_path
             output = f\read '*a'
             f\close!
 
-            unless quiet
-                local log_level
-                if status
-                    log_level = 5
-                else
-                    log_level = 1
-                aegisub.log log_level, "Command Logs: \n\n"
-                aegisub.log log_level, output
-                aegisub.log log_level, "\n\nStatus: "
-                if status
-                    aegisub.log log_level, "success\n"
-                else
-                    aegisub.log log_level, "failed\n"
-                    aegisub.log log_level, "Reason: #{reason}\n"
-                    aegisub.log log_level, "Exit Code: #{exit_code}\n"
-                aegisub.log log_level, '\nFinished: %s\n', cmd
+            LOG = .io.error unless status
+            LOG "Command Logs:"
+            LOG ""
+            LOG output
+            if status
+                LOG "Status: success"
+            else
+                LOG "Status: failed"
+                LOG "Reason: #{reason}"
+                LOG "Exit Code: #{exit_code}"
+                LOG ""
+            LOG 'Finished: %s', cmd
 
             output, status, reason, exit_code
+
+        -- handy helper functions for less effort console output
+        fatal: (s, ...) -> aegisub.log 0, s.."\n", ...
+        error: (s, ...) -> aegisub.log 1, s.."\n", ...
+        warn:  (s, ...) -> aegisub.log 2, s.."\n", ...
+        hint:  (s, ...) -> aegisub.log 3, s.."\n", ...
+        debug: (s, ...) -> aegisub.log 4, s.."\n", ...
+        trace: (s, ...) -> aegisub.log 5, s.."\n", ...
+
+        -- function akin to lua's internal "print", separating entries by tabs
+        print: (...) -> aegisub.log (string.rep "%s\t", #{...}-1).."%s\n", ...
+
     }
 
 if haveDepCtrl

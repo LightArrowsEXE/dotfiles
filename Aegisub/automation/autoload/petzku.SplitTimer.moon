@@ -4,7 +4,7 @@ export script_name =        "SplitTimer"
 export script_description = "Split lines in selection into shorter segments, preserving any transforms"
 export script_author =      "petzku"
 export script_namespace =   "petzku.SplitTimer"
-export script_version =     "1.2.2"
+export script_version =     "1.2.3"
 
 havedc, DependencyControl = pcall require, "l0.DependencyControl"
 local dep, util, petzku
@@ -13,7 +13,7 @@ if havedc
         feed: "https://raw.githubusercontent.com/petzku/Aegisub-Scripts/stable/DependencyControl.json",
         {
             'aegisub.util',
-            {'petzku.util', version: '0.4.2', url: "https://github.com/petzku/Aegisub-Scripts",
+            {'petzku.util', version: '0.5.3', url: "https://github.com/petzku/Aegisub-Scripts",
             feed: "https://raw.githubusercontent.com/petzku/Aegisub-Scripts/stable/DependencyControl.json"},
         }
     }

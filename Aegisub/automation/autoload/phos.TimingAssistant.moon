@@ -1,6 +1,6 @@
 export script_name = "Timing Assistant"
 export script_description = "A second brain for timers."
-export script_version = "2.0.0"
+export script_version = "2.0.2"
 export script_author = "PhosCity"
 export script_namespace = "phos.TimingAssistant"
 
@@ -221,22 +221,10 @@ timeStart = (sub, sel, opt) ->
         -- Line Linking
         if endTimePrevious and math.abs(endTimePrevious - startTime) < opt.startLink and not isKeyframe(endTimePrevious)
             previousKeyframe, nextKeyframe = findAdjacentKeyframes endTimePrevious
-            keyframePlus500ms = getTime(previousKeyframe) + 500
 
-            if startTime < endTimePrevious and endTimePrevious < keyframePlus500ms
-                line.start_time = startTime - opt.startLeadIn unless snap
-                previousLine.end_time = getTime previousKeyframe
-                debugMsg opt, "Link lines failed because a keyframe is close. Snap end of last line. Add lead in to current line."
-
-            elseif (startTime - opt.startLeadIn) > (getTime(nextKeyframe) - 500)
-                line.start_time = getTime(nextKeyframe) - 500 unless snap
-                previousLine.end_time = line.start_time - opt.gap
-                debugMsg opt, "Link lines by ensuring that start time is 500 ms away from next keyframe."
-
-            else
-                line.start_time = startTime - math.min(opt.startLeadIn, startTime - keyframePlus500ms) unless snap
-                previousLine.end_time = line.start_time - opt.gap
-                debugMsg opt, "Link lines by adding appropriate lead in to current line."
+            line.start_time = startTime - opt.startLeadIn unless snap
+            previousLine.end_time = line.start_time - opt.gap
+            debugMsg opt, "Link lines by adding appropriate lead in to current line."
 
             sub[i - j] = previousLine
             link = true
@@ -275,8 +263,8 @@ timeEnd = (sub, sel, opt) ->
         if opt.endKeysnapAfter >= 850 and nextKfDistance >= 850 and nextKfDistance <= opt.endKeysnapAfter and previousKfDistance > opt.endKeysnapBefore
             cps = calculateCPS(line)
             if cps <= 15
-                line.end_time = endTime + math.min(opt.endLeadOut, nextKfDistance  - 500)
-                debugMsg opt, "cps is less than 15.\nAdjusting end time so that it's 500 ms away from keyframe or adding lead out whichever is lesser." 
+                line.end_time = endTime + opt.endLeadOut
+                debugMsg opt, "cps is less than 15.\nAdding lead out normally." 
             else
                 line.end_time = getTime nextKeyframe
                 debugMsg opt, "cps is more than 15.\nSnapping to keyframe more than 850 ms away."
@@ -305,8 +293,16 @@ timeBoth = (sub, sel) ->
     timeStart sub, sel, preset.c
     timeEnd sub, sel, preset.c
 
-    if preset.c.automove and sel[1] + 1 <= #sub
-        return { sel[1] + 1}
+    if preset.c.automove
+        i = sel[1]
+        if i == #sub
+            line = sub[i]
+            line.actor, line.effect, line.text = "", "", ""
+            end_time = line.end_time
+            line.start_time = end_time
+            line.end_time = end_time + 3003
+            sub.insert(i + 1, line)
+        return {i + 1}
 
 depctrl\registerMacros({
   { "Time", "Time the line after exact timing", timeBoth },

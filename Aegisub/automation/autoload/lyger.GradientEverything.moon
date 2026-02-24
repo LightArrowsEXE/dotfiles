@@ -57,7 +57,7 @@ TODO: Debug, debug, and keep debugging
 
 export script_name = "Gradient Everything"
 export script_description = "This will gradient everything."
-export script_version = "2.0.3"
+export script_version = "2.0.4"
 export script_namespace = "lyger.GradientEverything"
 
 DependencyControl = require "l0.DependencyControl"
@@ -251,7 +251,7 @@ gradient_everything = (sub, sel, res) ->
                 right, bottom = math.max(b.x+b.w, right or 0), math.max(b.y+b.h, bottom or 0)
 
         if left
-            bounds = {left-3, top-3, right+3, bottom+3}
+            bounds = {left, top, right, bottom}
         else
             logger\warn "Nothing to gradient: The selected lines didn't render to any non-transparent pixels."
             return
@@ -267,6 +267,12 @@ gradient_everything = (sub, sel, res) ->
 
     -- The pixel dimension of the relevant direction of gradient
     span = preset.c.hv_select == "Vertical" and bounds[4]-bounds[2] or bounds[3]-bounds[1]
+
+    -- Extend bounds to video edges in the non-gradient direction
+    if preset.c.hv_select == "Vertical"
+        bounds[1], bounds[3] = 0, libLyger.meta.res_x
+    else
+        bounds[2], bounds[4] = 0, libLyger.meta.res_y
 
     --Stores how many frames between each key line
     --Index 1 is how many frames between keys 1 and 2, and so on
@@ -341,12 +347,23 @@ gradient_everything = (sub, sel, res) ->
             -- Hopefully colors still look fine
 
             clip_tag = "\\clip(%d,%d,%d,%d)"
+
+            start_off = cum_off+(j-1)*preset.c.strip
+            end_off = cum_off+j*preset.c.strip
+
+            is_first = i == 2 and j == 1
+            is_last = i == line_cnt and j == frames_per[i-1]
+
             if preset.c.hv_select == "Vertical"
-                clip_tag = clip_tag\format bounds[1], bounds[2]+cum_off+(j-1)*preset.c.strip,
-                                           bounds[3], bounds[2]+cum_off+j*preset.c.strip
+                start_y = not is_first and bounds[2] + start_off or 0
+                end_y   = not is_last  and bounds[2] + end_off   or libLyger.meta.res_y
+                clip_tag = clip_tag\format bounds[1], start_y,
+                                           bounds[3], end_y
             else
-                clip_tag=clip_tag\format bounds[1]+cum_off+(j-1)*preset.c.strip, bounds[2],
-                                         bounds[1]+cum_off+j*preset.c.strip, bounds[4]
+                start_x = not is_first and bounds[1] + start_off or 0
+                end_x   = not is_last  and bounds[1] + end_off   or libLyger.meta.res_x
+                clip_tag=clip_tag\format start_x, bounds[2],
+                                         end_x,   bounds[4]
 
             -- Interpolate all the relevant parameters and insert
             text = LibLyger.interpolate this_table, start_state_table, end_state_table,

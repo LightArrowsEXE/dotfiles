@@ -1,0 +1,7 @@
+{
+  "disable_version_notify": false,
+  "python": "python",
+  "venv_activate": "",
+  "vsrepo": "vsrepo",
+  "vsrepo_mode": "vsrepo in PATH (`$ vsrepo --help`)"
+}

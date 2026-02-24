@@ -1,9 +1,1 @@
-{
-  "strokeAlign": "Outside",
-  "miterLimit": 2,
-  "arcPrecision": 0.25,
-  "strokeWeight": -2,
-  "cut": false,
-  "cornerStyle": "Round",
-  "__VERSION__": "2.6.0"
-}
+{"cornerStyle":"Round","cut":false,"strokeAlign":"Outside","miterLimit":1,"arcPrecision":0.25,"__VERSION__":"2.6.1","strokeWeight":0.4}

@@ -27,25 +27,25 @@ local DepCtrl = require("l0.DependencyControl")({
     {
         {
             "ILL.ILL",
-            version = "1.1.0",
+            version = "1.5.8",
             url = "https://github.com/TypesettingTools/ILL-Aegisub-Scripts",
             feed = "https://raw.githubusercontent.com/TypesettingTools/ILL-Aegisub-Scripts/main/DependencyControl.json"
         },
         {
             "aka.uikit",
-            version = "1.0.0",
+            version = "1.0.14",
             url = "https://github.com/Akatmks/Akatsumekusa-Aegisub-Scripts",
             feed = "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
         },
         {
             "aka.config",
-            version = "1.0.0",
+            version = "1.0.14",
             url = "https://github.com/Akatmks/Akatsumekusa-Aegisub-Scripts",
             feed = "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
         },
         {
             "aka.outcome",
-            version = "1.0.0",
+            version = "1.0.11",
             url = "https://github.com/Akatmks/Akatsumekusa-Aegisub-Scripts",
             feed = "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
         },
@@ -54,7 +54,7 @@ local DepCtrl = require("l0.DependencyControl")({
         },
         {
             "aka.command",
-            version = "1.0.0",
+            version = "1.0.2",
             url = "https://github.com/Akatmks/Akatsumekusa-Aegisub-Scripts",
             feed = "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
         },
@@ -1118,36 +1118,44 @@ local autoclip_main = function(sub, sel, act)
                     else
                         line_.text.tagsBlocks[1]:remove("clip", "iclip")
 
+                        local ass_clip
                         if layer_operations[line_.layer] == "&Replace Existing Clip With AutoClip" then
-                            line_.text.tagsBlocks[1]:insert("\\iclip(" .. frames[aegisub.frame_from_ms(line_.start_time) - first + 1]:export() .. ")")
+                            ass_clip = frames[aegisub.frame_from_ms(line_.start_time) - first + 1]:export()
                         elseif layer_operations[line_.layer] == "Apply Auto&Clip In Additional To Existing Clipping (iclip OR)" then
                             local clip = clippy
                             clip:unite(frames[aegisub.frame_from_ms(line_.start_time) - first + 1])
-                            line_.text.tagsBlocks[1]:insert("\\iclip(" .. clip:export() .. ")")
+                            ass_clip = clip:export()
                         elseif layer_operations[line_.layer] == "Apply AutoClip To Existing Clip (iclip Su&btract)" then
                             local clip = clippy
                             clip:difference(frames[aegisub.frame_from_ms(line_.start_time) - first + 1])
-                            line_.text.tagsBlocks[1]:insert("\\iclip(" .. clip:export() .. ")")
+                            ass_clip = clip:export()
                         elseif layer_operations[line_.layer] == "Apply Exi&sting Clip To AutoClip (iclip Subtract)" then
                             local clip = Table.copy(frames[aegisub.frame_from_ms(line_.start_time) - first + 1])
                             clip:difference(clippy)
-                            line_.text.tagsBlocks[1]:insert("\\iclip(" .. clip:export() .. ")")
+                            ass_clip = clip:export()
                         elseif layer_operations[line_.layer] == "Apply iclip &AND" then
                             local clip = clippy
                             clip:intersect(frames[aegisub.frame_from_ms(line_.start_time) - first + 1])
-                            line_.text.tagsBlocks[1]:insert("\\iclip(" .. clip:export() .. ")")
+                            ass_clip = clip:export()
                         elseif layer_operations[line_.layer] == "Apply iclip &XOR" then
                             local clip = clippy
                             clip:exclude(frames[aegisub.frame_from_ms(line_.start_time) - first + 1])
-                            line_.text.tagsBlocks[1]:insert("\\iclip(" .. clip:export() .. ")")
+                            ass_clip = clip:export()
+                        end
+
+                        if ass_clip ~= "" then
+                            line_.text.tagsBlocks[1]:insert("\\iclip(" .. ass_clip .. ")")
                     end end
                 else
                     if line_.data["clip"] then
                         line_.text.tagsBlocks[1]:remove("clip", "iclip")
                     end
 
-                    line_.text.tagsBlocks[1]:insert("\\iclip(" .. frames[aegisub.frame_from_ms(line_.start_time) - first + 1]:export() .. ")")
-            end end
+                    local ass_clip = frames[aegisub.frame_from_ms(line_.start_time) - first + 1]:export()
+
+                    if ass_clip ~= "" then
+                        line_.text.tagsBlocks[1]:insert("\\iclip(" .. ass_clip .. ")")
+            end end end
             ass:insertLine(line_, s) end)
     end
 

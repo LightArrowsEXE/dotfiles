@@ -4,7 +4,7 @@ export script_name =        "Phantom"
 export script_description = "Align line content to match others by adding text and abusing transparency"
 export script_author =      "petzku"
 export script_namespace =   "petzku.Phantom"
-export script_version =     "1.1.1"
+export script_version =     "1.1.2"
 
 -- Currently uses {} as delimiters
 -- e.g. "foo{}bar{}baz" -> "<HIDE>bar<SHOW>foobar<HIDE>baz"
@@ -71,14 +71,15 @@ align_by_cursor = (sub, _sel, act) ->
     main sub, act, cursor_proc
 
 macros = {
-    {script_name.."/Align start", "Keep start of line aligned", align_start},
-    {script_name.."/Align end", "Keep end of line aligned", align_end}
+    {"Align start", "Keep start of line aligned", align_start},
+    {"Align end", "Keep end of line aligned", align_end}
 }
 if aegisub.gui
-    table.insert macros, {script_name.."/By cursor", "Determine sections and alignment from selection", align_by_cursor}
+    table.insert macros, {"By cursor", "Determine sections and alignment from selection", align_by_cursor}
 
 if havedc
     dep\registerMacros macros
 else
     for macro in *macros
+        macro[1] = "#{script_name}/#{macro[1]}"
         aegisub.register_macro unpack macro

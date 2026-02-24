@@ -1,9 +1,1 @@
-{
-  "yAxis": 0,
-  "verticalScale": 100,
-  "angle": 0,
-  "__VERSION__": "2.6.0",
-  "filter": "",
-  "xAxis": 0,
-  "horizontalScale": 100
-}
+{"angle":0,"__VERSION__":"2.6.1","xAxis":0,"filter":"","yAxis":0,"verticalScale":100,"horizontalScale":100}

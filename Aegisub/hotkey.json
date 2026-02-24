@@ -1,291 +1,588 @@
 {
-  "Always": {
-    "audio/commit": ["KP_Enter"],
-    "audio/play/selection": ["KP_5"],
-    "audio/play/selection/after": ["KP_3"],
-    "audio/play/selection/before": ["KP_1"],
-    "audio/stop": ["KP_8"],
-    "automation/lua/petzku.ToggleTemplates/:: Hotkeys/Toggle Templates": [
-      "Ctrl-/"
-    ],
-    "time/length/decrease": ["KP_7"],
-    "time/length/increase": ["KP_9"],
-    "time/next": ["KP_2"],
-    "time/prev": ["KP_0"],
-    "time/start/decrease": ["KP_4"],
-    "time/start/increase": ["KP_6"]
-  },
-  "Audio": {
-    "app/toggle/global_hotkeys": ["Ctrl-KP_Multiply"],
-    "audio/commit": ["Enter", "G"],
-    "audio/commit/default": ["Shift-G"],
-    "audio/play/line": ["R"],
-    "audio/play/selection": ["S", "Space"],
-    "audio/play/selection/after": ["W"],
-    "audio/play/selection/before": ["Q"],
-    "audio/play/selection/begin": ["E"],
-    "audio/play/selection/end": ["D"],
-    "audio/play/to_end": ["T"],
-    "audio/play/toggle": ["B"],
-    "audio/scroll/left": ["A"],
-    "audio/scroll/right": ["F"],
-    "audio/stop": ["H"],
-    "automation/lua/0x.KaraTemplater/:: Hotkeys/0x539's Templater": [
-      "Ctrl-Alt-Backspace"
-    ],
-    "automation/lua/0x.KaraTemplater/:: Hotkeys/Remove generated fx": [
-      "Ctrl-Shift-Backspace"
-    ],
-    "automation/lua/phos.TimingAssistant/:: Hotkeys/Timing Assistant/Time": [
-      "F"
-    ],
-    "time/lead/in": ["C"],
-    "time/lead/out": ["V"],
-    "time/length/decrease": ["KP_Subtract"],
-    "time/length/decrease/shift": ["Shift-KP_Subtract"],
-    "time/length/increase": ["KP_Add"],
-    "time/length/increase/shift": ["Shift-KP_Add"],
-    "time/next": ["Right", "X"],
-    "time/prev": ["Left", "Z"]
-  },
-  "Default": {
-    "app/exit": ["Ctrl-Q"],
-    "app/options": ["Alt-O"],
-    "automation/lua/lightarrowsexe.tagstripper/:: Hotkeys/TagStripper": [
-      "Ctrl-Shift-E"
-    ],
-    "automation/lua/lightarrowsexe.weebswap/:: Hotkeys/WeebSwap/Presets/Default [*]": [
-      "Ctrl-Alt-O"
-    ],
-    "automation/lua/ua.Recalculator/:: Hotkeys/Recalculator": ["Ctrl-Shift-R"],
-    "edit/find_replace": ["Ctrl-H"],
-    "edit/line/copy": ["Ctrl-C"],
-    "edit/line/cut": ["Ctrl-X"],
-    "edit/line/delete": ["Ctrl-Delete"],
-    "edit/line/paste": ["Ctrl-V"],
-    "edit/line/paste/over": ["Ctrl-Shift-V"],
-    "edit/line/split/after": ["Ctrl-Shift-D"],
-    "edit/line/split/before": ["Ctrl-D"],
-    "edit/redo": ["Ctrl-Y"],
-    "edit/undo": ["Ctrl-Z"],
-    "grid/line/next": ["Ctrl-KP_2"],
-    "grid/line/prev": ["Ctrl-KP_8"],
-    "grid/move/down": ["Alt-Down"],
-    "grid/move/up": ["Alt-Up"],
-    "help/contents": ["F1"],
-    "recent/subtitle/0": ["F5"],
-    "subtitle/find": ["Ctrl-F"],
-    "subtitle/find/next": ["F3"],
-    "subtitle/new": ["Ctrl-N"],
-    "subtitle/open": ["Ctrl-O"],
-    "subtitle/save": ["Ctrl-S", "F2"],
-    "subtitle/save/as": ["Ctrl-Shift-S"],
-    "time/frame/current": ["Ctrl-6"],
-    "time/shift": ["Ctrl-I"],
-    "time/snap/scene": ["Ctrl-5"],
-    "video/focus_seek": ["Ctrl-Space"],
-    "video/frame/next": ["Ctrl-KP_6"],
-    "video/frame/prev": ["Ctrl-KP_4"],
-    "video/jump": ["Ctrl-G"],
-    "video/jump/end": ["Ctrl-2"],
-    "video/jump/start": ["Ctrl-1"],
-    "video/pan_reset": ["Escape"],
-    "video/play": ["Ctrl-P"],
-    "video/zoom/in": ["Ctrl-KP_Add"],
-    "video/zoom/out": ["Ctrl-KP_Subtract"]
-  },
-  "Styling Assistant": {
-    "audio/play/selection": ["End"],
-    "grid/line/next": ["PageDown"],
-    "grid/line/prev": ["PageUp"],
-    "tool/styling_assistant/commit": ["Enter", "KP_Enter"],
-    "tool/styling_assistant/preview": ["F8"],
-    "video/play/line": ["Home"]
-  },
-  "Subtitle Edit Box": {
-    "automation/lua/0x.KaraTemplater/:: Hotkeys/0x539's Templater": [
-      "Ctrl-Alt-Backspace"
-    ],
-    "automation/lua/0x.KaraTemplater/:: Hotkeys/Remove generated fx": [
-      "Ctrl-Shift-Backspace"
-    ],
-    "automation/lua/ILL.Shapery/:: Hotkeys/: Shapery macros :/Clip to shape": [
-      "Ctrl-M"
-    ],
-    "automation/lua/ILL.Shapery/:: Hotkeys/: Shapery macros :/Shape clipper": [
-      "F12"
-    ],
-    "automation/lua/ILL.Shapery/:: Hotkeys/: Shapery macros :/Shape expand": [
-      "F6"
-    ],
-    "automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Manipulate": ["F8"],
-    "automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Offsetting": ["F7"],
-    "automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Pathfinder": ["F10"],
-    "automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Transform": ["F9"],
-    "automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Utilities": ["F11"],
-    "automation/lua/arch.AegisubChain/:: Hotkeys/AegisubChain Chains/Util/Apply shadtrick": [
-      "Ctrl-Q"
-    ],
-    "automation/lua/l0.ASSWipe/:: Post-Validation/ASSWipe": ["Ctrl-Shift-A"],
-    "automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Down (+1)": [
-      "Ctrl-Alt-Down",
-      "Ctrl-Alt-Down"
-    ],
-    "automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Left (-1)": [
-      "Ctrl-Alt-Left"
-    ],
-    "automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Right (+1)": [
-      "Ctrl-Alt-Right"
-    ],
-    "automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Up (-1)": [
-      "Ctrl-Alt-Up"
-    ],
-    "automation/lua/petzku.SplitTimer/SplitTimer/N frames...": ["Ctrl-Shift-H"],
-    "automation/lua/petzku.ToggleTemplates/:: Hotkeys/Toggle Templates": [
-      "Ctrl-/"
-    ],
-    "automation/lua/ua.Selectrix/:: Uncommonly Used/Selectricks": [
-      "Ctrl-Shift-H"
-    ],
-    "edit/color/outline": ["Alt-3"],
-    "edit/color/primary": ["Alt-1"],
-    "edit/color/secondary": ["Alt-2"],
-    "edit/color/shadow": ["Alt-4"],
-    "grid/line/next/create": ["Enter", "KP_Enter"]
-  },
-  "Subtitle Grid": {
-    "automation/lua/0x.KaraTemplater/:: Hotkeys/0x539's Templater": [
-      "Ctrl-Alt-Backspace"
-    ],
-    "automation/lua/0x.KaraTemplater/:: Hotkeys/Remove generated fx": [
-      "Ctrl-Shift-Backspace"
-    ],
-    "automation/lua/ILL.Shapery/:: Hotkeys/: Shapery macros :/Shape clipper": [
-      "F12"
-    ],
-    "automation/lua/ILL.Shapery/:: Hotkeys/: Shapery macros :/Shape expand": [
-      "F6"
-    ],
-    "automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Manipulate": ["F8"],
-    "automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Offsetting": ["F7"],
-    "automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Pathfinder": ["F10"],
-    "automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Transform": ["F9"],
-    "automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Utilities": ["F11"],
-    "automation/lua/arch.AegisubChain/:: Hotkeys/AegisubChain Chains/Gradient (All)": [
-      "Ctrl-Shift-F"
-    ],
-    "automation/lua/arch.AegisubChain/:: Hotkeys/AegisubChain Chains/Util/Apply shadtrick": [
-      "Ctrl-Q"
-    ],
-    "automation/lua/arch.AegisubChain/:: Hotkeys/AegisubChain Chains/Util/Toggle Comments": [
-      "Ctrl-/"
-    ],
-    "automation/lua/l0.ASSWipe/:: Post-Validation/ASSWipe": ["Ctrl-Shift-A"],
-    "automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Down (+1)": [
-      "Ctrl-Alt-Down"
-    ],
-    "automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Left (-1)": [
-      "Ctrl-Alt-Left"
-    ],
-    "automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Right (+1)": [
-      "Ctrl-Alt-Right"
-    ],
-    "automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Up (-1)": [
-      "Ctrl-Alt-Up"
-    ],
-    "automation/lua/petzku.SplitTimer/SplitTimer/N frames...": ["Ctrl-Shift-H"],
-    "automation/lua/petzku.ToggleTemplates/:: Hotkeys/Toggle Templates": [
-      "Ctrl-/"
-    ],
-    "automation/lua/phos.TimingAssistant/:: Hotkeys/Timing Assistant/Time": [
-      "F"
-    ],
-    "edit/line/join/keep_first": ["Alt-J"],
-    "grid/fold/toggle": ["Enter"],
-    "subtitle/select/all": ["Ctrl-A"],
-    "time/align": ["KP_TAB"],
-    "time/snap/end_video": ["]"],
-    "time/snap/start_video": ["["],
-    "video/frame/next": ["Right"],
-    "video/frame/next/boundary": ["Ctrl-Right"],
-    "video/frame/next/keyframe": ["Shift-Right"],
-    "video/frame/next/large": ["Alt-Right"],
-    "video/frame/prev": ["Left"],
-    "video/frame/prev/boundary": ["Ctrl-Left"],
-    "video/frame/prev/keyframe": ["Shift-Left"],
-    "video/frame/prev/large": ["Alt-Left"]
-  },
-  "Translation Assistant": {
-    "audio/play/selection": ["End"],
-    "tool/translation_assistant/commit": ["Enter", "KP_Enter"],
-    "tool/translation_assistant/insert_original": ["Insert"],
-    "tool/translation_assistant/next": ["PageDown"],
-    "tool/translation_assistant/prev": ["PageUp"],
-    "tool/translation_assistant/preview": ["F8"],
-    "video/play/line": ["Home"]
-  },
-  "Video": {
-    "automation/lua/0x.KaraTemplater/:: Hotkeys/0x539's Templater": [
-      "Ctrl-Alt-Backspace"
-    ],
-    "automation/lua/0x.KaraTemplater/:: Hotkeys/Remove generated fx": [
-      "Ctrl-Shift-Backspace"
-    ],
-    "automation/lua/ILL.Shapery/:: Hotkeys/: Shapery macros :/Clip to shape": [
-      "Ctrl-M"
-    ],
-    "automation/lua/ILL.Shapery/:: Hotkeys/: Shapery macros :/Shape clipper": [
-      "F12"
-    ],
-    "automation/lua/ILL.Shapery/:: Hotkeys/: Shapery macros :/Shape expand": [
-      "F6"
-    ],
-    "automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Manipulate": ["F8"],
-    "automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Offsetting": ["F7"],
-    "automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Pathfinder": ["F10"],
-    "automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Transform": ["F9"],
-    "automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Utilities": ["F11"],
-    "automation/lua/arch.AegisubChain/:: Hotkeys/AegisubChain Chains/Util/Apply shadtrick": [
-      "Ctrl-Q"
-    ],
-    "automation/lua/l0.ASSWipe/:: Post-Validation/ASSWipe": ["Ctrl-Shift-A"],
-    "automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Down (+1)": [
-      "Ctrl-Alt-Down"
-    ],
-    "automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Left (-1)": [
-      "Ctrl-Alt-Left"
-    ],
-    "automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Right (+1)": [
-      "Ctrl-Alt-Right"
-    ],
-    "automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Up (-1)": [
-      "Ctrl-Alt-Up"
-    ],
-    "automation/lua/petzku.SplitTimer/SplitTimer/N frames...": ["Ctrl-Shift-H"],
-    "automation/lua/petzku.ToggleTemplates/:: Hotkeys/Toggle Templates": [
-      "Ctrl-/"
-    ],
-    "automation/lua/phos.TimingAssistant/:: Hotkeys/Timing Assistant/Time": [
-      "F"
-    ],
-    "time/align": ["KP_TAB"],
-    "time/snap/end_video": ["]"],
-    "time/snap/start_video": ["["],
-    "video/frame/next": ["Right"],
-    "video/frame/next/boundary": ["Ctrl-Right"],
-    "video/frame/next/keyframe": ["Shift-Right"],
-    "video/frame/next/large": ["Alt-Right"],
-    "video/frame/prev": ["Left"],
-    "video/frame/prev/boundary": ["Ctrl-Left"],
-    "video/frame/prev/keyframe": ["Shift-Left"],
-    "video/frame/prev/large": ["Alt-Left"],
-    "video/tool/clip": ["J"],
-    "video/tool/cross": ["A"],
-    "video/tool/drag": ["S"],
-    "video/tool/perspective": ["G"],
-    "video/tool/rotate/xy": ["F"],
-    "video/tool/rotate/z": ["D"],
-    "video/tool/scale": ["H"],
-    "video/tool/vector_clip": ["K"]
-  }
+	"Always" : {
+		"audio/commit" : [
+			"KP_Enter"
+		],
+		"audio/play/selection" : [
+			"KP_5"
+		],
+		"audio/play/selection/after" : [
+			"KP_3"
+		],
+		"audio/play/selection/before" : [
+			"KP_1"
+		],
+		"audio/stop" : [
+			"KP_8"
+		],
+		"automation/lua/petzku.ToggleTemplates/:: Hotkeys/Toggle Templates" : [
+			"Ctrl-/"
+		],
+		"time/length/decrease" : [
+			"KP_7"
+		],
+		"time/length/increase" : [
+			"KP_9"
+		],
+		"time/next" : [
+			"KP_2"
+		],
+		"time/prev" : [
+			"KP_0"
+		],
+		"time/start/decrease" : [
+			"KP_4"
+		],
+		"time/start/increase" : [
+			"KP_6"
+		]
+	},
+	"Audio" : {
+		"app/toggle/global_hotkeys" : [
+			"Ctrl-KP_Multiply"
+		],
+		"audio/commit" : [
+			"Enter",
+			"G"
+		],
+		"audio/commit/default" : [
+			"Shift-G"
+		],
+		"audio/play/line" : [
+			"R"
+		],
+		"audio/play/selection" : [
+			"S",
+			"Space"
+		],
+		"audio/play/selection/after" : [
+			"W"
+		],
+		"audio/play/selection/before" : [
+			"Q"
+		],
+		"audio/play/selection/begin" : [
+			"E"
+		],
+		"audio/play/selection/end" : [
+			"D"
+		],
+		"audio/play/to_end" : [
+			"T"
+		],
+		"audio/play/toggle" : [
+			"B"
+		],
+		"audio/scroll/left" : [
+			"A"
+		],
+		"audio/scroll/right" : [
+			"F"
+		],
+		"audio/stop" : [
+			"H"
+		],
+		"automation/lua/0x.KaraTemplater/0x539's Templater" : [
+			"Ctrl-Alt-Backspace"
+		],
+		"automation/lua/0x.KaraTemplater/Remove generated fx" : [
+			"Ctrl-Shift-Backspace"
+		],
+		"automation/lua/phos.TimingAssistant/:: Hotkeys/Timing Assistant/Time" : [
+			"F"
+		],
+		"time/lead/in" : [
+			"C"
+		],
+		"time/lead/out" : [
+			"V"
+		],
+		"time/length/decrease" : [
+			"KP_Subtract"
+		],
+		"time/length/decrease/shift" : [
+			"Shift-KP_Subtract"
+		],
+		"time/length/increase" : [
+			"KP_Add"
+		],
+		"time/length/increase/shift" : [
+			"Shift-KP_Add"
+		],
+		"time/next" : [
+			"Right",
+			"X"
+		],
+		"time/prev" : [
+			"Left",
+			"Z"
+		]
+	},
+	"Default" : {
+		"app/exit" : [
+			"Ctrl-Q"
+		],
+		"app/options" : [
+			"Alt-O"
+		],
+		"automation/lua/lightarrowsexe.tagstripper/:: Hotkeys/TagStripper" : [
+			"Ctrl-Shift-E"
+		],
+		"automation/lua/lightarrowsexe.weebswap/:: Hotkeys/WeebSwap/Presets/Default [*]" : [
+			"Ctrl-Alt-O"
+		],
+		"automation/lua/ua.Recalculator/:: Hotkeys/Recalculator" : [
+			"Ctrl-Shift-R"
+		],
+		"edit/find_replace" : [
+			"Ctrl-H"
+		],
+		"edit/line/copy" : [
+			"Ctrl-C"
+		],
+		"edit/line/cut" : [
+			"Ctrl-X"
+		],
+		"edit/line/delete" : [
+			"Ctrl-Delete"
+		],
+		"edit/line/paste" : [
+			"Ctrl-V"
+		],
+		"edit/line/paste/over" : [
+			"Ctrl-Shift-V"
+		],
+		"edit/line/split/after" : [
+			"Ctrl-Shift-D"
+		],
+		"edit/line/split/before" : [
+			"Ctrl-D"
+		],
+		"edit/redo" : [
+			"Ctrl-Y"
+		],
+		"edit/undo" : [
+			"Ctrl-Z"
+		],
+		"grid/line/next" : [
+			"Ctrl-KP_2"
+		],
+		"grid/line/prev" : [
+			"Ctrl-KP_8"
+		],
+		"grid/move/down" : [
+			"Alt-Down"
+		],
+		"grid/move/up" : [
+			"Alt-Up"
+		],
+		"help/contents" : [
+			"F1"
+		],
+		"recent/subtitle/0" : [
+			"F5"
+		],
+		"subtitle/find" : [
+			"Ctrl-F"
+		],
+		"subtitle/find/next" : [
+			"F3"
+		],
+		"subtitle/new" : [
+			"Ctrl-N"
+		],
+		"subtitle/open" : [
+			"Ctrl-O"
+		],
+		"subtitle/save" : [
+			"Ctrl-S",
+			"F2"
+		],
+		"subtitle/save/as" : [
+			"Ctrl-Shift-S"
+		],
+		"time/frame/current" : [
+			"Ctrl-6"
+		],
+		"time/shift" : [
+			"Ctrl-I"
+		],
+		"time/snap/scene" : [
+			"Ctrl-5"
+		],
+		"video/focus_seek" : [
+			"Ctrl-Space"
+		],
+		"video/frame/next" : [
+			"Ctrl-KP_6"
+		],
+		"video/frame/prev" : [
+			"Ctrl-KP_4"
+		],
+		"video/jump" : [
+			"Ctrl-G"
+		],
+		"video/jump/end" : [
+			"Ctrl-2"
+		],
+		"video/jump/start" : [
+			"Ctrl-1"
+		],
+		"video/play" : [
+			"Ctrl-P"
+		],
+		"video/reset_pan" : [
+			"Escape"
+		],
+		"video/zoom/in" : [
+			"Ctrl-KP_Add"
+		],
+		"video/zoom/out" : [
+			"Ctrl-KP_Subtract"
+		]
+	},
+	"Styling Assistant" : {
+		"audio/play/selection" : [
+			"End"
+		],
+		"grid/line/next" : [
+			"PageDown"
+		],
+		"grid/line/prev" : [
+			"PageUp"
+		],
+		"tool/styling_assistant/commit" : [
+			"Enter",
+			"KP_Enter"
+		],
+		"tool/styling_assistant/preview" : [
+			"F8"
+		],
+		"video/play/line" : [
+			"Home"
+		]
+	},
+	"Subtitle Edit Box" : {
+		"automation/lua/0x.KaraTemplater/0x539's Templater" : [
+			"Ctrl-Alt-Backspace"
+		],
+		"automation/lua/0x.KaraTemplater/Remove generated fx" : [
+			"Ctrl-Shift-Backspace"
+		],
+		"automation/lua/ILL.Shapery/:: Hotkeys/: Shapery macros :/Clip to shape" : [
+			"Ctrl-M"
+		],
+		"automation/lua/ILL.Shapery/:: Hotkeys/: Shapery macros :/Shape clipper" : [
+			"F12"
+		],
+		"automation/lua/ILL.Shapery/:: Hotkeys/: Shapery macros :/Shape expand" : [
+			"F6"
+		],
+		"automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Manipulate" : [
+			"F8"
+		],
+		"automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Offsetting" : [
+			"F7"
+		],
+		"automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Pathfinder" : [
+			"F10"
+		],
+		"automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Transform" : [
+			"F9"
+		],
+		"automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Utilities" : [
+			"F11"
+		],
+		"automation/lua/arch.AegisubChain/:: Hotkeys/AegisubChain Chains/Util/Apply shadtrick" : [
+			"Ctrl-Q"
+		],
+		"automation/lua/l0.ASSWipe/:: Post-Validation/ASSWipe" : [
+			"Ctrl-Alt-Shift-A"
+		],
+		"automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Down (+1)" : [
+			"Ctrl-Alt-Down",
+			"Ctrl-Alt-Down"
+		],
+		"automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Left (-1)" : [
+			"Ctrl-Alt-Left"
+		],
+		"automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Right (+1)" : [
+			"Ctrl-Alt-Right"
+		],
+		"automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Up (-1)" : [
+			"Ctrl-Alt-Up"
+		],
+		"automation/lua/petzku.SplitTimer/SplitTimer/N frames..." : [
+			"Ctrl-Shift-H"
+		],
+		"automation/lua/petzku.ToggleTemplates/:: Hotkeys/Toggle Templates" : [
+			"Ctrl-/"
+		],
+		"automation/lua/ua.Selectrix/:: Uncommonly Used/Selectricks" : [
+			"Ctrl-Shift-H"
+		],
+		"edit/color/outline" : [
+			"Alt-3"
+		],
+		"edit/color/primary" : [
+			"Alt-1"
+		],
+		"edit/color/secondary" : [
+			"Alt-2"
+		],
+		"edit/color/shadow" : [
+			"Alt-4"
+		],
+		"grid/line/next/create" : [
+			"Enter",
+			"KP_Enter"
+		]
+	},
+	"Subtitle Grid" : {
+		"automation/lua/0x.KaraTemplater/0x539's Templater" : [
+			"Ctrl-Alt-Backspace"
+		],
+		"automation/lua/0x.KaraTemplater/Remove generated fx" : [
+			"Ctrl-Shift-Backspace"
+		],
+		"automation/lua/ILL.Shapery/:: Hotkeys/: Shapery macros :/Shape clipper" : [
+			"F12"
+		],
+		"automation/lua/ILL.Shapery/:: Hotkeys/: Shapery macros :/Shape expand" : [
+			"F6"
+		],
+		"automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Manipulate" : [
+			"F8"
+		],
+		"automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Offsetting" : [
+			"F7"
+		],
+		"automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Pathfinder" : [
+			"F10"
+		],
+		"automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Transform" : [
+			"F9"
+		],
+		"automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Utilities" : [
+			"F11"
+		],
+		"automation/lua/arch.AegisubChain/:: Hotkeys/AegisubChain Chains/Gradient (All)" : [
+			"Ctrl-Shift-F"
+		],
+		"automation/lua/arch.AegisubChain/:: Hotkeys/AegisubChain Chains/Util/Apply shadtrick" : [
+			"Ctrl-Q"
+		],
+		"automation/lua/arch.AegisubChain/:: Hotkeys/AegisubChain Chains/Util/Toggle Comments" : [
+			"Ctrl-/"
+		],
+		"automation/lua/l0.ASSWipe/:: Post-Validation/ASSWipe" : [
+			"Ctrl-Alt-Shift-A"
+		],
+		"automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Down (+1)" : [
+			"Ctrl-Alt-Down"
+		],
+		"automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Left (-1)" : [
+			"Ctrl-Alt-Left"
+		],
+		"automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Right (+1)" : [
+			"Ctrl-Alt-Right"
+		],
+		"automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Up (-1)" : [
+			"Ctrl-Alt-Up"
+		],
+		"automation/lua/petzku.SplitTimer/SplitTimer/N frames..." : [
+			"Ctrl-Shift-H"
+		],
+		"automation/lua/petzku.ToggleTemplates/:: Hotkeys/Toggle Templates" : [
+			"Ctrl-/"
+		],
+		"automation/lua/phos.TimingAssistant/:: Hotkeys/Timing Assistant/Time" : [
+			"F"
+		],
+		"edit/line/join/concatenate" : [
+			"Ctrl-J"
+		],
+		"edit/line/join/keep_first" : [
+			"Alt-J"
+		],
+		"grid/fold/toggle" : [
+			"Enter"
+		],
+		"subtitle/select/all" : [
+			"Ctrl-A"
+		],
+		"time/align" : [
+			"KP_TAB"
+		],
+		"time/snap/end_video" : [
+			"]"
+		],
+		"time/snap/start_video" : [
+			"["
+		],
+		"video/frame/next" : [
+			"Right"
+		],
+		"video/frame/next/boundary" : [
+			"Ctrl-Right"
+		],
+		"video/frame/next/keyframe" : [
+			"Shift-Right"
+		],
+		"video/frame/next/large" : [
+			"Alt-Right"
+		],
+		"video/frame/prev" : [
+			"Left"
+		],
+		"video/frame/prev/boundary" : [
+			"Ctrl-Left"
+		],
+		"video/frame/prev/keyframe" : [
+			"Shift-Left"
+		],
+		"video/frame/prev/large" : [
+			"Alt-Left"
+		]
+	},
+	"Translation Assistant" : {
+		"audio/play/selection" : [
+			"End"
+		],
+		"tool/translation_assistant/commit" : [
+			"Enter",
+			"KP_Enter"
+		],
+		"tool/translation_assistant/insert_original" : [
+			"Insert"
+		],
+		"tool/translation_assistant/next" : [
+			"PageDown"
+		],
+		"tool/translation_assistant/prev" : [
+			"PageUp"
+		],
+		"tool/translation_assistant/preview" : [
+			"F8"
+		],
+		"video/play/line" : [
+			"Home"
+		]
+	},
+	"Video" : {
+		"automation/lua/0x.KaraTemplater/0x539's Templater" : [
+			"Ctrl-Alt-Backspace"
+		],
+		"automation/lua/0x.KaraTemplater/Remove generated fx" : [
+			"Ctrl-Shift-Backspace"
+		],
+		"automation/lua/ILL.Shapery/:: Hotkeys/: Shapery macros :/Clip to shape" : [
+			"Ctrl-M"
+		],
+		"automation/lua/ILL.Shapery/:: Hotkeys/: Shapery macros :/Shape clipper" : [
+			"F12"
+		],
+		"automation/lua/ILL.Shapery/:: Hotkeys/: Shapery macros :/Shape expand" : [
+			"F6"
+		],
+		"automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Manipulate" : [
+			"F8"
+		],
+		"automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Offsetting" : [
+			"F7"
+		],
+		"automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Pathfinder" : [
+			"F10"
+		],
+		"automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Transform" : [
+			"F9"
+		],
+		"automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Utilities" : [
+			"F11"
+		],
+		"automation/lua/arch.AegisubChain/:: Hotkeys/AegisubChain Chains/Util/Apply shadtrick" : [
+			"Ctrl-Q"
+		],
+		"automation/lua/l0.ASSWipe/:: Post-Validation/ASSWipe" : [
+			"Ctrl-Alt-Shift-A"
+		],
+		"automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Down (+1)" : [
+			"Ctrl-Alt-Down"
+		],
+		"automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Left (-1)" : [
+			"Ctrl-Alt-Left"
+		],
+		"automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Right (+1)" : [
+			"Ctrl-Alt-Right"
+		],
+		"automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Up (-1)" : [
+			"Ctrl-Alt-Up"
+		],
+		"automation/lua/petzku.SplitTimer/SplitTimer/N frames..." : [
+			"Ctrl-Shift-H"
+		],
+		"automation/lua/petzku.ToggleTemplates/:: Hotkeys/Toggle Templates" : [
+			"Ctrl-/"
+		],
+		"automation/lua/phos.TimingAssistant/:: Hotkeys/Timing Assistant/Time" : [
+			"F"
+		],
+		"time/align" : [
+			"KP_TAB"
+		],
+		"time/snap/end_video" : [
+			"]"
+		],
+		"time/snap/start_video" : [
+			"["
+		],
+		"video/frame/next" : [
+			"Right"
+		],
+		"video/frame/next/boundary" : [
+			"Ctrl-Right"
+		],
+		"video/frame/next/keyframe" : [
+			"Shift-Right"
+		],
+		"video/frame/next/large" : [
+			"Alt-Right"
+		],
+		"video/frame/prev" : [
+			"Left"
+		],
+		"video/frame/prev/boundary" : [
+			"Ctrl-Left"
+		],
+		"video/frame/prev/keyframe" : [
+			"Shift-Left"
+		],
+		"video/frame/prev/large" : [
+			"Alt-Left"
+		],
+		"video/tool/clip" : [
+			"J"
+		],
+		"video/tool/cross" : [
+			"A"
+		],
+		"video/tool/drag" : [
+			"S"
+		],
+		"video/tool/perspective" : [
+			"G"
+		],
+		"video/tool/rotate/xy" : [
+			"F"
+		],
+		"video/tool/rotate/z" : [
+			"D"
+		],
+		"video/tool/scale" : [
+			"H"
+		],
+		"video/tool/vector_clip" : [
+			"K"
+		]
+	}
 }

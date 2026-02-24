@@ -31,7 +31,7 @@
 				"string" : "duplicate -> split"
 			}
 		],
-		"Language" : "en",
+		"Language" : "en_US",
 		"Maximized" : true,
 		"Save Charset" : "UTF-8",
 		"Save UI State" : false,
@@ -40,7 +40,7 @@
 	},
 	"Audio" : {
 		"Auto" : {
-			"Commit" : false,
+			"Commit" : true,
 			"Focus" : false,
 			"Scroll" : true
 		},
@@ -69,7 +69,7 @@
 			},
 			"Waveform Style" : 0
 		},
-		"Display Height" : 198,
+		"Display Height" : 197,
 		"Downmixer" : "ConvertToMono",
 		"Drag Timing" : true,
 		"Inactive Lines Display Mode" : 3,
@@ -106,11 +106,11 @@
 		"Track Cursor" : {
 			"Font Face" : ""
 		},
-		"Volume" : 45,
+		"Volume" : 56,
 		"Wheel Default to Zoom" : false,
 		"Zoom" : {
-			"Horizontal" : 19,
-			"Vertical" : 90
+			"Horizontal" : 16,
+			"Vertical" : 77
 		}
 	},
 	"Automation" : {
@@ -321,12 +321,12 @@
 			"Include" : "?user/automation/include/|?data/automation/include/"
 		},
 		"Dictionary" : "?user/dictionaries",
-		"Fonts Collector Destination" : "?script\\fonts",
+		"Fonts Collector Destination" : "?script/fonts",
 		"Last" : {
 			"Audio" : "",
 			"Automation" : "",
 			"Keyframes" : "",
-			"Subtitles" : "C:\\Users\\light\\Videos\\Fansubs\\Kaleido\\summer-pockets\\13",
+			"Subtitles" : "C:\\Users\\light\\Videos\\Fansubs\\Kaleido\\mahou-shoujo-lyrical-nanoha\\S02\\08",
 			"Timecodes" : "",
 			"Video" : ""
 		},
@@ -354,26 +354,13 @@
 			"AVS" : {
 				"Sample Rate" : 0
 			},
-			"BestSource" : {
-				"Aegisub Cache" : true,
-				"Max Cache Size" : 100
-			},
 			"FFmpegSource" : {
-				"Decode Error Handling" : "ignore",
-				"Downmix" : false
-			},
-			"VapourSynth" : {
-				"Default Script" : "# This default script will load an audio file using BestSource.\n# It requires the `bs` plugin.\n\nimport vapoursynth as vs\nimport aegisub_vs as a\na.set_paths(locals())\n\na.ensure_plugin(\"bs\", \"BestSource\", \"To use Aegisub's default audio loader, the `bs` plugin for VapourSynth must be installed\")\nvs.core.bs.AudioSource(source=filename).set_output()"
+				"Decode Error Handling" : "ignore"
 			}
 		},
 		"Avisynth" : {
+			"Allow Ancient" : false,
 			"Memory Max" : 1024
-		},
-		"BestSource" : {
-			"Cache" : {
-				"Files" : 100,
-				"Size" : 42
-			}
 		},
 		"FFmpegSource" : {
 			"Cache" : {
@@ -383,30 +370,13 @@
 			"Index All Tracks" : true,
 			"Log Level" : "quiet"
 		},
-		"VapourSynth" : {
-			"Autoload User Plugins" : false,
-			"Cache" : {
-				"Files" : 500,
-				"Size" : 1000
-			}
-		},
 		"Video" : {
-			"BestSource" : {
-				"Apply RFF" : true,
-				"Max Cache Size" : 1024,
-				"Seek Preroll" : 12,
-				"Threads" : 0
-			},
 			"Cache" : {
 				"Size" : 32
 			},
 			"FFmpegSource" : {
 				"Decoding Threads" : -1,
 				"Unsafe Seeking" : false
-			},
-			"VapourSynth" : {
-				"Default Script" : "# This default script will load a video file using LWLibavSource.\n# It requires the `lsmas` plugin.\n# See ?data/automation/vapoursynth/aegisub_vs.py for more information.\n\nimport vapoursynth as vs\nimport time\nimport aegisub_vs as a\na.set_paths(locals())\n\nclip, videoinfo = a.wrap_lwlibavsource(filename)\nclip.set_output()\n__aegi_timecodes = videoinfo[\"timecodes\"]\n__aegi_keyframes = videoinfo[\"keyframes\"]\n\n# Uncomment this line to make Aegisub look for a keyframes file for the video, or ask to detect keyframes on scene changes if no file was found.\n# You can also change the GenKeyframesMode. Valid values are NEVER, ALWAYS, and ASK.\n#__aegi_keyframes = a.get_keyframes(filename, clip, __aegi_keyframes, generate=a.GenKeyframesMode.ASK)\n\n# Check if the file has an audio track. This requires the `bs` plugin.\n__aegi_hasaudio = 1 if a.check_audio(filename) else 0",
-				"Log Level" : "Information"
 			}
 		}
 	},
@@ -486,116 +456,111 @@
 		"Default Duration" : 3000
 	},
 	"Tool" : {
-		"Align to Video" : {
-			"Maximized" : true,
-			"Tolerance" : 20
-		},
 		"Colour Picker" : {
 			"Last" : {
-				"X" : -1,
-				"Y" : -1
+				"X" : 550,
+				"Y" : 718
 			},
 			"Maximized" : false,
 			"Mode" : 4,
 			"Recent Colours" : [
 				{
-					"color" : "rgb(110, 110, 104)"
+					"color" : "rgb(0, 170, 146)"
 				},
 				{
-					"color" : "rgb(175, 185, 190)"
+					"color" : "rgb(5, 154, 155)"
 				},
 				{
-					"color" : "rgb(186, 193, 200)"
+					"color" : "rgb(255, 255, 255)"
 				},
 				{
-					"color" : "rgb(223, 233, 239)"
+					"color" : "rgb(255, 255, 255)"
 				},
 				{
-					"color" : "rgb(245, 249, 254)"
+					"color" : "rgb(253, 251, 239)"
 				},
 				{
-					"color" : "rgb(94, 97, 90)"
+					"color" : "rgb(16, 54, 228)"
 				},
 				{
-					"color" : "rgb(64, 60, 69)"
+					"color" : "rgb(4, 248, 1)"
 				},
 				{
-					"color" : "rgb(64, 60, 69)"
+					"color" : "rgb(255, 54, 20)"
 				},
 				{
-					"color" : "rgb(105, 112, 121)"
+					"color" : "rgb(165, 254, 234)"
 				},
 				{
-					"color" : "rgb(131, 141, 147)"
+					"color" : "rgb(249, 0, 0)"
 				},
 				{
-					"color" : "rgb(144, 156, 162)"
+					"color" : "rgb(249, 0, 0)"
 				},
 				{
-					"color" : "rgb(187, 199, 208)"
+					"color" : "rgb(232, 98, 97)"
 				},
 				{
-					"color" : "rgb(231, 241, 251)"
+					"color" : "rgb(232, 98, 97)"
 				},
 				{
-					"color" : "rgb(74, 69, 86)"
+					"color" : "rgb(255, 216, 0)"
 				},
 				{
-					"color" : "rgb(78, 59, 50)"
+					"color" : "rgb(14, 255, 0)"
 				},
 				{
-					"color" : "rgb(80, 62, 48)"
+					"color" : "rgb(250, 250, 250)"
 				},
 				{
-					"color" : "rgb(30, 23, 18)"
+					"color" : "rgb(35, 39, 43)"
 				},
 				{
-					"color" : "rgb(122, 101, 106)"
+					"color" : "rgb(246, 247, 247)"
 				},
 				{
-					"color" : "rgb(78, 59, 50)"
+					"color" : "rgb(245, 211, 78)"
 				},
 				{
-					"color" : "rgb(78, 59, 50)"
+					"color" : "rgb(247, 208, 91)"
 				},
 				{
-					"color" : "rgb(255, 211, 105)"
+					"color" : "rgb(160, 108, 47)"
 				},
 				{
-					"color" : "rgb(193, 172, 81)"
+					"color" : "rgb(177, 28, 27)"
 				},
 				{
-					"color" : "rgb(255, 211, 105)"
-				},
-				{
-					"color" : "rgb(78, 59, 50)"
-				},
-				{
-					"color" : "rgb(78, 59, 50)"
-				},
-				{
-					"color" : "rgb(201, 180, 81)"
-				},
-				{
-					"color" : "rgb(100, 84, 83)"
-				},
-				{
-					"color" : "rgb(116, 96, 88)"
-				},
-				{
-					"color" : "rgb(193, 167, 74)"
+					"color" : "rgb(27, 40, 177)"
 				},
 				{
 					"color" : "rgb(0, 0, 0)"
 				},
 				{
-					"color" : "rgb(255, 0, 0)"
+					"color" : "rgb(0, 0, 0)"
 				},
 				{
-					"color" : "rgb(255, 255, 0)"
+					"color" : "rgb(0, 65, 86)"
+				},
+				{
+					"color" : "rgb(246, 209, 43)"
+				},
+				{
+					"color" : "rgb(253, 250, 202)"
+				},
+				{
+					"color" : "rgb(207, 160, 24)"
+				},
+				{
+					"color" : "rgb(251, 240, 177)"
+				},
+				{
+					"color" : "rgb(250, 240, 177)"
+				},
+				{
+					"color" : "rgb(255, 255, 255)"
 				}
-			],
-			"Restrict to Window" : false
+			]
 		},
 		"Fonts Collector" : {
 			"Action" : 1
@@ -608,7 +573,7 @@
 			}
 		},
 		"Kanji Timer" : {
-			"Interpolation" : true
+			"Interpolation" : false
 		},
 		"Paste Lines Over" : {
 			"Fields" : [
@@ -648,7 +613,7 @@
 			]
 		},
 		"Preferences" : {
-			"Page" : 6
+			"Page" : 0
 		},
 		"Search Replace" : {
 			"Affect" : 1,
@@ -659,23 +624,23 @@
 			"Skip Tags" : false
 		},
 		"Select Lines" : {
-			"Action" : 3,
+			"Action" : 0,
 			"Condition" : 0,
-			"Field" : 0,
+			"Field" : 2,
 			"Match" : {
 				"Case" : false,
-				"Comment" : false,
+				"Comment" : true,
 				"Dialogue" : true
 			},
 			"Mode" : 1,
-			"Text" : "kaleido"
+			"Text" : "Fake Berserker"
 		},
 		"Shift Times" : {
 			"Affect" : 1,
 			"ByTime" : false,
-			"Direction" : false,
-			"Frames" : 0,
-			"Time" : 0,
+			"Direction" : true,
+			"Frames" : 120,
+			"Time" : 30,
 			"Type" : 0
 		},
 		"Spell Checker" : {
@@ -687,12 +652,12 @@
 		"Style Editor" : {
 			"Last" : {
 				"Height" : 369,
-				"Width" : 676,
-				"X" : -1,
-				"Y" : -1
+				"Width" : 861,
+				"X" : 892,
+				"Y" : 416
 			},
 			"Maximized" : false,
-			"Preview Text" : "Aegisub\\N0123 日本語"
+			"Preview Text" : "test"
 		},
 		"Style Manager" : {
 			"Last" : {
@@ -712,12 +677,12 @@
 			"Language" : "en_US"
 		},
 		"Timing Post Processor" : {
-			"Adjacent Bias" : 0.9000000000000000222,
+			"Adjacent Bias" : 1.0,
 			"Enable" : {
-				"Adjacent" : true,
+				"Adjacent" : false,
 				"Keyframe" : true,
 				"Lead" : {
-					"IN" : true,
+					"IN" : false,
 					"OUT" : true
 				}
 			},
@@ -729,10 +694,10 @@
 			"Threshold" : {
 				"Adjacent Gap" : 300,
 				"Adjacent Overlap" : 50,
-				"Key End After" : 250,
-				"Key End Before" : 200,
-				"Key Start After" : 150,
-				"Key Start Before" : 200
+				"Key End After" : 350,
+				"Key End Before" : 350,
+				"Key Start After" : 100,
+				"Key Start Before" : 100
 			}
 		},
 		"Translation Assistant" : {
@@ -755,12 +720,12 @@
 		}
 	},
 	"Version" : {
-		"Last Version" : 9844,
-		"Next Check" : 0
+		"Last Version" : 9676,
+		"Next Check" : 1771954952
 	},
 	"Video" : {
+		"Ctrl Scroll Action" : 2,
 		"Default Zoom" : 7,
-		"Default to Video Zoom" : false,
 		"Detached" : {
 			"Enabled" : false,
 			"Last" : {
@@ -769,13 +734,12 @@
 			},
 			"Maximized" : false
 		},
-		"Disable Scroll Zoom" : false,
 		"Dummy" : {
 			"FPS String" : "24000/1001",
 			"Last" : {
-				"Height" : 720,
+				"Height" : 1080,
 				"Length" : 2156,
-				"Width" : 1280
+				"Width" : 1920
 			},
 			"Pattern" : false
 		},
@@ -783,8 +747,9 @@
 		"Open Audio" : true,
 		"Overscan Mask" : false,
 		"Provider" : "FFmpegSource",
-		"Reverse Zoom" : false,
 		"Script Resolution Mismatch" : 1,
+		"Scroll Action" : 0,
+		"Shift Scroll Action" : 4,
 		"Slider" : {
 			"Fast Jump Step" : 10,
 			"Show Keyframes" : true

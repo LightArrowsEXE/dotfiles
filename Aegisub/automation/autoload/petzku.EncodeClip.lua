@@ -36,7 +36,7 @@ script_name = tr'Encode Clip'
 script_description = tr'Encode various clips from the current selection'
 script_author = 'petzku'
 script_namespace = "petzku.EncodeClip"
-script_version = '1.1.2'
+script_version = '1.2.2'
 
 
 local haveDepCtrl, DependencyControl, depctrl = pcall(require, "l0.DependencyControl")
@@ -45,7 +45,7 @@ if haveDepCtrl then
     depctrl = DependencyControl {
         feed="https://raw.githubusercontent.com/petzku/Aegisub-Scripts/stable/DependencyControl.json",
         {
-            {"petzku.util", version="0.4.1", url="https://github.com/petzku/Aegisub-Scripts",
+            {"petzku.util", version="0.5.2", url="https://github.com/petzku/Aegisub-Scripts",
              feed="https://raw.githubusercontent.com/petzku/Aegisub-Scripts/stable/DependencyControl.json"},
             {"a-mo.ConfigHandler", version="1.1.4", url="https://github.com/TypesettingTools/Aegisub-Motion",
              feed="https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"}
@@ -154,17 +154,21 @@ local GUI = {
         CONFIG = tr"&Config",
         CANCEL = tr"Ca&ncel"
     },
-    show_user_warning = function(title, desc, proceed)
+    -- varargs to add potential other buttons. OK (`proceed`) is still the default in the displayed box
+    show_user_warning = function(title, desc, proceed, ...)
         return aegisub.dialog.display(
             {
                 {class="label", label=title, x=0, y=0},
                 {class="label", label=desc, x=0, y=1}
             },
-            {proceed, "Ca&ncel"},
+            {proceed, ..., "Ca&ncel"},
             {ok = proceed, cancel = "Ca&ncel"}
         )
     end
 }
+-- IO functions
+local LOGGER = petzku.io
+
 if haveDepCtrl then
     config = ConfigHandler(config_diag, depctrl.configFile, false, script_version, depctrl.configDir)
 end
@@ -184,40 +188,16 @@ local function get_configuration()
     return opts
 end
 
--- Use user-specified encoder, if one exists.
--- Otherwise, find the best AAC encoder available to us, since ffmpeg-internal is Bad
--- mpv *should* support --oac="aac_at,aac_mf,libfdk_aac,aac", but it doesn't so we do this
-local audio_encoder = nil
-local function get_audio_encoder()
-    if audio_encoder ~= nil then
-        return audio_encoder
-    end
-
-    local opt = get_configuration()
-    if opt.audio_encoder and opt.audio_encoder ~= "" then
-        return opt.audio_encoder
-    end
-
-    local priorities = {aac = 0, libfdk_aac = 1, aac_mf = 2, aac_at = 3}
-    local best = "aac"
-    for line in petzku.io.run_cmd("mpv --oac=help", true):gmatch("[^\r\n]+") do
-        local enc = line:match("--oac=(%S*aac%S*)")
-        if enc and priorities[enc] and priorities[enc] > priorities[best] then
-            best = enc
-        end
-    end
-    audio_encoder = best
-    return best
-end
-
 local function get_mpv()
     local user_opts = get_configuration()
     local mpv_exe
     if user_opts.mpv_exe and user_opts.mpv_exe ~= '' then
         mpv_exe = user_opts.mpv_exe
+        LOGGER.trace("Found user-configured mpv: %s", mpv_exe)
         if mpv_exe:match(" ") and not mpv_exe:match("['\"]") then
             -- spaces but no quotes
             mpv_exe = '"'..mpv_exe..'"'
+            LOGGER.trace("Added quotes around executable path: %s", mpv_exe)
         end
     else
         mpv_exe = 'mpv'
@@ -225,12 +205,88 @@ local function get_mpv()
     return mpv_exe
 end
 
+-- query mpv for `mpv --<option>=help`. makes no attempt to sanitize option, being an internal function
+local function get_help_lines(option)
+    local t = {}
+    local mpv = get_mpv()
+    for line in petzku.io.run_cmd(mpv .. " --"..option.."=help", true):gmatch("[^\r\n]+") do
+        table.insert(t, line)
+    end
+    -- return an iterator because it's nicer
+    local i = 0
+    return function()
+        i = i + 1
+        if i < #t then return t[i] end
+    end
+end
+
+-- Use user-specified encoder, if one exists.
+-- Otherwise, find the best AAC encoder available to us, since ffmpeg-internal is Bad
+-- mpv *should* support --oac="aac_at,aac_mf,libfdk_aac,aac", but it doesn't so we do this
+local audio_encoder = nil
+local function get_audio_encoder()
+    if audio_encoder ~= nil then
+        LOGGER.trace("Found preferred encoder: %s", audio_encoder)
+        return audio_encoder
+    end
+
+    local opt = get_configuration()
+    if opt.audio_encoder and opt.audio_encoder ~= "" then
+        LOGGER.trace("Using user-specified encoder: %s", opt.audio_encoder)
+        return opt.audio_encoder
+    end
+
+    local priorities = {aac = 0, libfdk_aac = 1, aac_mf = 2, aac_at = 3}
+    local best = "aac"
+    for line in get_help_lines("oac") do
+        local enc = line:match("--oac=(%S*aac%S*)")
+        if enc then
+            LOGGER.trace("Found AAC encoder: %s", enc)
+            if priorities[enc] and priorities[enc] > priorities[best] then
+                LOGGER.trace("Better than previous best (%s)", best)
+                best = enc
+            end
+        end
+    end
+    audio_encoder = best
+    return best
+end
+
+local _should_encode_libx264 = nil
+local function check_libx264_support()
+    LOGGER.trace("Checking libx264 support...")
+    if _should_encode_libx264 then
+        LOGGER.trace("Supported or prior user override, skipping")
+        return _should_encode_libx264
+    end
+    for line in get_help_lines("ovc") do
+        if line:match("--ovc=libx264") then
+            LOGGER.trace("Found libx264 encoder")
+            _should_encode_libx264 = true
+            return _should_encode_libx264
+        end
+    end
+
+    LOGGER.trace("No libx264 encoder found! Warning user...")
+
+    btn, _ = GUI.show_user_warning("Warning: libx264 not found!", [[Encoded clips will likely be broken.
+Please install a version of mpv that supports libx264.]], "Encode &anyway")
+    if btn then
+        LOGGER.trace("User overriding encoding for this session")
+        _should_encode_libx264 = true
+    end
+
+    return _should_encode_libx264
+end
+
 local function get_base_outfile(t1, t2, ext)
+    LOGGER.trace("Generating base outfile name")
     local outfile, cant_hardsub
     if aegisub.decode_path("?script") == "?script" then
         -- no script file to work with, save next to source video instead
         outfile = aegisub.project_properties().video_file
         cant_hardsub = true
+        LOGGER.trace("No script loaded, using loaded video path: %s", outfile)
     else
         outfile = aegisub.decode_path("?script") .. petzku.io.pathsep .. aegisub.file_name()
     end
@@ -283,8 +339,10 @@ local function run_cmd(cmd)
 
     local WINDOWS_ASCII_ERROR_TEXT = "No such file or directory"
     if output:find(WINDOWS_ASCII_ERROR_TEXT) and not is_ascii(cmd) then
-        aegisub.log(2, "\nIt looks like some of your input or output file names contain non-ASCII characters, which can break on some systems.\n")
-        aegisub.log(2, "Setting your system to use UTF-8 codepages may solve this issue; see https://superuser.com/a/1451686.\n\n")
+        LOGGER.warn("")
+        LOGGER.warn("It looks like some of your input or output file names contain non-ASCII characters, which can break on some systems.")
+        LOGGER.warn("Setting your system to use UTF-8 codepages may solve this issue; see https://superuser.com/a/1451686.")
+        LOGGER.warn("")
     end
 end
 
@@ -295,6 +353,10 @@ local function build_cmd(user_opts, ...)
         for _, o in ipairs(optset) do
             table.insert(opts, o)
         end
+    end
+
+    if #opts > 0 then
+        LOGGER.trace("Building command with options: %s", table.concat(opts, ' '))
     end
 
     -- format strings will be handled by caller
@@ -313,6 +375,7 @@ local function build_cmd(user_opts, ...)
     local cfg = get_configuration()
     if cfg.use_aid then
         table.insert(cmd_table, "--aid=" .. cfg.aid)
+        LOGGER.trace("Specifying audio track number %d", cfg.aid)
     end
 
     -- user options, if relevant. these are allowed to override aid setting above
@@ -322,6 +385,7 @@ local function build_cmd(user_opts, ...)
         -- in the middle of a function call, from what should by all rights be a single argument.
         -- this is the worst feature ever.
         table.insert(cmd_table, (user_opts:gsub("\n", " ")))
+        LOGGER.trace("Added user options: %s", cmd_table[#cmd_table])
     end
 
     return table.concat(cmd_table, ' ')
@@ -329,6 +393,9 @@ end
 
 function make_clip(subs, sel, hardsub, audio, context)
     if audio == nil then audio = true end --encode with audio by default
+
+    -- check user's libx264 support. only happens once if the user says to proceed, but reminds on every restart
+    if not check_libx264_support() then return end
 
     local t1, t2 = calc_start_end(subs, sel, context)
 
@@ -343,10 +410,12 @@ function make_clip(subs, sel, hardsub, audio, context)
     if vidfile:sub(1,7) == "?dummy:" then
         -- if we have no sub file to work with, can't use video file as output name either
         if cant_hardsub then
-            aegisub.log(2, "Cannot encode clip from dummy video and no subtitle file!\nExiting...\n")
+            LOGGER.warn("Cannot encode clip from dummy video and no subtitle file!")
+            LOGGER.warn("Exiting...")
             return
         end
         vidfile = gen_lavfi_cmd(vidfile)
+        LOGGER.trace("Dummy video loaded, generated lavfi filtergraph: %s", vidfile)
     end
 
     if hardsub and aegisub.gui and aegisub.gui.is_modified and aegisub.gui.is_modified() then
@@ -390,6 +459,7 @@ Press Enter to proceed anyway, or Escape to cancel.]], "Encode &anyway") then
 
     -- we force libx264 as this is generally the fastest and most reliable encoder available
     -- to my knowledge, only some macos mpv builds do not come with bundled support
+    -- user gets warned at the start of make_clip if they do not have mpv with support
     local video_opts = {
         '--vf=format=yuv420p',
         '--ovc=libx264',
