@@ -1,6 +1,6 @@
 export script_name = "Add Grain"
 export script_description = "Add static and dynamic grain"
-export script_version = "1.1.5"
+export script_version = "1.1.8"
 export script_author = "PhosCity"
 export script_namespace = "phos.AddGrain"
 
@@ -40,7 +40,7 @@ https://github.com/PhosCity/Aegisub-Scripts/tree/main/misc/Grain%20Font"
 
   for font in *Yutils.decode.list_fonts!
     return if font.name == "Grain" and font.longname == "Grain Regular"
-  logger\log message
+  aegisub.log message
 
 
 --- Randomize a character by returning any character among 0-9a-zA-z!"',.:;?

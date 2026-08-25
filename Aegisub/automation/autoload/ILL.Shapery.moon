@@ -1,45 +1,30 @@
 export script_name        = "Shapery"
 export script_description = "Does several types of shape manipulations from the simplest to the most complex"
-export script_version     = "2.6.1"
+export script_version     = "2.6.6"
 export script_author      = "ILLTeam"
 export script_namespace   = "ILL.Shapery"
 
 haveDepCtrl, DependencyControl = pcall require, "l0.DependencyControl"
 
-local depctrl, Clipper, ILL
+local depctrl, ILL
 if haveDepCtrl
 	depctrl = DependencyControl {
 		feed: "https://raw.githubusercontent.com/TypesettingTools/ILL-Aegisub-Scripts/main/DependencyControl.json",
 		{
 			{
-				"clipper2.clipper2"
-				version: "1.3.2"
-				url: "https://github.com/TypesettingTools/ILL-Aegisub-Scripts/"
-				feed: "https://raw.githubusercontent.com/TypesettingTools/ILL-Aegisub-Scripts/main/DependencyControl.json"
-			}
-			{
 				"ILL.ILL"
-				version: "1.6.5"
+				version: "1.8.2"
 				url: "https://github.com/TypesettingTools/ILL-Aegisub-Scripts/"
 				feed: "https://raw.githubusercontent.com/TypesettingTools/ILL-Aegisub-Scripts/main/DependencyControl.json"
 			}
 		}
 	}
-	Clipper, ILL = depctrl\requireModules!
+	ILL = depctrl\requireModules!
 else
-	Clipper = require "clipper2.clipper2"
 	ILL = require "ILL.ILL"
 
 {:Aegi, :Ass, :Config, :Line, :Curve, :Path, :Point, :Util, :Math, :Table, :Util} = ILL
 clipboard = require "aegisub.clipboard"
-
-checkPathClockWise = (path) ->
-	sum = 0
-	for i = 1, #path
-		currPoint = path[i]
-		nextPoint = path[(i % #path) + 1]
-		sum += (nextPoint.x - currPoint.x) * (nextPoint.y + currPoint.y)
-	return sum < 0
 
 interfaces = {
 	config: -> {
@@ -61,15 +46,16 @@ interfaces = {
 	offsetting: -> {
 		{class: "label", label: "Stroke Weight", x: 0, y: 0}
 		{class: "floatedit", x: 1, y: 0, name: "strokeWeight", value: 0}
-		{class: "checkbox", x: 1, y: 1, name: "cut", value: false}
-		{class: "label", label: "Corner Style", x: 0, y: 2}
-		{class: "dropdown", items: {"Miter", "Round", "Square"}, x: 1, y: 2, name: "cornerStyle", value: "Round"}
-		{class: "label", label: "Align Stroke", x: 0, y: 3}
-		{class: "dropdown", items: {"Outside", "Center", "Inside"}, x: 1, y: 3, name: "strokeAlign", value: "Outside"}
-		{class: "label", label: "Miter Limit", x: 0, y: 5}
-		{class: "floatedit", x: 0, y: 6, name: "miterLimit", value: 2}
-		{class: "label", label: "Arc Precision", x: 1, y: 5}
-		{class: "floatedit", x: 1, y: 6, name: "arcPrecision", value: 0.25}
+		{class: "checkbox", x: 1, y: 1, label: "Simplify Curves?", name: "simplifyCurves", value: true}
+		{class: "label", label: "Corner Style", x: 0, y: 3}
+		{class: "dropdown", items: {"Miter", "Round", "Square"}, x: 1, y: 3, name: "cornerStyle", value: "Round"}
+		{class: "label", label: "Align Stroke", x: 0, y: 4}
+		{class: "dropdown", items: {"Outside", "Center", "Inside"}, x: 1, y: 4, name: "strokeAlign", value: "Outside"}
+		{class: "checkbox", x: 1, y: 5, label: "Clip Fill?", name: "clipFill", value: true}
+		{class: "label", label: "Miter Limit", x: 0, y: 7}
+		{class: "floatedit", x: 0, y: 8, name: "miterLimit", value: 2}
+		{class: "label", label: "Arc Precision", x: 1, y: 7}
+		{class: "floatedit", x: 1, y: 8, name: "arcPrecision", value: 0.25}
 	}
 	manipulate: -> {
 		{class: "label", label: "Fit Curves", x: 0, y: 0}
@@ -129,7 +115,7 @@ resetInterface = (name) ->
 		cfg\reset!
 	else
 		interface = interfaces.config!
-		for n in *interface[5].items
+		for n in *interface[6].items
 			if n != "All"
 				resetInterface n
 
@@ -197,25 +183,57 @@ OffsettingDialog = (sub, sel, activeLine) ->
 	if button != "Cancel"
 		cfg = getConfigElements!
 		ass = Ass sub, sel, activeLine, not cfg.saveLines
-		{:strokeWeight, :strokeAlign, :cornerStyle, :miterLimit, :arcPrecision, :cut} = elements
+		{:strokeWeight, :strokeAlign, :cornerStyle, :miterLimit, :arcPrecision, :simplifyCurves, :clipFill} = elements
 		if strokeWeight < 0
 			strokeAlign = "Inside"
 		cornerStyle = cornerStyle\lower!
-		cutsOutside = cut and strokeAlign == "Outside"
+		simplifyRatio = 0.1
 		for l, s, i, n in ass\iterSel!
 			ass\progressLine s, i, n
 			ass\removeLine l, s
 			Line.extend ass, l
 			Line.callBackExpand ass, l, nil, (line) ->
-				path, clip = Path line.shape
-				if cutsOutside
-					clip = path\clone!
+				path = Path line.shape
+				clip = path\clone!
+
+				line.tags\insert {{"bord", 0}}
+				if strokeAlign == "Outside" and clipFill
+					line.shape = path\export!
+					ass\insertLine line, s
+					-- adding stroke color
+					line.tags\insert {{"c", line.data.color3}}
+
 				switch strokeAlign
 					when "Outside" then path\offset strokeWeight, cornerStyle, "polygon", miterLimit, arcPrecision
 					when "Center"  then path\offset strokeWeight, cornerStyle, "joined", miterLimit, arcPrecision
 					when "Inside"  then path\offset -math.abs(strokeWeight), cornerStyle, "polygon", miterLimit, arcPrecision
-				if cutsOutside
+
+				if strokeAlign == "Inside" and clipFill
+					line.tags\insert {{"c", line.data.color3}}
+					line.shape = clip\difference path
+					if simplifyCurves
+						path\simplify simplifyRatio
+						line.shape = line.shape\simplify(simplifyRatio)\export!
+					ass\insertLine line, s
+					-- adding fill color
+					line.tags\insert {{"c", line.data.color1}}
+				elseif strokeAlign == "Center"
+					if clipFill
+						line.tags\insert {{"c", line.data.color1}}
+						line.shape = clip\difference path
+						if simplifyCurves
+							path\simplify simplifyRatio
+							line.shape = line.shape\simplify(simplifyRatio)\export!
+						ass\insertLine line, s
+						-- adding stroke color
+						line.tags\insert {{"c", line.data.color3}}
+					else
+						path\unite clip
+						path\simplify simplifyRatio if simplifyCurves
+				elseif strokeAlign == "Outside" and clipFill
 					path\difference clip
+					path\simplify simplifyRatio if simplifyCurves
+
 				line.shape = path\export!
 				ass\insertLine line, s
 		return ass\getNewSelection!
@@ -596,13 +614,7 @@ ShaperyMacrosDialog = (macro) ->
 						ass\warning s, "Expected a shape"
 				when "Shape without holes"
 					if l.isShape
-						newShape = Path!
-						shapePath = Path l.shape
-						shapePathFlattened = Path(shapePath)\flatten!
-						for j = 1, #shapePath.path
-							if checkPathClockWise shapePathFlattened.path[j]
-								table.insert newShape.path, shapePath.path[j]
-						l.shape = newShape\export!
+						l.shape = Path(l.shape)\withoutHoles!\export!
 						ass\setLine l, s
 					else
 						ass\warning s, "Expected a shape"

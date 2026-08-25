@@ -1,41 +1,74 @@
 export script_name        = "Envelope Distort"
 export script_description = "Allows you to warp and manipulate shapes within a customizable envelope"
-export script_version     = "1.1.3"
+export script_version     = "1.1.7"
 export script_author      = "ILLTeam"
 export script_namespace   = "ILL.EnvelopeDistort"
 
 haveDepCtrl, DependencyControl = pcall require, "l0.DependencyControl"
 
-local depctrl, Aegi, Ass, Line, Path, Util
+local depctrl, ILL
 if haveDepCtrl
 	depctrl = DependencyControl {
 		feed: "https://raw.githubusercontent.com/TypesettingTools/ILL-Aegisub-Scripts/main/DependencyControl.json",
 		{
 			{
 				"ILL.ILL"
-				version: "1.4.4"
+				version: "1.8.4"
 				url: "https://github.com/TypesettingTools/ILL-Aegisub-Scripts/"
 				feed: "https://raw.githubusercontent.com/TypesettingTools/ILL-Aegisub-Scripts/main/DependencyControl.json"
 			}
 		}
 	}
-	{:Aegi, :Ass, :Line, :Path, :Util} = depctrl\requireModules!
+	ILL = depctrl\requireModules!
 else
-	{:Aegi, :Ass, :Line, :Path, :Util} = require "ILL.ILL"
+	ILL = require "ILL.ILL"
+
+{:Aegi, :Ass, :Line, :Path, :Util} = ILL
 
 interface = -> {
 	{class: "label", label: " - Mesh options -----", x: 0, y: 0}
 	{class: "label", label: "Line type", x: 0, y: 1}
-	{class: "dropdown", items: {"Straight", "Bezier"}, x: 1, y: 1, name: "lineType", value: "Straight"}
+	{class: "dropdown", items: {"Straight", "Bezier", "Mix"}, x: 1, y: 1, name: "lineType", value: "Straight"}
 	{class: "label", label: "Rows", x: 0, y: 2}
 	{class: "intedit", min: 1, x: 1, y: 2, name: "rows", value: 1}
 	{class: "label", label: "Columns", x: 0, y: 3}
 	{class: "intedit", min: 1, x: 1, y: 3, name: "cols", value: 1}
 	{class: "label", label: "Tolerance", x: 0, y: 4}
 	{class: "floatedit", min: 0, x: 1, y: 4, name: "tolerance", value: 1}
-	{class: "checkbox", label: "Perspective", x: 0, y: 6, name: "perspective", value: false}
-	{class: "checkbox", label: "Keep Mesh", x: 1, y: 6, name: "keepMesh", value: false}
+	{class: "checkbox", label: "Perspective", x: 0, y: 7, name: "perspective", value: false}
+	{class: "checkbox", label: "Keep Mesh", x: 1, y: 7, name: "keepMesh", value: false}
 }
+
+performToMix = (mclips) ->
+	res = {}
+	for mclip in *mclips
+		npath = Path!
+		mpath = Path mclip
+		mpath\callBackPath (id, seg, j, i) ->
+			if npath.path[1] == nil
+				a = seg.a\clone!
+				a.id = "l"
+				npath.path[1] = {seg.a}
+			if i % 2 == 0 and id == "b"
+				d = seg.d\clone!
+				d.id = "l"
+				table.insert npath.path[1], d
+			elseif id == "b"
+				table.insert npath.path[1], seg.b\clone!
+				table.insert npath.path[1], seg.c\clone!
+				table.insert npath.path[1], seg.d\clone!
+			elseif id == "l"
+				table.insert npath.path[1], seg.b\clone!
+		table.remove npath.path[1]
+		table.insert res, npath\export!
+	return res
+
+getExpandedMesh = (line, rows, cols, isBezier) ->
+	mclips, colDistance, rowDistance = {}, nil, nil
+	Line.callBackExpand ass, line, {rows, cols, isBezier}, (l) ->
+		{:colDistance, :rowDistance} = l.grid
+		table.insert mclips, l.grid.path\export!
+	return mclips, colDistance, rowDistance
 
 makeWithMesh = (sub, sel, activeLine) ->
 	button, elements, config = Aegi.display interface!, {"Warp", "Mesh", "Reset", "Cancel"}, {close: "Cancel"}, "Mesh"
@@ -46,31 +79,28 @@ makeWithMesh = (sub, sel, activeLine) ->
 		return
 	ass = Ass sub, sel, activeLine
 	{:lineType, :rows, :cols, :tolerance, :perspective, :keepMesh} = elements
-	isBezier = lineType == "Bezier"
-	getMesh = (l) ->
-		clips, colDistance, rowDistance = {}, nil, nil
-		Line.callBackExpand ass, l, {rows, cols, isBezier}, (line) ->
-			{:colDistance, :rowDistance} = line.grid
-			table.insert clips, line.grid.path\export!
-		return clips, colDistance, rowDistance
+	isBezier = lineType == "Bezier" or lineType == "Mix"
 	for l, s, i, n in ass\iterSel!
 		ass\progressLine s, i, n
 		Line.extend ass, l
 		if button == "Mesh"
 			ass\removeLine l, s
-			clips = getMesh l
 			xr, yr = aegisub.video_size!
 			screen = "m 0 0 l #{xr} 0 #{xr} #{yr} 0 #{yr} "
+			local mclips
+			if lineType == "Mix"
+				mclips = performToMix getExpandedMesh l, 1, 1, isBezier
+			else
+				mclips = getExpandedMesh l, rows, cols, isBezier
 			l.tags\remove "clip", "iclip"
 			if l.isShape
-				clips = table.concat clips
-				l.tags\insert {{"clip", screen .. clips}}
+				l.tags\insert {{"clip", screen .. table.concat mclips}}
 				ass\insertLine l, s
 			else
 				{:org} = l.data
 				Line.callBackTags ass, l, (line, j) ->
 					line.text\callBack (tags, text) ->
-						line.tags\insert {{"clip", screen .. clips[j]}}
+						line.tags\insert {{"clip", screen .. mclips[j]}}
 						if line.data.angle != 0 or line.tags\existsTagOr "frx", "fry", "frz"
 							line.tags\insert {{"org", org}, true}
 						return line.tags, text
@@ -83,14 +113,20 @@ makeWithMesh = (sub, sel, activeLine) ->
 				table.remove mesh.path, 1
 				if perspective and (isBezier or #mesh.path != 1)
 					ass\error s, "Expected an quadrilateral"
-				clips, colDistance, rowDistance = getMesh l
+				local mclips, colDistance, rowDistance
+				if lineType == "Mix"
+					mclips, colDistance, rowDistance = getExpandedMesh l, 1, 1, isBezier
+					mclips = performToMix mclips
+				else
+					mclips, colDistance, rowDistance = getExpandedMesh l, rows, cols, isBezier
 				local area
 				if isBezier
-					area = (colDistance * rowDistance) / 1000
+					dist = colDistance > rowDistance and colDistance or rowDistance
+					area = (colDistance * rowDistance) / dist
 					mesh\flatten 1, nil, area
 				Line.callBackExpand ass, l, {rows, cols, isBezier}, (line, j) ->
 					{x, y} = line.data.pos
-					real = Path clips[j]
+					real = Path mclips[j]
 					if isBezier
 						real = real\flatten 1, nil, area
 					path = Path(line.shape)\move x, y

@@ -1,12 +1,1 @@
-{
-  "main": {
-    "audio_encoder": "",
-    "use_aid": false,
-    "context_duration": 2,
-    "aid": 1,
-    "audio_command": "",
-    "mpv_exe": "C:\\Users\\light\\Documents\\BINARIES\\mpv\\mpv.com",
-    "video_command": "--ovc=libx264 --ovcopts=crf=13"
-  },
-  "__version": "1.2.2"
-}
+{"__version":"1.2.2","main":{"context_duration":1,"audio_command":"","aid":1,"mpv_exe":"C:\\Program Files\\mpv\\mpv.com","audio_encoder":"","video_command":"--vf=format=yuv420p --ovc=libx264 --ovcopts=\"profile=main,level=4.1,crf=15\"","use_aid":true}}

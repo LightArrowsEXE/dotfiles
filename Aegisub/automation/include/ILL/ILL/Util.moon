@@ -74,6 +74,7 @@ class Util
 		elseif #args == 7
 			{a1, a2, a3, t1, t2, t3, t4} = args
 		else
+			aegisub.log "Warning: Using deprecated format of \\fade tag. Please use \\fade(a1,a2,a3,t1,t2,t3,t4) instead of \\fade(t1,t2,t3,t4,a1,a2,a3).", 0
 			return ""
 		return Util.getAlphaInterpolation currTime, t1, t2, t3, t4, a1, dec or a2, a3
 
@@ -100,7 +101,7 @@ class Util
 		t = Util.getTimeInInterval currTime, t1, t2
 		x = Math.round (1 - t) * x1 + t * x2, 3
 		y = Math.round (1 - t) * y1 + t * y2, 3
-		return x, y
+		return x, y, t
 
 	-- makes a linear interpolation between several types of values
 	interpolation: (t = 0.5, interpolationType = "auto", ...) ->

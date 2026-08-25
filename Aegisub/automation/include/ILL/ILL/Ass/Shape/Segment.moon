@@ -36,6 +36,20 @@ class Segment
 			Segment c, b
 		}
 
+	-- splits the segment in two
+	splitAtInterval: (t = 0, u = 1) =>
+		t = Math.clamp t, 0, 1
+		u = Math.clamp u, 0, 1
+		if t > u
+			t, u = u, t
+		{:a, :b} = @
+		p1 = a\lerp b, t
+		p2 = a\lerp b, u
+		segment = Segment p1, p2
+		tanT, pT, tT = @getNormalized t
+		tanU, pU, tU = @getNormalized u
+		return segment, {t: {tangent: tanT, point: pT, time: tT}, u: {tangent: tanU, point: pU, time: tU}}
+
 	-- gets the normalized tangent given a time on a segment
 	getNormalized: (t, inverse) =>
 		t = Math.clamp t, 0, 1

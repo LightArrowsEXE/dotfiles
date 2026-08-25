@@ -1,0 +1,985 @@
+{
+    "dependencyControlFeedFormatVersion": "0.3.0",
+    "name": "ILL Aegisub Scripts",
+    "description": "A collection of macros and modules that seek to add some Illustrator like functionality to Aegisub",
+    "maintainer": "ILLTeam",
+    "baseUrl": "https://github.com/TypesettingTools/ILL-Aegisub-Scripts",
+    "url": "@{baseUrl}",
+    "fileBaseUrl": "https://raw.githubusercontent.com/TypesettingTools/ILL-Aegisub-Scripts/@{channel}/",
+    "knownFeeds": {
+        "ILL": "https://raw.githubusercontent.com/TypesettingTools/ILL-Aegisub-Scripts/main/DependencyControl.json",
+        "ffi-experiments": "https://raw.githubusercontent.com/TypesettingTools/ffi-experiments/master/DependencyControl.json"
+    },
+    "macros": {
+        "ILL.EnvelopeDistort": {
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}macros/@{namespace}",
+            "channels": {
+                "main": {
+                    "default": true,
+                    "version": "1.1.7",
+                    "released": "2026-04-04",
+                    "files": [
+                        {
+                            "sha1": "174389ceced49ae5022b7034a6cdbfff01016549",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "name": ".moon"
+                        }
+                    ],
+                    "requiredModules": [
+                        {
+                            "moduleName": "ILL.ILL",
+                            "feed": "@{feed:ILL}",
+                            "version": "1.1.2"
+                        }
+                    ]
+                }
+            },
+            "changelog": {
+                "1.0.3": [
+                    "Initial depctrl release"
+                ],
+                "1.0.4": [
+                    "Update macros"
+                ],
+                "1.0.5": [
+                    "Update macro register",
+                    "",
+                    "Macros can now be installed manually without having to have DepControl",
+                    "",
+                    "Regardless, it is always recommended to install via DepControl"
+                ],
+                "1.0.6": [
+                    "Update macros",
+                    "",
+                    "Bugs:",
+                    "",
+                    "- Iterators are now aligned with the fixes made in class Ass"
+                ],
+                "1.0.7": [
+                    "Fix Dependency Control feed"
+                ],
+                "1.1.0": [
+                    "Update ILL macros",
+                    "",
+                    "- Fixed some bugs",
+                    "- Add save system"
+                ],
+                "1.1.1": [
+                    "Update Envelope Distort"
+                ],
+                "1.1.2": [
+                    "Update ILL dependency version in macros"
+                ],
+                "1.1.3": [
+                    "fix default tolerance value"
+                ],
+                "1.1.4": [
+                    "Add Mix mode to Envelope Distort"
+                ],
+                "1.1.5": [
+                    "Fix Mix mode mesh points"
+                ],
+                "1.1.6": [
+                    "Minor fix"
+                ],
+                "1.1.7": [
+                    "Fix many bugs",
+                    "",
+                    "Fix Unix font crash",
+                    "",
+                    "Add fonts cache",
+                    "",
+                    "Add setFont"
+                ]
+            },
+            "name": "Envelope Distort",
+            "description": "Allows you to warp and manipulate shapes within a customizable envelope",
+            "author": "ILLTeam"
+        },
+        "ILL.Shapery": {
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}macros/@{namespace}",
+            "channels": {
+                "main": {
+                    "default": true,
+                    "version": "2.6.6",
+                    "released": "2026-03-07",
+                    "files": [
+                        {
+                            "sha1": "f60ef43e3764fa2837b4b285c3fc4313e45b3e98",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "name": ".moon"
+                        }
+                    ],
+                    "requiredModules": [
+                        {
+                            "moduleName": "clipper2.clipper2",
+                            "feed": "@{feed:ILL}",
+                            "version": "1.2.0"
+                        },
+                        {
+                            "moduleName": "ILL.ILL",
+                            "feed": "@{feed:ILL}",
+                            "version": "1.1.2"
+                        }
+                    ]
+                }
+            },
+            "changelog": {
+                "2.0.1": [
+                    "Initial depctrl release"
+                ],
+                "2.0.2": [
+                    "Fix Shapery Macros / Expand bug"
+                ],
+                "2.1.0": [
+                    "Update macros"
+                ],
+                "2.1.1": [
+                    "Update macro register",
+                    "",
+                    "Macros can now be installed manually without having to have DepControl",
+                    "",
+                    "Regardless, it is always recommended to install via DepControl"
+                ],
+                "2.2.0": [
+                    "Update macros",
+                    "",
+                    "Bugs:",
+                    "",
+                    "- Iterators are now aligned with the fixes made in class Ass"
+                ],
+                "2.2.1": [
+                    "Fix Dependency Control feed"
+                ],
+                "2.3.0": [
+                    "Update ILL macros",
+                    "",
+                    "- Fixed some bugs",
+                    "- Add save system"
+                ],
+                "2.4.0": [
+                    "Update Shapery"
+                ],
+                "2.4.1": [
+                    "Remove unnecessary log"
+                ],
+                "2.5.0": [
+                    "Update Shapery"
+                ],
+                "2.5.1": [
+                    "Update Shapery"
+                ],
+                "2.5.2": [
+                    "Update Shapery"
+                ],
+                "2.5.3": [
+                    "Update ILL dependency version in macros"
+                ],
+                "2.5.4": [
+                    "Update Shapery"
+                ],
+                "2.5.5": [
+                    "Add Shape to pos"
+                ],
+                "2.5.6": [
+                    "Minor fix"
+                ],
+                "2.5.7": [
+                    "Add Shape to clip (clipboard)"
+                ],
+                "2.5.8": [
+                    "Improved Path.simplify"
+                ],
+                "2.6.0": [
+                    "New Features for Shapery"
+                ],
+                "2.6.1": [
+                    "Add Reverse points"
+                ],
+                "2.6.2": [
+                    "Fix bugs in Shapery module",
+                    "",
+                    "- Fixed 'Shapery/Offsetting': Now works in a more simplified way.",
+                    "- Moved 'Shapery macros:/Shape without holes' to a Path class function."
+                ],
+                "2.6.3": [
+                    "Fix 'Shapery/Offsetting' stroke color"
+                ],
+                "2.6.4": [
+                    "Fixed stroke color on Shapery/offsetting"
+                ],
+                "2.6.5": [
+                    "Add simplify to offsetting and back to old simplify (stable)"
+                ],
+                "2.6.6": [
+                    "Add optional clip fill for Shapery/Offsetting"
+                ]
+            },
+            "name": "Shapery",
+            "description": "Does several types of shape manipulations from the simplest to the most complex",
+            "author": "ILLTeam"
+        },
+        "ILL.MakeImage": {
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}macros/@{namespace}",
+            "channels": {
+                "main": {
+                    "default": true,
+                    "version": "2.2.0",
+                    "released": "2025-12-14",
+                    "files": [
+                        {
+                            "sha1": "67c2e71bb8f9b2181ed333da82e399d5a3541c18",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "name": ".moon"
+                        }
+                    ],
+                    "requiredModules": [
+                        {
+                            "moduleName": "ILL.IMG",
+                            "feed": "@{feed:ILL}",
+                            "version": "1.0.0"
+                        },
+                        {
+                            "moduleName": "ILL.ILL",
+                            "feed": "@{feed:ILL}",
+                            "version": "1.1.2"
+                        }
+                    ]
+                }
+            },
+            "changelog": {
+                "1.0.1": [
+                    "Initial depctrl release"
+                ],
+                "1.0.2": [
+                    "Update macros"
+                ],
+                "2.0.1": [
+                    "Update macro register",
+                    "",
+                    "Macros can now be installed manually without having to have DepControl",
+                    "",
+                    "Regardless, it is always recommended to install via DepControl"
+                ],
+                "2.0.2": [
+                    "Update macros",
+                    "",
+                    "Bugs:",
+                    "",
+                    "- Iterators are now aligned with the fixes made in class Ass"
+                ],
+                "2.0.3": [
+                    "Fix Dependency Control feed"
+                ],
+                "2.1.0": [
+                    "Update ILL macros",
+                    "",
+                    "- Fixed some bugs",
+                    "- Add save system"
+                ],
+                "2.1.1": [
+                    "Update ILL dependency version in macros"
+                ],
+                "2.2.0": [
+                    "Add GIF support to Make Image"
+                ]
+            },
+            "name": "Make Image",
+            "description": "Does several procedures for converting images to the .ass",
+            "author": "ILLTeam"
+        },
+        "ILL.ChangeAlign": {
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}macros/@{namespace}",
+            "channels": {
+                "main": {
+                    "default": true,
+                    "version": "1.1.2",
+                    "released": "2026-04-02",
+                    "files": [
+                        {
+                            "sha1": "363011392901b5f38fa159269341a7c6f0d5b5df",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "name": ".moon"
+                        }
+                    ],
+                    "requiredModules": [
+                        {
+                            "moduleName": "ILL.ILL",
+                            "feed": "@{feed:ILL}",
+                            "version": "1.1.2"
+                        }
+                    ]
+                }
+            },
+            "changelog": {
+                "1.0.1": [
+                    "Initial depctrl release"
+                ],
+                "1.0.2": [
+                    "Update macros"
+                ],
+                "1.0.3": [
+                    "Update macro register",
+                    "",
+                    "Macros can now be installed manually without having to have DepControl",
+                    "",
+                    "Regardless, it is always recommended to install via DepControl"
+                ],
+                "1.0.4": [
+                    "Update macros",
+                    "",
+                    "Bugs:",
+                    "",
+                    "- Iterators are now aligned with the fixes made in class Ass"
+                ],
+                "1.0.5": [
+                    "Fix Dependency Control feed"
+                ],
+                "1.1.0": [
+                    "Update ILL macros",
+                    "",
+                    "- Fixed some bugs",
+                    "- Add save system"
+                ],
+                "1.1.1": [
+                    "Update ILL dependency version in macros"
+                ],
+                "1.1.2": [
+                    "[ChangeAlign] Improve dialog logic (#8)"
+                ]
+            },
+            "name": "ILL - Change Alignment",
+            "description": "Changes the alignment of a text or shape without changing its original position",
+            "author": "ILLTeam"
+        },
+        "ILL.SplitText": {
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}macros/@{namespace}",
+            "channels": {
+                "main": {
+                    "default": true,
+                    "version": "2.1.2",
+                    "released": "2025-05-24",
+                    "files": [
+                        {
+                            "sha1": "73c9a8f443981506f4410b730671cfa14a704baf",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "name": ".moon"
+                        }
+                    ],
+                    "requiredModules": [
+                        {
+                            "moduleName": "ILL.ILL",
+                            "feed": "@{feed:ILL}",
+                            "version": "1.6.1"
+                        }
+                    ]
+                }
+            },
+            "changelog": {
+                "2.0.0": [
+                    "Initial depctrl release"
+                ],
+                "2.1.0": [
+                    "Update Split Text"
+                ],
+                "2.1.2": [
+                    "Update Files"
+                ]
+            },
+            "name": "ILL - Split Text",
+            "description": "Splits the text in several ways",
+            "author": "ILLTeam"
+        },
+        "ILL.Line2FBF": {
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}macros/@{namespace}",
+            "channels": {
+                "main": {
+                    "default": true,
+                    "version": "1.1.0",
+                    "released": "2026-01-08",
+                    "files": [
+                        {
+                            "sha1": "fdccf5918557df5713d7a544da86e472a873994e",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "name": ".moon"
+                        }
+                    ],
+                    "requiredModules": [
+                        {
+                            "moduleName": "ILL.ILL",
+                            "feed": "@{feed:ILL}",
+                            "version": "1.7.6"
+                        }
+                    ]
+                }
+            },
+            "changelog": {
+                "1.0.0": [
+                    "Add FBF with step"
+                ],
+                "1.0.1": [
+                    "Add FBF to DepControl and fix FBF"
+                ],
+                "1.1.0": [
+                    "Change script name"
+                ]
+            },
+            "name": "Line To FBF",
+            "description": "It calculates line transformations frame by frame or given a step frame.",
+            "author": "ILLTeam"
+        }
+    },
+    "modules": {
+        "clipper2.clipper2": {
+            "url": "@{baseUrl}",
+            "author": "ILLTeam",
+            "name": "Clipper2",
+            "description": "A polygon clipping and offsetting library",
+            "fileBaseUrl": "@{fileBaseUrl}modules/@{namespacePath}",
+            "channels": {
+                "main": {
+                    "default": true,
+                    "version": "1.4.0",
+                    "released": "2023-07-25",
+                    "platforms": [
+                        "Windows-x64",
+                        "OSX-x64",
+                        "Linux-x64"
+                    ],
+                    "files": [
+                        {
+                            "sha1": "b14554ed5f4d67e96f720c0d691a6c1fa2d7b492",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "name": ".moon"
+                        },
+                        {
+                            "name": "/clipper2.dll",
+                            "url": "https://github.com/TypesettingTools/ILL-Aegisub-Scripts/releases/download/clipper2-1.4.0/clipper2.dll",
+                            "platform": "Windows-x64",
+                            "sha1": "216f1184a4af52f206c4c98b3d999e2f3518643d"
+                        },
+                        {
+                            "name": "/libclipper2.dylib",
+                            "url": "https://github.com/TypesettingTools/ILL-Aegisub-Scripts/releases/download/clipper2-1.4.0/libclipper2.dylib",
+                            "platform": "OSX-x64",
+                            "sha1": "01a8267bc1e54d925c822225ea9cd18a528af455"
+                        },
+                        {
+                            "name": "/libclipper2.so",
+                            "url": "https://github.com/TypesettingTools/ILL-Aegisub-Scripts/releases/download/clipper2-1.4.0/libclipper2.so",
+                            "platform": "Linux-x64",
+                            "sha1": "8dfaaf80906e534a66bf2bacc32f2914d27fa84e"
+                        }
+                    ],
+                    "requiredModules": [
+                        {
+                            "moduleName": "ffi"
+                        },
+                        {
+                            "moduleName": "requireffi.requireffi",
+                            "feed": "@{feed:ffi-experiments}",
+                            "version": "0.1.2"
+                        }
+                    ]
+                }
+            },
+            "changelog": {
+                "1.2.0": [
+                    "Initial depctrl release"
+                ],
+                "1.2.1": [
+                    "Update version representation in modules"
+                ],
+                "1.3.0": [
+                    "Update clipper2"
+                ],
+                "1.3.1": [
+                    "Fix identation"
+                ],
+                "1.3.2": [
+                    "Fix Dependency Control feed"
+                ],
+                "1.4.0": [
+                    "Update Clipper2"
+                ]
+            }
+        },
+        "ILL.ILL": {
+            "url": "@{baseUrl}",
+            "author": "ILLTeam",
+            "name": "ILL Library",
+            "description": "Module that eases the creation of macros with a focus on handling shapes.",
+            "fileBaseUrl": "@{fileBaseUrl}modules/@{namespacePath}",
+            "channels": {
+                "main": {
+                    "default": true,
+                    "version": "1.8.5",
+                    "released": "2026-04-04",
+                    "files": [
+                        {
+                            "name": ".moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "3bb9f8fb2727f02ad7414f15198378b4c288c6e8"
+                        },
+                        {
+                            "name": "/Ass/Shape/Curve.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "1fe1ce4ac37d9c9b608117f53638b20254f86ab1"
+                        },
+                        {
+                            "name": "/Ass/Shape/Path.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "e5d7019e972fb4a086608e57ac367608476bf298"
+                        },
+                        {
+                            "name": "/Ass/Shape/Point.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "a6a2e2b021b875130283e9297769a6677e38d1c2"
+                        },
+                        {
+                            "name": "/Ass/Shape/Segment.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "1000fb198159c3f92ceaa109f6ccedacb15eb864"
+                        },
+                        {
+                            "name": "/Ass/Text/Tag.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "9c81b99e80e08f491f879c9824926124fd2d408e"
+                        },
+                        {
+                            "name": "/Ass/Text/Tags.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "576538213ae30cd2c5c4755fd80ee0f14c097835"
+                        },
+                        {
+                            "name": "/Ass/Text/Text.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "1806a0a3fc22c903b34d34648571fd50c582c99f"
+                        },
+                        {
+                            "name": "/Ass/Ass.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "4ce31428ab0529a9e32dcac03251536d452428f2"
+                        },
+                        {
+                            "name": "/Ass/Line.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "ae6abd16d612c65871ef3c2caf03df1a6266b8ed"
+                        },
+                        {
+                            "name": "/Font/Font.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "efcb3754abcf0f2ea358abc4943d9128d7458a4f"
+                        },
+                        {
+                            "name": "/Font/Init.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "29f02704e0626b81f3b7f872689ae42e6f347855"
+                        },
+                        {
+                            "name": "/Font/Unx.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "08fb670b1dac8b12644f31d0fcafaceea070396f"
+                        },
+                        {
+                            "name": "/Font/Win.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "68decb74c31c94e3ffb55abe594edff8a2773a84"
+                        },
+                        {
+                            "name": "/Aegi.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "76c6e38c00fdd5c453a903076613e4985144a969"
+                        },
+                        {
+                            "name": "/Config.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "d4d1b25bea64bd17098acd11749d5d18d4d4ca72"
+                        },
+                        {
+                            "name": "/Math.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "68c921027d6841a187d7a5893a33f06e8f09bd0b"
+                        },
+                        {
+                            "name": "/Table.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "e73c3f626709e759502e558dc0485978611d3987"
+                        },
+                        {
+                            "name": "/Util.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "3d4faa3f76c152d2e5f2a75f1e5aad079ec70ad7"
+                        },
+                        {
+                            "name": "/UTF8.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "1f38879d0233ee7c433a4f20d324330f0874970d"
+                        }
+                    ],
+                    "requiredModules": [
+                        {
+                            "moduleName": "ffi"
+                        },
+                        {
+                            "moduleName": "json"
+                        },
+                        {
+                            "moduleName": "clipper2.clipper2",
+                            "feed": "@{feed:ILL}",
+                            "version": "1.2.0"
+                        }
+                    ]
+                }
+            },
+            "changelog": {
+                "1.1.2": [
+                    "Initial depctrl release"
+                ],
+                "1.1.3": [
+                    "Update version representation in modules"
+                ],
+                "1.2.0": [
+                    "Update ILL"
+                ],
+                "1.2.1": [
+                    "Fix identation"
+                ],
+                "1.2.2": [
+                    "Merge pull request #1 from Alendt/main",
+                    "",
+                    "Fixed some bugs of Path.simplify"
+                ],
+                "1.3.0": [
+                    "Update ILL",
+                    "",
+                    "Bugs:",
+                    "",
+                    "- object \"l\" is now functional in iterSub and iterSel iterators",
+                    "- Tags.clear function was not returning the \"\\t\" tags correctly",
+                    "- insertLine and removeLine now accept extended and unextended line objects",
+                    "",
+                    "Additions:",
+                    "",
+                    "- line insertion in dialog is now more dynamic",
+                    "- path.envelopeDistort function now takes ep argument"
+                ],
+                "1.3.1": [
+                    "Fix iteration bug"
+                ],
+                "1.3.2": [
+                    "Fix instance bug"
+                ],
+                "1.3.3": [
+                    "Fix incompatibility with Yutils module on Windows"
+                ],
+                "1.3.4": [
+                    "Update ILL macros",
+                    "",
+                    "- Fixed some bugs",
+                    "- Add save system"
+                ],
+                "1.3.5": [
+                    "Update DepControl"
+                ],
+                "1.3.6": [
+                    "Update ILL"
+                ],
+                "1.3.7": [
+                    "Path.cleanContours now removes invisible polygons"
+                ],
+                "1.4.0": [
+                    "Update ILL"
+                ],
+                "1.4.1": [
+                    "Fix empty tags"
+                ],
+                "1.4.2": [
+                    "Update Shapery"
+                ],
+                "1.4.3": [
+                    "Update ILL"
+                ],
+                "1.4.4": [
+                    "Update version"
+                ],
+                "1.4.5": [
+                    "Add shadow and rounding effects to Path"
+                ],
+                "1.4.6": [
+                    "Fix shadow path"
+                ],
+                "1.4.7": [
+                    "Replace pangocairo with freetype"
+                ],
+                "1.4.8": [
+                    "Fix some bugs on unix font"
+                ],
+                "1.4.9": [
+                    "Update ILL"
+                ],
+                "1.5.0": [
+                    "Added support for underline and strikeout to freetype wrapper"
+                ],
+                "1.5.1": [
+                    "Remove unnecessary defs"
+                ],
+                "1.5.2": [
+                    "Added functions to reverse a path"
+                ],
+                "1.5.3": [
+                    "Fix text extents width for unix"
+                ],
+                "1.5.4": [
+                    "Fix font family"
+                ],
+                "1.5.5": [
+                    "Fix issue #2 and #3"
+                ],
+                "1.5.7": [
+                    "Fix set text on shape dialogs"
+                ],
+                "1.5.8": [
+                    "Fix insert shape in Line"
+                ],
+                "1.5.9": [
+                    "UUpdate Path getNormalized"
+                ],
+                "1.6.0": [
+                    "Update ILL"
+                ],
+                "1.6.1": [
+                    "Add Split Text"
+                ],
+                "1.6.2": [
+                    "Improved Path.simplify"
+                ],
+                "1.6.3": [
+                    "Update Split Text"
+                ],
+                "1.6.4": [
+                    "Update Files"
+                ],
+                "1.6.5": [
+                    "New Features for Shapery"
+                ],
+                "1.6.6": [
+                    "Fixed a bug in Path.simplify"
+                ],
+                "1.6.7": [
+                    "Update Files"
+                ],
+                "1.6.8": [
+                    "Fix minor buf"
+                ],
+                "1.6.9": [
+                    "Update Files"
+                ],
+                "1.7.0": [
+                    "Update Files"
+                ],
+                "1.7.1": [
+                    "Try fix getFontPath method to unix"
+                ],
+                "1.7.2": [
+                    "Merge remote-tracking branch 'refs/remotes/origin/main'"
+                ],
+                "1.7.3": [
+                    "improved font selection for Unix (no fallback)"
+                ],
+                "1.7.4": [
+                    "fix waste"
+                ],
+                "1.7.5": [
+                    "fix ambiguities"
+                ],
+                "1.7.6": [
+                    "Add FBF with step"
+                ],
+                "1.7.7": [
+                    "Fix FBF interpolations"
+                ],
+                "1.7.8": [
+                    "Prevent GDI handle leak"
+                ],
+                "1.7.9": [
+                    "Prevent GDI handle leak attempt"
+                ],
+                "1.8.0": [
+                    "Fix bugs in Shapery module",
+                    "",
+                    "- Fixed 'Shapery/Offsetting': Now works in a more simplified way.",
+                    "- Moved 'Shapery macros:/Shape without holes' to a Path class function."
+                ],
+                "1.8.1": [
+                    "Add simplify to offsetting and back to old simplify (stable)"
+                ],
+                "1.8.2": [
+                    "Remove old Simplify"
+                ],
+                "1.8.3": [
+                    "Fix Line.callBackFBF"
+                ],
+                "1.8.4": [
+                    "Add Mix mode to Envelope Distort"
+                ],
+                "1.8.5": [
+                    "Fix many bugs",
+                    "",
+                    "Fix Unix font crash",
+                    "",
+                    "Add fonts cache",
+                    "",
+                    "Add setFont"
+                ]
+            }
+        },
+        "ILL.IMG": {
+            "url": "@{baseUrl}",
+            "author": "ILLTeam",
+            "name": "ILL Image Module",
+            "description": "A library for loading images in various foramts",
+            "fileBaseUrl": "@{fileBaseUrl}modules/@{namespacePath}",
+            "channels": {
+                "main": {
+                    "version": "1.0.4",
+                    "released": "2025-07-17",
+                    "default": true,
+                    "platforms": [
+                        "Windows-x64",
+                        "OSX-x64",
+                        "Linux-x64"
+                    ],
+                    "files": [
+                        {
+                            "name": ".moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "54252f6e9f958464ca98c53a94b6ba92d97b413a"
+                        },
+                        {
+                            "name": "/Potrace.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "159e0339a2a33e63db5ebab53f107e4a4ad34fba"
+                        },
+                        {
+                            "name": "/Tracer.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "a516d8373055fa4f96ecc457405ab4ae3856e67e"
+                        },
+                        {
+                            "name": "/bitmap/bitmap.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "3f9d8a2b5340a65d09be2e7796d94c00e227dbf7"
+                        },
+                        {
+                            "name": "/buffer/buffer.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "8bd5bf6202b081beead324c1f469c61eb16af03d"
+                        },
+                        {
+                            "name": "/giflib/giflib.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "5be102387e7c519b3cecf67492d42823766f0d6b"
+                        },
+                        {
+                            "name": "/giflib/giflib/giflib.dll",
+                            "url": "https://github.com/TypesettingTools/ILL-Aegisub-Scripts/releases/download/image-v1.0.0/giflib.dll",
+                            "platform": "Windows-x64",
+                            "sha1": "bbbbbf7940a1d8f112c4db08a1680075bfe59fad"
+                        },
+                        {
+                            "name": "/giflib/giflib/libgiflib.dylib",
+                            "url": "https://github.com/TypesettingTools/ILL-Aegisub-Scripts/releases/download/image-v1.0.0/libgiflib.dylib",
+                            "platform": "OSX-x64",
+                            "sha1": "8b7b7bc9ef42f6256cc770274a117655a475e77b"
+                        },
+                        {
+                            "name": "/giflib/giflib/libgiflib.so",
+                            "url": "https://github.com/TypesettingTools/ILL-Aegisub-Scripts/releases/download/image-v1.0.0/libgiflib.so",
+                            "platform": "Linux-x64",
+                            "sha1": "5fc0374a1f89d0f786cac5bbce5ce4cb512a3902"
+                        },
+                        {
+                            "name": "/lodepng/lodepng.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "76170782e6b8dcf075f9efff8e2709adc2f2d25d"
+                        },
+                        {
+                            "name": "/lodepng/lodepng/lodepng.dll",
+                            "url": "https://github.com/TypesettingTools/ILL-Aegisub-Scripts/releases/download/image-v1.0.0/lodepng.dll",
+                            "platform": "Windows-x64",
+                            "sha1": "61a65e04b034ee094637e23720718791ca1865f5"
+                        },
+                        {
+                            "name": "/lodepng/lodepng/liblodepng.dylib",
+                            "url": "https://github.com/TypesettingTools/ILL-Aegisub-Scripts/releases/download/image-v1.0.0/liblodepng.dylib",
+                            "platform": "OSX-x64",
+                            "sha1": "4d7452a0a77551437062d59d9ef01f141422b562"
+                        },
+                        {
+                            "name": "/lodepng/lodepng/liblodepng.so",
+                            "url": "https://github.com/TypesettingTools/ILL-Aegisub-Scripts/releases/download/image-v1.0.0/liblodepng.so",
+                            "platform": "Linux-x64",
+                            "sha1": "22a58b4cce2f202c7e96d3518fa35868793aac43"
+                        },
+                        {
+                            "name": "/turbojpeg/turbojpeg.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "68175673b027aaf0f440a9feba0dfd81743a7bbe"
+                        },
+                        {
+                            "name": "/turbojpeg/turbojpeg/turbojpeg.dll",
+                            "url": "https://github.com/TypesettingTools/ILL-Aegisub-Scripts/releases/download/image-v1.0.0/turbojpeg.dll",
+                            "platform": "Windows-x64",
+                            "sha1": "4d11a21b550768f4cc497a53b09a436c75f426d5"
+                        },
+                        {
+                            "name": "/turbojpeg/turbojpeg/libturbojpeg.dylib",
+                            "url": "https://github.com/TypesettingTools/ILL-Aegisub-Scripts/releases/download/image-v1.0.0/libturbojpeg.dylib",
+                            "platform": "OSX-x64",
+                            "sha1": "d99df3508622fa757adff37a782e67a6cd33fda1"
+                        },
+                        {
+                            "name": "/turbojpeg/turbojpeg/libturbojpeg.so",
+                            "url": "https://github.com/TypesettingTools/ILL-Aegisub-Scripts/releases/download/image-v1.0.0/libturbojpeg.so",
+                            "platform": "Linux-x64",
+                            "sha1": "c76a65d5a0433eeaa67e9b1ea4739b6118dfeb29"
+                        }
+                    ],
+                    "requiredModules": [
+                        {
+                            "moduleName": "ffi"
+                        },
+                        {
+                            "moduleName": "requireffi.requireffi",
+                            "version": "0.1.2",
+                            "feed": "@{feed:ffi-experiments}"
+                        }
+                    ]
+                }
+            },
+            "changelog": {
+                "1.0.1": [
+                    "Fix identation"
+                ],
+                "1.0.2": [
+                    "Update ILL IMG module",
+                    "",
+                    "- Corrigido inicializa\u00e7\u00e3o no Aegisub v3.2.2"
+                ],
+                "1.0.3": [
+                    "Update ILL.IMG - Fix reduce pixels for ass"
+                ],
+                "1.0.4": [
+                    "Update ILL.IMG - Fix reduce pixels for ass"
+                ]
+            }
+        }
+    }
+}

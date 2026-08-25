@@ -1,0 +1,95 @@
+{
+  "dependencyControlFeedFormatVersion": "0.2.0",
+  "name": "SubInspector",
+  "description": "Official SubInspector repository",
+  "baseUrl": "https://github.com/TypesettingTools/SubInspector",
+  "url": "@{baseUrl}",
+  "maintainer": "torque",
+  "knownFeeds": {
+    "ffi-experiments": "https://raw.githubusercontent.com/TypesettingTools/ffi-experiments/master/DependencyControl.json"
+  },
+  "modules": {
+    "SubInspector.Inspector": {
+      "url": "@{baseUrl}",
+      "author": "torque",
+      "name": "SubInspector",
+      "description": "Provides low level inspection and analysis of subtitles post-rasterization.",
+      "channels": {
+        "release": {
+          "version": "0.7.2",
+          "released": "2018-04-0.6",
+          "default": true,
+          "platforms": ["Windows-x86", "Windows-x64", "OSX-x64"],
+          "fileBaseUrl": "https://github.com/TypesettingTools/@{scriptName}/releases/download/v0.5.1/",
+          "files": [
+            {
+              "name": ".moon",
+              "url": "https://raw.githubusercontent.com/TypesettingTools/@{scriptName}/c2db2971c9f959b6dcd84ea8438eef8e5702f400/examples/Aegisub/Inspector@{fileName}",
+              "sha1": "112009C60FFF28FD56B47AE51F562E306272AFF6"
+            },
+            {
+              "name": "/SubInspector.dll",
+              "url": "@{fileBaseUrl}@{scriptName}-win32.dll",
+              "platform": "Windows-x86",
+              "sha1": "E9A75D53FFE6DD5DBE35451B2DEA336AD2104C66"
+            },
+            {
+              "name": "/SubInspector.dll",
+              "url": "@{fileBaseUrl}@{scriptName}-win64.dll",
+              "platform": "Windows-x64",
+              "sha1": "719A281B1FCDF73EF058FF210CBC3674CB1A6831"
+            },
+            {
+              "name": "/libSubInspector.dylib",
+              "url": "https://github.com/TypesettingTools/SubInspector/releases/download/v0.5.2/libSubInspector.dylib",
+              "platform": "OSX-x64",
+              "sha1": "CE34B98F880FD7BB0DD6BDDCDC6484C7781EEF71"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "ffi"
+            },
+            {
+              "moduleName": "requireffi.requireffi",
+              "version": "0.1.2",
+              "feed": "@{feed:ffi-experiments}"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "0.7.2": [
+          "Fix Inspector.moon C library version compatibility check in some cases."
+        ],
+        "0.7.1": [
+          "Fix Inspector.moon log function invocation."
+        ],
+        "0.7.0": [
+          "Fix Inspector.moon for libass with DirectWrite. No more XP support."
+        ],
+        "0.6.1": [
+          "Improve hash reliability as a measure of visual sameness."
+        ],
+        "0.6.0": [
+          "Rebrand as SubInspector."
+        ],
+        "0.5.1": [
+          "Fix bounds calculation in weird cases."
+        ],
+        "0.5.0": [
+          "DependencyControl integration."
+        ],
+        "0.4.0": [
+          "Added solid field to ASSI_Rect."
+        ],
+        "0.3.1": [
+          "Fixed hash reliability by not hashing junk memory."
+        ],
+        "0.3.0": [
+          "All inputs are hashed (CRC32) to provide a measure of uniqueness."
+        ]
+      }
+    }
+  }
+}

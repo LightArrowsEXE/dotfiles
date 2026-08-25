@@ -1,0 +1,1199 @@
+{
+  "dependencyControlFeedFormatVersion": "0.2.0",
+  "name": "line0's Aegisub Scripts",
+  "description": "Main repository for all of line0's automation macros.",
+  "baseUrl": "https://github.com/TypesettingTools/line0-Aegisub-Scripts",
+  "fileBaseUrl": "https://raw.githubusercontent.com/TypesettingTools/line0-Aegisub-Scripts",
+  "url": "@{baseUrl}",
+  "maintainer": "line0",
+  "macros": {
+    "l0.ASSWipe": {
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "line0",
+      "name": "ASSWipe",
+      "description": "Performs script cleanup, removes unnecessary tags and lines.",
+      "channels": {
+        "master": {
+          "version": "0.5.0",
+          "released": "2019-10-24",
+          "default": false,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "0A05260E0358EF23897C3CFDCAEFC888AABC6A5B"
+            },
+            { "name": ".lua", "delete": true }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "a-mo.LineCollection",
+              "name": "Aegisub-Motion (LineCollection)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.3.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "a-mo.ConfigHandler",
+              "name": "Aegisub-Motion (ConfigHandler)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.1.4",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.5.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.Functional",
+              "name": "(Almost) Functional Suite",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.5.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            },
+            {
+              "moduleName": "SubInspector.Inspector",
+              "name": "SubInspector",
+              "url": "https://github.com/TypesettingTools/SubInspector",
+              "version": "0.7.2",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/SubInspector/master/DependencyControl.json"
+            }
+          ],
+          "fileBaseUrl": "@{fileBaseUrl}/@{namespace}-v@{version}/@{namespace}"
+        },
+        "release": {
+          "version": "0.5.0",
+          "released": "2019-10-24",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "0A05260E0358EF23897C3CFDCAEFC888AABC6A5B"
+            },
+            { "name": ".lua", "delete": true }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "a-mo.LineCollection",
+              "name": "Aegisub-Motion (LineCollection)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.3.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "a-mo.ConfigHandler",
+              "name": "Aegisub-Motion (ConfigHandler)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.1.4",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.5.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.Functional",
+              "name": "(Almost) Functional Suite",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.5.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            },
+            {
+              "moduleName": "SubInspector.Inspector",
+              "name": "SubInspector",
+              "url": "https://github.com/TypesettingTools/SubInspector",
+              "version": "0.7.2",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/SubInspector/master/DependencyControl.json"
+            }
+          ],
+          "fileBaseUrl": "@{fileBaseUrl}/@{namespace}-v@{version}/@{namespace}"
+        }
+      },
+      "changelog": {
+        "0.1.0": [
+          "Sync with ASSFoundation changes",
+          "Start versioning with DependencyControl"
+        ],
+        "0.1.3": [
+          "Enabled auto-update using DependencyControl",
+          "Changed config file to \\config\\l0.ASSWipe.json (rename ASSWipe.json to restore your existing configuration)",
+          "DependencyControl compatibility fixes"
+        ],
+        "0.2.0": [
+          "Scaled clips and drawings are now handled correctly and can be converted to floating-point.",
+          "Drawings with extraneous ordinates are now detected and ASSWipe can attempt to fix them."
+        ],
+        "0.2.1": [
+          "Fixed out-of-memory errors on huge scripts.",
+          "Fixed the progress not being updated when no lines are being cleaned."
+        ],
+        "0.2.2": [
+          "ASSWipe now skips and warns about lines using undefined styles (instead of erroring out)."
+        ],
+        "0.3.0": [
+          "Added support for purging invisible contours from drawings and clips.",
+          "ASSWipe can now only be run when a video is loaded.",
+          "The progress bar is now always updated for every processed line."
+        ],
+        "0.3.1": [
+          "Fixed a bug that would cause a rollback on lines that were cleaned up properly."
+        ],
+        "0.3.2": [
+          "The 'Combine consecutive identical lines' feature no longer ignores layer order changes inbetween candidate fbf lines. The previous behavior caused the layer blending order to break when certain conditions were met. Thanks coldhell for reporting this one."
+        ],
+        "0.3.3": [
+          "The blending order check introduced for the 'Combine consecutive identical lines' feature in 0.3.2 now considers merge operations that have already taken place in the current line's blending groups, which considerably improves the number of mergeable lines in some cases."
+        ],
+        "0.4.0": [
+          "The performance and memory usage of the 'clean drawings' features has been greatly improved.",
+          "Memory footprint has been decreased by removing the undo text from already cleaned lines.",
+          "A cleaning option was added to filter/strip extradata from processed scripts.",
+          "A cleaning option was aded to strip comments from processed lines.",
+          "The user can now cancel ASSWipe at pretty much any point in time when cleaning is in progress.",
+          "Upgraded ASSFoundation to v0.4.0 which fixes many cleaning issues experienced in the previous version of ASSWipe. See the ASSFoundation changelog for details.",
+          "Configuration for the 'quirks mode' added in ASSFoundation v0.4.0 is now exposed to the user, letting them tailor the cleaning process to either libass or vsfitlter.",
+          "After cleaning contours of a drawing, a dedicated hash check is performed to ensure the process didn't visually change the lines. When it detects the change, it automatically reverts to the original contours and resumes the cleaning process. The amount of affected contours is reported in the final report.",
+          "Added an option to ignore hash changes caused by contour cleaning. This may visually affect drawings, so don't use this unsupervised!",
+          "Logging/error reporting was improved and logs are no written to a log file."
+        ],
+        "0.5.0": [
+          "The 'Merge consecutive tag sections' feature now skips sections that contain any tag from a customizable exception list. Defaults to karaoke tags to avoid breaking poorly written karaoke templater scripts."
+        ]
+      }
+    },
+    "l0.CascadeTransforms": {
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "line0",
+      "name": "Cascade Transforms",
+      "description": "Changes transforms in a line to be transformed in a consecutive fashion, with the transform time being split evenly.",
+      "channels": {
+        "master": {
+          "version": "0.1.0",
+          "default": false,
+          "released": "2015-04-17",
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "71277E59825413746CCB33231A2FBC396995E8AB"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "a-mo.LineCollection",
+              "name": "Aegisub-Motion (LineCollection)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.3.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.4.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            }
+          ],
+          "fileBaseUrl": "@{fileBaseUrl}/@{namespace}-v@{version}/@{namespace}"
+        },
+        "release": {
+          "version": "0.1.0",
+          "default": true,
+          "released": "2015-04-17",
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "71277E59825413746CCB33231A2FBC396995E8AB"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "a-mo.LineCollection",
+              "name": "Aegisub-Motion (LineCollection)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.3.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.4.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            }
+          ],
+          "fileBaseUrl": "@{fileBaseUrl}/@{namespace}-v@{version}/@{namespace}"
+        }
+      },
+      "changelog": { "0.1.0": ["initial release"] }
+    },
+    "l0.HighlightSubstring": {
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "line0",
+      "name": "Highlight Substring",
+      "description": "Highlights a substring at a given index in a line by underlaying a colored rectangle.",
+      "channels": {
+        "master": {
+          "version": "0.1.1",
+          "default": false,
+          "released": "2019-02-17",
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "3158BBDB18C8B1208049AB166D1A566359B866FE"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "a-mo.LineCollection",
+              "name": "Aegisub-Motion (LineCollection)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.3.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.4.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            }
+          ],
+          "fileBaseUrl": "@{fileBaseUrl}/@{namespace}-v@{version}/@{namespace}"
+        },
+        "release": {
+          "version": "0.1.1",
+          "default": true,
+          "released": "2019-02-17",
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "3158BBDB18C8B1208049AB166D1A566359B866FE"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "a-mo.LineCollection",
+              "name": "Aegisub-Motion (LineCollection)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.3.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.4.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            }
+          ],
+          "fileBaseUrl": "@{fileBaseUrl}/@{namespace}-v@{version}/@{namespace}"
+        }
+      },
+      "changelog": {
+        "0.1.0": ["initial release"],
+        "0.1.1": [
+          "HighlightSubstring now properly works with ASSFoundation v0.4.0+"
+        ]
+      }
+    },
+    "l0.InsertLineBreaks": {
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "line0",
+      "name": "Insert Line Breaks",
+      "description": "Inserts hard line breaks after n characters, but tries to avoid breaking up words.",
+      "channels": {
+        "master": {
+          "version": "0.2.0",
+          "default": false,
+          "released": "2019-02-17",
+          "files": [
+            { "name": ".lua", "delete": true },
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "1AC3A3FD9119800D2F660D107CB0D2FB69A9D2B4"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "a-mo.LineCollection",
+              "name": "Aegisub-Motion (LineCollection)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.3.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.4.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.Functional",
+              "name": "(Almost) Functional Suite",
+              "url": "https://github.com/TypesettingTools/Functional",
+              "version": "0.5.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Functional/master/DependencyControl.json"
+            }
+          ],
+          "fileBaseUrl": "@{fileBaseUrl}/@{namespace}-v@{version}/@{namespace}"
+        },
+        "release": {
+          "version": "0.2.0",
+          "default": true,
+          "released": "2019-02-17",
+          "files": [
+            { "name": ".lua", "delete": true },
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "1AC3A3FD9119800D2F660D107CB0D2FB69A9D2B4"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "a-mo.LineCollection",
+              "name": "Aegisub-Motion (LineCollection)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.3.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.4.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.Functional",
+              "name": "(Almost) Functional Suite",
+              "url": "https://github.com/TypesettingTools/Functional",
+              "version": "0.5.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Functional/master/DependencyControl.json"
+            }
+          ],
+          "fileBaseUrl": "@{fileBaseUrl}/@{namespace}-v@{version}/@{namespace}"
+        }
+      },
+      "changelog": {
+        "0.0.1": [
+          "Sync with ASSFoundation changes",
+          "Start versioning with DependencyControl"
+        ],
+        "0.1.1": [
+          "Enabled auto-update using DependencyControl",
+          "DependencyControl compatibility fixes"
+        ],
+        "0.2.0": [
+          "The script was ported to MoonScript and dependencies have been updated to their latest versions."
+        ]
+      }
+    },
+    "l0.LerpByChar": {
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "line0",
+      "name": "Lerp By Character",
+      "description": "Linearly interpolates a specified override tag character-by-character between stops in a line.",
+      "channels": {
+        "master": {
+          "version": "0.1.0",
+          "default": false,
+          "released": "2019-09-14",
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "F26D2838D72F6A61915840A00E1A49D61FA39932"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "a-mo.LineCollection",
+              "name": "Aegisub-Motion (LineCollection)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.3.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.4.4",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.Functional",
+              "name": "(Almost) Functional Suite",
+              "url": "https://github.com/TypesettingTools/Functional",
+              "version": "0.6.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Functional/master/DependencyControl.json"
+            },
+            {
+              "moduleName": "a-mo.ConfigHandler",
+              "name": "Aegisub-Motion (ConfigHandler)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.1.4",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            }
+          ],
+          "fileBaseUrl": "@{fileBaseUrl}/@{namespace}-v@{version}/@{namespace}"
+        },
+        "release": {
+          "version": "0.1.0",
+          "default": true,
+          "released": "2019-09-14",
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "F26D2838D72F6A61915840A00E1A49D61FA39932"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "a-mo.LineCollection",
+              "name": "Aegisub-Motion (LineCollection)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.3.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.4.4",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.Functional",
+              "name": "(Almost) Functional Suite",
+              "url": "https://github.com/TypesettingTools/Functional",
+              "version": "0.6.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Functional/master/DependencyControl.json"
+            },
+            {
+              "moduleName": "a-mo.ConfigHandler",
+              "name": "Aegisub-Motion (ConfigHandler)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.1.4",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            }
+          ],
+          "fileBaseUrl": "@{fileBaseUrl}/@{namespace}-v@{version}/@{namespace}"
+        }
+      },
+      "changelog": {
+        "0.1.0": [
+          "Initial release"
+        ]
+      }
+    },
+    "l0.MergeDrawings": {
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "line0",
+      "name": "Merge Drawings",
+      "description": "Moves all drawings found in all selected lines into the first line. Maintains positioning and converts scale as well as alignment.",
+      "channels": {
+        "master": {
+          "version": "0.2.0",
+          "default": false,
+          "released": "2019-02-17",
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "A85D3A6FF3CDE816BC211625D215696E14A5F893"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "a-mo.LineCollection",
+              "name": "Aegisub-Motion (LineCollection)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.3.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.4.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            }
+          ],
+          "fileBaseUrl": "@{fileBaseUrl}/@{namespace}-v@{version}/@{namespace}"
+        },
+        "release": {
+          "version": "0.2.0",
+          "default": true,
+          "released": "2019-02-17",
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "A85D3A6FF3CDE816BC211625D215696E14A5F893"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "a-mo.LineCollection",
+              "name": "Aegisub-Motion (LineCollection)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.3.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.4.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            }
+          ],
+          "fileBaseUrl": "@{fileBaseUrl}/@{namespace}-v@{version}/@{namespace}"
+        }
+      },
+      "changelog": {
+        "0.1.0": ["initial release"],
+        "0.2.0": [
+          "The final merged drawing is trimmed in such a way that its top-left-most point is also its origin. Position/Move tags are added/adjusted in order for the drawing to retain its position on the canvas.",
+          "Dependencies have been updated to their latest versions."
+        ]
+      }
+    },
+    "l0.MoveAlongPath": {
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "line0",
+      "name": "Move Along Path",
+      "description": "Moves text along a path specified in a \\clip. Currently only works on fbf lines.",
+      "channels": {
+        "master": {
+          "version": "0.2.1",
+          "default": false,
+          "released": "2019-03-28",
+          "files": [
+            { "name": ".lua", "delete": true },
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "C91DD0D7E7C84E45D7F9D413317DE36B56E6C23B"
+            }
+          ],
+          "requiredModules": [
+            { "moduleName": "Yutils" },
+            {
+              "moduleName": "a-mo.LineCollection",
+              "name": "Aegisub-Motion (LineCollection)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.3.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "a-mo.Line",
+              "name": "Aegisub-Motion (Line)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.5.3",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.4.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.Functional",
+              "name": "(Almost) Functional Suite",
+              "url": "https://github.com/TypesettingTools/Functional",
+              "version": "0.5.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Functional/master/DependencyControl.json"
+            }
+          ],
+          "fileBaseUrl": "@{fileBaseUrl}/@{namespace}-v@{version}/@{namespace}"
+        },
+        "release": {
+          "version": "0.2.1",
+          "default": true,
+          "released": "2019-03-28",
+          "files": [
+            { "name": ".lua", "delete": true },
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "C91DD0D7E7C84E45D7F9D413317DE36B56E6C23B"
+            }
+          ],
+          "requiredModules": [
+            { "moduleName": "Yutils" },
+            {
+              "moduleName": "a-mo.LineCollection",
+              "name": "Aegisub-Motion (LineCollection)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.3.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "a-mo.Line",
+              "name": "Aegisub-Motion (Line)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.5.3",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.4.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.Functional",
+              "name": "(Almost) Functional Suite",
+              "url": "https://github.com/TypesettingTools/Functional",
+              "version": "0.5.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Functional/master/DependencyControl.json"
+            }
+          ],
+          "fileBaseUrl": "@{fileBaseUrl}/@{namespace}-v@{version}/@{namespace}"
+        }
+      },
+      "changelog": {
+        "0.1.0": [
+          "Sync with ASSFoundation changes",
+          "Start versioning with DependencyControl"
+        ],
+        "0.1.2": [
+          "Enabled auto-update using DependencyControl",
+          "DependencyControl compatibility fixes"
+        ],
+        "0.1.3": [
+          "Generated lines now have the correct line order (within the script and in relation to each other)"
+        ],
+        "0.1.4": [
+          "The required Yutils module is now loaded correctly on case-sensitive platforms/file systems such as Linux."
+        ],
+        "0.2.0": [
+          "The script now uses the DependencyControl logger infrastructure and writes a log file to disk.",
+          "Dependencies have been updated to their latest versions."
+        ],
+        "0.2.1": [
+          "Entering the automation menu with no lines selected no longer results in an error message. "
+        ]
+      }
+    },
+    "l0.Nudge": {
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "line0",
+      "name": "Nudge",
+      "description": "Provides configurable and hotkeyable tag/line modification macros.",
+      "channels": {
+        "master": {
+          "version": "0.5.0",
+          "default": false,
+          "released": "2019-02-17",
+          "files": [
+            { "name": ".lua", "delete": true },
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "E65255219E0C9A29C6DEC27F385DE65F3D2977F7"
+            }
+          ],
+          "requiredModules": [
+            { "moduleName": "aegisub.clipboard" },
+            { "moduleName": "json" },
+            {
+              "moduleName": "a-mo.LineCollection",
+              "name": "Aegisub-Motion (LineCollection)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.3.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.4.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.Functional",
+              "name": "(Almost) Functional Suite",
+              "url": "https://github.com/TypesettingTools/Functional",
+              "version": "0.5.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Functional/master/DependencyControl.json"
+            }
+          ],
+          "fileBaseUrl": "@{fileBaseUrl}/@{namespace}-v@{version}/@{namespace}"
+        },
+        "release": {
+          "version": "0.5.0",
+          "default": true,
+          "released": "2019-02-17",
+          "files": [
+            { "name": ".lua", "delete": true },
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "E65255219E0C9A29C6DEC27F385DE65F3D2977F7"
+            }
+          ],
+          "requiredModules": [
+            { "moduleName": "aegisub.clipboard" },
+            { "moduleName": "json" },
+            {
+              "moduleName": "a-mo.LineCollection",
+              "name": "Aegisub-Motion (LineCollection)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.3.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.4.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.Functional",
+              "name": "(Almost) Functional Suite",
+              "url": "https://github.com/TypesettingTools/Functional",
+              "version": "0.5.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Functional/master/DependencyControl.json"
+            }
+          ],
+          "fileBaseUrl": "@{fileBaseUrl}/@{namespace}-v@{version}/@{namespace}"
+        }
+      },
+      "changelog": {
+        "0.3.0": [
+          "Sync with ASSFoundation changes",
+          "Start versioning with DependencyControl"
+        ],
+        "0.3.2": [
+          "Enabled auto-update using DependencyControl",
+          "Changed config file to \\config\\l0.Nudge.json (rename nudge.json to restore your existing configuration)",
+          "DependencyControl compatibility fixes"
+        ],
+        "0.3.3": ["ASSFoundation (Common) compatibility fixes"],
+        "0.3.4": ["Drawing -> Clip conversion is now available."],
+        "0.4.0": [
+          "An option to maintain the appearance of the line when changing the aligment was added to the Align Up/Down/Left/Right operations."
+        ],
+        "0.5.0": [
+          "The script was ported to MoonScript and dependencies have been updated to their latest versions.",
+          "The default align nudgers are now configured to maintain line positioning.",
+          "An option was added for a nudger to strip or keep sections left empty after performing the desired operation."
+        ]
+      }
+    },
+    "l0.PasteAiLines": {
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "line0",
+      "name": "Paste AI Lines",
+      "description": "Convenience macro for pasting full lines exported by AI2ASS.",
+      "channels": {
+        "master": {
+          "version": "0.2.0",
+          "default": false,
+          "released": "2019-02-17",
+          "files": [
+            { "name": ".lua", "delete": true },
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "CE50E1E290EB75D7B25419D4333A758405641C7E"
+            }
+          ],
+          "requiredModules": [
+            { "moduleName": "aegisub.util" },
+            { "moduleName": "aegisub.clipboard" },
+            {
+              "moduleName": "a-mo.LineCollection",
+              "name": "Aegisub-Motion (LineCollection)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.3.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "a-mo.ConfigHandler",
+              "name": "Aegisub-Motion (ConfigHandler)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.1.4",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.4.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.Functional",
+              "name": "(Almost) Functional Suite",
+              "url": "https://github.com/TypesettingTools/Functional",
+              "version": "0.5.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Functional/master/DependencyControl.json"
+            }
+          ],
+          "fileBaseUrl": "@{fileBaseUrl}/@{namespace}-v@{version}/@{namespace}"
+        },
+        "release": {
+          "version": "0.2.0",
+          "default": true,
+          "released": "2019-02-17",
+          "files": [
+            { "name": ".lua", "delete": true },
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "CE50E1E290EB75D7B25419D4333A758405641C7E"
+            }
+          ],
+          "requiredModules": [
+            { "moduleName": "aegisub.util" },
+            { "moduleName": "aegisub.clipboard" },
+            {
+              "moduleName": "a-mo.LineCollection",
+              "name": "Aegisub-Motion (LineCollection)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.3.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "a-mo.ConfigHandler",
+              "name": "Aegisub-Motion (ConfigHandler)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.1.4",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.4.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.Functional",
+              "name": "(Almost) Functional Suite",
+              "url": "https://github.com/TypesettingTools/Functional",
+              "version": "0.5.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Functional/master/DependencyControl.json"
+            }
+          ],
+          "fileBaseUrl": "@{fileBaseUrl}/@{namespace}-v@{version}/@{namespace}"
+        }
+      },
+      "changelog": {
+        "0.1.0": [
+          "Sync with ASSFoundation changes",
+          "Start versioning with DependencyControl"
+        ],
+        "0.1.2": [
+          "Enabled auto-update using DependencyControl",
+          "Changed config file to \\config\\l0.PasteAILines.json (rename PasteAILines.json to restore your existing configuration)",
+          "DependencyControl compatibility fixes"
+        ],
+        "0.2.0": [
+          "The script was ported to MoonScript and dependencies have been updated to their latest versions."
+        ]
+      }
+    },
+    "l0.ShakeIt": {
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "line0",
+      "name": "Shake It",
+      "description": "Lets you add a shaking effect to fbf typesets with configurable constraints.",
+      "channels": {
+        "master": {
+          "version": "0.2.0",
+          "default": false,
+          "released": "2019-08-12",
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "8951E21B9B58011BA3BB0BA5BA0F60796808CBD4"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "a-mo.LineCollection",
+              "name": "Aegisub-Motion (LineCollection)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.3.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.4.3",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.Functional",
+              "name": "(Almost) Functional Suite",
+              "url": "https://github.com/TypesettingTools/Functional",
+              "version": "0.5.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Functional/master/DependencyControl.json"
+            },
+            {
+              "moduleName": "a-mo.ConfigHandler",
+              "name": "Aegisub-Motion (ConfigHandler)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.1.4",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            }
+          ],
+          "fileBaseUrl": "@{fileBaseUrl}/@{namespace}-v@{version}/@{namespace}"
+        },
+        "release": {
+          "version": "0.2.0",
+          "default": true,
+          "released": "2019-08-12",
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "8951E21B9B58011BA3BB0BA5BA0F60796808CBD4"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "a-mo.LineCollection",
+              "name": "Aegisub-Motion (LineCollection)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.3.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.4.3",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.Functional",
+              "name": "(Almost) Functional Suite",
+              "url": "https://github.com/TypesettingTools/Functional",
+              "version": "0.5.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Functional/master/DependencyControl.json"
+            },
+            {
+              "moduleName": "a-mo.ConfigHandler",
+              "name": "Aegisub-Motion (ConfigHandler)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.1.4",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            }
+          ],
+          "fileBaseUrl": "@{fileBaseUrl}/@{namespace}-v@{version}/@{namespace}"
+        }
+      },
+      "changelog": {
+        "0.1.0": [
+          "Ported from old Lua version to use DependencyControl, ASSFoundation, Aegisub-Motion and Functional."
+        ],
+        "0.1.1": ["Cosmetic improvements to the source code"],
+        "0.2.0": [
+          "Added a separate macro for shaking scalar-type tags.",
+          "Line grouping can now be guided by a configurable line field or be turned off altogether.",
+          "The last dialog choice are now automatically saved and recalled.",
+          "Random offset patterns can now be configured to repeat every n line groups."
+        ]
+      }
+    },
+    "l0.SplitLines": {
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "line0",
+      "name": "Split Lines",
+      "description": "Splits lines at configurable intervals, specified indexes or at tag boundaries while maintaining appearance.",
+      "channels": {
+        "master": {
+          "version": "0.2.0",
+          "default": false,
+          "released": "2019-02-17",
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "941CDCF5EEDD78EA9BED747E8790714EA58A0C1D"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "a-mo.LineCollection",
+              "name": "Aegisub-Motion (LineCollection)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.3.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "a-mo.ConfigHandler",
+              "name": "Aegisub-Motion (ConfigHandler)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.1.4",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.4.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            },
+            { "moduleName": "aegisub.re" }
+          ],
+          "fileBaseUrl": "@{fileBaseUrl}/@{namespace}-v@{version}/@{namespace}"
+        },
+        "release": {
+          "version": "0.2.0",
+          "default": true,
+          "released": "2019-02-17",
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "941CDCF5EEDD78EA9BED747E8790714EA58A0C1D"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "a-mo.LineCollection",
+              "name": "Aegisub-Motion (LineCollection)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.3.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "a-mo.ConfigHandler",
+              "name": "Aegisub-Motion (ConfigHandler)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.1.4",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.4.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            },
+            { "moduleName": "aegisub.re" }
+          ],
+          "fileBaseUrl": "@{fileBaseUrl}/@{namespace}-v@{version}/@{namespace}"
+        }
+      },
+      "changelog": {
+        "0.1.0": ["initial commit"],
+        "0.2.0": [
+          "Split lines that would only contain whitespace are no longer written to the script.",
+          "Dependencies have been updated to their latest versions."
+        ]
+      }
+    },
+    "l0.VerticalText": {
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "line0",
+      "name": "Vertical Text",
+      "description": "Splits a line into vertical text.",
+      "channels": {
+        "master": {
+          "version": "0.2.0",
+          "default": false,
+          "released": "2019-02-17",
+          "files": [
+            { "name": ".lua", "delete": true },
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "B89FEBE845444BF8858E27A09CAA2D237AAA3367"
+            }
+          ],
+          "requiredModules": [
+            { "moduleName": "Yutils" },
+            {
+              "moduleName": "a-mo.LineCollection",
+              "name": "Aegisub-Motion (LineCollection)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.3.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.4.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            }
+          ],
+          "fileBaseUrl": "@{fileBaseUrl}/@{namespace}-v@{version}/@{namespace}"
+        },
+        "release": {
+          "version": "0.2.0",
+          "default": true,
+          "released": "2019-02-17",
+          "files": [
+            { "name": ".lua", "delete": true },
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "B89FEBE845444BF8858E27A09CAA2D237AAA3367"
+            }
+          ],
+          "requiredModules": [
+            { "moduleName": "Yutils" },
+            {
+              "moduleName": "a-mo.LineCollection",
+              "name": "Aegisub-Motion (LineCollection)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "version": "1.3.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.4.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            }
+          ],
+          "fileBaseUrl": "@{fileBaseUrl}/@{namespace}-v@{version}/@{namespace}"
+        }
+      },
+      "changelog": {
+        "0.0.1": ["initial commit"],
+        "0.1.1": [
+          "Enabled auto-update using DependencyControl",
+          "DependencyControl compatibility fixes"
+        ],
+        "0.1.2": [
+          "Sync with ASSFoundation API changes",
+          "The required Yutils module is now loaded correctly on case-sensitive platforms/file systems such as Linux."
+        ],
+        "0.2.0": [
+          "The script was ported to MoonScript and dependencies have been updated to their latest versions."
+        ]
+      }
+    }
+  }
+}

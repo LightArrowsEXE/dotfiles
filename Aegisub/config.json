@@ -32,7 +32,7 @@
 			}
 		],
 		"Language" : "en_US",
-		"Maximized" : true,
+		"Maximized" : false,
 		"Save Charset" : "UTF-8",
 		"Save UI State" : false,
 		"Show Toolbar" : true,
@@ -69,7 +69,7 @@
 			},
 			"Waveform Style" : 0
 		},
-		"Display Height" : 197,
+		"Display Height" : 194,
 		"Downmixer" : "ConvertToMono",
 		"Drag Timing" : true,
 		"Inactive Lines Display Mode" : 3,
@@ -106,24 +106,26 @@
 		"Track Cursor" : {
 			"Font Face" : ""
 		},
-		"Volume" : 56,
+		"Volume" : 55,
 		"Wheel Default to Zoom" : false,
 		"Zoom" : {
-			"Horizontal" : 16,
-			"Vertical" : 77
+			"Horizontal" : 15,
+			"Vertical" : 88
 		}
 	},
 	"Automation" : {
 		"Autoreload Mode" : 1,
-		"Trace Level" : 3
+		"Trace Level" : 2
 	},
 	"Colour" : {
 		"Audio Display" : {
+			"Current Frame Range" : "rgba(255, 255, 255, 160)",
 			"Keyframe" : "rgb(255, 0, 255)",
 			"Line Boundary Inactive Line" : "rgb(190, 190, 190)",
 			"Line boundary End" : "rgb(0, 0, 216)",
 			"Line boundary Start" : "rgb(216, 0, 0)",
 			"Play Cursor" : "rgb(255, 255, 255)",
+			"Previous Frame Range" : "rgba(255, 255, 255, 200)",
 			"Seconds Line" : "rgb(0, 100, 255)",
 			"Spectrum" : "Icy Blue",
 			"Syllable Boundaries" : "rgb(255, 255, 0)",
@@ -326,11 +328,11 @@
 			"Audio" : "",
 			"Automation" : "",
 			"Keyframes" : "",
-			"Subtitles" : "C:\\Users\\light\\Videos\\Fansubs\\Kaleido\\mahou-shoujo-lyrical-nanoha\\S02\\08",
+			"Subtitles" : "D:\\Videos\\Fansubs\\Kaleido\\Sono-Hanabira-ni-Kuchizuke-wo\\01",
 			"Timecodes" : "",
-			"Video" : ""
+			"Video" : "Z:\\downloads\\qbittorrent\\Projects\\BDMV-DVDISO\\_Bookworm\\S04"
 		},
-		"Screenshot" : "?video"
+		"Screenshot" : "?script"
 	},
 	"Player" : {
 		"Audio" : {
@@ -402,6 +404,42 @@
 			"Column" : [
 				{
 					"bool" : true
+				},
+				{
+					"bool" : true
+				},
+				{
+					"bool" : true
+				},
+				{
+					"bool" : true
+				},
+				{
+					"bool" : true
+				},
+				{
+					"bool" : true
+				},
+				{
+					"bool" : true
+				},
+				{
+					"bool" : true
+				},
+				{
+					"bool" : true
+				},
+				{
+					"bool" : true
+				},
+				{
+					"bool" : true
+				},
+				{
+					"bool" : true
+				},
+				{
+					"bool" : true
 				}
 			],
 			"Focus Allow" : true,
@@ -458,107 +496,107 @@
 	"Tool" : {
 		"Colour Picker" : {
 			"Last" : {
-				"X" : 550,
-				"Y" : 718
+				"X" : 553,
+				"Y" : 922
 			},
 			"Maximized" : false,
 			"Mode" : 4,
 			"Recent Colours" : [
 				{
-					"color" : "rgb(0, 170, 146)"
-				},
-				{
-					"color" : "rgb(5, 154, 155)"
-				},
-				{
-					"color" : "rgb(255, 255, 255)"
-				},
-				{
-					"color" : "rgb(255, 255, 255)"
-				},
-				{
-					"color" : "rgb(253, 251, 239)"
-				},
-				{
-					"color" : "rgb(16, 54, 228)"
-				},
-				{
-					"color" : "rgb(4, 248, 1)"
-				},
-				{
-					"color" : "rgb(255, 54, 20)"
-				},
-				{
-					"color" : "rgb(165, 254, 234)"
-				},
-				{
-					"color" : "rgb(249, 0, 0)"
-				},
-				{
-					"color" : "rgb(249, 0, 0)"
-				},
-				{
-					"color" : "rgb(232, 98, 97)"
-				},
-				{
-					"color" : "rgb(232, 98, 97)"
-				},
-				{
-					"color" : "rgb(255, 216, 0)"
-				},
-				{
-					"color" : "rgb(14, 255, 0)"
-				},
-				{
-					"color" : "rgb(250, 250, 250)"
-				},
-				{
-					"color" : "rgb(35, 39, 43)"
-				},
-				{
-					"color" : "rgb(246, 247, 247)"
-				},
-				{
-					"color" : "rgb(245, 211, 78)"
-				},
-				{
-					"color" : "rgb(247, 208, 91)"
-				},
-				{
-					"color" : "rgb(160, 108, 47)"
-				},
-				{
-					"color" : "rgb(177, 28, 27)"
-				},
-				{
-					"color" : "rgb(27, 40, 177)"
+					"color" : "rgb(229, 81, 117)"
 				},
 				{
 					"color" : "rgb(0, 0, 0)"
 				},
 				{
-					"color" : "rgb(0, 0, 0)"
+					"color" : "rgb(255, 0, 0)"
 				},
 				{
-					"color" : "rgb(0, 65, 86)"
+					"color" : "rgb(200, 165, 198)"
 				},
 				{
-					"color" : "rgb(246, 209, 43)"
+					"color" : "rgb(171, 215, 206)"
 				},
 				{
-					"color" : "rgb(253, 250, 202)"
+					"color" : "rgb(127, 255, 231)"
 				},
 				{
-					"color" : "rgb(207, 160, 24)"
+					"color" : "rgb(255, 157, 243)"
 				},
 				{
-					"color" : "rgb(251, 240, 177)"
+					"color" : "rgb(249, 127, 168)"
 				},
 				{
-					"color" : "rgb(250, 240, 177)"
+					"color" : "rgb(248, 154, 187)"
+				},
+				{
+					"color" : "rgb(250, 187, 212)"
+				},
+				{
+					"color" : "rgb(249, 158, 190)"
+				},
+				{
+					"color" : "rgb(248, 188, 212)"
+				},
+				{
+					"color" : "rgb(250, 195, 217)"
+				},
+				{
+					"color" : "rgb(250, 194, 218)"
+				},
+				{
+					"color" : "rgb(255, 0, 108)"
+				},
+				{
+					"color" : "rgb(252, 141, 173)"
+				},
+				{
+					"color" : "rgb(252, 141, 172)"
+				},
+				{
+					"color" : "rgb(229, 102, 125)"
+				},
+				{
+					"color" : "rgb(234, 182, 185)"
+				},
+				{
+					"color" : "rgb(235, 183, 185)"
+				},
+				{
+					"color" : "rgb(235, 181, 184)"
 				},
 				{
 					"color" : "rgb(255, 255, 255)"
+				},
+				{
+					"color" : "rgb(0, 135, 255)"
+				},
+				{
+					"color" : "rgb(236, 182, 185)"
+				},
+				{
+					"color" : "rgb(251, 124, 166)"
+				},
+				{
+					"color" : "rgb(250, 125, 165)"
+				},
+				{
+					"color" : "rgb(249, 195, 217)"
+				},
+				{
+					"color" : "rgb(250, 195, 218)"
+				},
+				{
+					"color" : "rgb(253, 206, 233)"
+				},
+				{
+					"color" : "rgb(253, 201, 231)"
+				},
+				{
+					"color" : "rgb(253, 213, 236)"
+				},
+				{
+					"color" : "rgb(253, 214, 236)"
 				}
 			]
 		},
@@ -573,7 +611,7 @@
 			}
 		},
 		"Kanji Timer" : {
-			"Interpolation" : false
+			"Interpolation" : true
 		},
 		"Paste Lines Over" : {
 			"Fields" : [
@@ -584,36 +622,36 @@
 					"bool" : false
 				},
 				{
-					"bool" : false
-				},
-				{
-					"bool" : false
-				},
-				{
-					"bool" : false
-				},
-				{
-					"bool" : false
-				},
-				{
-					"bool" : false
-				},
-				{
-					"bool" : false
-				},
-				{
-					"bool" : false
-				},
-				{
-					"bool" : false
+					"bool" : true
 				},
 				{
 					"bool" : true
+				},
+				{
+					"bool" : false
+				},
+				{
+					"bool" : false
+				},
+				{
+					"bool" : false
+				},
+				{
+					"bool" : false
+				},
+				{
+					"bool" : false
+				},
+				{
+					"bool" : false
+				},
+				{
+					"bool" : false
 				}
 			]
 		},
 		"Preferences" : {
-			"Page" : 0
+			"Page" : 3
 		},
 		"Search Replace" : {
 			"Affect" : 1,
@@ -625,22 +663,22 @@
 		},
 		"Select Lines" : {
 			"Action" : 0,
-			"Condition" : 0,
-			"Field" : 2,
+			"Condition" : 1,
+			"Field" : 0,
 			"Match" : {
 				"Case" : false,
-				"Comment" : true,
+				"Comment" : false,
 				"Dialogue" : true
 			},
 			"Mode" : 1,
-			"Text" : "Fake Berserker"
+			"Text" : "\\i1"
 		},
 		"Shift Times" : {
 			"Affect" : 1,
 			"ByTime" : false,
-			"Direction" : true,
-			"Frames" : 120,
-			"Time" : 30,
+			"Direction" : false,
+			"Frames" : 1,
+			"Time" : 10,
 			"Type" : 0
 		},
 		"Spell Checker" : {
@@ -651,8 +689,8 @@
 		},
 		"Style Editor" : {
 			"Last" : {
-				"Height" : 369,
-				"Width" : 861,
+				"Height" : 367,
+				"Width" : 865,
 				"X" : 892,
 				"Y" : 416
 			},
@@ -661,8 +699,8 @@
 		},
 		"Style Manager" : {
 			"Last" : {
-				"X" : -1,
-				"Y" : -1
+				"X" : 729,
+				"Y" : 757
 			},
 			"Maximized" : false
 		},
@@ -679,11 +717,11 @@
 		"Timing Post Processor" : {
 			"Adjacent Bias" : 1.0,
 			"Enable" : {
-				"Adjacent" : false,
+				"Adjacent" : true,
 				"Keyframe" : true,
 				"Lead" : {
 					"IN" : false,
-					"OUT" : true
+					"OUT" : false
 				}
 			},
 			"Lead" : {
@@ -712,16 +750,16 @@
 			"Autohide" : false,
 			"Perspective" : {
 				"Grid" : false,
-				"Org Mode" : 16,
-				"Outer" : true,
+				"Org Mode" : 0,
+				"Outer" : false,
 				"Outer Locked" : false
 			},
 			"Shape Handle Size" : 3
 		}
 	},
 	"Version" : {
-		"Last Version" : 9676,
-		"Next Check" : 1771954952
+		"Last Version" : 9829,
+		"Next Check" : 1787696460
 	},
 	"Video" : {
 		"Ctrl Scroll Action" : 2,
@@ -737,23 +775,33 @@
 		"Dummy" : {
 			"FPS String" : "24000/1001",
 			"Last" : {
-				"Height" : 1080,
-				"Length" : 2156,
-				"Width" : 1920
+				"Height" : 478,
+				"Length" : 45000,
+				"Width" : 854
 			},
 			"Pattern" : false
 		},
-		"Last Script Resolution Mismatch Choice" : 2,
+		"HDR Video Warning" : true,
+		"Last LayoutRes Mismatch Choice" : 0,
+		"Last No LayoutRes in Script Choice" : 1,
+		"Last No YCbCr Matrix in Script Choice" : 1,
+		"Last PlayRes Mismatch Choice" : 0,
+		"Last YCbCr Matrix Mismatch Choice" : 1,
+		"LayoutRes Mismatch" : 1,
+		"No LayoutRes in Script" : 1,
+		"No YCbCr Matrix in Script" : 1,
 		"Open Audio" : true,
 		"Overscan Mask" : false,
+		"PlayRes Mismatch" : 0,
 		"Provider" : "FFmpegSource",
-		"Script Resolution Mismatch" : 1,
 		"Scroll Action" : 0,
 		"Shift Scroll Action" : 4,
 		"Slider" : {
 			"Fast Jump Step" : 10,
 			"Show Keyframes" : true
 		},
-		"Subtitle Sync" : false
+		"Subtitle Sync" : false,
+		"Untagged Matrix Warning" : true,
+		"YCbCr Matrix Mismatch" : 1
 	}
 }

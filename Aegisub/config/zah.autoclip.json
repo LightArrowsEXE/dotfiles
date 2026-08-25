@@ -1,7 +1,7 @@
 {
   "disable_version_notify": false,
   "python": "python",
-  "venv_activate": "",
+  "venv_activate": "C:\\Users\\light\\Documents\\autoclip\\.venv\\Scripts\\activate.ps1",
   "vsrepo": "vsrepo",
   "vsrepo_mode": "vsrepo in PATH (`$ vsrepo --help`)"
 }

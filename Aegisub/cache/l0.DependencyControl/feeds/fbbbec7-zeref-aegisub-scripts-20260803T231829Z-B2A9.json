@@ -1,0 +1,634 @@
+{
+    "dependencyControlFeedFormatVersion": "0.3.0",
+    "name": "zeref-aegisub-scripts",
+    "description": "Aegisub scripts from zerefxx",
+    "maintainer": "Zeref",
+    "baseUrl": "https://github.com/TypesettingTools/zeref-Aegisub-Scripts",
+    "url": "@{baseUrl}",
+    "fileBaseUrl": "https://raw.githubusercontent.com/TypesettingTools/zeref-Aegisub-Scripts/@{channel}/",
+    "knownFeeds": {
+        "zeref": "https://raw.githubusercontent.com/TypesettingTools/zeref-Aegisub-Scripts/main/DependencyControl.json",
+        "ffi-experiments": "https://raw.githubusercontent.com/TypesettingTools/ffi-experiments/master/DependencyControl.json"
+    },
+    "macros": {
+        "zf.allCharsTo": {
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}macros/@{namespace}",
+            "channels": {
+                "main": {
+                    "default": true,
+                    "version": "1.0.5",
+                    "released": "2022-11-27",
+                    "files": [
+                        {
+                            "name": ".moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "bb9ccb55c8be3515e9331cfefdfd4e418a89fece"
+                        }
+                    ],
+                    "requiredModules": [
+                        {
+                            "moduleName": "ZF.main",
+                            "feed": "@{feed:zeref}",
+                            "version": "2.3.0"
+                        }
+                    ]
+                }
+            },
+            "changelog": {
+                "1.0.5": [
+                    "Initial depctrl release"
+                ]
+            },
+            "name": "All Characters To",
+            "description": "Converts all characters to uppercase, lowercase or capitalized.",
+            "author": "Zeref"
+        },
+        "zf.everythingShape": {
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}macros/@{namespace}",
+            "channels": {
+                "main": {
+                    "default": true,
+                    "version": "1.5.4",
+                    "released": "2022-12-30",
+                    "files": [
+                        {
+                            "name": ".moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "1f77e2f18b67ced9b65fd8c02d7ee6cc3d82a18b"
+                        }
+                    ],
+                    "requiredModules": [
+                        {
+                            "moduleName": "ZF.main",
+                            "feed": "@{feed:zeref}",
+                            "version": "2.3.0"
+                        }
+                    ]
+                }
+            },
+            "changelog": {
+                "1.5.3": [
+                    "Initial depctrl release"
+                ],
+                "1.5.4": [
+                    "Fixed depctrl registration"
+                ]
+            },
+            "name": "Everything Shape",
+            "description": "Do \"everything\" you need for a shape!",
+            "author": "Zeref"
+        },
+        "zf.gradientCut": {
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}macros/@{namespace}",
+            "channels": {
+                "main": {
+                    "default": true,
+                    "version": "1.3.4",
+                    "released": "2023-01-10",
+                    "files": [
+                        {
+                            "name": ".moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "dab2b31f3059d945d1800a7e581bbcec111be9ca"
+                        }
+                    ],
+                    "requiredModules": [
+                        {
+                            "moduleName": "ZF.main",
+                            "feed": "@{feed:zeref}",
+                            "version": "2.3.0"
+                        }
+                    ]
+                }
+            },
+            "changelog": {
+                "1.3.2": [
+                    "Initial depctrl release"
+                ],
+                "1.3.3": [
+                    "Fixed depctrl registration"
+                ],
+                "1.3.4": [
+                    "Fix crash due to incomplete clipper2 reversion"
+                ]
+            },
+            "name": "Gradient Cut",
+            "description": "Generates a gradient from cuts in sequence.",
+            "author": "Zeref"
+        },
+        "zf.split": {
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}macros/@{namespace}",
+            "channels": {
+                "main": {
+                    "default": true,
+                    "version": "1.3.1",
+                    "released": "2022-11-27",
+                    "files": [
+                        {
+                            "name": ".moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "28127a18719973475f75a7e7414d881dcea9c896"
+                        }
+                    ],
+                    "requiredModules": [
+                        {
+                            "moduleName": "ZF.main",
+                            "feed": "@{feed:zeref}",
+                            "version": "2.3.0"
+                        }
+                    ]
+                }
+            },
+            "changelog": {
+                "1.3.1": [
+                    "Initial depctrl release"
+                ]
+            },
+            "name": "Splits Text By",
+            "description": "Splits the text in several ways",
+            "author": "Zeref"
+        },
+        "zf.textInClip": {
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}macros/@{namespace}",
+            "channels": {
+                "main": {
+                    "default": true,
+                    "version": "2.1.2",
+                    "released": "2022-12-30",
+                    "files": [
+                        {
+                            "name": ".moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "113b9abc0fa7e1a7167ccd2511d0091f62a68124"
+                        }
+                    ],
+                    "requiredModules": [
+                        {
+                            "moduleName": "ZF.main",
+                            "feed": "@{feed:zeref}",
+                            "version": "2.3.0"
+                        }
+                    ]
+                }
+            },
+            "changelog": {
+                "2.1.1": [
+                    "Initial depctrl release"
+                ],
+                "2.1.2": [
+                    "Fixed depctrl registration"
+                ]
+            },
+            "name": "Text in Clip",
+            "description": "Causes the characters in your text to go through the coordinates of your clip!",
+            "author": "Zeref"
+        }
+    },
+    "modules": {
+        "ZF.main": {
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}modules/@{namespacePath}",
+            "channels": {
+                "main": {
+                    "default": true,
+                    "version": "2.3.0",
+                    "released": "2023-02-03",
+                    "files": [
+                        {
+                            "name": ".moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "50d9d19c49a684fce391925bb32f6041f151f29e"
+                        },
+                        {
+                            "name": "/2D/clipper.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "ec097bb51d49a4ddb9a8804e002dcd661ea50756"
+                        },
+                        {
+                            "name": "/2D/path.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "57b52571e3ccc2a5873a6e44b5ee170c5970ac97"
+                        },
+                        {
+                            "name": "/2D/paths.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "58923f85591d70c8eb9d819e51a30e14ba8e2211"
+                        },
+                        {
+                            "name": "/2D/point.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "769b9a44f845d06d2c5b87bb698ce8fe68ed5f9f"
+                        },
+                        {
+                            "name": "/2D/segment.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "bbd31f6ee65f2d9823dfb21d0abcddbbdc5e007a"
+                        },
+                        {
+                            "name": "/2D/shape.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "11f9fa89cea495f8a2fc1f41d87e8f869cdc7198"
+                        },
+                        {
+                            "name": "/ass/tags/layer.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "da52d4cb568435fbfce6e81239fc1d08a4b1d3c5"
+                        },
+                        {
+                            "name": "/ass/tags/tags.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "bef9957f7fc291b1618668f14dcfde9d73e00d54"
+                        },
+                        {
+                            "name": "/ass/dialog.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "3142f0f3a00bfb6e1b9d1d2d17b169e4c635b463"
+                        },
+                        {
+                            "name": "/ass/fbf.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "1a190ff6bc3bc75b4d65749a2bd1f28be24517d1"
+                        },
+                        {
+                            "name": "/ass/font.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "5e6fcf500e76c2a3b92360b4c1980473df3c681c"
+                        },
+                        {
+                            "name": "/ass/line.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "4d1fc99b511e31eddcf44b919040a5806bb779aa"
+                        },
+                        {
+                            "name": "/img/bmp.moon",
+                            "delete": true
+                        },
+                        {
+                            "name": "/img/buffer.moon",
+                            "delete": true
+                        },
+                        {
+                            "name": "/img/gif.moon",
+                            "delete": true
+                        },
+                        {
+                            "name": "/img/img.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "901bf218a16364282cb59818a08686d3876aae3c"
+                        },
+                        {
+                            "name": "/img/jpg.moon",
+                            "delete": true
+                        },
+                        {
+                            "name": "/img/png.moon",
+                            "delete": true
+                        },
+                        {
+                            "name": "/img/potrace.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "58ff21bf77c1d1fba0fa2d17fb237b608d31cb9b"
+                        },
+                        {
+                            "name": "/util/config.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "d1cf8f3d3d75879c54774be407242e007f157770"
+                        },
+                        {
+                            "name": "/util/math.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "3dbc26c42952d1f1c102ffcdc10677774415ce44"
+                        },
+                        {
+                            "name": "/util/table.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "523fb18651f2534938793ba583dcd129e77f5f16"
+                        },
+                        {
+                            "name": "/util/util.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "44e0373ea7f152f8c1ec770337acd8b6135a8a7e"
+                        }
+                    ],
+                    "requiredModules": [
+                        {
+                            "moduleName": "karaskel"
+                        },
+                        {
+                            "moduleName": "Yutils"
+                        },
+                        {
+                            "moduleName": "ffi"
+                        },
+                        {
+                            "moduleName": "zpolyclipping.polyclipping",
+                            "feed": "@{feed:zeref}",
+                            "version": "6.4.2"
+                        },
+                        {
+                            "moduleName": "zimg.main",
+                            "feed": "@{feed:zeref}",
+                            "version": "1.0.0"
+                        }
+                    ]
+                }
+            },
+            "changelog": {
+                "1.0.0": [
+                    "Initial depctrl release"
+                ]
+            },
+            "name": "ZF main",
+            "description": "A library used in zeref's Aegisub scripts.",
+            "author": "Zeref"
+        },
+        "zgiflib.giflib": {
+            "url": "@{baseUrl}",
+            "author": "Zeref",
+            "name": "giflib",
+            "description": "giflib is a library for reading and writing gif images.",
+            "fileBaseUrl": "@{fileBaseUrl}modules/@{namespacePath}",
+            "channels": {
+                "main": {
+                    "version": "6.0.0",
+                    "released": "2023-02-03",
+                    "default": true,
+                    "files": [
+                        {
+                            "name": ".moon",
+                            "delete": true
+                        },
+                        {
+                            "name": "/giflib.dll",
+                            "delete": true
+                        },
+                        {
+                            "name": "/libgiflib.dylib",
+                            "delete": true
+                        },
+                        {
+                            "name": "/libgiflib.so",
+                            "delete": true
+                        }
+                    ],
+                    "requiredModules": []
+                }
+            },
+            "changelog": {
+                "6.0.0": [
+                    "Deprecated."
+                ]
+            }
+        },
+        "zlodepng.lodepng": {
+            "url": "@{baseUrl}",
+            "author": "Zeref",
+            "name": "lodepng",
+            "description": "PNG encoder and decoder",
+            "fileBaseUrl": "@{fileBaseUrl}modules/@{namespacePath}",
+            "channels": {
+                "main": {
+                    "version": "23.0.0",
+                    "released": "2023-02-03",
+                    "default": true,
+                    "files": [
+                        {
+                            "name": ".moon",
+                            "delete": true
+                        },
+                        {
+                            "name": "/lodepng.dll",
+                            "delete": true
+                        },
+                        {
+                            "name": "/liblodepng.dylib",
+                            "delete": true
+                        },
+                        {
+                            "name": "/liblodepng.so",
+                            "delete": true
+                        }
+                    ],
+                    "requiredModules": []
+                }
+            },
+            "changelog": {
+                "23.0.0": [
+                    "Deprecated."
+                ]
+            }
+        },
+        "zpolyclipping.polyclipping": {
+            "url": "@{baseUrl}",
+            "author": "Zeref",
+            "name": "polyclipping",
+            "description": "Polygon Clipping and Offsetting",
+            "fileBaseUrl": "@{fileBaseUrl}modules/@{namespacePath}",
+            "channels": {
+                "main": {
+                    "version": "6.4.2",
+                    "released": "2017-02-27",
+                    "default": true,
+                    "platforms": ["Windows-x64", "Windows-x86", "OSX-x64", "Linux-x64"],
+                    "files": [
+                        {
+                            "name": ".moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "3cd4af60683f0891ab0322cc51b141cede3720be"
+                        },
+                        {
+                            "name": "/polyclipping.dll",
+                            "url": "https://github.com/TypesettingTools/zeref-Aegisub-Scripts/releases/download/v2.1.0/v2.1.0-win-x64-polyclipping.dll",
+                            "platform": "Windows-x64",
+                            "sha1": "db6eed51964b77f6002629aa80cd54f025dc125e"
+                        },
+                        {
+                            "name": "/polyclipping.dll",
+                            "url": "https://github.com/TypesettingTools/zeref-Aegisub-Scripts/releases/download/v2.0.0/v2.0.0-win-x86-polyclipping.dll",
+                            "platform": "Windows-x86",
+                            "sha1": "5d282aefdad636bfddf145d2eb698763b64be0d9"
+                        },
+                        {
+                            "name": "/libpolyclipping.dylib",
+                            "url": "https://github.com/TypesettingTools/zeref-Aegisub-Scripts/releases/download/v2.1.0/v2.1.0-macOS-x64-libpolyclipping.dylib",
+                            "platform": "OSX-x64",
+                            "sha1": "f66d41ddd815aa918800e1db87f0007a1ebae6c5"
+                        },
+                        {
+                            "name": "/libpolyclipping.so",
+                            "url": "https://github.com/TypesettingTools/zeref-Aegisub-Scripts/releases/download/v2.1.0/v2.1.0-linux-x64-libpolyclipping.so",
+                            "platform": "Linux-x64",
+                            "sha1": "778def6b486500a5f56b4a115aceaaa64ff707d7"
+                        }
+                    ],
+                    "requiredModules": [
+                        {
+                            "moduleName": "ffi"
+                        },
+                        {
+                            "moduleName": "requireffi.requireffi",
+                            "version": "0.1.2",
+                            "feed": "@{feed:ffi-experiments}"
+                        }
+                    ]
+                }
+            },
+            "changelog": {}
+        },
+        "zturbojpeg.turbojpeg": {
+            "url": "@{baseUrl}",
+            "author": "Zeref",
+            "name": "turbojpeg",
+            "description": "jpeg library",
+            "fileBaseUrl": "@{fileBaseUrl}modules/@{namespacePath}",
+            "channels": {
+                "main": {
+                    "version": "3.0.0",
+                    "released": "2023-02-03",
+                    "default": true,
+                    "files": [
+                        {
+                            "name": ".moon",
+                            "delete": true
+                        },
+                        {
+                            "name": "/turbojpeg.dll",
+                            "delete": true
+                        },
+                        {
+                            "name": "/libturbojpeg.dylib",
+                            "delete": true
+                        },
+                        {
+                            "name": "/libturbojpeg.so",
+                            "delete": true
+                        }
+                    ],
+                    "requiredModules": []
+                }
+            },
+            "changelog": {
+                "3.0.0": [
+                    "Deprecated."
+                ]
+            }
+        },
+        "zimg.main": {
+            "url": "@{baseUrl}",
+            "author": "Zeref",
+            "name": "zimg",
+            "description": "A library for loading images in various foramts",
+            "fileBaseUrl": "@{fileBaseUrl}modules/@{namespacePath}",
+            "channels": {
+                "main": {
+                    "version": "1.0.0",
+                    "released": "2023-02-23",
+                    "default": true,
+                    "platforms": ["Windows-x64", "OSX-x64", "Linux-x64"],
+                    "files": [
+                        {
+                            "name": ".moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "0a98f970724a9e6ae106bb813ccb0361d231f1ce"
+                        },
+                        {
+                            "name": "/bitmap/bitmap.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "9844f19c25c1b96fd19d68f3f12321fae7d15b0c"
+                        },
+                        {
+                            "name": "/buffer/buffer.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "4bfc0475532b26005d5a0a5be4228da9549c970d"
+                        },
+                        {
+                            "name": "/giflib/giflib.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "2f2092d81e008395ca5baabccbd3bc039783740d"
+                        },
+                        {
+                            "name": "/giflib/giflib/giflib.dll",
+                            "url": "https://github.com/TypesettingTools/zeref-Aegisub-Scripts/releases/download/zimg-v1.0.0/giflib.dll",
+                            "platform": "Windows-x64",
+                            "sha1": "66bbc469e5542d0a4c9847b9ab3975462fbe8dd6"
+                        },
+                        {
+                            "name": "/giflib/giflib/libgiflib.dylib",
+                            "url": "https://github.com/TypesettingTools/zeref-Aegisub-Scripts/releases/download/zimg-v1.0.0/libgiflib.dylib",
+                            "platform": "OSX-x64",
+                            "sha1": "4c9b0c7b0f38a9eb2cb07c1ee7a9f43c802e6ac1"
+                        },
+                        {
+                            "name": "/giflib/giflib/libgiflib.so",
+                            "url": "https://github.com/TypesettingTools/zeref-Aegisub-Scripts/releases/download/zimg-v1.0.0/libgiflib.so",
+                            "platform": "Linux-x64",
+                            "sha1": "b26802cdb5f882ced1dc247267e98a0c196353d6"
+                        },
+                        {
+                            "name": "/lodepng/lodepng.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "67f0681aaa800e5ba113f804eb8f22e4ac878766"
+                        },
+                        {
+                            "name": "/lodepng/lodepng/lodepng.dll",
+                            "url": "https://github.com/TypesettingTools/zeref-Aegisub-Scripts/releases/download/zimg-v1.0.0/lodepng.dll",
+                            "platform": "Windows-x64",
+                            "sha1": "d4d4296926aa5cdce6302e53b584faa96061f236"
+                        },
+                        {
+                            "name": "/lodepng/lodepng/liblodepng.dylib",
+                            "url": "https://github.com/TypesettingTools/zeref-Aegisub-Scripts/releases/download/zimg-v1.0.0/liblodepng.dylib",
+                            "platform": "OSX-x64",
+                            "sha1": "4d7452a0a77551437062d59d9ef01f141422b562"
+                        },
+                        {
+                            "name": "/lodepng/lodepng/liblodepng.so",
+                            "url": "https://github.com/TypesettingTools/zeref-Aegisub-Scripts/releases/download/zimg-v1.0.0/liblodepng.so",
+                            "platform": "Linux-x64",
+                            "sha1": "22a58b4cce2f202c7e96d3518fa35868793aac43"
+                        },
+                        {
+                            "name": "/turbojpeg/turbojpeg.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "92bb0322983f29f7b30329f5b578901ea609570a"
+                        },
+                        {
+                            "name": "/turbojpeg/turbojpeg/turbojpeg.dll",
+                            "url": "https://github.com/TypesettingTools/zeref-Aegisub-Scripts/releases/download/zimg-v1.0.0/turbojpeg.dll",
+                            "platform": "Windows-x64",
+                            "sha1": "c18ed80a7f92042fcd04d237974cb0c647245948"
+                        },
+                        {
+                            "name": "/turbojpeg/turbojpeg/libturbojpeg.dylib",
+                            "url": "https://github.com/TypesettingTools/zeref-Aegisub-Scripts/releases/download/zimg-v1.0.0/libturbojpeg.dylib",
+                            "platform": "OSX-x64",
+                            "sha1": "56ed51b4773766d6eb200f9ea558b9446e42c7c0"
+                        },
+                        {
+                            "name": "/turbojpeg/turbojpeg/libturbojpeg.so",
+                            "url": "https://github.com/TypesettingTools/zeref-Aegisub-Scripts/releases/download/zimg-v1.0.0/libturbojpeg.so",
+                            "platform": "Linux-x64",
+                            "sha1": "788d0afab88c2a5285a237f0d2cf29374b10440d"
+                        }
+                    ],
+                    "requiredModules": [
+                        {
+                            "moduleName": "ffi"
+                        },
+                        {
+                            "moduleName": "requireffi.requireffi",
+                            "version": "0.1.2",
+                            "feed": "@{feed:ffi-experiments}"
+                        }
+                    ]
+                }
+            },
+            "changelog": {}
+        }
+    }
+}

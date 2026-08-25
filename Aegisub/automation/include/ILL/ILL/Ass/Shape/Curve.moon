@@ -96,7 +96,10 @@ class Curve
 		c.y = -1 * mt * mu2 * y1 + mu * (3 * tu - t - 2 * u) * y2 + u * (-3 * tu + 2 * t + u) * y3 + t * u2 * y4
 		d.x = -mu3 * x1 + 3 * u * mu2 * x2 - 3 * u2 * mu * x3 + u3 * x4
 		d.y = -mu3 * y1 + 3 * u * mu2 * y2 - 3 * u2 * mu * y3 + u3 * y4
-		return Curve a, b, c, d
+		curve = Curve a, b, c, d
+		tanT, pT, tT = @getNormalized t
+		tanU, pU, tU = @getNormalized u
+		return curve, {t: {tangent: tanT, point: pT, time: tT}, u: {tangent: tanU, point: pU, time: tU}}
 
 	-- gets the cubic coefficient of the bezier segment
 	getCoefficient: =>

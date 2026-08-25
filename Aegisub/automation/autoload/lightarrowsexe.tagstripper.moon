@@ -1,1 +1,1 @@
-C:/Users/light/Documents/GitHub/Aegisub-Scripts/macros/lightarrowsexe.tagstripper.moon
+D:/ProgramFiles/Aegisub-Scripts/macros/lightarrowsexe.tagstripper.moon

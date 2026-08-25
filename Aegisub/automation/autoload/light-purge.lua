@@ -1,7 +1,7 @@
 script_name = "TXT Cleanup"
 script_description = "remove actors and/or linebreaks"
 script_author = "garret"
-script_version = "2.0.0"
+script_version = "2.1.0"
 
 local function main(sub, conf)
     for i = 1, #sub do
@@ -12,6 +12,9 @@ local function main(sub, conf)
             end
             if conf.purge_linebreaks == true then
                 line.text = line.text:gsub(" *\\[Nn] *", " ")
+            end
+            if conf.convert_hard_space == true then
+                line.text = line.text:gsub("\\h", " ")
             end
             sub[i] = line
         end
@@ -38,6 +41,16 @@ local function conf()
             width = 1,
             height = 1,
             label = "Remove Linebreaks",
+            value = true,
+        },
+        {
+            class = "checkbox",
+            name = "convert_hard_space",
+            x = 0,
+            y = 2,
+            width = 1,
+            height = 1,
+            label = "Convert Hard spaces (\\h)",
             value = true,
         },
     }

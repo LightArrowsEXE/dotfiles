@@ -1,0 +1,140 @@
+{
+  "dependencyControlFeedFormatVersion": "0.3.0",
+  "name": "Functional",
+  "description": "The official Functional repository.",
+  "baseUrl": "https://github.com/TypesettingTools/Functional",
+  "url": "@{baseUrl}",
+  "fileBaseUrl": "https://raw.githubusercontent.com/TypesettingTools/Functional",
+  "maintainer": "line0",
+  "knownFeeds": {
+    "DependencyControl": "https://raw.githubusercontent.com/TypesettingTools/DependencyControl/master/DependencyControl.json",
+    "line0scripts": "https://raw.githubusercontent.com/TypesettingTools/line0-Aegisub-Scripts/master/DependencyControl.json",
+    "a-mo": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json",
+    "SubInspector": "https://raw.githubusercontent.com/TypesettingTools/SubInspector/master/DependencyControl.json",
+    "ASSFoundation": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json",
+    "ffi-experiments": "https://raw.githubusercontent.com/TypesettingTools/ffi-experiments/master/DependencyControl.json",
+    "lyger-scripts": "https://raw.githubusercontent.com/TypesettingTools/lyger-Aegisub-Scripts/master/DependencyControl.json",
+    "unanimated-scripts": "https://raw.githubusercontent.com/TypesettingTools/unanimated-Aegisub-Scripts/master/DependencyControl.json",
+    "coffeeflux-scripts": "https://raw.githubusercontent.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/master/DependencyControl.json"
+  },
+  "modules": {
+    "l0.Functional": {
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "line0",
+      "name": "(Almost) Functional Suite",
+      "description": "Collection of commonly used functions",
+      "channels": {
+        "release": {
+          "version": "0.6.0",
+          "released": "2019-03-12",
+          "default": true,
+          "fileBaseUrl": "@{fileBaseUrl}/v@{version}",
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}/Functional.moon",
+              "sha1": "BBD3B1ECED42201968ABFB756D683BE2A61DA815"
+            },
+            {
+              "name": ".moon",
+              "type": "test",
+              "url": "@{fileBaseUrl}/Tests.moon",
+              "sha1": "1E7E6BED92803B2B7B567B6183644454AB141FFE"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "aegisub.util"
+            },
+            {
+              "moduleName": "aegisub.unicode"
+            },
+            {
+              "moduleName": "aegisub.re"
+            }
+          ]
+        },
+        "alpha": {
+          "version": "0.6.0",
+          "released": "2019-03-12",
+          "default": false,
+          "fileBaseUrl": "@{fileBaseUrl}/v@{version}-@{channel}",
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}/Functional.moon",
+              "sha1": "BBD3B1ECED42201968ABFB756D683BE2A61DA815"
+            },
+            {
+              "name": ".moon",
+              "type": "test",
+              "url": "@{fileBaseUrl}/Tests.moon",
+              "sha1": "1E7E6BED92803B2B7B567B6183644454AB141FFE"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "aegisub.util"
+            },
+            {
+              "moduleName": "aegisub.unicode"
+            },
+            {
+              "moduleName": "aegisub.re"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "0.6.0": [
+          "list.find() and list.findInRange() now return the index of the found item in the list as a second return value (thanks @Myaamori)",
+          "util.assTimecode2ms(): fixed null-ref exception due to local tonumber reference being reassigned to nil (thanks @Myaamori)",
+          "string.split(): added a `limit` parameter to specify the maximum number of split operations (thanks @Myaamori)"
+        ],
+        "0.5.0": [
+          "added list.reverse()",
+          "added unicode.reverse()",
+          "util: added ASS timecode conversion and getScriptInfo()",
+          "string: added trim, trimLeft and trimRight",
+          "list.makeSet(): added a parameter to override the default value of `true` for all set items",
+          "table.keys(): fixed bad nil type comparison for except parameter",
+          "table.diff(): fixed typo that caused the left table to be compared with itself",
+          "string.formatEx(): fixed replacements not being made due to missing return statement",
+          "string.formatEx: added some error handling that catches string.format exeptions an returns an helpful error message using lua multi-return conventions.",
+          "re.matches()/re.sub(): fixed bad references to unicode.toCharTable" 
+        ],
+        "0.4.0": [
+          "added util.uuid: creates an uuidv4.",
+          "added util.RGB_to_HSV: converts an rgb color into hsv representation.",
+          "table.merge now returns the target table as the first value and now longer overwrites false values.",
+          "added math.seedRNG: seeds the RNG either automatically and exactly once (no matter how often the method is called) using the system time or, alternatively, using a custom seed.",
+          "fixed a few linter suggestions",
+          "changed the signature of list.removeIndexes to list.removeIndices and made it take a table of indices instead of the previous varargs.",
+          "added list.compare and list.compareLeft: compares two lists using a user-supplied iteratee function, with compare reading until then end of the longer list and compareLeft only reading to then end of the first list.",
+          "added table.compare and table.compareLeft: a more generic (and slower) version of the list equivalent, which supports arbitrary table keys.",
+          "added re.replace to also take precompiled patterns as an input",
+          "added unicode.sub: gets a substring of a unicode string, where the start and end indices refer to unicode characters/code points instead of bytes.",
+          "added table.removeKeysExcept: a special case of table.removeKeys which removes anything *but* the specified table keys.",
+          "added table.pluck: takes any table values in a table, then for every of those tables extracts the value at the specified key, and finally returns a list of all extracted values.",
+          "added table.continuous: takes the values at any numerical key in the specified table and compiles them all in a continuous list (in numerical order).",
+          "added math.roundMany: works just like math.round but takes additional numbers to round as varargs and returns as many values.",
+          "changed math.round to return the supplied number as-is when rounding to infinite digits."
+        ],
+        "0.3.0": [
+          "added 2D vector math: math.vector2.distance returns the distance between 2 points (or the length of a 2D vector), math.vector2.normalize normalizes a vector to a specified length (1 by default).",
+          "added math.degrees (converts radians to degrees), math.sign (returns the sign of a number as 1, 0, or -1) and math.nan as an NaN constant.",
+          "added list.groupBy: creates a table composed of keys generated from the results of applying the specified selector (a callback or property name) to each list element, with the value being a list of all elements generating the same key.",
+          "table.values now allows for specifying an optional sorting function to run on the generated list."
+        ],
+        "0.2.0": [
+          "added string.pad: pads a string with repetitions of another string up to a defined character limit. Pads with zeros by default.",
+          "added util.formatTimecode: formats a time in milliseconds according to a .NET-like format string, e.g. 'h:mm:ss.ff'for ASS time codes.",
+          "list.removeWhere now defaults to shifting up fields to keep the list continuous. A parameter was added to switch to sparse mode."
+        ],
+        "0.1.0": [
+          "Initial release."
+        ]
+      }
+    }
+  }
+}

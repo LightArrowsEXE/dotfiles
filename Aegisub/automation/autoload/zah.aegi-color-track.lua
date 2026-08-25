@@ -3,7 +3,7 @@ local tr = aegisub.gettext
 script_name = tr"Aegisub-Color-Tracking"
 script_description = tr"Tracking the color from a given pixel or tracking data"
 script_author = "Zahuczky, garret"
-script_version = "2.1.0"
+script_version = "2.1.1"
 script_namespace = "zah.aegi-color-track"
 
 -- Conditional depctrl support. Will work without depctrl.
@@ -243,9 +243,60 @@ local function assToHtmlColor(assColor)
   return htmlColor
 end
 
+-- remove unneccessary color tags from the line that may conflict with the track transform
+local function removeConflictingTags(text, res, mode)
+  local firstBlockStart, firstBlockEnd = text:find("{.-}")
+  if not firstBlockStart then
+    return text
+  end
+  
+  local firstBlock = text:sub(firstBlockStart, firstBlockEnd)
+  local beforeBlock = text:sub(1, firstBlockStart - 1)
+  local afterBlock = text:sub(firstBlockEnd + 1)
+  
+  if mode == "Color" then
+    if res.c then
+      firstBlock = firstBlock:gsub("\\1?c&H[%x]+&?", "")
+    end
+    if res.c2 then
+      firstBlock = firstBlock:gsub("\\2c&H[%x]+&?", "")
+    end
+    if res.c3 then
+      firstBlock = firstBlock:gsub("\\3c&H[%x]+&?", "")
+    end
+    if res.c4 then
+      firstBlock = firstBlock:gsub("\\4c&H[%x]+&?", "")
+    end
+  elseif mode == "Alpha" then
+    if res.all then
+      firstBlock = firstBlock:gsub("\\alpha&H[%x]+&?", "")
+      firstBlock = firstBlock:gsub("\\1a&H[%x]+&?", "")
+      firstBlock = firstBlock:gsub("\\2a&H[%x]+&?", "")
+      firstBlock = firstBlock:gsub("\\3a&H[%x]+&?", "")
+      firstBlock = firstBlock:gsub("\\4a&H[%x]+&?", "")
+    else
+      if res.a then
+        firstBlock = firstBlock:gsub("\\1a&H[%x]+&?", "")
+      end
+      if res.a2 then
+        firstBlock = firstBlock:gsub("\\2a&H[%x]+&?", "")
+      end
+      if res.a3 then
+        firstBlock = firstBlock:gsub("\\3a&H[%x]+&?", "")
+      end
+      if res.a4 then
+        firstBlock = firstBlock:gsub("\\4a&H[%x]+&?", "")
+      end
+    end
+  end
+  
+  return beforeBlock .. firstBlock .. afterBlock
+end
+
+MODE = "Color"
+
 -- Main function
 function colortrack(subtitles, selected_lines, active_line)
-  local MODE = "Color"
   -- Assume the whole selection is the same length
   local line = subtitles[selected_lines[1]]
   -- Start gui
@@ -400,13 +451,15 @@ function colortrack(subtitles, selected_lines, active_line)
   -- Put the string in the lines
   for _, si in ipairs(selected_lines) do
     local l = subtitles[si]
-    if l.text:match("\\pos") then
-      l.text = l.text:gsub("\\pos", transform.."\\pos")
-    elseif l.text:match("\\move") then
-      l.text = l.text:gsub("\\move", transform.."\\move")
-    else
+    
+    l.text = removeConflictingTags(l.text, res, MODE)
+    
+    if l.text:match("{.-}") then
       l.text = l.text:gsub("}", transform.."}", 1)
+    else
+      l.text = "{"..transform.."}"..l.text
     end
+    
     subtitles[si] = l
   end
 

@@ -1,0 +1,147 @@
+{
+	"dependencyControlFeedFormatVersion": "0.3.0",
+	"name": "Zahuczky's Automation Scripts",
+	"description": "Main repository for all of Zahuczky's automation scripts.",
+	"baseUrl": "https://github.com/Zahuczky/Zahuczkys-Aegisub-Scripts",
+	"url": "@{baseUrl}",
+	"fileBaseUrl": "https://raw.githubusercontent.com/Zahuczky/Zahuczkys-Aegisub-Scripts",
+	"maintainer": "Zahuczky",
+	"knownFeeds": {
+		"line0scripts": "https://raw.githubusercontent.com/TypesettingTools/line0-Aegisub-Scripts/master/DependencyControl.json",
+		"a-mo": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json",
+		"SubInspector": "https://raw.githubusercontent.com/TypesettingTools/SubInspector/master/DependencyControl.json",
+		"ASSFoundation": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json",
+		"ffi-experiments": "https://raw.githubusercontent.com/torque/ffi-experiments/master/DependencyControl.json",
+		"lyger-scripts": "https://raw.githubusercontent.com/TypesettingTools/lyger-Aegisub-Scripts/master/DependencyControl.json",
+		"unanimated-scripts": "https://raw.githubusercontent.com/unanimated/luaegisub/master/DependencyControl.json",
+		"coffeeflux-scripts": "https://raw.githubusercontent.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/master/DependencyControl.json",
+		"myaamori-scripts": "https://raw.githubusercontent.com/TypesettingTools/Myaamori-Aegisub-Scripts/master/DependencyControl.json",
+		"petzku-scripts": "https://raw.githubusercontent.com/petzku/Aegisub-Scripts/master/DependencyControl.json",
+		"zahuczky-scripts": "https://raw.githubusercontent.com/Zahuczky/Zahuczkys-Aegisub-Scripts/main/DependencyControl.json",
+		"zeref-aegisub-scripts": "https://raw.githubusercontent.com/TypesettingTools/zeref-Aegisub-Scripts/main/DependencyControl.json",
+		"phoscity-scripts": "https://raw.githubusercontent.com/PhosCity/Aegisub-Scripts/main/DependencyControl.json",
+		"zeref-scripts": "https://raw.githubusercontent.com/TypesettingTools/zeref-Aegisub-Scripts/main/DependencyControl.json",
+		"arch1t3cht-scripts": "https://raw.githubusercontent.com/TypesettingTools/arch1t3cht-Aegisub-Scripts/main/DependencyControl.json",
+		"ILL": "https://raw.githubusercontent.com/TypesettingTools/ILL-Aegisub-Scripts/main/DependencyControl.json"
+	},
+	"macros": {
+		"zah.aegi-color-track": {
+			"url": "@{baseUrl}#@{namespace}",
+			"author": "Zahuczky",
+			"name": "Aegisub-Color-Tracking",
+			"description": "Tracking the color from a given pixel or tracking data",
+			"fileBaseUrl": "@{fileBaseUrl}/@{channel}/macros/aegi-color-track/@{namespace}",
+			"channels": {
+				"main": {
+					"version": "2.1.2",
+					"released": "2025-11-15",
+					"default": true,
+					"files": [
+						{
+							"name": ".lua",
+							"url": "@{fileBaseUrl}@{fileName}",
+							"sha1": "96476554290ff02a142ca6bd609c89fcaf7dd586"
+						}
+					],
+					"requiredModules": [
+						{
+							"moduleName": "petzku.util",
+							"url": "https://github.com/Zahuczky/Zahuczkys-Aegisub-Scripts",
+							"version": "0.3.0",
+							"feed": "https://raw.githubusercontent.com/petzku/Aegisub-Scripts/stable/DependencyControl.json"
+						},
+						{
+							"moduleName": "a-mo.ConfigHandler",
+							"url": "https://github.com/TypesettingTools/Aegisub-Motion",
+							"version": "1.1.4",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+						}
+					]
+				}
+			},
+			"changelog": {
+				"1.0.0": [
+					"Initial release"
+				],
+				"1.1.0": [
+					"Various fixes by Petzku"
+				],
+				"2.0.0": [
+					"Complete restrocture by garret, no more png dissecting, support for new API version in arch1 builds."
+				],
+				"2.0.1": [
+					"Adding progress reporting"
+				],
+				"2.0.2": [
+					"Fix handling of tracking data when using Aegisub built-in frame API",
+					"Refactor internal handling of timecodes"
+				],
+				"2.1.0": [
+					"Add alpha tracking mode"
+				],
+				"2.1.1": [
+					"Get rid of conflicting colors/alpha tags in the tag block where the transform is placed."
+				]
+			}
+		},
+		"zah.autoclip": {
+			"url": "@{baseUrl}#@{namespace}",
+			"author": "Zahuczky, Akatsumekusa",
+			"name": "AutoClip",
+			"description": "Add clips to subtitles 𝓪𝓾𝓽𝓸𝓶𝓪𝓰𝓲𝓬𝓪𝓵𝓵𝔂",
+			"fileBaseUrl": "@{fileBaseUrl}/@{channel}/macros/autoclip/@{namespace}",
+			"channels": {
+				"main": {
+					"version": "2.1.1",
+					"released": "205.04.18.",
+					"default": true,
+					"files": [
+						{
+							"name": ".lua",
+							"url": "@{fileBaseUrl}@{fileName}",
+							"sha1": "bf10f97c0326c2b77ea6ceba1d43001c3dbad75f"
+						}
+					],
+					"requiredModules": [
+						{
+							"moduleName": "ILL.ILL",
+							"url": "https://github.com/TypesettingTools/ILL-Aegisub-Scripts",
+							"version": "1.5.8",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/ILL-Aegisub-Scripts/main/DependencyControl.json"
+						},
+						{
+							"moduleName": "aka.uikit",
+							"url": "https://github.com/Akatmks/Akatsumekusa-Aegisub-Scripts",
+							"version": "1.0.14",
+							"feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+						},
+						{
+							"moduleName": "aka.config",
+							"url": "https://github.com/Akatmks/Akatsumekusa-Aegisub-Scripts",
+							"version": "1.0.14",
+							"feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+						},
+						{
+							"moduleName": "aka.outcome",
+							"url": "https://github.com/Akatmks/Akatsumekusa-Aegisub-Scripts",
+							"version": "1.0.11",
+							"feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+						},
+						{
+							"moduleName": "aka.command",
+							"url": "https://github.com/Akatmks/Akatsumekusa-Aegisub-Scripts",
+							"version": "1.0.2",
+							"feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+						},
+						{
+							"moduleName": "aka.unsemantic",
+							"url": "https://github.com/Akatmks/Akatsumekusa-Aegisub-Scripts",
+							"version": "1.1.0",
+							"feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+						}
+					]
+				}
+			}
+		}
+	}
+}

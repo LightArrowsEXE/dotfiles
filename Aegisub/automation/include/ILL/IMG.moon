@@ -1,4 +1,4 @@
-module_version = "1.0.2"
+module_version = "1.0.4"
 
 haveDepCtrl, DependencyControl = pcall require, "l0.DependencyControl"
 
@@ -80,26 +80,23 @@ class IMG
 			for y = 0, @height - 1
 				x, tempRow, tempAlpha = 0, "", nil
 				while x < @width
-					-- gets the color information of the current coordinate
-					currColor, nextColor, currAlpha = pixel2ass x, y
-					-- saves the current values of x, color and alpha
-					start, color, alpha = x, currColor, currAlpha
-					-- while the current color is equal to the next color
-					while nextColor and (currColor == nextColor)
-						x += 1
-						if x >= @width - 1
+					-- get color and alpha of current pixel
+					currColor, _, currAlpha, _ = pixel2ass x, y
+					startX = x
+					-- groups pixels with the same color and alpha
+					while x + 1 < @width
+						colorNext, _, alphaNext, _ = pixel2ass x + 1, y
+						if colorNext != currColor or alphaNext != currAlpha
 							break
-						-- updates the color information of the current coordinate
-						currColor, nextColor, currAlpha = pixel2ass x, y
-					-- gets the repeat color offset
-					offset = x - start + 1
-					-- if the offset value is equal to the image width
-					-- and all pixels on this row are invisible, skip
-					unless (offset == @width and alpha == "\\alphaHFF")
-						tempRow ..= ("{%s}m 0 0 l %d 0 %d 1 0 1")\format color .. ((tempAlpha and tempAlpha == alpha) and "" or alpha), offset, offset
-						tempAlpha = alpha
+						x += 1
+					offset = x - startX + 1
+					-- ignore all transparent lines
+					unless offset == @width and currAlpha == "\\alphaHFF"
+						alphaPart = (tempAlpha and tempAlpha == currAlpha) and "" or currAlpha
+						tempRow ..= ("{%s}m 0 0 l %d 0 %d 1 0 1")\format currColor .. alphaPart, offset, offset
+						tempAlpha = currAlpha
 					x += 1
-				-- add the row if it exists
+				-- adds line if there are visible pixels
 				unless tempRow == ""
 					table.insert pixels, (preset)\format 0, y, "", tempRow
 

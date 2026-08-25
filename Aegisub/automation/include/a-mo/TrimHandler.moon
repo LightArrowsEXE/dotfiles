@@ -1,5 +1,6 @@
 local log
-version = '1.0.5'
+lfs = require 'lfs'
+version = '1.2.3'
 
 haveDepCtrl, DependencyControl = pcall require, 'l0.DependencyControl'
 
@@ -34,8 +35,8 @@ class TrimHandler
 
 	-- Set up encoder presets.
 	defaults: {
-		x264:    '"#{encbin}" --crf 16 --tune fastdecode -i 250 --fps 23.976 --sar 1:1 --index "#{prefix}/#{index}.index" --seek #{startf} --frames #{lenf} -o "#{prefix}/#{output}[#{startf}-#{endf}].mp4" "#{inpath}/#{input}"'
-		ffmpeg:  '"#{encbin}" -ss #{startt} -an -sn -i "#{inpath}/#{input}" -q:v 1 -vsync passthrough -frames:v #{lenf} "#{prefix}/#{output}[#{startf}-#{endf}]-%05d.jpg"'
+		x264:    '"#{encbin}" --crf 16 --tune fastdecode -i 250 --fps 24000/1001 --sar 1:1 --index "#{prefix}/#{index}.index" --seek #{startf} --frames #{lenf} --output-depth 8 --output-csp i420 -o "#{prefix}/#{output}[#{startf}-#{endf}].mp4" "#{inpath}/#{input}"'
+		ffmpeg:  '"#{encbin}" -ss #{startt} -an -sn -i "#{inpath}/#{input}" -q:v 1 -fps_mode passthrough -frames:v #{lenf} "#{prefix}/#{startf}-#{endf}/%05d.jpg"'
 		-- avs2pipe: 'echo FFVideoSource("#{inpath}#{input}",cachefile="#{prefix}#{index}.index").trim(#{startf},#{endf}).ConvertToRGB.ImageWriter("#{prefix}/#{output}-[#{startf}-#{endf}]\\",type="png").ConvertToYV12 > "#{temp}/a-mo.encode.avs"\nmkdir "#{prefix}#{output}-[#{startf}-#{endf}]"\n"#{encbin}" video "#{temp}/a-mo.encode.avs"\ndel "#{temp}/a-mo.encode.avs"'
 		-- vapoursynth:
 	}
@@ -68,6 +69,7 @@ class TrimHandler
 	-- }
 	new: ( trimConfig ) =>
 		@tokens = { }
+		@preset = trimConfig.preset
 		if trimConfig.command != nil
 			trimConfig.command = trimConfig.command\gsub "[\t \r\n]*$", ""
 			if trimConfig.command != ""
@@ -98,7 +100,7 @@ class TrimHandler
 		with @tokens
 			video = aegisub.project_properties!.video_file
 			if video\len! == 0
-				log.windowError "Aegisub thinks your video is 0 frames long.\nTheoretically it should be impossible to get this error."
+				log.windowError "Aegisub thinks you have no attached video file, yet this script somehow passed the validation macro.\nTheoretically it should be impossible to get this error."
 			if video\match "^?dummy"
 				log.windowError "I can't encode that dummy video for you."
 			.input = video\gsub( "^[A-Z]:\\", "", 1 )\gsub ".+[^\\/]-[\\/]", "", 1
@@ -106,15 +108,35 @@ class TrimHandler
 			.output = .index
 
 	calculateTrimLength: ( lineCollection ) =>
+		return false unless lineCollection.startFrame and lineCollection.endFrame
+
 		with @tokens
-			.startt = lineCollection.startTime / 1000
-			.endt   = lineCollection.endTime / 1000
-			.lent   = .endt - .startt
 			.startf = lineCollection.startFrame
 			.endf   = lineCollection.endFrame - 1
 			.lenf   = lineCollection.totalFrames
 
+			-- Derive times from video frames to avoid subtitle-time rounding errors.
+			.startt = aegisub.ms_from_frame( .startf ) / 1000
+			.endt   = aegisub.ms_from_frame( lineCollection.endFrame ) / 1000
+			.lent   = .endt - .startt
+
+		return true
+
+	createDirectory: ( path ) =>
+		return if lfs.attributes(path, 'mode') == 'directory'
+		success, errorMessage = lfs.mkdir path
+		-- Compatibility workaround; remove once Aegisub 3.5 is widely available.
+		return if not success and lfs.attributes(path, 'mode') == 'directory'
+		unless success
+			log.windowError "Could not create output directory #{path}.\n#{errorMessage}"
+
+	prepareOutputDirectory: =>
+		@createDirectory @tokens.prefix if @makePrefix
+		if @preset == 'ffmpeg'
+			@createDirectory "#{@tokens.prefix}/#{@tokens.startf}-#{@tokens.endf}"
+
 	performTrim: =>
+		@prepareOutputDirectory!
 		with platform = ({
 				[true]:  {
 					pre: @tokens.temp

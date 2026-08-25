@@ -164,22 +164,15 @@ utf16_to_utf8 = (ws) ->
 class WindowsGDI extends Init
 
 	init: =>
-		-- Create device context and set light resources deleter
-		local resources_deleter
-		@dc = gc C.CreateCompatibleDC(nil), ->
-			resources_deleter!
-			return
+		return if @initialized
 
-		-- Set context coordinates mapping mode
-		C.SetMapMode @dc, C.MM_TEXT_ILL
+		dc = C.CreateCompatibleDC nil
 
-		-- Set context backgrounds to transparent
-		C.SetBkMode @dc, C.TRANSPARENT_ILL
+		C.SetMapMode dc, C.MM_TEXT_ILL
+		C.SetBkMode dc, C.TRANSPARENT_ILL
 
-		-- Convert family from utf8 to utf16
 		family = utf8_to_utf16 @family
 
-		-- Fix family length
 		lfFaceName = ffi.new "WCHAR[?]", FONT_LF_FACESIZE
 		familyLen = tonumber C.wcslen family
 		if familyLen >= FONT_LF_FACESIZE
@@ -191,17 +184,20 @@ class WindowsGDI extends Init
 		font = C.CreateFontW @size * FONT_UPSCALE, 0, 0, 0, @bold and C.FW_BOLD_ILL or C.FW_NORMAL_ILL, @italic and 1 or 0, @underline and 1 or 0, @strikeout and 1 or 0, C.DEFAULT_CHARSET_ILL, C.OUT_TT_PRECIS_ILL, C.CLIP_DEFAULT_PRECIS_ILL, C.ANTIALIASED_QUALITY_ILL, C.DEFAULT_PITCH_ILL + C.FF_DONTCARE_ILL, lfFaceName
 
 		-- Set new font to device context
-		old_font = C.SelectObject @dc, font
+		old_font = C.SelectObject dc, font
 
-		-- Define light resources deleter
-		resources_deleter = ->
-			C.SelectObject @dc, old_font
-			C.DeleteObject font
-			C.DeleteDC @dc
+		@dc = gc dc, (__dc) ->
+			if old_font != nil
+				C.SelectObject __dc, old_font
+			if font != nil
+				C.DeleteObject font
+			C.DeleteDC __dc
 			return
 
 		@dx = FONT_DOWNSCALE * @xscale
 		@dy = FONT_DOWNSCALE * @yscale
+
+		@initialized = true
 
 	-- Get font metrics
 	getMetrics: =>

@@ -419,10 +419,20 @@ class Tag
 				if name == "clip" or name == "iclip"
 					@tag.isRect = true
 			elseif name == "t"
-				s, e, a, transform = value\match "([%.%d]*)%,?([%.%d]*)%,?([%.%d]*)%,?(.+)"
-				@tag.value = {s: tonumber(s), e: tonumber(e), a: tonumber(a), :transform}
+				s, e, accel = nil, nil, 1
+				a, b, c, transform = value\match "([%-%d%.]*),?([%-%d%.]*),?([%-%d%.]*),?(.+)"
+				if a == '' and b == '' and c == ''
+					s, e = nil, nil
+				elseif a != '' and b == '' and c == ''
+					s, e, accel = nil, nil, a
+				elseif a != '' and b != '' and c == ''
+					s, e = a, b
+				elseif a != '' and b != '' and c != ''
+					s, e, accel = a, b, c
+				@tag.value = {s: tonumber(s), e: tonumber(e), a: tonumber(accel), transform: transform}
 		else
 			@tag.value = tonumber value
+		@value = type(@tag.value) == "table" and Table.copy(@tag.value) or @tag.value
 
 	get: => @raw, @name, @value, @i
 
@@ -431,9 +441,9 @@ class Tag
 	copy: => Tag @__tostring!
 
 	-- gets the tag pattern, optional pattern to get only the value
-	getPattern: (name, with_value) ->
+	getPattern: (name, withValue) ->
 		{:ass, :pattern, :pattern_value} = ASS_TAGS[name]
-		return with_value and ass .. pattern_value or ass .. pattern
+		return withValue and ass .. pattern_value or ass .. pattern
 
 	-- converts the tag back to string
 	__tostring: =>

@@ -3,6 +3,7 @@ CPP = require "clipper2.clipper2"
 import Point from require "ILL.ILL.Ass.Shape.Point"
 import Curve from require "ILL.ILL.Ass.Shape.Curve"
 import Segment from require "ILL.ILL.Ass.Shape.Segment"
+import Math from require "ILL.ILL.Math"
 {:insert, :remove} = table
 
 checkPathClockWise = (path) ->
@@ -42,13 +43,12 @@ class Path
 	-- Returns a copy of the path.
 	clone: => Path @path
 
-	-- Maps all points on the Path
-	map: (fn) =>
-		for contour in *@path
-			for point in *contour
-				px, py = fn point.x, point.y, point
-				if px and py
-					point.x, point.y = px, py
+	-- Update Path data
+	update: (newPath) =>
+		if rawget newPath, "path"
+			@path = newPath.path
+		else
+			@path = newPath
 		return @
 
 	-- Checks if path is CCW
@@ -59,6 +59,491 @@ class Path
 			unless checkPathClockWise clone.path[j]
 				return false
 		return true
+
+	-- Remove holes from Path
+	withoutHoles: =>
+		newPath = Path!
+		clone = @clone!
+		clone\flatten!
+		for j = 1, #clone.path
+			if checkPathClockWise clone.path[j]
+				insert newPath.path, @path[j]
+		@update newPath
+
+	-- Maps all points on the Path
+	map: (fn) =>
+		for contour in *@path
+			for point in *contour
+				px, py = fn point.x, point.y, point
+				if px and py
+					point.x, point.y = px, py
+		return @
+
+	-- Get all points of the Path
+	-- If the index is defined, it gets the points of a specific contour
+	getPoints: (index) =>
+		points = {}
+		if index != nil and @path[i] != nil
+			for point in *@path[i]
+				insert points, point\clone!
+		else
+			@map (x, y, pt) ->
+				insert points, pt\clone!
+		return points
+
+	-- Callback to access the Curves and Segments
+	callBackPath: (fn) =>
+		k = 1
+		for contour in *@path
+			j = 2
+			i = 1
+			while j <= #contour
+				prev = contour[j-1]
+				curr = contour[j]
+				if curr.id == "b"
+					if "break" == fn "b", Curve(prev, curr, contour[j+1], contour[j+2]), k, i
+						return
+					j += 2
+				else
+					if "break" == fn "l", Segment(prev, curr), k, i
+						return
+				j += 1
+				i += 1
+			k += 1
+		return @
+
+	-- Changes path orientation
+	reverse: =>
+		reversedPath = Path!
+		@callBackPath (id, seg, index) ->
+			if reversedPath.path[index] == nil
+				reversedPath.path[index] = {seg.a}
+			seg\reverse!
+			if id == "l"
+				insert reversedPath.path[index], 1, seg.a
+			if id == "b"
+				insert reversedPath.path[index], 1, seg.c
+				insert reversedPath.path[index], 1, seg.b
+				insert reversedPath.path[index], 1, seg.a
+		@update reversedPath
+
+	-- Gets the bounding box and other information from the Path
+	boundingBox: =>
+		l, t, r, b = math.huge, math.huge, -math.huge, -math.huge
+		@map (x, y) ->
+			l = math.min l, x
+			t = math.min t, y
+			r = math.max r, x
+			b = math.max b, y
+		-- width, height, origin, ass shape
+		width = r - l
+		height = b - t
+		origin = Point l, t
+		center = Point l + width / 2, t + height / 2
+		assDraw = ("m %s %s l %s %s %s %s %s %s")\format l, t, r, t, r, b, l, b
+		return {:l, :t, :r, :b, :width, :height, :origin, :center, :assDraw}
+
+	-- Flattens bezier segments and optionally flattens line segments of the @path
+	flatten: (distance, flattenStraight, customLen) =>
+		newPath = Path!
+		@hasCurve = false
+		for contour in *@path
+			newContour = {contour[1]\clone!}
+			j = 2
+			while j <= #contour
+				prev = contour[j-1]
+				curr = contour[j]
+				if curr.id == "b"
+					points = Curve(prev, curr, contour[j+1], contour[j+2])\flatten customLen, distance
+					for k = 2, #points
+						insert newContour, points[k]
+					j += 2
+				else
+					if flattenStraight
+						points = Segment(prev, curr)\flatten customLen, distance
+						for k = 2, #points
+							insert newContour, points[k]
+					else
+						insert newContour, curr
+				j += 1
+			insert newPath.path, newContour
+		@update newPath
+
+	-- Simplifies the number of path points
+	simplify: (tolerance = 0.5, filterNoise = true, recreateBezier = true, angleThreshold = 170) =>
+		if @hasCurve
+			@flatten!
+		if recreateBezier
+			@hasCurve = true
+		@update Path.Simplifier @path, tolerance, filterNoise, recreateBezier, angleThreshold
+
+	-- Move the @path by specified distance
+	move: (px, py) =>
+		@map (x, y, p) ->
+			p\move px, py
+
+	-- Rotates the @path by specified angle
+	rotatefrz: (angle) =>
+		@map (x, y, p) ->
+			p\rotatefrz angle
+
+	-- Rotates the @path by specified angle
+	rotate: (angle, c) =>
+		@map (x, y, p) ->
+			p\rotate angle, c
+
+	-- Scales the @path by specified horizontal and vertical values
+	-- Note: the values are defined on a scale of 100
+	scale: (hor, ver) =>
+		@map (x, y, p) ->
+			p\scale hor, ver
+
+	-- Moves the points to the origin of the plane
+	toOrigin: =>
+		{:origin} = @boundingBox!
+		@move -origin.x, -origin.y
+
+	-- Moves the points to the center of the plane
+	toCenter: =>
+		{:origin, :width, :height} = @boundingBox!
+		@move -origin.x - width * 0.5, -origin.y - height * 0.5
+
+	-- Reallocates the shape to align 7 or from align 7 to any other align
+	reallocate: (an, box, rev, x = 0, y = 0) =>
+		{:width, :height} = box and box or @boundingBox!
+		-- offset to y-axis according to defined alignment
+		tx = switch an
+			when 1, 4, 7 then 0
+			when 2, 5, 8 then 0.5
+			when 3, 6, 9 then 1
+		-- offset to x-axis according to defined alignment
+		ty = switch an
+			when 7, 8, 9 then 0
+			when 4, 5, 6 then 0.5
+			when 1, 2, 3 then 1
+		-- moves the shape to a position relative to the alignment value 7
+		unless rev
+			@move x - width * tx, y - height * ty
+		else
+			-- does the reverse operation
+			@move -x + width * tx, -y + height * ty
+
+	-- Makes a distortion based on the control points given by a quadrilateral
+	perspective: (mesh, real, mode) =>
+		path = mode == "warping" and Path({mesh}) or @
+		unless real
+			{:l, :t, :r, :b} = path\boundingBox!
+			real = {Point(l, t), Point(r, t), Point(r, b), Point(l, b)}
+		@map (x, y, pt) ->
+			uv = pt\quadPT2UV unpack real
+			pt = uv\quadUV2PT unpack mesh
+			return pt.x, pt.y
+
+	-- Creates a grid for the distortion envelope
+	envelopeGrid: (numRows, numCols, isBezier) =>
+		{:assDraw, :l, :t, :width, :height} = @boundingBox!
+		rowDistance = height / numRows
+		colDistance = width / numCols
+		rect = Path!
+		rect.path[1] = {
+			Point 0, 0
+			Point colDistance, 0
+			Point colDistance, rowDistance
+			Point 0, rowDistance
+		}
+		rectsCol, rectsRow = Path!, Path!
+		for col = 0, numCols - 1
+			newRect = rect\clone!
+			newRect\move col * colDistance, 0
+			insert rectsCol.path, newRect.path[1]
+		for row = 0, numRows - 1
+			newRect = rectsCol\clone!
+			newRect\move 0, row * rowDistance
+			for i = 1, #newRect.path
+				insert rectsRow.path, newRect.path[i]
+		if isBezier
+			rectsRow\closeContours!
+			rectsRow\allCurve!
+		return rectsRow\move(l, t), colDistance, rowDistance
+
+	-- Makes a distortion based on the control points given by a mesh
+	envelopeDistort: (gridMesh, gridReal, eps = 1e-4) =>
+		assert #gridMesh == #gridReal, "The control points must have the same quantity!"
+		{:l, :t, :r, :b} = @boundingBox!
+		distort = (mesh, real, pt, e) ->
+			assert #real == #mesh, "The control points must have the same quantity!"
+			for i = 1, #mesh
+				with mesh[i]
+					.x = .x == l and .x - e or (.x == r and .x + e or .x)
+					.y = .y == t and .y - e or (.y == b and .y + e or .y)
+				with real[i] 
+					.x = .x == l and .x - e or (.x == r and .x + e or .x)
+					.y = .y == t and .y - e or (.y == b and .y + e or .y)
+			findAngles = (pt) ->
+				A = {}
+				for i = 1, #real
+					vi, vj = real[i], real[i % #real + 1]
+					r0i = pt\distance vi
+					r0j = pt\distance vj
+					rij = vi\distance vj
+					r = (r0i ^ 2 + r0j ^ 2 - rij ^ 2) / (2 * r0i * r0j)
+					A[i] = r != r and 0 or math.acos math.max -1, math.min r, 1
+				return A
+			findWeights = (pt) ->
+				W = {}
+				A = findAngles pt
+				for i = 1, #real
+					j = (i > 1 and i or #real + 1) - 1
+					r = real[i]\distance pt
+					W[i] = (math.tan(A[j] / 2) + math.tan(A[i] / 2)) / r
+				return W
+			normalizeWeights = (pt) ->
+				Ws, W = 0, findWeights pt
+				for i = 1, #W
+					Ws += W[i]
+				return Ws, W
+			nx, ny, Ws, W = 0, 0, normalizeWeights pt
+			for i = 1, #real
+				L = W[i] / Ws
+				with mesh[i]
+					nx += L * .x
+					ny += L * .y
+			return nx, ny
+		-- https://stackoverflow.com/a/28130452/15411556
+		pointInsidePolygon = (points, p, ep = 1e-2) ->
+			n = #points
+			j = n
+			r = false
+			for i = 1, n
+				a = points[i]
+				b = points[j]
+				if math.abs(a.y - b.y) <= ep and math.abs(b.y - p.y) <= ep and (a.x >= p.x) != (b.x >= p.x)
+					return true
+				if (a.y > p.y) != (b.y > p.y)
+					c = (b.x - a.x) * (p.y - a.y) / (b.y - a.y) + a.x
+					if math.abs(p.x - c) <= ep
+						return true
+					if p.x < c
+						r = not r
+				j = i
+			return r
+		@map (x, y, pt) ->
+			for i = 1, #gridMesh.path
+				if pointInsidePolygon gridReal.path[i], pt
+					return distort gridMesh.path[i], gridReal.path[i], pt, eps
+
+	-- Checks if all contours are open
+	areContoursOpen: =>
+		for contour in *@path
+			firstPoint = contour[1]
+			lastPoint = contour[#contour]
+			if firstPoint\equals lastPoint
+				return false
+		return true
+
+	-- Closes all contours that are open
+	closeContours: =>
+		for contour in *@path
+			firstPoint = contour[1]
+			lastPoint = contour[#contour]
+			unless firstPoint\equals lastPoint
+				newPoint = firstPoint\clone!
+				newPoint.id = "l"
+				insert contour, newPoint
+		return @
+
+	-- Opens all contours that are closed
+	openContours: =>
+		for contour in *@path
+			firstPoint = contour[1]
+			lastPoint = contour[#contour]
+			if lastPoint.id == "l" and firstPoint\equals lastPoint
+				remove contour, #contour
+		return @
+
+	-- Removes the duplicate points in sequence on the contours
+	cleanContours: =>
+		i = 1
+		while i <= #@path
+			contour = @path[i]
+			j = 2
+			while j <= #contour
+				prev = contour[j-1]
+				curr = contour[j]
+				if curr.id == "b"
+					if j > 2 and prev\equals curr
+						j -= 1
+						remove contour, j
+					j += 2
+				elseif prev\equals curr
+					remove contour, j
+					j -= 1
+				j += 1
+			if #contour < 3
+				remove @path, i
+			else
+				i += 1
+		return @
+
+	-- Converts all line segments to bezier segments
+	allCurve: =>
+		newPath = Path!
+		for contour in *@path
+			j, newContour = 2, {contour[1]\clone!}
+			while j <= #contour
+				prev = contour[j-1]
+				curr = contour[j]
+				if curr.id == "b"
+					insert newContour, curr
+					insert newContour, contour[j+1]
+					insert newContour, contour[j+2]
+					j += 2
+				else
+					unless prev\equals curr
+						a, b, c, d = Segment(prev, curr)\lineToBezier!
+						insert newContour, b
+						insert newContour, c
+						insert newContour, d
+					else
+						insert newContour, curr
+				j += 1
+			insert newPath.path, newContour
+		@update newPath
+
+	-- Gets the total length of the Path
+	getLength: =>
+		length = 0
+		@callBackPath (id, seg) ->
+			length += seg\getLength!
+		return length
+
+	-- Gets the normalized tangent on the Path given a time
+	getNormalized: (t = 0.5, returnPath) =>
+		sumLength, length, newPath, data = 0, t * @getLength!, Path!, nil
+		@callBackPath (id, seg, k) ->
+			segmentLen = seg\getLength!
+			if newPath.path[k] == nil
+				newPath.path[k] = {seg.a}
+			if sumLength + segmentLen > length
+				spt, data = seg\splitAtInterval (length - sumLength) / segmentLen, 1
+				if id == "l"
+					insert newPath.path[k], spt.b
+				else
+					insert newPath.path[k], spt.b
+					insert newPath.path[k], spt.c
+					insert newPath.path[k], spt.d
+				return "break"
+			if id == "l"
+				insert newPath.path[k], seg.b
+			else
+				insert newPath.path[k], seg.b
+				insert newPath.path[k], seg.c
+				insert newPath.path[k], seg.d
+			sumLength += segmentLen
+		if returnPath
+			return newPath
+		return data.t.tangent, data.t.point, data.t.time, newPath
+
+	-- Get the Path by giving a interval
+	getNormalizedInterval: (u, v) =>
+		u = Math.clamp u, 0, 1
+		v = Math.clamp v, 0, 1
+		if u > v
+			u, v = v, u
+		length = @getLength!
+		startLen, endLen, sumLength, newPath = u * length, v * length, 0, Path!
+		if startLen == 0 and endLen == 0
+			p = @path[1][1]\clone!
+			newPath.path[1] = {p\clone!, p\clone!}
+			return newPath
+		elseif startLen == 1 and endLen == 1
+			p = @path[#@path][#@path]\clone!
+			newPath.path[1] = {p\clone!, p\clone!}
+			return newPath
+		@callBackPath (id, seg, k) ->
+			segmentLen = seg\getLength!
+			segStart = sumLength
+			segEnd = sumLength + segmentLen
+			if segEnd <= startLen
+				sumLength += segmentLen
+				return
+			if segStart >= endLen
+				return "break"
+			t1 = math.max((startLen - segStart) / segmentLen, 0)
+			t2 = math.min((endLen - segStart) / segmentLen, 1)
+			spt = seg\splitAtInterval t1, t2
+			if newPath.path[k] == nil
+				newPath.path[k] = {spt.a}
+			if id == "l"
+				insert newPath.path[k], spt.b
+			else
+				insert newPath.path[k], spt.b
+				insert newPath.path[k], spt.c
+				insert newPath.path[k], spt.d
+			sumLength += segmentLen
+		return newPath
+
+	-- Distort the Path into another Path
+	-- http://www.planetclegg.com/projects/WarpingTextToSplines.html
+	inClip: (an = 7, clip, mode = "center", leng, offset = 0) =>
+		{:origin, :width, :height} = @boundingBox!
+		{x: ox, y: oy} = origin
+		if type(clip) == "string"
+			clip = Path(clip)\openContours!
+		leng or= clip\getLength!
+		size = leng - width
+		@flatten nil, true
+		sx = switch mode
+			when 1, "left"   then -ox + offset
+			when 2, "center" then -ox + offset + size * 0.5
+			when 3, "right"  then -ox - offset + size
+		sy = switch an
+			when 7, 8, 9 then -oy - height
+			when 4, 5, 6 then -oy - height * 0.5
+			when 1, 2, 3 then -oy
+		@map (x, y) ->
+			tan, pnt = clip\getNormalized (sx + x) / leng, true
+			px = pnt.x + (sy + y) * tan.x
+			py = pnt.y + (sy + y) * tan.y
+			return px, py
+
+	-- Creates an inner shadow or 3D shadow on the Path
+	shadow: (xshad, yshad, shadowType = "3D") =>
+		sortPointsToClockWise = (points) ->
+			cx, cy, n = 0, 0, #points
+			for {:x, :y} in *points
+				cx += x
+				cy += y
+			cx /= n
+			cy /= n
+			table.sort points, (a, b) ->
+				a1 = (math.deg(math.atan2(a.x - cx, a.y - cy)) + 360) % 360
+				a2 = (math.deg(math.atan2(b.x - cx, b.y - cy)) + 360) % 360
+				return a1 < a2
+			return unpack points
+		local pathA, pathB
+		if shadowType == "inner"
+			pathA = @clone!
+			pathB = pathA\clone!
+			pathB\move xshad, yshad
+			@update pathA\difference(pathB).path
+		else
+			pathA = @clone!
+			pathA\closeContours!
+			pathA\flatten!
+			pathB = pathA\clone!
+			pathB\move xshad, yshad
+			pathsClipperA = pathA\convertToClipper!
+			newPathsClipper = CPP.paths.new!
+			for i = 1, #pathA.path
+				pa = pathA.path[i]
+				pb = pathB.path[i]
+				for j = 1, #pa - 1
+					newPathClipper = CPP.path.new!
+					newPathClipper\push sortPointsToClockWise {pa[j], pa[j + 1], pb[j + 1], pb[j]}
+					newPathsClipper\add newPathClipper
+			@update Path.convertFromClipper pathsClipperA\union newPathsClipper
+		return @
 
 	-- Morphology between two paths
 	morph: (to, t = 0.5) =>
@@ -167,429 +652,12 @@ class Path
 
 		return newPath
 
-	-- Callback to access the Curves and Segments
-	callBackPath: (fn) =>
-		k = 1
-		for contour in *@path
-			j = 2
-			while j <= #contour
-				prev = contour[j-1]
-				curr = contour[j]
-				if curr.id == "b"
-					if "break" == fn "b", Curve(prev, curr, contour[j+1], contour[j+2]), k
-						return
-					j += 2
-				else
-					if "break" == fn "l", Segment(prev, curr), k
-						return
-				j += 1
-			k += 1
-		return @
-
-	-- Changes path orientation
-	reverse: =>
-		reversedPath = {}
-		@callBackPath (id, seg, index) ->
-			if reversedPath[index] == nil
-				reversedPath[index] = {seg.a}
-			seg\reverse!
-			if id == "l"
-				table.insert reversedPath[index], 1, seg.a
-			if id == "b"
-				table.insert reversedPath[index], 1, seg.c
-				table.insert reversedPath[index], 1, seg.b
-				table.insert reversedPath[index], 1, seg.a
-		@path = reversedPath
-		return @
-
-	-- Gets the bounding box and other information from the Path
-	boundingBox: =>
-		l, t, r, b = math.huge, math.huge, -math.huge, -math.huge
-		@map (x, y) ->
-			l = math.min l, x
-			t = math.min t, y
-			r = math.max r, x
-			b = math.max b, y
-		-- width, height, origin, ass shape
-		width = r - l
-		height = b - t
-		origin = Point l, t
-		center = Point l + width / 2, t + height / 2
-		assDraw = ("m %s %s l %s %s %s %s %s %s")\format l, t, r, t, r, b, l, b
-		return {:l, :t, :r, :b, :width, :height, :origin, :center, :assDraw}
-
-	-- Flattens bezier segments and optionally flattens line segments of the @path
-	flatten: (distance, flattenStraight, customLen) =>
-		newPath = {}
-		for contour in *@path
-			j, newContour = 2, {}
-			insert newContour, contour[1]\clone!
-			while j <= #contour
-				prev = contour[j-1]
-				curr = contour[j]
-				if curr.id == "b"
-					points = Curve(prev, curr, contour[j+1], contour[j+2])\flatten customLen, distance
-					for k = 2, #points
-						insert newContour, points[k]
-					j += 2
-				else
-					if flattenStraight
-						points = Segment(prev, curr)\flatten customLen, distance
-						for k = 2, #points
-							insert newContour, points[k]
-					else
-						insert newContour, curr
-				j += 1
-			insert newPath, newContour
-		@path = newPath
-		@hasCurve = false
-		return @
-
-	-- Simplifies the number of path points
-	simplify: (tolerance = 0.5, filterNoise = true, recreateBezier = true, angleThreshold = 170) =>
-		if @hasCurve
-			@flatten!
-		if recreateBezier
-			@hasCurve = true
-		@path = Path.Simplifier @path, tolerance, filterNoise, recreateBezier, angleThreshold
-		return @
-
-	-- Move the @path by specified distance
-	move: (px, py) =>
-		@map (x, y, p) ->
-			p\move px, py
-
-	-- Rotates the @path by specified angle
-	rotatefrz: (angle) =>
-		@map (x, y, p) ->
-			p\rotatefrz angle
-
-	-- Rotates the @path by specified angle
-	rotate: (angle, c) =>
-		@map (x, y, p) ->
-			p\rotate angle, c
-
-	-- Scales the @path by specified horizontal and vertical values
-	-- Note: the values are defined on a scale of 100
-	scale: (hor, ver) =>
-		@map (x, y, p) ->
-			p\scale hor, ver
-
-	-- Moves the points to the origin of the plane
-	toOrigin: =>
-		{:origin} = @boundingBox!
-		@move -origin.x, -origin.y
-
-	-- Moves the points to the center of the plane
-	toCenter: =>
-		{:origin, :width, :height} = @boundingBox!
-		@move -origin.x - width * 0.5, -origin.y - height * 0.5
-
-	-- Reallocates the shape to align 7 or from align 7 to any other align
-	reallocate: (an, box, rev, x = 0, y = 0) =>
-		{:width, :height} = box and box or @boundingBox!
-		-- offset to y-axis according to defined alignment
-		tx = switch an
-			when 1, 4, 7 then 0
-			when 2, 5, 8 then 0.5
-			when 3, 6, 9 then 1
-		-- offset to x-axis according to defined alignment
-		ty = switch an
-			when 7, 8, 9 then 0
-			when 4, 5, 6 then 0.5
-			when 1, 2, 3 then 1
-		-- moves the shape to a position relative to the alignment value 7
-		unless rev
-			@move x - width * tx, y - height * ty
-		else
-			-- does the reverse operation
-			@move -x + width * tx, -y + height * ty
-
-	-- Makes a distortion based on the control points given by a quadrilateral
-	perspective: (mesh, real, mode) =>
-		path = mode == "warping" and Path({mesh}) or @
-		unless real
-			{:l, :t, :r, :b} = path\boundingBox!
-			real = {Point(l, t), Point(r, t), Point(r, b), Point(l, b)}
-		@map (x, y, pt) ->
-			uv = pt\quadPT2UV unpack real
-			pt = uv\quadUV2PT unpack mesh
-			return pt.x, pt.y
-
-	-- Creates a grid for the distortion envelope
-	envelopeGrid: (numRows, numCols, isBezier) =>
-		{:assDraw, :l, :t, :width, :height} = @boundingBox!
-		rowDistance = height / numRows
-		colDistance = width / numCols
-		rect = Path!
-		rect.path[1] = {
-			Point 0, 0
-			Point colDistance, 0
-			Point colDistance, rowDistance
-			Point 0, rowDistance
-		}
-		rectsCol, rectsRow = Path!, Path!
-		for col = 0, numCols - 1
-			newRect = rect\clone!
-			newRect\move col * colDistance, 0
-			insert rectsCol.path, newRect.path[1]
-		for row = 0, numRows - 1
-			newRect = rectsCol\clone!
-			newRect\move 0, row * rowDistance
-			for i = 1, #newRect.path
-				insert rectsRow.path, newRect.path[i]
-		if isBezier
-			rectsRow\closeContours!
-			rectsRow\allCurve!
-		return rectsRow\move(l, t), colDistance, rowDistance
-
-	-- Makes a distortion based on the control points given by a mesh
-	envelopeDistort: (gridMesh, gridReal, ep = 0.1) =>
-		assert #gridMesh == #gridReal, "The control points must have the same quantity!"
-		{:l, :t, :r, :b} = @boundingBox!
-		distort = (mesh, real, pt, eps = 0.001) ->
-			assert #real == #mesh, "The control points must have the same quantity!"
-			for i = 1, #mesh
-				with mesh[i]
-					.x = .x == l and .x - eps or (.x == r and .x + eps or .x)
-					.y = .y == t and .y - eps or (.y == b and .y + eps or .y)
-				with real[i] 
-					.x = .x == l and .x - eps or (.x == r and .x + eps or .x)
-					.y = .y == t and .y - eps or (.y == b and .y + eps or .y)
-			findAngles = (pt) ->
-				A = {}
-				for i = 1, #real
-					vi, vj = real[i], real[i % #real + 1]
-					r0i = pt\distance vi
-					r0j = pt\distance vj
-					rij = vi\distance vj
-					r = (r0i ^ 2 + r0j ^ 2 - rij ^ 2) / (2 * r0i * r0j)
-					A[i] = r != r and 0 or math.acos math.max -1, math.min r, 1
-				return A
-			findWeights = (pt) ->
-				W = {}
-				A = findAngles pt
-				for i = 1, #real
-					j = (i > 1 and i or #real + 1) - 1
-					r = real[i]\distance pt
-					W[i] = (math.tan(A[j] / 2) + math.tan(A[i] / 2)) / r
-				return W
-			normalizeWeights = (pt) ->
-				Ws, W = 0, findWeights pt
-				for i = 1, #W
-					Ws += W[i]
-				return Ws, W
-			nx, ny, Ws, W = 0, 0, normalizeWeights pt
-			for i = 1, #real
-				L = W[i] / Ws
-				with mesh[i]
-					nx += L * .x
-					ny += L * .y
-			return nx, ny
-		-- https://stackoverflow.com/a/28130452/15411556
-		pointInsidePolygon = (points, p) ->
-			n = #points
-			j = n
-			r = false
-			for i = 1, n
-				a = points[i]
-				b = points[j]
-				if math.abs(a.y - b.y) <= ep and math.abs(b.y - p.y) <= ep and (a.x >= p.x) != (b.x >= p.x)
-					return true
-				if (a.y > p.y) != (b.y > p.y)
-					c = (b.x - a.x) * (p.y - a.y) / (b.y - a.y) + a.x
-					if math.abs(p.x - c) <= ep
-						return true
-					if p.x < c
-						r = not r
-				j = i
-			return r
-		@map (x, y, pt) ->
-			for i = 1, #gridMesh.path
-				if pointInsidePolygon gridReal.path[i], pt
-					return distort gridMesh.path[i], gridReal.path[i], pt
-
-	-- Checks if all contours are open
-	areContoursOpen: =>
-		for contour in *@path
-			firstPoint = contour[1]
-			lastPoint = contour[#contour]
-			if firstPoint\equals lastPoint
-				return false
-		return true
-
-	-- Closes all contours that are open
-	closeContours: =>
-		for contour in *@path
-			firstPoint = contour[1]
-			lastPoint = contour[#contour]
-			unless firstPoint\equals lastPoint
-				newPoint = firstPoint\clone!
-				newPoint.id = "l"
-				insert contour, newPoint
-		return @
-
-	-- Opens all contours that are closed
-	openContours: =>
-		for contour in *@path
-			firstPoint = contour[1]
-			lastPoint = contour[#contour]
-			if lastPoint.id == "l" and firstPoint\equals lastPoint
-				remove contour, #contour
-		return @
-
-	-- Removes the duplicate points in sequence on the contours
-	cleanContours: =>
-		i = 1
-		while i <= #@path
-			contour = @path[i]
-			j = 2
-			while j <= #contour
-				prev = contour[j-1]
-				curr = contour[j]
-				if curr.id == "b"
-					if j > 2 and prev\equals curr
-						j -= 1
-						remove contour, j
-					j += 2
-				elseif prev\equals curr
-					remove contour, j
-					j -= 1
-				j += 1
-			if #contour < 3
-				remove @path, i
-			else
-				i += 1
-		return @
-
-	-- Converts all line segments to bezier segments
-	allCurve: =>
-		newPath = {}
-		for contour in *@path
-			j, add = 2, {contour[1]\clone!}
-			while j <= #contour
-				prev = contour[j-1]
-				curr = contour[j]
-				if curr.id == "b"
-					insert add, curr
-					insert add, contour[j+1]
-					insert add, contour[j+2]
-					j += 2
-				else
-					unless prev\equals curr
-						a, b, c, d = Segment(prev, curr)\lineToBezier!
-						insert add, b
-						insert add, c
-						insert add, d
-					else
-						insert add, curr
-				j += 1
-			insert newPath, add
-		@path = newPath
-		return @
-
-	-- Gets the total length of the Path
-	getLength: =>
-		length = 0
-		@callBackPath (id, seg) ->
-			length += seg\getLength!
-		return length
-
-	-- Gets the normalized tangent on the Path given a time
-	getNormalized: (t = 0.5) =>
-		sumLength, length, newPath, tan, p, u = 0, t * @getLength!, Path!, nil, nil, nil
-		@callBackPath (id, seg, k) ->
-			path, segmentLen = {}, seg\getLength!
-			if newPath.path[k] == nil
-				newPath.path[k] = {seg.a}
-			if sumLength + segmentLen >= length
-				u = (length - sumLength) / segmentLen
-				tan, p, u = seg\getNormalized u
-				spt = seg\split(u)[1]
-				if id == 'l'
-					insert newPath.path[k], spt.b
-				else if id == 'b'
-					insert newPath.path[k], spt.b
-					insert newPath.path[k], spt.c
-					insert newPath.path[k], spt.b
-				return "break", p, u, newPath
-			if id == 'l'
-				insert newPath.path[k], seg.b
-			else
-				insert newPath.path[k], seg.b
-				insert newPath.path[k], seg.c
-				insert newPath.path[k], seg.d
-			sumLength += segmentLen
-		return tan, p, u, newPath
-
-	-- Distort the Path into another Path
-	-- http://www.planetclegg.com/projects/WarpingTextToSplines.html
-	inClip: (an = 7, clip, mode = "center", leng, offset = 0) =>
-		{:origin, :width, :height} = @boundingBox!
-		{x: ox, y: oy} = origin
-		if type(clip) == "string"
-			clip = Path(clip)\openContours!
-		leng or= clip\getLength!
-		size = leng - width
-		@flatten nil, true
-		sx = switch mode
-			when 1, "left"   then -ox + offset
-			when 2, "center" then -ox + offset + size * 0.5
-			when 3, "right"  then -ox - offset + size
-		sy = switch an
-			when 7, 8, 9 then -oy - height
-			when 4, 5, 6 then -oy - height * 0.5
-			when 1, 2, 3 then -oy
-		@map (x, y) ->
-			tan, pnt = clip\getNormalized (sx + x) / leng, true
-			px = pnt.x + (sy + y) * tan.x
-			py = pnt.y + (sy + y) * tan.y
-			return px, py
-
-	-- Creates an inner shadow or 3D shadow on the Path
-	shadow: (xshad, yshad, shadowType = "3D") =>
-		sortPointsToClockWise = (points) ->
-			cx, cy, n = 0, 0, #points
-			for {:x, :y} in *points
-				cx += x
-				cy += y
-			cx /= n
-			cy /= n
-			table.sort points, (a, b) ->
-				a1 = (math.deg(math.atan2(a.x - cx, a.y - cy)) + 360) % 360
-				a2 = (math.deg(math.atan2(b.x - cx, b.y - cy)) + 360) % 360
-				return a1 < a2
-			return unpack points
-		local pathA, pathB
-		if shadowType == "inner"
-			pathA = @clone!
-			pathB = pathA\clone!
-			pathB\move xshad, yshad
-			@path = pathA\difference(pathB).path
-		else
-			pathA = @clone!
-			pathA\closeContours!
-			pathA\flatten!
-			pathB = pathA\clone!
-			pathB\move xshad, yshad
-			pathsClipperA = pathA\convertToClipper!
-			newPathsClipper = CPP.paths.new!
-			for i = 1, #pathA.path
-				pa = pathA.path[i]
-				pb = pathB.path[i]
-				for j = 1, #pa - 1
-					newPathClipper = CPP.path.new!
-					newPathClipper\push sortPointsToClockWise {pa[j], pa[j + 1], pb[j + 1], pb[j]}
-					newPathsClipper\add newPathClipper
-			@path = Path.convertFromClipper(pathsClipperA\union newPathsClipper).path
-		return @
-
 	-- Create the @path table for the given string
 	import: (shape) =>
 		@path = {}
 		for strPath in shape\gmatch "m [^m]+"
 			insert @path, {}
-			i, path, currCmd = 2, @path[#@path], nil
+			path, currCmd = @path[#@path], nil
 			for cmd, x, y in strPath\gmatch "(%a?)%s+(%-?%d[%.%d]*)%s+(%-?%d[%.%d]*)"
 				if cmd != ""
 					-- checks if the shape has only m, l and b commands
@@ -627,7 +695,7 @@ class Path
 						cmd = "l"
 						insert shape[i], "l #{curr.x} #{curr.y}"
 				j += 1
-			shape[i] = "m #{contour[1].x} #{contour[1].y} " .. table.concat shape[i], " "
+			shape[i] = "m #{contour[1].x} #{contour[1].y} #{table.concat shape[i], " "}"
 		return table.concat shape, " "
 
 	-- (Clipper function)
@@ -670,41 +738,35 @@ class Path
 	unite: (clip) =>
 		subj = @convertToClipper!
 		clip = clip\convertToClipper!
-		@path = Path.convertFromClipper(subj\union clip).path
-		return @
+		@update Path.convertFromClipper subj\union clip
 
 	-- (Clipper function)
 	-- Remove from @path another path object
 	difference: (clip) =>
 		subj = @convertToClipper!
 		clip = clip\convertToClipper!
-		@path = Path.convertFromClipper(subj\difference clip).path
-		return @
+		@update Path.convertFromClipper subj\difference clip
 
 	-- (Clipper function)
 	-- Intersect @path with another path object
 	intersect: (clip) =>
 		subj = @convertToClipper!
 		clip = clip\convertToClipper!
-		@path = Path.convertFromClipper(subj\intersection clip).path
-		return @
+		@update Path.convertFromClipper subj\intersection clip
 
 	-- (Clipper function)
 	-- Join @path with another path object and remove the parts where those intersect
 	exclude: (clip) =>
 		subj = @convertToClipper!
 		clip = clip\convertToClipper!
-		@path = Path.convertFromClipper(subj\xor clip).path
-		return @
+		@update Path.convertFromClipper subj\xor clip
 
 	-- (Clipper function)
 	-- Inflate/deflate @path by the specifies amount
 	offset: (delta, join_type, end_type, miter_limit, arc_tolerance, preserve_collinear, reverse_solution) =>
 		subj = @convertToClipper!
 		subj = subj\inflate delta, join_type, end_type, miter_limit, arc_tolerance, preserve_collinear, reverse_solution
-		result = Path.convertFromClipper(subj).path
-		@path = Path.Simplifier result, 0.1, true, false
-		return @
+		@update Path.Simplifier Path.convertFromClipper(subj).path, 0.1, true, false
 
 Path.RoundingPath = (path, radius, inverted = false, cornerStyle = "Rounded", rounding = "Absolute") ->
 	path = Path path if type(path) == "string"
@@ -725,12 +787,10 @@ Path.RoundingPath = (path, radius, inverted = false, cornerStyle = "Rounded", ro
 			-- If 90 degree circular arc, use a constant
 			-- as derived from http://spencermortensen.com/articles/bezier-circle
 			a = ang2 == 1.5707963267948966 and 0.551915024494 or (ang2 == -1.5707963267948966 and -0.551915024494 or 4 / 3 * math.tan(ang2 / 4))
-
 			x1 = math.cos ang1
 			y1 = math.sin ang1
 			x2 = math.cos ang1 + ang2
 			y2 = math.sin ang1 + ang2
-
 			return {
 				Point x1 - y1 * a, y1 + x1 * a
 				Point x2 + y2 * a, y2 - x2 * a
@@ -751,76 +811,54 @@ Path.RoundingPath = (path, radius, inverted = false, cornerStyle = "Rounded", ro
 			rysq = ry ^ 2
 			pxpsq = pxp ^ 2
 			pypsq = pyp ^ 2
-
 			radicant = rxsq * rysq - rxsq * pypsq - rysq * pxpsq
 			if radicant < 0
 				radicant = 0
-
 			radicant = radicant / (rxsq * pypsq + rysq * pxpsq)
 			radicant = math.sqrt(radicant) * (largeArcFlag == sweepFlag and -1 or 1)
-
 			centerxp = radicant * rx / ry * pyp
 			centeryp = radicant * -ry / rx * pxp
-
 			centerx = cosphi * centerxp - sinphi * centeryp + (px + cx) / 2
 			centery = sinphi * centerxp + cosphi * centeryp + (py + cy) / 2
-
 			vx1 = (pxp - centerxp) / rx
 			vy1 = (pyp - centeryp) / ry
 			vx2 = (-pxp - centerxp) / rx
 			vy2 = (-pyp - centeryp) / ry
-
 			ang1 = vectorAngle 1, 0, vx1, vy1
 			ang2 = vectorAngle vx1, vy1, vx2, vy2
-
 			if sweepFlag == 0 and ang2 > 0
 				ang2 -= TAU
-
 			if sweepFlag == 1 and ang2 < 0
 				ang2 += TAU
-
 			return {centerx, centery, ang1, ang2}
-
 		{:px, :py, :cx, :cy, :rx, :ry, :xAxisRotation, :largeArcFlag, :sweepFlag} = info
 		xAxisRotation or= 0
 		largeArcFlag or= 0
 		sweepFlag or= 0
-
 		if rx == 0 or ry == 0
 			return {}
-
 		sinphi = math.sin xAxisRotation * TAU / 360
 		cosphi = math.cos xAxisRotation * TAU / 360
-
 		pxp = cosphi * (px - cx) / 2 + sinphi * (py - cy) / 2
 		pyp = -sinphi * (px - cx) / 2 + cosphi * (py - cy) / 2
-
 		if pxp == 0 and pyp == 0
 			return {}
-
 		rx = math.abs rx
 		ry = math.abs ry
-
 		lambda = (pxp ^ 2) / (rx ^ 2) + (pyp ^ 2) / (ry ^ 2)
 		if lambda > 1
 			rx *= math.sqrt lambda
 			ry *= math.sqrt lambda
-
 		{centerx, centery, ang1, ang2} = getArcCenter px, py, cx, cy, rx, ry, largeArcFlag, sweepFlag, sinphi, cosphi, pxp, pyp
-
 		ratio = math.abs(ang2) / (TAU / 4)
 		if math.abs(1 - ratio) < 1e-7
 			ratio = 1
-
 		segments = math.max math.ceil(ratio), 1
-
 		ang2 /= segments
-
 		curves = {}
 		for i = 1, segments
 			insert curves, approxUnitArc ang1, ang2
 			ang1 += ang2
-
 		result = {}
 		for i = 1, #curves
 			curve = curves[i]
@@ -828,15 +866,12 @@ Path.RoundingPath = (path, radius, inverted = false, cornerStyle = "Rounded", ro
 			{x: x2, y: y2} = mapToEllipse curve[2], rx, ry, cosphi, sinphi, centerx, centery
 			{:x, :y} = mapToEllipse curve[3], rx, ry, cosphi, sinphi, centerx, centery
 			insert result, {x1, y1, x2, y2, x, y}
-
 		return result
 
 	sweepAngularPoint = (a, b, c) ->
 		center = a\lerp c, 0.5
-
 		cos_pi = math.cos math.pi
 		sin_pi = math.sin math.pi
-
 		p = Point!
 		p.x = cos_pi * (b.x - center.x) - sin_pi * (b.y - center.y) + center.x
 		p.y = sin_pi * (b.x - center.x) + cos_pi * (b.y - center.y) + center.y
@@ -859,61 +894,46 @@ Path.RoundingPath = (path, radius, inverted = false, cornerStyle = "Rounded", ro
 	modeRoundingAbsolute = (radius, p1, angularPoint, p2) ->
 		-- Vector 1
 		v1 = Point angularPoint.x - p1.x, angularPoint.y - p1.y
-
 		-- Vector 2
 		v2 = Point angularPoint.x - p2.x, angularPoint.y - p2.y
-
 		-- Angle between vector 1 and vector 2
 		angle = math.atan2(v1.y, v1.x) - math.atan2(v2.y, v2.x)
-
 		-- The length of segment between angular point and the
 		-- points of intersection with the circle of a given radius
 		abs_tan = math.abs math.tan angle / 2
 		segment = radius / abs_tan
-
 		-- Check the segment
 		length1 = v1\vecMagnitude!
 		length2 = v2\vecMagnitude!
-
 		length = math.min(length1, length2) / 2
 		if segment > length
 			segment = length
 			radius = length * abs_tan
-
 		-- Points of intersection are calculated by the proportion between 
 		-- the coordinates of the vector, length of vector and the length of the segment.
 		p1Cross = getProportionPoint angularPoint, segment, length1, v1
 		p2Cross = getProportionPoint angularPoint, segment, length2, v2
-
 		-- Calculation of the coordinates of the circle 
 		-- center by the addition of angular vectors.
 		c = Point!
 		c.x = angularPoint.x * 2 - p1Cross.x - p2Cross.x
 		c.y = angularPoint.y * 2 - p1Cross.y - p2Cross.y
-
 		L = c\vecMagnitude!
 		d = Point(segment, radius)\vecMagnitude!
-
 		circlePoint = getProportionPoint angularPoint, d, L, c
-
 		-- StartAngle and EndAngle of arc
 		startAngle = math.atan2 p1Cross.y - circlePoint.y, p1Cross.x - circlePoint.x
 		endAngle = math.atan2 p2Cross.y - circlePoint.y, p2Cross.x - circlePoint.x
-
 		-- Sweep angle
 		sweepAngle = endAngle - startAngle
-
 		-- Some additional checks
 		if sweepAngle < 0
 			startAngle = endAngle
 			sweepAngle = -sweepAngle
-
 		if sweepAngle > math.pi
 			sweepAngle = -(2 * math.pi - sweepAngle)
-
 		degreeFactor = 180 / math.pi
 		sweepFlag = getSweepFlag p1Cross, angularPoint, p2Cross
-
 		return {
 			line1: {p1, p1Cross}
 			line2: {p2, p2Cross}
@@ -1011,7 +1031,10 @@ Path.RoundingPath = (path, radius, inverted = false, cornerStyle = "Rounded", ro
 
 	return newPath
 
-Path.Simplifier = (paths, tolerance, filterNoise, recreateBezier, angleThreshold) ->
+-- https://github.com/mourner/simplify-js/blob/master/simplify.js
+-- https://github.com/ynakajima/polyline2bezier/blob/master/src/polyline2bezier.js
+-- This is a port of simplify.js and polyline2bezier adapted for Path
+Path.Simplifier = (paths, tolerance = 0.1, filterNoise, recreateBezier, angleThreshold) ->
 	simplifyRadialDist = (points, sqTolerance) ->
 		prevPoint = points[1]
 		newPoints = {prevPoint}
@@ -1274,27 +1297,7 @@ Path.Simplifier = (paths, tolerance, filterNoise, recreateBezier, angleThreshold
 		tHat1 = computeLeftTangent(d, 1)
 		tHat2 = computeRightTangent(d, nPts)
 		fitCubic(b, d, 1, nPts, tHat1, tHat2, _error)
-
-	elaborateSection = (section, final, tolerance) ->
-		if #section <= 4
-			for i = 2, #section
-				insert final, section[i]
-			return {section[#section]}
-		
-		b = {section[1]}
-			
-		fitCurve(b, section, #section, tolerance)
-		
-		for i = 2, #b
-			insert final, b[i]
-		
-		return {b[#b]}
-
-	isInRange = (cs, ls) ->
-		if not (cs > ls * 2) and not (cs < ls / 2)
-			return true
-		return false
-
+	
 	getAngle = (p1, p2, p3) ->
 		x1, y1 = p1.x, p1.y
 		x2, y2 = p2.x, p2.y
@@ -1302,46 +1305,81 @@ Path.Simplifier = (paths, tolerance, filterNoise, recreateBezier, angleThreshold
 		angle = math.atan2(y3 - y2, x3 - x2) - math.atan2(y1 - y2, x1 - x2)
 		return math.deg(angle)
 
-	simplifyBezier = (points, tolerance, angleThreshold) ->
+	elaborateSelected = (selected, final, tolerance) ->
+
+		if #selected <= 4
+			for i = 1, #selected
+				insert final, selected[i]
+			return
+		
+		b = {selected[1]}
+			
+		fitCurve(b, selected, #selected, tolerance)
+		
+		for i = 1, #b
+			insert final, b[i]
+
+	isInRange = (cs, ls) ->
+		if not (cs > ls * 2) and not (cs < ls / 2)
+			return true
+		return false
+
+	simplify = (points, tolerance, angleThreshold) ->
 		at1, at2 = angleThreshold, 360 - angleThreshold
+		final = {}
 
-		insert points, 1, points[#points]\clone!
-		insert points, points[2]\clone!
-		lastSegmentLength = points[1]\distance(points[2])
+		-- first and last points are duplicated for checks but ignored
+		insert points, 1, points[#points]
+		insert points, points[2]
 
-		final = {points[2]\clone!}
-		section = {}
-
+		lastSegmentLength = 0
+		selected = {points[1]}
+		-- the current work around to remove duplicated points
+		-- close the contour by duplicating the first point
+		-- in this foor loop is possible to change to #points - 2
+		-- if you want to have an open contour
 		for i = 2, #points - 1
-			insert section, points[i]
+			
+			-- first point must not be a control point
+			if i == 2
+				lastSegmentLength = points[2]\distance(points[3])
+				points[i].id = "l"
+				selected = {points[i]}
+				continue
+			insert selected, points[i]
 			
 			currSegmentLength = points[i]\distance(points[i + 1])
 			if not isInRange(currSegmentLength, lastSegmentLength)
-				section = elaborateSection(section, final, tolerance)
+				elaborateSelected(selected, final, tolerance)
+				selected = {}
 				lastSegmentLength = currSegmentLength
 				continue
 			
 			ang = math.abs getAngle(points[i-1], points[i], points[i+1])
 			if ang < at1 or ang > at2
-				section = elaborateSection(section, final, tolerance)
+				elaborateSelected(selected, final, tolerance)
+				selected = {}
 				lastSegmentLength = currSegmentLength
 				continue
 			
 			lastSegmentLength = currSegmentLength
-		
-		elaborateSection(section, final, tolerance)
+
+		elaborateSelected(selected, final, tolerance)
 		return final
 
-	for i = 1, #paths
-		if filterNoise
-			paths[i] = simplifyRadialDist(paths[i], tolerance)
+	newPath = Path!
+	sqTolerance = tolerance ^ 2
 
+	for i = 1, #paths
 		if recreateBezier
-			paths[i] = simplifyBezier(paths[i], tolerance, angleThreshold)
+			paths[i] = simplifyRadialDist paths[i], 0.5
+			paths[i] = simplify paths[i], tolerance, angleThreshold
 		else
-			sqTolerance = tolerance * tolerance
-			paths[i] = simplifyDouglasPeucker(paths[i], sqTolerance)
-		
-	return paths
+			unless highestQuality
+				paths[i] = simplifyRadialDist paths[i], sqTolerance
+			paths[i] = simplifyDouglasPeucker paths[i], sqTolerance
+		insert newPath.path, paths[i]
+
+	return newPath
 
 {:Path}

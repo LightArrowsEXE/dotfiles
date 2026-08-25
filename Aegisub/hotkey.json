@@ -76,9 +76,6 @@
 		"audio/scroll/left" : [
 			"A"
 		],
-		"audio/scroll/right" : [
-			"F"
-		],
 		"audio/stop" : [
 			"H"
 		],
@@ -87,6 +84,12 @@
 		],
 		"automation/lua/0x.KaraTemplater/Remove generated fx" : [
 			"Ctrl-Shift-Backspace"
+		],
+		"automation/lua/petzku.QuantizeKara/Quantize K-timing/Quantize to 16th notes" : [
+			"'"
+		],
+		"automation/lua/petzku.QuantizeKara/Quantize K-timing/Quantize to 16th triplets" : [
+			"Shift-'"
 		],
 		"automation/lua/phos.TimingAssistant/:: Hotkeys/Timing Assistant/Time" : [
 			"F"
@@ -98,16 +101,16 @@
 			"V"
 		],
 		"time/length/decrease" : [
-			"KP_Subtract"
+			"J"
 		],
 		"time/length/decrease/shift" : [
-			"Shift-KP_Subtract"
+			"Shift-J"
 		],
 		"time/length/increase" : [
-			"KP_Add"
+			"L"
 		],
 		"time/length/increase/shift" : [
-			"Shift-KP_Add"
+			"Shift-L"
 		],
 		"time/next" : [
 			"Right",
@@ -312,7 +315,7 @@
 		"automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Up (-1)" : [
 			"Ctrl-Alt-Up"
 		],
-		"automation/lua/petzku.SplitTimer/SplitTimer/N frames..." : [
+		"automation/lua/petzku.SplitTimer/:: Hotkeys/SplitTimer/N frames..." : [
 			"Ctrl-Shift-H"
 		],
 		"automation/lua/petzku.ToggleTemplates/:: Hotkeys/Toggle Templates" : [
@@ -350,6 +353,9 @@
 		],
 		"automation/lua/ILL.Shapery/:: Hotkeys/: Shapery macros :/Shape expand" : [
 			"F6"
+		],
+		"automation/lua/ILL.Shapery/:: Hotkeys/: Shapery macros :/Shape to clip (clipboard)" : [
+			"Ctrl--"
 		],
 		"automation/lua/ILL.Shapery/:: Hotkeys/Shapery/Manipulate" : [
 			"F8"
@@ -390,7 +396,7 @@
 		"automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Up (-1)" : [
 			"Ctrl-Alt-Up"
 		],
-		"automation/lua/petzku.SplitTimer/SplitTimer/N frames..." : [
+		"automation/lua/petzku.SplitTimer/:: Hotkeys/SplitTimer/N frames..." : [
 			"Ctrl-Shift-H"
 		],
 		"automation/lua/petzku.ToggleTemplates/:: Hotkeys/Toggle Templates" : [
@@ -518,7 +524,7 @@
 		"automation/lua/l0.Nudge/:: Hotkeys/Nudge/Position Up (-1)" : [
 			"Ctrl-Alt-Up"
 		],
-		"automation/lua/petzku.SplitTimer/SplitTimer/N frames..." : [
+		"automation/lua/petzku.SplitTimer/:: Hotkeys/SplitTimer/N frames..." : [
 			"Ctrl-Shift-H"
 		],
 		"automation/lua/petzku.ToggleTemplates/:: Hotkeys/Toggle Templates" : [

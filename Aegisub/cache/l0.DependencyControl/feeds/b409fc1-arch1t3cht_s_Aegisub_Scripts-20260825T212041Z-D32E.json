@@ -1,0 +1,797 @@
+{
+  "dependencyControlFeedFormatVersion": "0.3.0",
+  "name": "arch1t3cht's Aegisub Scripts",
+  "description": "Main repository for all of arch1t3cht's automation macros.",
+  "maintainer": "arch1t3cht",
+  "knownFeeds": {
+    "a-mo": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json",
+    "ASSFoundation": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json",
+    "Functional": "https://raw.githubusercontent.com/TypesettingTools/Functional/master/DependencyControl.json"
+  },
+  "baseUrl": "https://github.com/TypesettingTools/arch1t3cht-Aegisub-Scripts",
+  "url": "@{baseUrl}",
+  "fileBaseUrl": "https://raw.githubusercontent.com/TypesettingTools/arch1t3cht-Aegisub-Scripts/@{namespace}-v@{version}",
+  "macros": {
+    "arch.AegisubChain": {
+      "fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "arch1t3cht",
+      "name": "AegisubChain",
+      "description": "Compose chains out of existing automation macros, and play them back as non-GUI macros, or using only one dialog.",
+      "channels": {
+        "release": {
+          "version": "0.4.1",
+          "released": "2022-12-31",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "f9789afbb79aceb24d3ef371059653071bcbc162"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "l0.Functional",
+              "name": "(Almost) Functional Suite",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.6.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "0.3.0": [
+          "Initial Release"
+        ],
+        "0.3.1": [
+          "Close Aegisub's config file after reading it, so writes to it won't be blocked"
+        ],
+        "0.3.2": [
+          "Fix bug where dialog fields would falsely be detected as changed"
+        ],
+        "0.3.3": [
+          "Fix emulation of updates to active line"
+        ],
+        "0.4.0": [
+          "Add commands to repeat the last chain or other chains before it",
+          "Add chain slots that will execute a given chain and can be reconfigured without reloading automation scripts."
+        ],
+        "0.4.1": [
+          "Move repository to TypesettingTools/arch1t3cht-Aegisub-Scripts"
+        ]
+      }
+    },
+    "arch.DerivePerspTrack": {
+      "fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "arch1t3cht",
+      "name": "Derive Perspective Track",
+      "description": "Create a power-pin track file from the outer perspective quads of a set of lines.",
+      "channels": {
+        "release": {
+          "version": "1.1.3",
+          "released": "2025-08-05",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "0f0a165326f3f8e06072740e06069337000b9b02"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "l0.Functional",
+              "name": "(Almost) Functional Suite",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.6.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.5.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            },
+            {
+              "moduleName": "arch.Math",
+              "name": "ArchMath",
+              "url": "https://github.com/TypesettingTools/arch1t3cht-Aegisub-Scripts",
+              "version": "0.1.10"
+            },
+            {
+              "moduleName": "arch.Perspective",
+              "name": "Perspective",
+              "url": "https://github.com/TypesettingTools/arch1t3cht-Aegisub-Scripts",
+              "version": "1.2.1"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "1.0.0": [
+          "Initial Release"
+        ],
+        "1.1.0": [
+          "Add option to derive the track from the override tags of the lines"
+        ],
+        "1.1.1": [
+          "Bump ArchMath dependency to fix a bug"
+        ],
+        "1.1.2": [
+          "Remove unused Line dependency",
+          "Switch to prepareForPerspective function"
+        ],
+        "1.1.3": [
+          "Fix \\fscx/y being broken with drawings"
+        ]
+      }
+    },
+    "arch.FocusLines": {
+      "fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "arch1t3cht",
+      "name": "Focus Lines",
+      "description": "Draws moving focus lines.",
+      "channels": {
+        "release": {
+          "version": "1.0.1",
+          "released": "2022-12-31",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "f03b9ef81267a37850826dbd3f85f6cae3883493"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "arch.Math",
+              "name": "ArchMath",
+              "url": "https://github.com/TypesettingTools/arch1t3cht-Aegisub-Scripts",
+              "version": "0.1.8"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "1.0.0": [
+          "Initial Release"
+        ],
+        "1.0.1": [
+          "Move repository to TypesettingTools/arch1t3cht-Aegisub-Scripts"
+        ]
+      }
+    },
+    "arch.Line2Fbf": {
+      "fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "arch1t3cht",
+      "name": "FBF-ifier",
+      "description": "Convert lines into frame-by-frame chunks",
+      "channels": {
+        "release": {
+          "version": "0.1.0",
+          "released": "2024-01-22",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "c082d49c963152f6e1ad234aea134e178e05e28e"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "a-mo.LineCollection",
+              "version": "1.3.0",
+              "name": "Aegisub-Motion (LineCollection)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.5.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            },
+            {
+              "moduleName": "arch.Util",
+              "name": "Util",
+              "url": "https://github.com/TypesettingTools/arch1t3cht-Aegisub-Scripts",
+              "version": "0.1.0"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "0.1.0": [
+          "Initial Release"
+        ]
+      }
+    },
+    "arch.PerspectiveMotion": {
+      "fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "arch1t3cht",
+      "name": "Aegisub Perspective-Motion",
+      "description": "Apply perspective motion tracking data",
+      "channels": {
+        "release": {
+          "version": "0.4.1",
+          "released": "2026-08-22",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "550df6a5b341a3c79a137623547e6c000e1a21fa"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.5.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            },
+            {
+              "moduleName": "arch.Math",
+              "name": "ArchMath",
+              "url": "https://github.com/TypesettingTools/arch1t3cht-Aegisub-Scripts",
+              "version": "0.1.10"
+            },
+            {
+              "moduleName": "arch.Perspective",
+              "name": "Perspective",
+              "url": "https://github.com/TypesettingTools/arch1t3cht-Aegisub-Scripts",
+              "version": "1.2.1"
+            },
+            {
+              "moduleName": "arch.Util",
+              "name": "Util",
+              "url": "https://github.com/TypesettingTools/arch1t3cht-Aegisub-Scripts",
+              "version": "0.1.0"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "0.1.0": [
+          "Initial Release"
+        ],
+        "0.1.1": [
+          "Fix crash on empty clipboard on Windows"
+        ],
+        "0.1.2": [
+          "Fix min version for Math libary"
+        ],
+        "0.1.3": [
+          "Fix line ordering and missing frames in line2fbf"
+        ],
+        "0.1.4": [
+          "Various fixes and improvements to the line2fbf logic (more robust transform handling, fixing transforms of colors and rect clips, fixing fades for lines without alpha tags)"
+        ],
+        "0.1.5": [
+          "Move line2fbf function to a separate Util module"
+        ],
+        "0.2.0": [
+          "Allow tracking multiple lines at once as long as they're arranged in some sane way"
+        ],
+        "0.3.0": [
+          "Correctly handle LayoutResY or the video height differing from PlayResY, but yell at the user when they differ"
+        ],
+        "0.3.1": [
+          "Fix \\fscx/y being broken with drawings"
+        ],
+        "0.4.0": [
+          "Make \"Apply Perspective\" option respect rotation tags"
+        ],
+        "0.4.1": [
+          "Remove obsolete warning about LayoutRes mismatch"
+        ]
+      }
+    },
+    "arch.SplitSections": {
+      "fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "arch1t3cht",
+      "name": "Split Tag Sections",
+      "description": "Split subtitle lines at tags, creating a separate event for each section",
+      "channels": {
+        "release": {
+          "version": "0.1.1",
+          "released": "2024-01-16",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "119fcd38eb27753b1e1404520d4deec82f6bfb10"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.5.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "0.1.0": [
+          "Initial Release. Doesn't account for newlines yet."
+        ],
+        "0.1.1": [
+          "Fix bounds calculation for drawings."
+        ]
+      }
+    },
+    "arch.Resample": {
+      "fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "arch1t3cht",
+      "name": "Resample Perspective",
+      "description": "Apply after resampling a script in Aegisub to fix any lines with 3D rotations.",
+      "channels": {
+        "release": {
+          "version": "2.1.1",
+          "released": "2025-08-05",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "1d6d35e350a34111707095b77ab58e1b5a9832c8"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.5.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            },
+            {
+              "moduleName": "arch.Math",
+              "name": "ArchMath",
+              "url": "https://github.com/TypesettingTools/arch1t3cht-Aegisub-Scripts",
+              "version": "0.1.8"
+            },
+            {
+              "moduleName": "arch.Perspective",
+              "name": "Perspective",
+              "url": "https://github.com/TypesettingTools/arch1t3cht-Aegisub-Scripts",
+              "version": "1.2.1"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "1.0.0": [
+          "Initial Release"
+        ],
+        "1.1.0": [
+          "Allow specifying target resolution",
+          "Allow rescaling to different aspect ratio",
+          "Fix resampling with non-center align"
+        ],
+        "1.2.0": [
+          "Fix me being dumb and forgetting to ship a crucial fix last version",
+          "Fix strange behaviour when not all relevant tags occur in line",
+          "Fix resampling to different aspect ratios",
+          "Clean up tags after processing"
+        ],
+        "1.3.0": [
+          "Add support for non-center org",
+          "Support flipped and mirrored quads",
+          "Move perspective logic to the Perspective module"
+        ],
+        "1.3.1": [
+          "Bump dependency"
+        ],
+        "1.3.2": [
+          "Bump dependency"
+        ],
+        "1.3.3": [
+          "Move repository to TypesettingTools/arch1t3cht-Aegisub-Scripts"
+        ],
+        "1.3.4": [
+          "Add proper handling for drawings",
+          "Bump Perspective dependency to fix resampling in cases involving 180 degree rotations",
+          "Add warning messages for cases where the script is likely to break"
+        ],
+        "2.0.0": [
+          "Add support for nofax \\org mode"
+        ],
+        "2.1.0": [
+          "Move some more logic over to the Perspective module"
+        ],
+        "2.1.1": [
+          "Fix \\fscx/y being broken with drawings"
+        ]
+      }
+    },
+    "arch.RWTools": {
+      "fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "arch1t3cht",
+      "name": "Rewriting Tools",
+      "description": "Shortcuts for managing multiple rewrites of a line in one .ass event line.",
+      "channels": {
+        "release": {
+          "version": "1.3.2",
+          "released": "2025-02-16",
+          "default": true,
+          "files": [
+            {
+              "name": ".lua",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "f1f53937fa9f463f27f64889814b38a5c6298645"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "1.0.0": [
+          "Initial Release"
+        ],
+        "1.1.0": [
+          "Add macros to shift the line break in the active line forward or backward by one word."
+        ],
+        "1.2.0": [
+          "When shifting line breaks, insert a line break if none is present, and remove it when it's been shifted to one of the ends."
+        ],
+        "1.3.0": [
+          "Put the text cursor into the new active line, provided the Aegisub build supports it."
+        ],
+        "1.3.1": [
+          "Move repository to TypesettingTools/arch1t3cht-Aegisub-Scripts"
+        ]
+      }
+    },
+    "arch.NoteBrowser": {
+      "fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "arch1t3cht",
+      "name": "Note Browser",
+      "description": "Loads a set of timestamped notes and adds options to mark them or jump between them.",
+      "channels": {
+        "release": {
+          "version": "1.3.6",
+          "released": "2024-03-14",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "1e314271c9ecb01c5234c1f1b9e08d57037882fe"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "l0.Functional",
+              "name": "(Almost) Functional Suite",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.6.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "1.0.0": [
+          "Initial Release"
+        ],
+        "1.1.0": [
+          "Add transparent support for mpvqc's format, by PhosCity."
+        ],
+        "1.2.0": [
+          "Skip notes more than 15 seconds away from any existing line, by PhosCity."
+        ],
+        "1.3.3": [
+          "Add an option to show text of the notes in Aegisub, by PhosCity."
+        ],
+        "1.3.4": [
+          "Update parsing logic for note texts to recognize more lines as continuation of the text.",
+          "Replace backslashes in note texts to not change the formatting."
+        ],
+        "1.3.5": [
+          "Move repository to TypesettingTools/arch1t3cht-Aegisub-Scripts"
+        ]
+      }
+    },
+    "arch.GitSigns": {
+      "fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "arch1t3cht",
+      "name": "Git Signs",
+      "description": "Displays git diffs in Aegisub",
+      "channels": {
+        "release": {
+          "version": "0.2.4",
+          "released": "2022-12-31",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "9751a0702c03a65434977a3a6d371431a24bd658"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "l0.Functional",
+              "name": "(Almost) Functional Suite",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.6.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "0.1.0": [
+          "Initial Release"
+        ],
+        "0.2.0": [
+          "Add an option to also show the previous versions of the lines. With this, the format is more or less a 1-to-1 copy of the git diff format (for dialogue class lines), but in .ass form.",
+          "Added a warning if DependencyControl isn't found."
+        ],
+        "0.2.1": [
+          "Clear existing markers before showing a diff to ensure idempotency."
+        ],
+        "0.2.2": [
+          "Rewrite line index logic to fix various bugs with displaying deleted lines."
+        ],
+        "0.2.3": [
+          "Add empty extradata to newly inserted lines - this fixes a crash on Aegisub 3.2 and older versions."
+        ],
+        "0.2.4": [
+          "Move repository to TypesettingTools/arch1t3cht-Aegisub-Scripts"
+        ]
+      }
+    },
+    "arch.ConvertFolds": {
+      "fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "arch1t3cht",
+      "name": "Convert Folds",
+      "description": "Convert folds stored in the project properties to extradata folds.",
+      "channels": {
+        "release": {
+          "version": "1.1.2",
+          "released": "2022-12-31",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "05bc513095c66ec0adc175de551199b80bfa1c4d"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "1.0.0": [
+          "Initial Release"
+        ],
+        "1.1.0": [
+          "Add option to automatically read the fold info from the raw subtitle file"
+        ],
+        "1.1.1": [
+          "Move repository to TypesettingTools/arch1t3cht-Aegisub-Scripts"
+        ]
+      }
+    },
+    "arch.FixKFXBoilerplate": {
+      "fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "arch1t3cht",
+      "name": "Fix KFX Boilerplate",
+      "description": "Fix certain errors in boilerplate lines in old KFX templates on new Aegisub versions",
+      "channels": {
+        "release": {
+          "version": "1.0.0",
+          "released": "2025-06-14",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "a3e83d0b98d1088e7dae00dfa8ec3751a404c63f"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "1.0.0": [
+          "Initial Release"
+        ]
+      }
+    }
+  },
+  "modules": {
+    "arch.Math": {
+      "fileBaseUrl": "@{fileBaseUrl}/modules/@{namespacePath}",
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "arch1t3cht",
+      "name": "ArchMath",
+      "description": "General-purpose linear algebra functions, approximately matching the patterns of Matlab or numpy",
+      "channels": {
+        "release": {
+          "version": "0.1.10",
+          "released": "2023-08-31",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "294f15f3c1a9d9d47e4d0776f64819884e8c84d6"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "0.1.0": [
+          "Initial Release"
+        ],
+        "0.1.1": [
+          "Add concat function",
+          "Various fixes for type detection in operators"
+        ],
+        "0.1.2": [
+          "Fix length function"
+        ],
+        "0.1.3": [
+          "Fix coordinate getters"
+        ],
+        "0.1.4": [
+          "Fix division functions"
+        ],
+        "0.1.5": [
+          "Add projection function to take subsets of coordinates.",
+          "Add transformShape function."
+        ],
+        "0.1.6": [
+          "Add projection function for matrices.",
+          "Add shorthand t for transpose.",
+          "Allow passing tables or points to Matrix.diag."
+        ],
+        "0.1.7": [
+          "Fix pattern for shape transform function."
+        ],
+        "0.1.8": [
+          "Move repository to TypesettingTools/arch1t3cht-Aegisub-Scripts"
+        ],
+        "0.1.9": [
+          "Add min/max functions to Point class"
+        ],
+        "0.1.10": [
+          "Fix min/max functions"
+        ]
+      }
+    },
+    "arch.Perspective": {
+      "fileBaseUrl": "@{fileBaseUrl}/modules/@{namespacePath}",
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "arch1t3cht",
+      "name": "Perspective",
+      "description": "Math functions for dealing with perspective transformations.",
+      "channels": {
+        "release": {
+          "version": "1.2.1",
+          "released": "2025-08-05",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "0676563e52cc8d55f279498ee5e51c842922af44"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "arch.Math",
+              "name": "ArchMath",
+              "url": "https://github.com/TypesettingTools/arch1t3cht-Aegisub-Scripts",
+              "version": "0.1.6"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "0.1.0": [
+          "Initial Release",
+          "Add Quad class and general perspective transformation functions."
+        ],
+        "0.2.0": [
+          "Add function transforming points according to .ass tags.",
+          "Add function generating .ass tags from transformed quad."
+        ],
+        "0.2.1": [
+          "Add version record"
+        ],
+        "0.2.2": [
+          "Fix version record..."
+        ],
+        "0.2.3": [
+          "Move repository to TypesettingTools/arch1t3cht-Aegisub-Scripts"
+        ],
+        "0.2.4": [
+          "Fix the tagsFromQuad computation when 180 degree rotations are involved"
+        ],
+        "0.2.5": [
+          "Add support for a nofax org mode"
+        ],
+        "1.0.0": [
+          "Add prepareForPerspective function that wraps the remaining logic needed for general perspective computations with ASSFoundation"
+        ],
+        "1.1.0": [
+          "Add Quad.rect function",
+          "Remove stray code line in prepareForPerspective",
+          "Fix bounds calculation for drawings",
+          "Export an_xshift and an_yshift"
+        ],
+        "1.2.0": [
+          "Add layoutScale parameter to account for differing LayoutRes or video resolution"
+        ],
+        "1.2.1": [
+          "Fix \\fscx/y being broken with drawings"
+        ]
+      }
+    },
+    "arch.Util": {
+      "fileBaseUrl": "@{fileBaseUrl}/modules/@{namespacePath}",
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "arch1t3cht",
+      "name": "Util",
+      "description": "Utility functions used in some of my scripts",
+      "channels": {
+        "release": {
+          "version": "0.1.0",
+          "released": "2024-01-22",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "21e5f8e81351617b10d52ef85c90dea1c8aa0de6"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "a-mo.Line",
+              "version": "1.5.3",
+              "name": "Aegisub-Motion (Line)",
+              "url": "https://github.com/TypesettingTools/Aegisub-Motion",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+            },
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.5.0",
+              "feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "0.1.0": [
+          "Initial Release with line2fbf function"
+        ]
+      }
+    }
+  }
+}

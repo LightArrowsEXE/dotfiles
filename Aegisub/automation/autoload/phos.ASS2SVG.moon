@@ -1,6 +1,6 @@
 export script_name = "ASS2SVG"
 export script_description = "Export ass shapes to svg path"
-export script_version = "1.0.0"
+export script_version = "1.0.2"
 export script_author = "PhosCity"
 export script_namespace = "phos.ASS2SVG"
 
@@ -13,7 +13,7 @@ depctrl = DependencyControl{
     }
 }
 ILL = depctrl\requireModules!
-{:Aegi, :Ass, :Line, :Path} = ILL
+{:Ass, :Line, :Path} = ILL
 
 
 bgrTorgb = (bgrHex) ->
@@ -43,9 +43,9 @@ assShapeTosvgPath = (shape, lineData) ->
             else
                 table.insert path[i], "L #{curr.x} #{curr.y}"
             j += 1
-        path[i] = "M #{contour[1].x} #{contour[1].y} " .. table.concat path[i], " "
+        path[i] = "M #{contour[1].x} #{contour[1].y} " .. table.concat(path[i], " ") .. " Z"
 
-    path = (table.concat path, " ") .. " Z"
+    path = table.concat path, " "
 
     {:outline, :color1, :color3, :alpha, :alpha1, :alpha3} = lineData
     "<path d=\"#{path}\" fill=\"#{bgrTorgb(color1)}\" stroke=\"#{bgrTorgb(color3)}\" fill-opacity=\"#{alphaToOpacity(alpha1)}\" stroke-opacity=\"#{alphaToOpacity(alpha3)}\" opacity=\"#{alphaToOpacity(alpha)}\" stroke-width=\"#{outline}\"/>"
@@ -67,13 +67,13 @@ saveToFile = (xmlContent) ->
 
 
 main = (sub, sel, act) ->
-	ass = Ass sub, sel, act
+    ass = Ass sub, sel, act
 
-    xmlContent = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"#{ass.meta.res_x}\" height=\"#{ass.meta.res_y}\">"
+    xmlContent = "<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\"  width=\"#{ass.meta.res_x}\" height=\"#{ass.meta.res_y}\">"
 
-	for l, s in ass\iterSel!
+    for l, s in ass\iterSel!
         continue if l.comment
-		Line.extend ass, l
+        Line.extend ass, l
         if l.isShape
             Line.callBackExpand ass, l, nil, (line) ->
                 {x, y} = l.data.pos

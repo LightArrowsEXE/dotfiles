@@ -17,6 +17,8 @@ class Line
 
 	-- processes the line values by extending its information pool
 	process: (ass, l) ->
+		return if l.processed
+
 		{:styles, :meta} = ass
 		{:res_x, :res_y, :video_x_correct_factor} = meta
 
@@ -76,10 +78,12 @@ class Line
 					if value = .reset.data[name]
 						.data[name] = value
 
-			font = Font .data
+			local font
 
 			-- if it's a shape, this information are irrelevant
 			unless .isShape
+				font = Font .data
+
 				-- gets the value of the width of a space
 				.space_width = font\getTextExtents(" ").width
 				.space_width *= video_x_correct_factor
@@ -100,25 +104,37 @@ class Line
 
 			-- gets the metric values of the text
 			if textIsBlank
-				textExtents = font\getTextExtents " "
-				textMetrics = font\getMetrics!
 				.width = 0
-				.height = textExtents.height
-				.ascent = textMetrics.ascent
-				.descent = textMetrics.descent
+				if font
+					textExtents = font\getTextExtents " "
+					textMetrics = font\getMetrics!
+					.height = textExtents.height
+					.ascent = textMetrics.ascent
+					.descent = textMetrics.descent
+				else
+					.height = 0
+					.ascent = 0
+					.descent = 0
+					.internal_leading = 0
+					.external_leading = 0
 			else
-				textValue = ""
-				unless .isShape
-					textValue = .text_stripped\gsub "\\h", " "
-					.text_stripped = textValue
-				textExtents = font\getTextExtents textValue
-				textMetrics = font\getMetrics!
-				.width = textExtents.width * video_x_correct_factor
-				.height = textExtents.height
-				.ascent = textMetrics.ascent
-				.descent = textMetrics.descent
-				.internal_leading = textMetrics.internal_leading
-				.external_leading = textMetrics.external_leading
+				if font
+					.text_stripped = .text_stripped\gsub "\\h", " "
+					textExtents = font\getTextExtents .text_stripped
+					textMetrics = font\getMetrics!
+					.width = textExtents.width * video_x_correct_factor
+					.height = textExtents.height
+					.ascent = textMetrics.ascent
+					.descent = textMetrics.descent
+					.internal_leading = textMetrics.internal_leading
+					.external_leading = textMetrics.external_leading
+				else
+					.width = 0
+					.height = 0
+					.ascent = 0
+					.descent = 0
+					.internal_leading = 0
+					.external_leading = 0
 
 			-- text alignment
 			{:an} = .data
@@ -172,11 +188,14 @@ class Line
 					.top = .bottom - .height
 					.y = .bottom
 
+			-- this indicates that the line has already been processed
+			.processed = true
+
 	-- gets all the data values from the tags blocks
 	tagsBlocks: (ass, l, noblank = false) ->
 		data = {width: 0, height: 0, n: 0}
 
-		unless l.data
+		unless l.processed
 			Line.process ass, l
 
 		-- text alignment
@@ -198,6 +217,9 @@ class Line
 			-- support for the \r tag in line processing
 			if reset = line.tags\getTag "r"
 				line.reset = {data: l.data, name: reset.tag.value}
+
+			-- ensures that the block is processed
+			line.processed = false
 
 			-- extends the values of each tag layer
 			Line.process ass, line
@@ -250,7 +272,7 @@ class Line
 	lineBreaks: (ass, l, noblank = false) ->
 		data = {width: 0, height: 0, n: 0}
 
-		unless l.data
+		unless l.processed
 			Line.process ass, l
 
 		-- text alignment
@@ -329,6 +351,7 @@ class Line
 		l.data = nil
 		l.styleref = nil
 		l.extended = false
+		l.processed = false
 		l.text = l.text\__tostring!
 		Line.extend ass, l, noblank
 
@@ -495,98 +518,252 @@ class Line
 			error "You have to extend the line before you get the tags", 2
 
 	-- callback to access the line values frame by frame
-	callBackFBF: (ass, l, fn) ->
+	callBackFBF: (ass, l, fn) -> Line.callBackFBFWithStep ass, l, nil, fn
+
+	-- callback to access the line values frame by frame
+	callBackFBFWithStep: (ass, l, step = 1, fn) ->
 		-- gets the line data
 		{:data, :start_time, :end_time, :duration} = l
+		-- rounds the line time to the nearest 10ms
+		roundLineTime = (t) -> math.floor((t + 5) / 10) * 10
+		-- calculates the acceleration factor for interpolation
+		calcAccel = (t1, t2, t3) ->
+			denom = t3 - t1
+			return 1 if denom == 0
+			ratio = (t2 - t1) / denom
+			return 1 if ratio <= 0 or ratio >= 1
+			accel = math.log(ratio) / math.log(0.5)
+			return 1 if accel != accel or accel == math.huge or accel == -math.huge
+			Math.round Math.clamp accel, 0.01, 100
 		-- interpolates all the tags contained in the \t tag
-		lerpTagTransform = (currTime, data, tags) ->
-			{:insert} = table
+		lerpTagTransform = (currTime, line, data, tags) ->
+			sttTime, endTime = line.start_time, line.end_time 
 			while true
 				if tr = tags\getTag "t"
 					{:s, :e, :a} = tr.tag.value
 					s or= 0
 					e or= duration
-					t = Util.getTimeInInterval currTime, s, e, a
-					lerp, values = "", Tags(tr.tag.value.transform)\split!
-					for i = 1, #values
-						{:name, :tag} = values[i]
-						if tag.transformable
-							if tags\existsTag name
-								tags\remove name
-							name = tag.style_name and tag.style_name or name
-							v1, v2, result = data[name], tag.value, nil
-							unless name == "clip" or name == "iclip"
-								result = Util.interpolation t, nil, v1, v2
-								if type(result) == "number"
-									result = Math.round result, 2
-								data[name] = result
-							else
-								-- if is a rectangular clip
-								if type(v1) == "table" and type(v2) == "table"
-									{l1, t1, r1, b1} = v1
-									{l2, t2, r2, b2} = v2
-									data[name][1] = Math.round Util.interpolation(t, "number", l1, l2), 2
-									data[name][2] = Math.round Util.interpolation(t, "number", t1, t2), 2
-									data[name][3] = Math.round Util.interpolation(t, "number", r1, r2), 2
-									data[name][4] = Math.round Util.interpolation(t, "number", b1, b2), 2
-									result = "(#{data[name][1]},#{data[name][2]},#{data[name][3]},#{data[name][4]})"
+					if step > 1
+						startStepTime = roundLineTime sttTime - start_time
+						endStepTime = roundLineTime endTime - start_time
+						midStepTime = (startStepTime + endStepTime) * 0.5
+						durationStepTime = endStepTime - startStepTime
+						-- gets the time values in the step intervals
+						t1Step = Util.getTimeInInterval startStepTime, s, e, a
+						t2Step = Util.getTimeInInterval midStepTime, s, e, a
+						t3Step = Util.getTimeInInterval endStepTime, s, e, a
+						-- calculates the acceleration factor
+						accelStep = calcAccel t1Step, t2Step, t3Step
+						t1Lerp, t2Lerp, values = "", "", Tags(tr.tag.value.transform)\split!
+						for i = 1, #values
+							{:name, :tag} = values[i]
+							if tag.transformable
+								n = tag.style_name and tag.style_name or name
+								v1, v2, result1, result2 = data[n], tag.value, nil, nil
+								if tg = tags\getTag name
+									tags\remove name
+									v1 = tg.value
+								unless name == "clip" or name == "iclip"
+									-- t1
+									result1 = Util.interpolation t1Step, nil, v1, v2
+									if type(result1) == "number"
+										result1 = Math.round result1, 2
+									data[n] = result1
+									-- t2
+									result2 = Util.interpolation t3Step, nil, v1, v2
+									if type(result2) == "number"
+										result2 = Math.round result2, 2
+									data[n] = result2
 								else
-									-- if is a vector clip --> yes it works
-									data[name] = "#{Util.interpolation t, "shape", v1, v2}"
-									result = "(#{data[name]})"
-							lerp ..= tag.ass .. result
-					tags\remove {"t", lerp, 1}
+									-- if is a rectangular clip
+									if type(v1) == "table" and type(v2) == "table"
+										{l1, t1, r1, b1} = v1
+										{l2, t2, r2, b2} = v2
+										-- t1
+										data[n][1] = Math.round Util.interpolation(t1Step, "number", l1, l2), 2
+										data[n][2] = Math.round Util.interpolation(t1Step, "number", t1, t2), 2
+										data[n][3] = Math.round Util.interpolation(t1Step, "number", r1, r2), 2
+										data[n][4] = Math.round Util.interpolation(t1Step, "number", b1, b2), 2
+										result1 = "(#{data[n][1]},#{data[n][2]},#{data[n][3]},#{data[n][4]})"
+										-- t2
+										data[n][1] = Math.round Util.interpolation(t3Step, "number", l1, l2), 2
+										data[n][2] = Math.round Util.interpolation(t3Step, "number", t1, t2), 2
+										data[n][3] = Math.round Util.interpolation(t3Step, "number", r1, r2), 2
+										data[n][4] = Math.round Util.interpolation(t3Step, "number", b1, b2), 2
+										result2 = "(#{data[n][1]},#{data[n][2]},#{data[n][3]},#{data[n][4]})"
+									else -- if is a vector clip --> yes it works
+										-- t1
+										data[n] = Util.interpolation t1Step, "shape", v1, v2
+										result1 = "(#{data[n]})"
+										-- t2
+										data[n] = Util.interpolation t3Step, "shape", v1, v2
+										result2 = "(#{data[n]})"
+								t1Lerp ..= tag.ass .. result1
+								t2Lerp ..= tag.ass .. result2
+						ts = math.max s - startStepTime, 0
+						te = math.min e - startStepTime, durationStepTime
+						transform = "#{t1Lerp}\\gt(#{ts},#{te},#{accelStep},#{t2Lerp})"
+						tags\remove {"t", transform, 1}
+					else
+						t = Util.getTimeInInterval currTime, s, e, a
+						lerp, values = "", Tags(tr.tag.value.transform)\split!
+						for i = 1, #values
+							{:name, :value, :tag} = values[i]
+							if tag.transformable
+								n = tag.style_name and tag.style_name or name
+								v1, v2, result = data[n], value, nil
+								if tg = tags\getTag name
+									tags\remove name
+									v1 = tg.value
+								unless n == "clip" or n == "iclip"
+									result = Util.interpolation t, nil, v1, v2
+									if type(result) == "number"
+										result = Math.round result, 2
+									data[n] = result
+								else
+									-- if is a rectangular clip
+									if type(v1) == "table" and type(v2) == "table"
+										{l1, t1, r1, b1} = v1
+										{l2, t2, r2, b2} = v2
+										data[n][1] = Math.round Util.interpolation(t, "number", l1, l2), 2
+										data[n][2] = Math.round Util.interpolation(t, "number", t1, t2), 2
+										data[n][3] = Math.round Util.interpolation(t, "number", r1, r2), 2
+										data[n][4] = Math.round Util.interpolation(t, "number", b1, b2), 2
+										result = "(#{data[n][1]},#{data[n][2]},#{data[n][3]},#{data[n][4]})"
+									else
+										-- if is a vector clip --> yes it works
+										data[n] = Util.interpolation t, "shape", v1, v2
+										result = "(#{data[n]})"
+								lerp ..= tag.ass .. result
+						tags\remove {"t", lerp, 1}
 				else
 					break
+			tags.tags = tags.tags\gsub "\\gt", "\\t" if step > 1
 		-- interpolates between the start and end coordinates of the \move tag
-		lerpTagMove = (currTime, data, tags) ->
+		lerpTagMove = (currTime, line, data, tags) ->
+			sttTime, endTime = line.start_time, line.end_time 
 			if tags\existsTag "move"
-				x, y = Util.getTagMove currTime, duration, unpack data.move
-				data.pos[1] = x
-				data.pos[2] = y
-				data.move = nil
-				tags\remove {"move", "\\pos(#{x},#{y})"}
+				if step > 1
+					startStepTime = roundLineTime sttTime - start_time
+					endStepTime = roundLineTime endTime - start_time
+					durationStepTime = endStepTime - startStepTime
+					x1, y1, u1 = Util.getTagMove startStepTime, duration, unpack data.move
+					x2, y2, u2 = Util.getTagMove endStepTime, duration, unpack data.move
+					if u1 == 0 and u2 == 0
+						data.pos[1] = x1
+						data.pos[2] = y1
+						data.move = nil
+						tags\remove {"move", "\\pos(#{x1},#{y1})"}
+					elseif u1 == 1 and u2 == 1
+						data.pos[1] = x2
+						data.pos[2] = y2
+						data.move = nil
+						tags\remove {"move", "\\pos(#{x2},#{y2})"}
+					else
+						data.pos[1] = x1
+						data.pos[2] = y1
+						data.move[1] = x1
+						data.move[2] = y1
+						data.move[3] = x2
+						data.move[4] = y2
+						data.move[5] = math.max data.move[5] - startStepTime, 0
+						data.move[6] = math.min data.move[6] - startStepTime, durationStepTime
+						tags\remove {"move", "\\move(#{x1},#{y1},#{x2},#{y2},#{data.move[5]},#{data.move[6]})"}
+				else
+					x, y = Util.getTagMove currTime, duration, unpack data.move
+					data.pos[1] = x
+					data.pos[2] = y
+					data.move = nil
+					tags\remove {"move", "\\pos(#{x},#{y})"}
 		-- interpolates the value of the \fad or \fade tag given the initial value of alpha
-		lerpTagFade = (currTime, data, tags) ->
-			if fade = data.fad or data.fade
-				value = 0
-				if alpha = tags\getTag "alpha"
-					value = tonumber alpha.tag.value\match("%x%x"), 16
-				data.alpha = ("&H%02X&")\format Util.getTagFade currTime, duration, value, unpack fade
-				if tags\existsTag "fad"
-					tags\remove "alpha", {"fad", "\\alpha#{data.alpha}"}
-				elseif tags\existsTag "fade"
-					tags\remove "alpha", {"fade", "\\alpha#{data.alpha}"}
-				elseif tags\existsTag "alpha"
-					tags\remove {"alpha", "\\alpha#{data.alpha}"}
+		lerpTagFade = (currTime, line, data, tags) ->
+			sttTime, endTime = line.start_time, line.end_time 
+			if fade = data.fade or data.fad
+				alphaData = {{"alpha", "alpha"}, {"alpha1", "1a"}, {"alpha2", "2a"}, {"alpha3", "3a"}, {"alpha4", "4a"}}
+				if step > 1
+					startStepTime = roundLineTime sttTime - start_time
+					endStepTime = roundLineTime endTime - start_time
+					durationStepTime = endStepTime - startStepTime
+					value = 0
+					if alpha = tags\getTag "alpha"
+						value = tonumber alpha.tag.value\match("%x%x"), 16
+					if data["alpha1"] == data["alpha2"] and data["alpha1"] == data["alpha3"] and data["alpha1"] == data["alpha4"]
+						alphaData = {{"alpha", "alpha"}}
+						data.alpha = data["alpha1"]
+					startAlphaHex = Util.getTagFade startStepTime, duration, value, unpack fade
+					startAlphaAss = ("&H%02X&")\format startAlphaHex
+					endAlphaHex = Util.getTagFade endStepTime, duration, value, unpack fade
+					endAlphaAss = ("&H%02X&")\format endAlphaHex
+					if tags\existsTag "fad"
+						tags\remove "alpha", {"fad", "\\alpha#{startAlphaAss}\\t(\\alpha#{endAlphaAss})"}
+					elseif tags\existsTag "fade"
+						tags\remove "alpha", {"fade", "\\alpha#{startAlphaAss}\\t(\\alpha#{endAlphaAss})"}
+					for alphaInfo in *alphaData
+						{alphaName, alphaTag} = alphaInfo
+						if tags\existsTag alphaTag
+							-- start alpha
+							startAlpha = tonumber data[alphaName]\match("%x%x"), 16	
+							startAlpha = startAlpha - (startAlpha * startAlphaHex - 0x7F) / 0xFF + startAlphaHex
+							startAlpha = Math.clamp startAlpha, 0, 255
+							startAlpha = ("&H%02X&")\format startAlpha
+							data[alphaName] = startAlpha
+							-- end alpha
+							endAlpha = tonumber data[alphaName]\match("%x%x"), 16
+							endAlpha = endAlpha - (endAlpha * endAlphaHex - 0x7F) / 0xFF + endAlphaHex
+							endAlpha = Math.clamp endAlpha, 0, 255
+							endAlpha = ("&H%02X&")\format endAlpha
+							data[alphaName] = endAlpha
+							-- removes the tag
+							tags\remove {alphaTag, "\\#{alphaTag}#{startAlpha}\\t(\\#{alphaTag}#{endAlpha})"}
+					data.fad, data.fade = nil, nil
+				else
+					value = 0
+					if alpha = tags\getTag "alpha"
+						value = tonumber alpha.tag.value\match("%x%x"), 16
+					if data["alpha1"] == data["alpha2"] and data["alpha1"] == data["alpha3"] and data["alpha1"] == data["alpha4"]
+						alphaData = {{"alpha", "alpha"}}
+						data.alpha = data["alpha1"]
+					alphaHex = Util.getTagFade currTime, duration, value, unpack fade
+					alphaAss = ("&H%02X&")\format alphaHex
+					if tags\existsTag "fad"
+						tags\remove "alpha", {"fad", "\\alpha#{alphaAss}"}
+					elseif tags\existsTag "fade"
+						tags\remove "alpha", {"fade", "\\alpha#{alphaAss}"}
+					for alphaInfo in *alphaData
+						{alphaName, alphaTag} = alphaInfo
+						if alphaHex > 0 and tags\existsTag alphaTag
+							data[alphaName] = tonumber data[alphaName]\match("%x%x"), 16	
+							data[alphaName] = data[alphaName] - (data[alphaName] * alphaHex - 0x7F) / 0xFF + alphaHex
+							data[alphaName] = Math.clamp data[alphaName], 0, 255
+							data[alphaName] = ("&H%02X&")\format data[alphaName]
+							tags\remove {alphaTag, "\\#{alphaTag}#{data[alphaName]}"}
+					data.fad, data.fade = nil, nil
 		-- gets the start and end time values in frames
 		stt_frame = Aegi.ffm start_time
 		end_frame = Aegi.ffm end_time
-		j = 0
 		n = end_frame - stt_frame
 		-- iterates over all the identified frames
-		for i = stt_frame, end_frame - 1
+		for i = stt_frame, end_frame - 1, step
 			s = Aegi.mff i
-			e = Aegi.mff i + 1
+			e = Aegi.mff math.min i + step, end_frame
 			f = math.floor((s + e) / 2) - start_time
-			dado = Table.copy data
+			curr = Table.copy data
 			line = Table.copy l
 			line.start_time = s
 			line.end_time = e
 			line.duration = e - s
 			unless l.isShape
-				line.text\callBack (tags, text, j) ->
-					if j == 1
-						lerpTagMove f, dado, tags
-					lerpTagTransform f, dado, tags
-					lerpTagFade f, dado, tags
+				line.text\callBack (tags, text, k) ->
+					if k == 1
+						lerpTagMove f, line, curr, tags
+					lerpTagTransform f, line, curr, tags
+					lerpTagFade f, line, curr, tags
 					return tags, text
 			else
-				lerpTagMove f, dado, line.tags
-				lerpTagTransform f, dado, line.tags
-				lerpTagFade f, dado, line.tags
-			j += 1
-			fn line, i, end_frame, j, n
+				lerpTagMove f, line, curr, line.tags
+				lerpTagTransform f, line, curr, line.tags
+				lerpTagFade f, line, curr, line.tags
+			fn line, i, end_frame, i - stt_frame, n
 
 	-- callback to map between all possible lines of text
 	callBackTags: (ass, l, fn) ->

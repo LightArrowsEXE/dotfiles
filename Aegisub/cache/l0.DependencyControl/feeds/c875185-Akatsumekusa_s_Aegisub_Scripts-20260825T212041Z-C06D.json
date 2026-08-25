@@ -1,0 +1,896 @@
+{
+    "dependencyControlFeedFormatVersion": "0.3.0",
+    "name": "Akatsumekusa's Aegisub Scripts",
+    "description": "Repository for Akatsumekusa's Aegisub Scripts",
+    "maintainer": "Akatsumekusa",
+    "baseUrl": "https://github.com/Akatmks/Akatsumekusa-Aegisub-Scripts",
+    "url": "@{baseUrl}",
+    "fileBaseUrl": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/@{channel}/",
+    "macros": {
+        "NN.farnhuah": {
+            "channels": {
+                "master": {
+                    "files": [
+                        {
+                            "name": ".lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "4a0b9e39251b17710435512d27f4a5a55c583132"
+                        }
+                    ],
+                    "version": "1.1.5",
+                    "default": true,
+                    "requiredModules": [
+                        {
+                            "moduleName": "json"
+                        },
+                        {
+                            "moduleName": "aka.request",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "aka.config",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "aka.outcome",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "aegisub.re"
+                        },
+                        {
+                            "moduleName": "aka.actor",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "aka.optimising",
+                            "optional": true,
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        }
+                    ],
+                    "released": "2025-02-20"
+                }
+            },
+            "author": "Akatsumekusa",
+            "name": "farnhuah",
+            "description": "farn huah jeau been",
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}macros/@{namespace}"
+        },
+        "aka.99PercentTags": {
+            "channels": {
+                "master": {
+                    "files": [
+                        {
+                            "name": ".lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "6e56e044a9666179fefa9fc5f0d22fe514bb558f"
+                        }
+                    ],
+                    "version": "1.1.6",
+                    "default": true,
+                    "requiredModules": [
+                        {
+                            "moduleName": "aka.config",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "aka.outcome",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "ILL.ILL",
+                            "feed": "https://raw.githubusercontent.com/TypesettingTools/ILL-Aegisub-Scripts/main/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "aegisub.util"
+                        },
+                        {
+                            "moduleName": "aegisub.re"
+                        },
+                        {
+                            "moduleName": "aka.StackTracePlus",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "aka.uikit",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "aka.unicode",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        }
+                    ],
+                    "released": "2025-03-31"
+                }
+            },
+            "author": "Akatsumekusa and contributors",
+            "name": "99%Tags",
+            "description": "Add or modify tags on selected lines",
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}macros/@{namespace}"
+        },
+        "aka.BackupSelection": {
+            "channels": {
+                "master": {
+                    "files": [
+                        {
+                            "name": ".lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "46976e4fa09df80d81c5e70ff26452a9b18774de"
+                        }
+                    ],
+                    "version": "1.1.1",
+                    "default": true,
+                    "requiredModules": [
+                        {
+                            "moduleName": "aka.actor",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "aegisub.re"
+                        },
+                        {
+                            "moduleName": "aka.optimising",
+                            "optional": true,
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        }
+                    ],
+                    "released": "2025-02-20"
+                }
+            },
+            "author": "Akatsumekusa and contributors",
+            "name": "BackupSelection",
+            "description": "Backup selected lines",
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}macros/@{namespace}"
+        },
+        "aka.Cycles": {
+            "channels": {
+                "master": {
+                    "files": [
+                        {
+                            "name": ".moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "30021aa1318c6a693f14388321503ef9720dd464"
+                        }
+                    ],
+                    "version": "1.1.4",
+                    "default": true,
+                    "requiredModules": [
+                        {
+                            "moduleName": "a-mo.LineCollection",
+                            "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "l0.ASSFoundation",
+                            "feed": "https://raw.githubusercontent.com/TypesettingTools/line0-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "aka.actor",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "aka.config",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "aka.outcome",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        }
+                    ],
+                    "released": "2025-02-20"
+                }
+            },
+            "author": "Akatsumekusa and contributors",
+            "name": "Cycles.a",
+            "description": "Cycles tags on selected lines",
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}macros/@{namespace}"
+        },
+        "aka.InlineStorage": {
+            "channels": {
+                "master": {
+                    "files": [
+                        {
+                            "name": ".lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "221fab7c49db15d1a5ffd3ba6b758a5ae62921c3"
+                        }
+                    ],
+                    "version": "1.1.1",
+                    "default": true,
+                    "requiredModules": [
+                        {
+                            "moduleName": "aka.uikit",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "aka.outcome",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "aegisub.clipboard"
+                        }
+                    ],
+                    "released": "2025-02-20"
+                }
+            },
+            "author": "Akatsumekusa and contributors",
+            "name": "InlineStorage",
+            "description": "Put AAE data or preset files inline so they are available to the people reworking on the subtitle in the future",
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}macros/@{namespace}"
+        },
+        "aka.Sandbox": {
+            "channels": {
+                "master": {
+                    "files": [
+                        {
+                            "name": ".lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "ddd00724bdd93acc8b8d424a9b9475d75df2fd62"
+                        }
+                    ],
+                    "version": "1.1.5",
+                    "default": true,
+                    "requiredModules": [
+                        {
+                            "moduleName": "aegisub.re"
+                        },
+                        {
+                            "moduleName": "aka.StackTracePlus",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "aka.outcome",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "aka.config",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "aka.uikit",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "ILL.ILL",
+                            "feed": "https://raw.githubusercontent.com/TypesettingTools/ILL-Aegisub-Scripts/main/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "moonscript"
+                        },
+                        {
+                            "moduleName": "a-mo.LineCollection",
+                            "feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "l0.ASSFoundation",
+                            "feed": "https://raw.githubusercontent.com/TypesettingTools/line0-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "Yutils"
+                        },
+                        {
+                            "moduleName": "arch.Math",
+                            "feed": "https://raw.githubusercontent.com/TypesettingTools/arch1t3cht-Aegisub-Scripts/refs/heads/main/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "arch.Perspective",
+                            "feed": "https://raw.githubusercontent.com/TypesettingTools/arch1t3cht-Aegisub-Scripts/refs/heads/main/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "arch.Util",
+                            "feed": "https://raw.githubusercontent.com/TypesettingTools/arch1t3cht-Aegisub-Scripts/refs/heads/main/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "l0.Functional",
+                            "feed": "https://raw.githubusercontent.com/TypesettingTools/line0-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "aka.unicode",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "aegisub.util"
+                        },
+                        {
+                            "moduleName": "petzku.util",
+                            "feed": "https://raw.githubusercontent.com/petzku/Aegisub-Scripts/refs/heads/master/DependencyControl.json"
+                        }
+                    ],
+                    "released": "2025-08-01"
+                }
+            },
+            "author": "Akatsumekusa and contributors",
+            "name": "Sandbox",
+            "description": "LuaInterpret but raw",
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}macros/@{namespace}"
+        },
+        "aka.dupe-and-not-comment": {
+            "channels": {
+                "master": {
+                    "files": [
+                        {
+                            "name": ".lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "63c22c72d502b72fe28bd0645cf9e19284bb51f7"
+                        }
+                    ],
+                    "version": "1.1.1",
+                    "default": true,
+                    "released": "2025-02-20"
+                }
+            },
+            "author": "Akatsumekusa and contributors",
+            "name": "Dupe and Not Comment",
+            "description": "Duplicate selected line line by line",
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}macros/@{namespace}"
+        }
+    },
+    "modules": {
+        "aka.CIELab": {
+            "channels": {
+                "master": {
+                    "files": [
+                        {
+                            "name": "/colours.lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "14c29d730f080ca132fe8aa8dbf3d34e0bd66de1"
+                        },
+                        {
+                            "name": "/init.lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "204b9dfe5c5a908786659a23610a22a44f8fd2f4"
+                        },
+                        {
+                            "name": "/interface.lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "ccd816d22ddec5dad831db97b1fdda4af338add8"
+                        }
+                    ],
+                    "version": "1.0.2",
+                    "default": true,
+                    "requiredModules": [
+                        {
+                            "moduleName": "ffi"
+                        },
+                        {
+                            "moduleName": "aegisub.util"
+                        }
+                    ],
+                    "released": "2024-12-12"
+                }
+            },
+            "author": "Akatsumekusa and contributors",
+            "name": "aka.CIELab",
+            "description": "Module aka.CIELab",
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}modules/@{namespacePath}"
+        },
+        "aka.StackTracePlus": {
+            "channels": {
+                "master": {
+                    "files": [
+                        {
+                            "name": "/StackTracePlus.lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "5b52c14372f955dbd12e4f31538d0d2244a1ba1e"
+                        },
+                        {
+                            "name": "/init.lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "6beedfb10a7ac501aa7524c2d80c3c4047c1cf8c"
+                        }
+                    ],
+                    "version": "1.0.7",
+                    "default": true,
+                    "released": "2025-06-16"
+                }
+            },
+            "author": "Ignacio Burgue\u00f1o",
+            "name": "StackTracePlus",
+            "description": "Module StackTracePlus",
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}modules/@{namespacePath}"
+        },
+        "aka.actor": {
+            "channels": {
+                "master": {
+                    "files": [
+                        {
+                            "name": "/init.lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "90c477d8e84ad60f4a35bfd3c2520636697c8583"
+                        }
+                    ],
+                    "version": "1.0.9",
+                    "default": true,
+                    "requiredModules": [
+                        {
+                            "moduleName": "aka.singlesimple",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "aegisub.re"
+                        }
+                    ],
+                    "released": "2025-02-20"
+                }
+            },
+            "author": "Akatsumekusa and contributors",
+            "name": "aka.actor",
+            "description": "Module aka.actor",
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}modules/@{namespacePath}"
+        },
+        "aka.command": {
+            "channels": {
+                "master": {
+                    "files": [
+                        {
+                            "name": "/init.lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "6dd775bd3a1be6bb3d28772bdb6ac77cacf7f7dd"
+                        }
+                    ],
+                    "version": "1.0.2",
+                    "default": true,
+                    "requiredModules": [
+                        {
+                            "moduleName": "petzku.util",
+                            "feed": "https://raw.githubusercontent.com/petzku/Aegisub-Scripts/refs/heads/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "aegisub.re"
+                        }
+                    ],
+                    "released": "2025-02-20"
+                }
+            },
+            "author": "Akatsumekusa and contributors",
+            "name": "aka.command",
+            "description": "Module aka.command",
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}modules/@{namespacePath}"
+        },
+        "aka.config": {
+            "channels": {
+                "master": {
+                    "files": [
+                        {
+                            "name": "/config.lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "fbaf6c3f01e1ac82f4f401f7886f0d84f0e2d273"
+                        },
+                        {
+                            "name": "/init.lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "d00bed549810d2e756147ec0f416d5295057888d"
+                        }
+                    ],
+                    "version": "1.0.14",
+                    "default": true,
+                    "requiredModules": [
+                        {
+                            "moduleName": "aka.config2",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "aka.outcome",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "aka.unicode",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "aegisub.re"
+                        }
+                    ],
+                    "released": "2025-02-20"
+                }
+            },
+            "author": "Akatsumekusa and contributors",
+            "name": "aka.config",
+            "description": "Module aka.config",
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}modules/@{namespacePath}"
+        },
+        "aka.config2": {
+            "channels": {
+                "master": {
+                    "files": [
+                        {
+                            "name": "/config2.lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "e9aa6c49ec7c6bfce0de8bcfe63066eec83ee43f"
+                        },
+                        {
+                            "name": "/init.lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "87834798c230ab339f5b45e693ce5f79480ff5ed"
+                        },
+                        {
+                            "name": "/json.lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "66004f9373847d877fe0aae5ad8a02bf7e161fef"
+                        }
+                    ],
+                    "version": "1.0.12",
+                    "default": true,
+                    "requiredModules": [
+                        {
+                            "moduleName": "aka.outcome",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "aegisub.re"
+                        },
+                        {
+                            "moduleName": "aegisub.unicode"
+                        },
+                        {
+                            "moduleName": "lfs"
+                        }
+                    ],
+                    "released": "2025-06-16"
+                }
+            },
+            "author": "Akatsumekusa and contributors",
+            "name": "aka.config2",
+            "description": "Module aka.config2",
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}modules/@{namespacePath}"
+        },
+        "aka.effil": {
+            "channels": {
+                "master": {
+                    "files": [
+                        {
+                            "name": "/effil-osx.so",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "8a689d202a8457f7f35f236e3b1afabed00b7551",
+                            "platform": "OSX-x64"
+                        },
+                        {
+                            "name": "/effil-osx.so",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "8a689d202a8457f7f35f236e3b1afabed00b7551",
+                            "platform": "OSX-arm"
+                        },
+                        {
+                            "name": "/effil.dll",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "eddc636e421a72f7de7164124828ffc65f065559",
+                            "platform": "Windows-x64"
+                        },
+                        {
+                            "name": "/effil.dll",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "eddc636e421a72f7de7164124828ffc65f065559",
+                            "platform": "Windows-arm"
+                        },
+                        {
+                            "name": "/effil.so",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "40aa226581acd5dd7d28d0758cdff61f4ed41bc9",
+                            "platform": "Linux-x64"
+                        },
+                        {
+                            "name": "/effil.so",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "40aa226581acd5dd7d28d0758cdff61f4ed41bc9",
+                            "platform": "BSD-x64"
+                        },
+                        {
+                            "name": "/effil.so",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "40aa226581acd5dd7d28d0758cdff61f4ed41bc9",
+                            "platform": "POSIX-x64"
+                        },
+                        {
+                            "name": "/init.lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "2242c8aacd3b83e579b29365aa71068382161a3c"
+                        }
+                    ],
+                    "version": "1.0.13",
+                    "default": true,
+                    "requiredModules": [
+                        {
+                            "moduleName": "ffi"
+                        },
+                        {
+                            "moduleName": "requireffi.requireffi",
+                            "version": "0.1.2",
+                            "feed": "https://raw.githubusercontent.com/TypesettingTools/ffi-experiments/master/DependencyControl.json"
+                        }
+                    ],
+                    "released": "2025-06-16"
+                }
+            },
+            "author": "Mikhail Kupriyanov, Ilia Udalov",
+            "name": "effil",
+            "description": "Module effil",
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}modules/@{namespacePath}"
+        },
+        "aka.optimising": {
+            "channels": {
+                "master": {
+                    "files": [
+                        {
+                            "name": "/init.lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "23e0883fa263449a44364f9ee75e85018dec3ee2"
+                        }
+                    ],
+                    "version": "1.0.9",
+                    "default": true,
+                    "requiredModules": [
+                        {
+                            "moduleName": "aka.singlesimple",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "PT.PreciseTimer",
+                            "feed": "https://raw.githubusercontent.com/TypesettingTools/ffi-experiments/master/DependencyControl.json"
+                        }
+                    ],
+                    "released": "2025-02-20"
+                }
+            },
+            "author": "Akatsumekusa and contributors",
+            "name": "aka.optimising",
+            "description": "Module aka.optimising",
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}modules/@{namespacePath}"
+        },
+        "aka.outcome": {
+            "channels": {
+                "master": {
+                    "files": [
+                        {
+                            "name": "/init.lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "e849ae0b09f39ded146120e2c08f5cbd449b0e58"
+                        }
+                    ],
+                    "version": "1.0.11",
+                    "default": true,
+                    "released": "2024-12-12"
+                }
+            },
+            "author": "Michael Dowling, modified by Akatsumekusa",
+            "name": "aka.outcome",
+            "description": "Module aka.outcome",
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}modules/@{namespacePath}"
+        },
+        "aka.request": {
+            "channels": {
+                "master": {
+                    "files": [
+                        {
+                            "name": "/init.lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "c0ff3d7be76f4bc173ad54135eebe44e5537ef9a"
+                        },
+                        {
+                            "name": "/libcurl.dll",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "14bfd8c54e87ec8f1ae9bd029b2771bbc086caa0",
+                            "platform": "Windows-x64"
+                        },
+                        {
+                            "name": "/libcurl.dll",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "14bfd8c54e87ec8f1ae9bd029b2771bbc086caa0",
+                            "platform": "Windows-arm"
+                        },
+                        {
+                            "name": "/luajit-curl.lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "53d19b0c540146d96b21f099b71e57a0252dd6e0"
+                        }
+                    ],
+                    "version": "1.0.17",
+                    "default": true,
+                    "requiredModules": [
+                        {
+                            "moduleName": "ffi"
+                        },
+                        {
+                            "moduleName": "requireffi.requireffi",
+                            "version": "0.1.2",
+                            "feed": "https://raw.githubusercontent.com/TypesettingTools/ffi-experiments/master/DependencyControl.json"
+                        }
+                    ],
+                    "released": "2025-06-16"
+                }
+            },
+            "author": "Lucien Greathouse",
+            "name": "request",
+            "description": "Module request",
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}modules/@{namespacePath}"
+        },
+        "aka.singlesimple": {
+            "channels": {
+                "master": {
+                    "files": [
+                        {
+                            "name": "/init.lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "ab8684140f6e22db1f26c19fb69fa605c5a7bc46"
+                        }
+                    ],
+                    "version": "1.0.15",
+                    "default": true,
+                    "requiredModules": [
+                        {
+                            "moduleName": "aka.config2",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "aka.outcome",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "aka.effil",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        }
+                    ],
+                    "released": "2025-02-20"
+                }
+            },
+            "author": "Akatsumekusa and contributors",
+            "name": "aka.singlesimple",
+            "description": "Module aka.singlesimple",
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}modules/@{namespacePath}"
+        },
+        "aka.threads": {
+            "channels": {
+                "master": {
+                    "files": [
+                        {
+                            "name": "/init.lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "4f1e9ecebc565fdf5295421137c15590acd06107"
+                        }
+                    ],
+                    "version": "1.0.7",
+                    "default": true,
+                    "requiredModules": [
+                        {
+                            "moduleName": "aka.singlesimple",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "ffi"
+                        }
+                    ],
+                    "released": "2025-02-20"
+                }
+            },
+            "author": "Akatsumekusa and contributors",
+            "name": "aka.threads",
+            "description": "Module aka.threads",
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}modules/@{namespacePath}"
+        },
+        "aka.uikit": {
+            "channels": {
+                "master": {
+                    "files": [
+                        {
+                            "name": "/buttons.lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "093ed384099021dc9704f37b49a9d72c1e247bfa"
+                        },
+                        {
+                            "name": "/dialog.lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "7defa25e7e3d655a609577a4cde2091434627296"
+                        },
+                        {
+                            "name": "/display.moon",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "51b88f725c46e127496fa9a8fc43653dac3f54ee"
+                        },
+                        {
+                            "name": "/init.lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "63eddb7b8ffc3f1908a94e1e4c002599b3f3d162"
+                        }
+                    ],
+                    "version": "1.0.14",
+                    "default": true,
+                    "requiredModules": [
+                        {
+                            "moduleName": "aka.outcome",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "aegisub.re"
+                        },
+                        {
+                            "moduleName": "ILL.ILL",
+                            "feed": "https://raw.githubusercontent.com/TypesettingTools/ILL-Aegisub-Scripts/main/DependencyControl.json"
+                        },
+                        {
+                            "moduleName": "aka.config2",
+                            "feed": "https://raw.githubusercontent.com/Akatmks/Akatsumekusa-Aegisub-Scripts/master/DependencyControl.json"
+                        }
+                    ],
+                    "released": "2025-02-20"
+                }
+            },
+            "author": "Akatsumekusa and contributors",
+            "name": "aka.uikit",
+            "description": "Module aka.uikit",
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}modules/@{namespacePath}"
+        },
+        "aka.unicode": {
+            "channels": {
+                "master": {
+                    "files": [
+                        {
+                            "name": "/init.lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "041dc5d9589b7778d9c3c939dbfa1dbf5e499ed9"
+                        }
+                    ],
+                    "version": "1.0.10",
+                    "default": true,
+                    "requiredModules": [
+                        {
+                            "moduleName": "aegisub.unicode"
+                        },
+                        {
+                            "moduleName": "bit"
+                        }
+                    ],
+                    "released": "2024-12-12"
+                }
+            },
+            "author": "Akatsumekusa and contributors",
+            "name": "aka.unicode",
+            "description": "Module aka.unicode",
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}modules/@{namespacePath}"
+        },
+        "aka.unsemantic": {
+            "channels": {
+                "master": {
+                    "files": [
+                        {
+                            "name": "/init.lua",
+                            "url": "@{fileBaseUrl}@{fileName}",
+                            "sha1": "19832a7df2d88b84a01bbfb6c5ea506943225820"
+                        }
+                    ],
+                    "version": "1.1.2",
+                    "default": true,
+                    "requiredModules": [
+                        {
+                            "moduleName": "lpeg"
+                        }
+                    ],
+                    "released": "2024-12-12"
+                }
+            },
+            "author": "Akatsumekusa and contributors",
+            "name": "aka.unsemantic",
+            "description": "Module aka.unsemantic",
+            "url": "@{baseUrl}#@{namespace}",
+            "fileBaseUrl": "@{fileBaseUrl}modules/@{namespacePath}"
+        }
+    }
+}

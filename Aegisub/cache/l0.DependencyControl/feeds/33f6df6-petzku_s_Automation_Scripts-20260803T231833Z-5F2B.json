@@ -1,0 +1,633 @@
+{
+  "dependencyControlFeedFormatVersion": "0.2.0",
+  "name": "petzku's Automation Scripts",
+  "description": "Main repository for all of petzku's automation scripts.",
+  "baseUrl": "https://github.com/petzku/Aegisub-Scripts",
+  "fileBaseUrl": "https://raw.githubusercontent.com/petzku/Aegisub-Scripts",
+  "url": "@{baseUrl}",
+  "maintainer": "petzku",
+  "knownFeeds": {
+    "SubInspector": "https://raw.githubusercontent.com/TypesettingTools/SubInspector/master/DependencyControl.json",
+    "ASSFoundation": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json",
+    "Functional": "https://raw.githubusercontent.com/TypesettingTools/Functional/master/DependencyControl.json"
+  },
+  "macros": {
+    "petzku.Accenter": {
+      "fileBaseUrl": "@{fileBaseUrl}/@{channel}/macros/@{namespace}",
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "petzku",
+      "name": "Accenter",
+      "description": "Automatically create accents for lines",
+      "channels": {
+        "stable": {
+          "version": "0.2.6",
+          "released": "2021-02-08",
+          "default": true,
+          "files": [
+            {
+              "name": ".lua",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "491E70235DD3DA9F3D23B0461ABC84F050449E13"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "0.2.2": ["Initial release"],
+        "0.2.3": [
+          "Reversed output line order when one line has multiple accents"
+        ],
+        "0.2.4": ["Fixed handling of multibyte characters in line"],
+        "0.2.6": ["Make a bunch of variables local"]
+      }
+    },
+    "petzku.Autowrapper": {
+      "fileBaseUrl": "@{fileBaseUrl}/@{channel}/macros/@{namespace}",
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "petzku",
+      "name": "Autowrapper",
+      "description": "Automatically set/unset \\q2 on lines with/without manual linebreaks",
+      "channels": {
+        "stable": {
+          "version": "0.5.1",
+          "released": "2023-11-19",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "4858da3b774aa3c536e7553c5fc2312bb62e3ad0"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "0.1.0": ["Initial release"],
+        "0.2.0": ["Give information in output log"],
+        "0.3.0": [
+          "Add options to not add/remove tags in lines (except they apparently did nothing, whoops)",
+          "Fix error in removed \\q2 calculation"
+        ],
+        "0.4.0": [
+          "Take into account in-line margins",
+          "Improve descriptions of macros"
+        ],
+        "0.5.0": [
+          "Add options to not add/remove tags in lines (for real this time)",
+          "Add three-liner checking",
+          "Skip normal checks on \\q2 lines, instead just warn of potential overwidth"
+        ],
+        "0.5.1": ["Include feed URL for DepCtrl updating"]
+      }
+    },
+    "petzku.ClipSize": {
+      "fileBaseUrl": "@{fileBaseUrl}/@{channel}/macros/@{namespace}",
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "petzku",
+      "name": "Clip Size",
+      "description": "Measures distances in a vectorial clip",
+      "channels": {
+        "stable": {
+          "version": "1.3.0",
+          "released": "2020-08-21",
+          "default": true,
+          "files": [
+            {
+              "name": ".lua",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "5065ED7881FA57BA6299FB47CC768CCD3B713C13"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "1.2.1": ["Add DependencyControl"],
+        "1.3.0": [
+          "Add support for rect clips and subpixel accuracy",
+          "Move to 'stable' Git branch for DependencyControl"
+        ]
+      }
+    },
+    "petzku.CombineGradientLines": {
+      "fileBaseUrl": "@{fileBaseUrl}/@{channel}/macros/@{namespace}",
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "petzku",
+      "name": "Combine Gradient Lines",
+      "description": "Combines identical rect-clip gradient lines",
+      "channels": {
+        "stable": {
+          "version": "0.2.5",
+          "released": "2021-03-15",
+          "default": true,
+          "files": [
+            {
+              "name": ".lua",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "997E247A1A0314B1096D1AC7D6607BD418C087DA"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "0.1.0": ["Initial release"],
+        "0.2.1": ["Add DependencyControl"],
+        "0.2.4": [
+          "Clean the selection after running macro",
+          "Fix handling of negative coordinates in clips",
+          "Remove '.00' from generated clips"
+        ],
+        "0.2.5": ["Fix broken behaviour on vertical gradients"]
+      }
+    },
+    "petzku.EncodeClip": {
+      "fileBaseUrl": "@{fileBaseUrl}/@{channel}/macros/@{namespace}",
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "petzku",
+      "name": "Encode Clip",
+      "description": "Encode a hardsubbed clip encompassing the current selection",
+      "channels": {
+        "stable": {
+          "version": "1.2.2",
+          "released": "2025-10-16",
+          "default": true,
+          "files": [
+            {
+              "name": ".lua",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "b90b1ea17b2b3e6c058c7f09289f4faf0914691c"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "petzku.util",
+              "name": "petzkuLib",
+              "url": "https://github.com/petzku/Aegisub-Scripts",
+              "version": "0.5.2"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "1.0.0": [
+          "Proper 1.0 release finally! (it was about time)",
+          "Add dummy video encoding using lavfi (doesn't support checkerboard)"
+        ],
+        "1.1.0": ["Option for adding short context to clips"],
+        "1.1.1": ["Force --ovc=libx264"],
+        "1.1.2": ["Remove legacy --slang settings"],
+        "1.2.0": ["Check and warn if user missing libx264"],
+        "1.2.1": [
+          "Improve logging",
+          "Bump util dependency (fixes some issues on POSIX)"
+        ],
+        "1.2.2": ["Fix crash caused by logging"]
+      }
+    },
+    "petzku.ExtrapolateMove": {
+      "fileBaseUrl": "@{fileBaseUrl}/@{channel}/macros/@{namespace}",
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "petzku",
+      "name": "Extrapolate Move",
+      "description": "Extrapolates a \\move tag to the line's full duration",
+      "channels": {
+        "stable": {
+          "version": "0.1.5",
+          "released": "2021-02-08",
+          "default": true,
+          "files": [
+            {
+              "name": ".lua",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "0837987E87287D2414105067ABDF84AC2BA166A3"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "0.1.3": ["Add DependencyControl"],
+        "0.1.5": [
+          "Now outputs .01 precision co-ords instead of integer",
+          "No longer requires dependencycontrol to work"
+        ]
+      }
+    },
+    "petzku.Honorary": {
+      "fileBaseUrl": "@{fileBaseUrl}/@{channel}/macros/@{namespace}",
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "petzku",
+      "name": "Honorary",
+      "description": "Rightfully restore (or remove) honoraries easily by inserting autoswapper bits",
+      "channels": {
+        "stable": {
+          "version": "0.2.0",
+          "released": "2024-09-01",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "83e703f427f4736bb98e2c5222dcfe4c83e57f53"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "0.1.0": ["Add DependencyControl"],
+        "0.2.0": ["Make disabling honos smarter"]
+      }
+    },
+    "petzku.JumpToNextPlus": {
+      "fileBaseUrl": "@{fileBaseUrl}/@{channel}/macros/@{namespace}",
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "petzku",
+      "name": "Jump to Next++",
+      "description": "Jumps to next 'sign' in the subtitle grid",
+      "channels": {
+        "stable": {
+          "version": "0.1.5",
+          "released": "2020-08-21",
+          "default": true,
+          "files": [
+            {
+              "name": ".lua",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "F97F9DD8ACCBE3F5AEBFAE2D9450337CD486715C"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "0.1.2": ["Add DependencyControl"],
+        "0.1.5": [
+          "Add jumping by end time",
+          "Move to 'stable' Git branch for DependencyControl"
+        ]
+      }
+    },
+    "petzku.NewClipShape": {
+      "fileBaseUrl": "@{fileBaseUrl}/@{channel}/macros/@{namespace}",
+      "url": "@{baseUrl}#new-clip-shape",
+      "author": "petzku",
+      "name": "New Clip Shape",
+      "description": "Converts the last point of a vectorial clip into a new origin point",
+      "channels": {
+        "stable": {
+          "version": "0.3.2",
+          "released": "2023-11-19",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "f6c4a4d912c30c0ab55bcb128c64e359f18d03a1"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "0.3.1": ["Initial release"],
+        "0.3.2": ["Include feed URL for DepCtrl updating"]
+      }
+    },
+    "petzku.Phantom": {
+      "fileBaseUrl": "@{fileBaseUrl}/@{channel}/macros/@{namespace}",
+      "url": "@{baseUrl}#phantom",
+      "author": "petzku",
+      "name": "Phantom",
+      "description": "Align line content to match others by adding text and abusing transparency",
+      "channels": {
+        "stable": {
+          "version": "1.1.2",
+          "released": "2025-12-01",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "8a90c085a0571aee00fbae326b9128e4f699c3f1"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "1.0.0": ["Initial release"],
+        "1.0.1": ["Fix handling of newlines"],
+        "1.1.0": [
+          "Add DepCtrl support to script itself, allowing for auto-update and submenu configuration"
+        ],
+        "1.1.1": ["Include feed URL for DepCtrl updating"],
+        "1.1.2": [
+          "Fix doubled-up name when using depctrl (was Phantom/Phantom/...)"
+        ]
+      }
+    },
+    "petzku.PlainText": {
+      "fileBaseUrl": "@{fileBaseUrl}/@{channel}/macros/@{namespace}",
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "petzku",
+      "name": "PlainText",
+      "description": "Copy script text in plaintext format",
+      "channels": {
+        "stable": {
+          "version": "0.2.0",
+          "released": "2025-08-27",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "0b1efb4ca2f980d89abf8a966cfeb789372051c4"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "0.2.0": ["Add DependencyControl"]
+      }
+    },
+    "petzku.PosToMargin": {
+      "fileBaseUrl": "@{fileBaseUrl}/@{channel}/macros/@{namespace}",
+      "url": "@{baseUrl}#margin-position",
+      "author": "petzku",
+      "name": "Margin Position",
+      "description": "Transforms \\pos-based positioning into margin and vice versa",
+      "channels": {
+        "stable": {
+          "version": "2.0.1",
+          "released": "2023-11-19",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "da47c05cddf7a517c8bceed4d483e768693120bd"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "1.0.0": ["Initial release"],
+        "1.0.1": ["Clean up margin values matching style defaults"],
+        "1.1.0": ["Get script resolution from karaskel meta"],
+        "2.0.0": [
+          "Added margin -> pos transform",
+          "Renamed from 'Position to Margin'"
+        ],
+        "2.0.1": ["Include feed URL for DepCtrl updating"]
+      }
+    },
+    "petzku.QuantizeKara": {
+      "fileBaseUrl": "@{fileBaseUrl}/@{channel}/macros/@{namespace}",
+      "url": "@{baseUrl}",
+      "author": "petzku",
+      "name": "Quantize K-timing",
+      "description": "Quantize \\k-tags to discrete beats",
+      "channels": {
+        "stable": {
+          "version": "1.0.0",
+          "released": "2025-12-05",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "887af7b55ec7e6e29c3a9641def8e74f75c86c85"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "1.0.0": ["Initial release"]
+      }
+    },
+    "petzku.Snapper": {
+      "fileBaseUrl": "@{fileBaseUrl}/@{channel}/macros/@{namespace}",
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "petzku",
+      "name": "Snapper",
+      "description": "Snaps line start and end times to keyframes",
+      "channels": {
+        "stable": {
+          "version": "1.0.1",
+          "released": "2023-11-19",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "2a7c6aa2c74c12c6271d9ce79c7da2fa0767a9e5"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "1.0.0": ["Add to DepCtrl"],
+        "1.0.1": ["Include feed URL for DepCtrl updating"]
+      }
+    },
+    "petzku.SplitTimer": {
+      "fileBaseUrl": "@{fileBaseUrl}/@{channel}/macros/@{namespace}",
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "petzku",
+      "name": "SplitTimer",
+      "description": "Split lines in selection to shorter segments, preserving any transforms",
+      "channels": {
+        "stable": {
+          "version": "1.2.3",
+          "released": "2025-11-25",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "76e44ec5e8cd3079c6408b7f434128d34356bdb2"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "petzku.util",
+              "name": "petzkuLib",
+              "url": "https://github.com/petzku/Aegisub-Scripts",
+              "version": "0.5.3"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "1.0.0": ["Initial release"],
+        "1.1.0": [
+          "Add by-frame splitting functionality",
+          "Retime transforms while splitting",
+          "Rename from Lookback Splitter"
+        ],
+        "1.1.1": ["Fix error in requires for non-depctrl"],
+        "1.2.0": [
+          "Add 'split on video frame' mode",
+          "Improve macro descriptions to mention preserving transforms"
+        ],
+        "1.2.1": ["Fix infinite loop in 'split on video frame' mode"],
+        "1.2.2": ["Include feed URL for DepCtrl updating"],
+        "1.2.3": [
+          "Bump petzku.util dependency to 0.5.3 (fixes zero-end-time transforms breaking)"
+        ]
+      }
+    },
+    "petzku.Typewriter": {
+      "fileBaseUrl": "@{fileBaseUrl}/@{channel}/macros/@{namespace}",
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "petzku",
+      "name": "Typewriter",
+      "description": "Makes text appear one character at a time",
+      "channels": {
+        "stable": {
+          "version": "0.7.0",
+          "released": "2022-07-09",
+          "default": true,
+          "files": [
+            {
+              "name": ".lua",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "067b447e30080a8dcf775367ec1cdf04703a707c"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "petzku.util",
+              "name": "petzkuLib",
+              "url": "https://github.com/petzku/Aegisub-Scripts",
+              "version": "0.3.0"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "0.3.0": ["Add DependencyControl"],
+        "0.4.1": ["Add Unscramble mode"],
+        "0.5.2": [
+          "Add various unscramble modes ('half', 'N static')",
+          "Let Aegisub handle frame-ms conversions",
+          "Various internal cleanup"
+        ],
+        "0.6.0": [
+          "Separate Unscramble into second automation menu entry",
+          "Add a fade-in unscramble mode",
+          "Retime \\t and \\move tags, to preserve line appearance"
+        ],
+        "0.6.1": ["Retime \\fades as well, move retiming to util library"],
+        "0.6.2": ["Support for \\h and \\n text tags"],
+        "0.7.0": [
+          "Refactor the partitioning logic in typewrite_line to use a state machine-based approach",
+          "For an active_char immediately following an override block, ensure that the override block is put in start (It was previously being deleted accidentally)",
+          "Treat text tags \\N, \\n and \\h as single characters and remove the hackfix"
+        ]
+      }
+    }
+  },
+  "modules": {
+    "petzku.easings": {
+      "fileBaseUrl": "@{fileBaseUrl}/@{namespace}-v@{version}/modules/@{namespacePath}",
+      "url": "https://github.com/petzku/Aegisub-Scripts",
+      "author": "petzku",
+      "name": "Easings",
+      "description": "A library of easy-to-use easing functions for transforms",
+      "channels": {
+        "stable": {
+          "version": "0.5.2",
+          "released": "2024-03-26",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "046bc692047d92df576dc07f755b928c12a840d7"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "0.4.0": ["Add to DependencyControl"],
+        "0.5.0": [
+          "Expose internals and other convenience functions for direct easer manipulation in `easings.raw`"
+        ],
+        "0.5.1": ["Include feed URL for DepCtrl updating"],
+        "0.5.2": ["Fix multi-tag calls begin broken"]
+      }
+    },
+    "petzku.tags": {
+      "fileBaseUrl": "@{fileBaseUrl}/@{namespace}-v@{version}/modules/@{namespacePath}",
+      "url": "https://github.com/petzku/Aegisub-Scripts",
+      "author": "petzku",
+      "name": "Tags",
+      "description": "Reads key-value pairs from lines",
+      "channels": {
+        "stable": {
+          "version": "0.3.0",
+          "released": "2024-09-08",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "238ed3564c97b256922455bd96830ccf7cb6f2ec"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "0.3.0": ["Add to DependencyControl"]
+      }
+    },
+    "petzku.util": {
+      "fileBaseUrl": "@{fileBaseUrl}/@{namespace}-v@{version}/modules/@{namespacePath}",
+      "url": "https://github.com/petzku/Aegisub-Scripts",
+      "author": "petzku",
+      "name": "petzkuLib",
+      "description": "Various utility functions for use with petzku's Aegisub macros",
+      "channels": {
+        "stable": {
+          "version": "0.5.3",
+          "released": "2025-11-25",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "dcfeac4e5a601c6fde0c06a69667ab192636728a"
+            },
+            {
+              "name": "/tee.exe",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "platform": "Windows-x64",
+              "sha1": "054c04d341152311d40aaab4049e6c2c26646b3a"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "0.2.0": ["Add IO functionality", "Add to DependencyControl"],
+        "0.3.0": ["Add \\t, \\move, \\fad retiming"],
+        "0.4.0": ["Upgrade run_cmd in a way that handles stderr"],
+        "0.4.1": ["Fix typo in run_cmd on Unix"],
+        "0.4.2": [
+          "Transforms: change both-negative-times move to pos tag instead"
+        ],
+        "0.4.3": ["Include feed URL for DepCtrl updating"],
+        "0.4.4": ["Fix decode_path breaking on Windows with Aegisub 3.4.2"],
+        "0.5.0": [
+          "Add logging functions under io",
+          "Fix run_cmd not collecting output on POSIX",
+          "Improve trace logging"
+        ],
+        "0.5.1": [
+          "Fix run_cmd always outputting logs on success",
+          "Fix lack of blank lines in command logs output"
+        ],
+        "0.5.2": ["Fix crash caused by above"],
+        "0.5.3": [
+          "Fix transform.retime not handling zero-end-time correctly",
+          "Add proper print-like function"
+        ]
+      }
+    }
+  }
+}

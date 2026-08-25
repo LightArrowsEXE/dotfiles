@@ -1,0 +1,40 @@
+{
+  "dependencyControlFeedFormatVersion": "0.4.0",
+  "name": "Yutils",
+  "description": "An ASS typeset utilities library.",
+  "baseUrl": "https://github.com/TypesettingTools/Yutils",
+  "url": "@{baseUrl}",
+  "maintainer": "TypesettingTools",
+  "modules": {
+    "tstools.Yutils": {
+      "name": "Yutils",
+      "description": "An ASS typeset utilities library.",
+      "author": "Christoph \"Youka\" Spanknebel",
+      "url": "@{baseUrl}",
+      "channels": {
+        "main": {
+          "version": "1.0.0",
+          "released": "2026-07-24",
+          "default": true,
+          "files": [
+            {
+              "name": ".lua",
+              "url": "https://raw.githubusercontent.com/TypesettingTools/Yutils/v@{version}/src/Yutils.lua",
+              "sha1": "3439D32F109F40EF24EFECE6C2A3C0AB0B314EE0"
+            }
+          ],
+          "provides": [
+            {
+              "name": "Yutils"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "1.0.0": [
+          "feat: Yutils can now be installed and updated through DependencyControl as `tstools.Yutils`, and provides the bare `Yutils` module name so existing scripts keep working unchanged."
+        ]
+      }
+    }
+  }
+}

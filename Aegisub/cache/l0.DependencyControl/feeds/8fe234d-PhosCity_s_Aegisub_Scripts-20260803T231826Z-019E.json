@@ -1,0 +1,1041 @@
+{
+	"dependencyControlFeedFormatVersion": "0.3.0",
+	"name": "PhosCity's Aegisub Scripts",
+	"description": "Main repository for all of PhosCity's automation macros.",
+	"maintainer": "PhosCity",
+	"knownFeeds": {
+		"a-mo": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json",
+		"ASSFoundation": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+	},
+	"baseUrl": "https://github.com/PhosCity/Aegisub-Scripts",
+	"url": "@{baseUrl}",
+	"fileBaseUrl": "https://raw.githubusercontent.com/PhosCity/Aegisub-Scripts/main",
+	"macros": {
+		"phos.wave": {
+			"fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+			"url": "@{baseUrl}#@{namespace}",
+			"author": "PhosCity",
+			"name": "Wave",
+			"description": "Make the string wavy",
+			"channels": {
+				"main": {
+					"version": "1.0.3",
+					"released": "2022-12-28",
+					"default": true,
+					"files": [
+						{
+							"name": ".lua",
+							"url": "@{fileBaseUrl}@{fileName}",
+							"sha1": "13f3e0ad8d0c073eaac5f7218231aaa676245421"
+						}
+					]
+				}
+			},
+			"changelog": {
+				"1.0.0": [
+					"Initial Release"
+				]
+			}
+		},
+		"phos.wobble": {
+			"fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+			"url": "@{baseUrl}#@{namespace}",
+			"author": "PhosCity",
+			"name": "Wobble",
+			"description": "Adds wobbling to text and shape",
+			"channels": {
+				"main": {
+					"version": "2.0.6",
+					"released": "2023-03-11",
+					"default": true,
+					"files": [
+						{
+							"name": ".moon",
+							"url": "@{fileBaseUrl}@{fileName}",
+							"sha1": "82290d08d869cc18029e38a77e39f96a9ec2d7c2"
+						},
+						{
+							"name": ".lua",
+							"delete": true,
+							"sha1": "82290d08d869cc18029e38a77e39f96a9ec2d7c2"
+						}
+					],
+					"requiredModules": [
+						{
+							"moduleName": "a-mo.LineCollection",
+							"name": "Aegisub-Motion (LineCollection)",
+							"url": "https://github.com/TypesettingTools/Aegisub-Motion",
+							"version": "1.3.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+						},
+						{
+							"moduleName": "l0.ASSFoundation",
+							"name": "ASSFoundation",
+							"url": "https://github.com/TypesettingTools/ASSFoundation",
+							"version": "0.5.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+						},
+						{
+							"moduleName": "Yutils"
+						}
+					]
+				}
+			},
+			"changelog": {
+				"1.3.1": [
+					"Initial Release"
+				],
+				"2.0.0": [
+					"Added animation feature.",
+					"Added oscillation feature.",
+					"Add support for shapes",
+					"Change frequency value to percentage based."
+				],
+				"2.0.4": [
+					"Moonscript rewrite with AssFoundation."
+				]
+			}
+		},
+		"phos.snap": {
+			"fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+			"url": "@{baseUrl}#@{namespace}",
+			"author": "PhosCity",
+			"name": "Bidirectional Snapping",
+			"description": "Snap to close keyframes during timing",
+			"channels": {
+				"main": {
+					"version": "1.0.3",
+					"released": "2022-04-24",
+					"default": true,
+					"files": [
+						{
+							"name": ".lua",
+							"url": "@{fileBaseUrl}@{fileName}",
+							"sha1": "2e433a462272074aa815a7e0fbc5139c632d8e6b"
+						}
+					]
+				}
+			},
+			"changelog": {
+				"1.0.0": [
+					"Initial Release"
+				]
+			}
+		},
+		"phos.svg2ass": {
+			"fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+			"url": "@{baseUrl}#@{namespace}",
+			"author": "PhosCity",
+			"name": "svg2ass",
+			"description": "Script that uses svg2ass to convert svg files to ass lines",
+			"channels": {
+				"main": {
+					"version": "2.0.0",
+					"released": "2025-11-20",
+					"default": true,
+					"files": [
+						{
+							"name": ".moon",
+							"url": "@{fileBaseUrl}@{fileName}",
+							"sha1": "6aa53f61bdcee0ee19d40032bdadbbfc2cc6e1ff"
+						},
+						{
+							"name": ".lua",
+							"delete": true,
+							"sha1": "6aa53f61bdcee0ee19d40032bdadbbfc2cc6e1ff"
+						}
+					],
+					"requiredModules": [
+						{
+							"moduleName": "a-mo.LineCollection",
+							"name": "Aegisub-Motion (LineCollection)",
+							"url": "https://github.com/TypesettingTools/Aegisub-Motion",
+							"version": "1.3.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+						},
+						{
+							"moduleName": "l0.ASSFoundation",
+							"name": "ASSFoundation",
+							"url": "https://github.com/TypesettingTools/ASSFoundation",
+							"version": "0.5.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+						},
+						{
+							"moduleName": "l0.Functional",
+							"name": "(Almost) Functional Suite",
+							"url": "https://github.com/TypesettingTools/ASSFoundation",
+							"version": "0.6.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/Functional/master/DependencyControl.json"
+						}
+					]
+				}
+			},
+			"changelog": {
+				"1.0.0": [
+					"Initial Release"
+				],
+				"1.2.3": [
+					"Moonscript Rewrite"
+				]
+			}
+		},
+		"phos.AddGrain": {
+			"fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+			"url": "@{baseUrl}#@{namespace}",
+			"author": "PhosCity",
+			"name": "Add Grain",
+			"description": "Add static and dynamic grain",
+			"channels": {
+				"main": {
+					"version": "1.1.8",
+					"released": "2026-04-16",
+					"default": true,
+					"files": [
+						{
+							"name": ".moon",
+							"url": "@{fileBaseUrl}@{fileName}",
+							"sha1": "ff1eac25ee21b1fad149959b8a97fa4b3ab0e51f"
+						}
+					],
+					"requiredModules": [
+						{
+							"moduleName": "a-mo.LineCollection",
+							"name": "Aegisub-Motion (LineCollection)",
+							"url": "https://github.com/TypesettingTools/Aegisub-Motion",
+							"version": "1.3.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+						},
+						{
+							"moduleName": "l0.ASSFoundation",
+							"name": "ASSFoundation",
+							"url": "https://github.com/TypesettingTools/ASSFoundation",
+							"version": "0.5.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+						},
+						{
+							"moduleName": "l0.Functional",
+							"name": "(Almost) Functional Suite",
+							"url": "https://github.com/TypesettingTools/ASSFoundation",
+							"version": "0.6.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/Functional/master/DependencyControl.json"
+						},
+						{
+							"moduleName": "Yutils"
+						}
+					]
+				}
+			},
+			"changelog": {
+				"1.0.0": [
+					"Initial Release"
+				],
+				"1.1.0": [
+					"Add more characters for more randomization.",
+					"Add gui with abitlity to change grain density and grain color"
+				]
+			}
+		},
+		"phos.RotateGradient": {
+			"fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+			"url": "@{baseUrl}#@{namespace}",
+			"author": "PhosCity",
+			"name": "Rotate Gradient",
+			"description": "Create rotated gradient with clip.",
+			"channels": {
+				"main": {
+					"version": "2.0.2",
+					"released": "2023-06-06",
+					"default": true,
+					"files": [
+						{
+							"name": ".moon",
+							"url": "@{fileBaseUrl}@{fileName}",
+							"sha1": "8fb56b31c262594ae3505beaef677e1f2c599053"
+						}
+					],
+					"requiredModules": [
+						{
+							"moduleName": "a-mo.LineCollection",
+							"name": "Aegisub-Motion (LineCollection)",
+							"url": "https://github.com/TypesettingTools/Aegisub-Motion",
+							"version": "1.3.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+						},
+						{
+							"moduleName": "a-mo.Line",
+							"name": "Aegisub-Motion (Line)",
+							"url": "https://github.com/TypesettingTools/Aegisub-Motion",
+							"version": "1.5.3",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+						},
+						{
+							"moduleName": "l0.ASSFoundation",
+							"name": "ASSFoundation",
+							"url": "https://github.com/TypesettingTools/ASSFoundation",
+							"version": "0.5.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+						},
+						{
+							"moduleName": "l0.Functional",
+							"name": "(Almost) Functional Suite",
+							"url": "https://github.com/TypesettingTools/ASSFoundation",
+							"version": "0.6.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/Functional/master/DependencyControl.json"
+						}
+					]
+				}
+			},
+			"changelog": {
+				"1.0.0": [
+					"Initial Release"
+				],
+				"2.0.0": [
+					"Added to Dependency Control"
+				]
+			}
+		},
+		"phos.TimingAssistant": {
+			"fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+			"url": "@{baseUrl}#@{namespace}",
+			"author": "PhosCity",
+			"name": "Timing Assistant",
+			"description": "A second brain for timers.",
+			"channels": {
+				"main": {
+					"version": "2.0.2",
+					"released": "2025-07-12",
+					"default": true,
+					"files": [
+						{
+							"name": ".moon",
+							"url": "@{fileBaseUrl}@{fileName}",
+							"sha1": "c8bd124240c0e3fcfc6b7816772693a76808a18f"
+						}
+					],
+					"requiredModules": [
+						{
+							"moduleName": "phos.AegiGui",
+							"name": "AegiGui",
+							"url": "https://github.com/PhosCity/Aegisub-Scripts",
+							"version": "1.0.0",
+							"feed": "https://raw.githubusercontent.com/PhosCity/Aegisub-Scripts/main/DependencyControl.json"
+						}
+					]
+				}
+			},
+			"changelog": {
+				"1.0.0": [
+					"Added to Dependency Control"
+				]
+			}
+		},
+		"phos.RemoveTags": {
+			"fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+			"url": "@{baseUrl}#@{namespace}",
+			"author": "PhosCity",
+			"name": "Remove Tags",
+			"description": "Dynamically remove tags based on selection",
+			"channels": {
+				"main": {
+					"version": "1.0.3",
+					"released": "2024-11-17",
+					"default": true,
+					"files": [
+						{
+							"name": ".moon",
+							"url": "@{fileBaseUrl}@{fileName}",
+							"sha1": "1f3a408d50ccac8bec071db8fda6855266cb630c"
+						}
+					],
+					"requiredModules": [
+						{
+							"moduleName": "a-mo.LineCollection",
+							"name": "Aegisub-Motion (LineCollection)",
+							"url": "https://github.com/TypesettingTools/Aegisub-Motion",
+							"version": "1.3.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+						},
+						{
+							"moduleName": "l0.ASSFoundation",
+							"name": "ASSFoundation",
+							"url": "https://github.com/TypesettingTools/ASSFoundation",
+							"version": "0.5.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+						},
+						{
+							"moduleName": "l0.Functional",
+							"name": "(Almost) Functional Suite",
+							"url": "https://github.com/TypesettingTools/ASSFoundation",
+							"version": "0.6.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/Functional/master/DependencyControl.json"
+						}
+					]
+				}
+			},
+			"changelog": {
+				"1.0.0": [
+					"Added to Dependency Control"
+				]
+			}
+		},
+		"phos.FoldOperations": {
+			"fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+			"url": "@{baseUrl}#@{namespace}",
+			"author": "PhosCity",
+			"name": "Fold Operations",
+			"description": "Different operations on folds",
+			"channels": {
+				"main": {
+					"version": "1.3.2",
+					"released": "2024-04-04",
+					"default": true,
+					"files": [
+						{
+							"name": ".moon",
+							"url": "@{fileBaseUrl}@{fileName}",
+							"sha1": "56823ad26b2d60dfebe0ec7e268b3557b51e6623"
+						}
+					],
+					"requiredModules": [
+						{
+							"moduleName": "a-mo.LineCollection",
+							"name": "Aegisub-Motion (LineCollection)",
+							"url": "https://github.com/TypesettingTools/Aegisub-Motion",
+							"version": "1.3.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+						},
+						{
+							"moduleName": "l0.Functional",
+							"name": "(Almost) Functional Suite",
+							"url": "https://github.com/TypesettingTools/ASSFoundation",
+							"version": "0.6.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/Functional/master/DependencyControl.json"
+						},
+						{
+							"moduleName": "phos.AegiGui",
+							"name": "AegiGui",
+							"url": "https://github.com/PhosCity/Aegisub-Scripts",
+							"version": "1.0.0",
+							"feed": "https://raw.githubusercontent.com/PhosCity/Aegisub-Scripts/main/DependencyControl.json"
+						}
+					]
+				}
+			},
+			"changelog": {
+				"1.0.0": [
+					"Added to Dependency Control"
+				]
+			}
+		},
+		"phos.AutoFade": {
+			"fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+			"url": "@{baseUrl}#@{namespace}",
+			"author": "PhosCity",
+			"name": "Auto Fade",
+			"description": "Automatically determine fade in and fade out",
+			"channels": {
+				"main": {
+					"version": "1.1.2",
+					"released": "2024-09-03",
+					"default": true,
+					"files": [
+						{
+							"name": ".moon",
+							"url": "@{fileBaseUrl}@{fileName}",
+							"sha1": "8b6497328728051381b4c4c85980271d2f1b7d64"
+						}
+					],
+					"requiredModules": [
+						{
+							"moduleName": "a-mo.LineCollection",
+							"name": "Aegisub-Motion (LineCollection)",
+							"url": "https://github.com/TypesettingTools/Aegisub-Motion",
+							"version": "1.3.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+						},
+						{
+							"moduleName": "a-mo.DataWrapper",
+							"name": "Aegisub-Motion (DataWrapper)",
+							"url": "https://github.com/TypesettingTools/Aegisub-Motion",
+							"version": "1.0.2",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+						},
+						{
+							"moduleName": "l0.ASSFoundation",
+							"name": "ASSFoundation",
+							"url": "https://github.com/TypesettingTools/ASSFoundation",
+							"version": "0.5.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+						}
+					]
+				}
+			},
+			"changelog": {
+				"1.0.0": [
+					"Added to Dependency Control"
+				]
+			}
+		},
+		"phos.ExtrapolateTracking": {
+			"fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+			"url": "@{baseUrl}#@{namespace}",
+			"author": "PhosCity",
+			"name": "Extrapolate Tracking",
+			"description": "Extrapolate the tag values where mocha can't reach",
+			"channels": {
+				"main": {
+					"version": "1.0.2",
+					"released": "2023-04-15",
+					"default": true,
+					"files": [
+						{
+							"name": ".moon",
+							"url": "@{fileBaseUrl}@{fileName}",
+							"sha1": "dde86c6d83cac599f79e970bb7b2f9cb31d7dacf"
+						}
+					],
+					"requiredModules": [
+						{
+							"moduleName": "a-mo.LineCollection",
+							"name": "Aegisub-Motion (LineCollection)",
+							"url": "https://github.com/TypesettingTools/Aegisub-Motion",
+							"version": "1.3.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+						},
+						{
+							"moduleName": "a-mo.DataWrapper",
+							"name": "Aegisub-Motion (DataWrapper)",
+							"url": "https://github.com/TypesettingTools/Aegisub-Motion",
+							"version": "1.0.2",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+						},
+						{
+							"moduleName": "a-mo.MotionHandler",
+							"name": "Aegisub-Motion (MotionHandler)",
+							"url": "https://github.com/TypesettingTools/Aegisub-Motion",
+							"version": "1.1.8",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+						},
+						{
+							"moduleName": "l0.ASSFoundation",
+							"name": "ASSFoundation",
+							"url": "https://github.com/TypesettingTools/ASSFoundation",
+							"version": "0.5.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+						},
+						{
+							"moduleName": "arch.Math",
+							"name": "ArchMath",
+							"url": "https://github.com/TypesettingTools/arch1t3cht-Aegisub-Scripts",
+							"version": "0.1.8",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/arch1t3cht-Aegisub-Scripts/main/DependencyControl.json"
+						}
+					]
+				}
+			},
+			"changelog": {
+				"1.0.2": [
+					"Added to Dependency Control"
+				]
+			}
+		},
+		"phos.EditTags": {
+			"fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+			"url": "@{baseUrl}#@{namespace}",
+			"author": "PhosCity",
+			"name": "Edit Tags",
+			"description": "Edit tags of current line.",
+			"channels": {
+				"main": {
+					"version": "1.1.0",
+					"released": "2025-11-26",
+					"default": true,
+					"files": [
+						{
+							"name": ".moon",
+							"url": "@{fileBaseUrl}@{fileName}",
+							"sha1": "302d1bd7070863de7fb0b6e66813741ffbc880ba"
+						}
+					],
+					"requiredModules": [
+						{
+							"moduleName": "a-mo.LineCollection",
+							"name": "Aegisub-Motion (LineCollection)",
+							"url": "https://github.com/TypesettingTools/Aegisub-Motion",
+							"version": "1.3.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+						},
+						{
+							"moduleName": "l0.ASSFoundation",
+							"name": "ASSFoundation",
+							"url": "https://github.com/TypesettingTools/ASSFoundation",
+							"version": "0.5.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+						},
+						{
+							"moduleName": "l0.Functional",
+							"name": "(Almost) Functional Suite",
+							"url": "https://github.com/TypesettingTools/ASSFoundation",
+							"version": "0.6.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/Functional/master/DependencyControl.json"
+						},
+						{
+							"moduleName": "phos.AegiGui",
+							"name": "AegiGui",
+							"url": "https://github.com/PhosCity/Aegisub-Scripts",
+							"version": "1.0.0",
+							"feed": "https://raw.githubusercontent.com/PhosCity/Aegisub-Scripts/main/DependencyControl.json"
+						},
+						{
+							"moduleName": "Yutils"
+						}
+					]
+				}
+			},
+			"changelog": {
+				"1.0.0": [
+					"Added to Dependency Control"
+				]
+			}
+		},
+		"phos.ChromaticAbberation": {
+			"fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+			"url": "@{baseUrl}#@{namespace}",
+			"author": "PhosCity",
+			"name": "Chromatic Abberation",
+			"description": "Add chromatic abberation to shape and text.",
+			"channels": {
+				"main": {
+					"version": "1.0.4",
+					"released": "2025-01-22",
+					"default": true,
+					"files": [
+						{
+							"name": ".moon",
+							"url": "@{fileBaseUrl}@{fileName}",
+							"sha1": "4f360749fbaea41ae83c08e3f341e39d90e4ffe4"
+						}
+					],
+					"requiredModules": [
+						{
+							"moduleName": "a-mo.LineCollection",
+							"name": "Aegisub-Motion (LineCollection)",
+							"url": "https://github.com/TypesettingTools/Aegisub-Motion",
+							"version": "1.3.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+						},
+						{
+							"moduleName": "l0.ASSFoundation",
+							"name": "ASSFoundation",
+							"url": "https://github.com/TypesettingTools/ASSFoundation",
+							"version": "0.5.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+						},
+						{
+							"moduleName": "l0.Functional",
+							"name": "(Almost) Functional Suite",
+							"url": "https://github.com/TypesettingTools/ASSFoundation",
+							"version": "0.6.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/Functional/master/DependencyControl.json"
+						},
+						{
+							"moduleName": "phos.AegiGui",
+							"name": "AegiGui",
+							"url": "https://github.com/PhosCity/Aegisub-Scripts",
+							"version": "1.0.0",
+							"feed": "https://raw.githubusercontent.com/PhosCity/Aegisub-Scripts/main/DependencyControl.json"
+						},
+						{
+							"moduleName": "phos.AssfPlus",
+							"name": "AssfPlus",
+							"url": "https://github.com/PhosCity/Aegisub-Scripts",
+							"version": "1.0.5",
+							"feed": "https://raw.githubusercontent.com/PhosCity/Aegisub-Scripts/main/DependencyControl.json"
+						}
+					]
+				}
+			},
+			"changelog": {
+				"1.0.0": [
+					"Added to Dependency Control"
+				]
+			}
+		},
+		"phos.Abacus": {
+			"fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+			"url": "@{baseUrl}#@{namespace}",
+			"author": "PhosCity",
+			"name": "Abacus",
+			"description": "Recalculates values of tags.",
+			"channels": {
+				"main": {
+					"version": "1.1.0",
+					"released": "2025-12-09",
+					"default": true,
+					"files": [
+						{
+							"name": ".moon",
+							"url": "@{fileBaseUrl}@{fileName}",
+							"sha1": "cc4ec63e0706af99ba4bd485f12dea390a7f1e29"
+						}
+					],
+					"requiredModules": [
+						{
+							"moduleName": "a-mo.LineCollection",
+							"name": "Aegisub-Motion (LineCollection)",
+							"url": "https://github.com/TypesettingTools/Aegisub-Motion",
+							"version": "1.3.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+						},
+						{
+							"moduleName": "l0.ASSFoundation",
+							"name": "ASSFoundation",
+							"url": "https://github.com/TypesettingTools/ASSFoundation",
+							"version": "0.5.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+						},
+						{
+							"moduleName": "phos.AegiGui",
+							"name": "AegiGui",
+							"url": "https://github.com/PhosCity/Aegisub-Scripts",
+							"version": "1.0.0",
+							"feed": "https://raw.githubusercontent.com/PhosCity/Aegisub-Scripts/main/DependencyControl.json"
+						},
+						{
+							"moduleName": "phos.AssfPlus",
+							"name": "AssfPlus",
+							"url": "https://github.com/PhosCity/Aegisub-Scripts",
+							"version": "1.0.3",
+							"feed": "https://raw.githubusercontent.com/PhosCity/Aegisub-Scripts/main/DependencyControl.json"
+						}
+					]
+				}
+			},
+			"changelog": {
+				"1.0.0": [
+					"Added to Dependency Control"
+				]
+			}
+		},
+		"phos.ASS2SVG": {
+			"fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+			"url": "@{baseUrl}#@{namespace}",
+			"author": "PhosCity",
+			"name": "ASS2SVG",
+			"description": "Export ass shapes to svg path",
+			"channels": {
+				"main": {
+					"version": "1.0.2",
+					"released": "2025-06-23",
+					"default": true,
+					"files": [
+						{
+							"name": ".moon",
+							"url": "@{fileBaseUrl}@{fileName}",
+							"sha1": "be31779f08657264216799023bbbfe8a2c57bebd"
+						}
+					],
+					"requiredModules": [
+						{
+							"moduleName": "ILL.ILL",
+							"name": "ILL Library",
+							"url": "https://github.com/TypesettingTools/ILL-Aegisub-Scripts",
+							"version": "1.5.1",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/ILL-Aegisub-Scripts/main/DependencyControl.json"
+						}
+					]
+				}
+			},
+			"changelog": {
+				"1.0.0": [
+					"Added to Dependency Control"
+				]
+			}
+		},
+		"phos.AlignAndDistribute": {
+			"fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+			"url": "@{baseUrl}#@{namespace}",
+			"author": "PhosCity",
+			"name": "Align and Distribute",
+			"description": "Align and distribute lines relative to something.",
+			"channels": {
+				"main": {
+					"version": "0.0.2",
+					"released": "2025-12-30",
+					"default": true,
+					"files": [
+						{
+							"name": ".moon",
+							"url": "@{fileBaseUrl}@{fileName}",
+							"sha1": "a8e6e36297a61f56984834dd15d1ae11d3970ac7"
+						}
+					],
+					"requiredModules": [
+						{
+							"moduleName": "a-mo.LineCollection",
+							"name": "Aegisub-Motion (LineCollection)",
+							"url": "https://github.com/TypesettingTools/Aegisub-Motion",
+							"version": "1.3.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+						},
+						{
+							"moduleName": "l0.ASSFoundation",
+							"name": "ASSFoundation",
+							"url": "https://github.com/TypesettingTools/ASSFoundation",
+							"version": "0.5.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+						},
+						{
+							"moduleName": "phos.AegiGui",
+							"name": "AegiGui",
+							"url": "https://github.com/PhosCity/Aegisub-Scripts",
+							"version": "1.0.0",
+							"feed": "https://raw.githubusercontent.com/PhosCity/Aegisub-Scripts/main/DependencyControl.json"
+						},
+						{
+							"moduleName": "phos.AssfPlus",
+							"name": "AssfPlus",
+							"url": "https://github.com/PhosCity/Aegisub-Scripts",
+							"version": "1.0.5",
+							"feed": "https://raw.githubusercontent.com/PhosCity/Aegisub-Scripts/main/DependencyControl.json"
+						}
+					]
+				}
+			},
+			"changelog": {
+				"1.0.0": [
+					"Added to Dependency Control"
+				]
+			}
+		},
+		"phos.terrain": {
+			"fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+			"url": "@{baseUrl}#@{namespace}",
+			"author": "PhosCity",
+			"name": "terrain",
+			"description": "Interpolate between two vectorial clips with same number of points.",
+			"channels": {
+				"main": {
+					"version": "0.0.1",
+					"released": "2026-02-03",
+					"default": true,
+					"files": [
+						{
+							"name": ".moon",
+							"url": "@{fileBaseUrl}@{fileName}",
+							"sha1": "093fe40b38c39b08ca009de0622bc4ecbbd316c0"
+						}
+					],
+					"requiredModules": [
+						{
+							"moduleName": "a-mo.LineCollection",
+							"name": "Aegisub-Motion (LineCollection)",
+							"url": "https://github.com/TypesettingTools/Aegisub-Motion",
+							"version": "1.3.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+						},
+						{
+							"moduleName": "l0.ASSFoundation",
+							"name": "ASSFoundation",
+							"url": "https://github.com/TypesettingTools/ASSFoundation",
+							"version": "0.5.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+						},
+						{
+							"moduleName": "phos.AegiGui",
+							"name": "AegiGui",
+							"url": "https://github.com/PhosCity/Aegisub-Scripts",
+							"version": "1.0.0",
+							"feed": "https://raw.githubusercontent.com/PhosCity/Aegisub-Scripts/main/DependencyControl.json"
+						}
+					]
+				}
+			},
+			"changelog": {
+				"1.0.0": [
+					"Added to Dependency Control"
+				]
+			}
+		},
+		"phos.ASS2TTF": {
+			"fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+			"url": "@{baseUrl}#@{namespace}",
+			"author": "PhosCity",
+			"name": "ASS2TTF",
+			"description": "Convert shapes to a TTF font",
+			"channels": {
+				"main": {
+					"version": "0.0.1",
+					"released": "2026-02-26",
+					"default": true,
+					"files": [
+						{
+							"name": ".moon",
+							"url": "@{fileBaseUrl}@{fileName}",
+							"sha1": "25e1f56c3ee6133da66bb6fe24e42c3600451728"
+						}
+					],
+					"requiredModules": [
+						{
+							"moduleName": "ILL.ILL",
+							"name": "ILL Library",
+							"url": "https://github.com/TypesettingTools/ILL-Aegisub-Scripts",
+							"version": "1.7.7",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/ILL-Aegisub-Scripts/main/DependencyControl.json"
+						}
+					]
+				}
+			},
+			"changelog": {
+				"1.0.0": [
+					"Added to Dependency Control"
+				]
+			}
+		},
+		"phos.VectorGradient": {
+			"fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+			"url": "@{baseUrl}#@{namespace}",
+			"author": "PhosCity",
+			"name": "Vector Gradient",
+			"description": "Magic triangles + blur gradients",
+			"channels": {
+				"main": {
+					"version": "1.0.1",
+					"released": "2026-07-30",
+					"default": true,
+					"files": [
+						{
+							"name": ".moon",
+							"url": "@{fileBaseUrl}@{fileName}",
+							"sha1": "0962b9df7dba03aee038743fc72c4c94f10aacfd"
+						}
+					],
+					"requiredModules": [
+						{
+							"moduleName": "a-mo.LineCollection",
+							"name": "Aegisub-Motion (LineCollection)",
+							"url": "https://github.com/TypesettingTools/Aegisub-Motion",
+							"version": "1.3.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json"
+						},
+						{
+							"moduleName": "l0.ASSFoundation",
+							"name": "ASSFoundation",
+							"url": "https://github.com/TypesettingTools/ASSFoundation",
+							"version": "0.5.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+						},
+						{
+							"moduleName": "phos.AegiGui",
+							"name": "AegiGui",
+							"url": "https://github.com/PhosCity/Aegisub-Scripts",
+							"version": "1.0.0",
+							"feed": "https://raw.githubusercontent.com/PhosCity/Aegisub-Scripts/main/DependencyControl.json"
+						}
+					]
+				}
+			},
+			"changelog": {
+				"1.0.0": [
+					"Added to Dependency Control"
+				]
+			}
+		}
+	},
+	"modules": {
+		"phos.AegiGui": {
+			"fileBaseUrl": "@{fileBaseUrl}/modules/@{namespacePath}",
+			"url": "@{baseUrl}#@{namespace}",
+			"author": "PhosCity",
+			"name": "AegiGui",
+			"description": "Create GUI for Aegisub macros.",
+			"channels": {
+				"main": {
+					"version": "1.0.0",
+					"released": "2024-02-23",
+					"default": true,
+					"files": [
+						{
+							"name": ".moon",
+							"url": "@{fileBaseUrl}@{fileName}",
+							"sha1": "5a4fff65e539120edbb36e3ba720ecda4b04af21"
+						}
+					],
+					"requiredModules": [
+						{
+							"moduleName": "l0.Functional",
+							"name": "(Almost) Functional Suite",
+							"url": "https://github.com/TypesettingTools/ASSFoundation",
+							"version": "0.6.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/Functional/master/DependencyControl.json"
+						}
+					]
+				}
+			},
+			"changelog": {
+				"1.0.0": [
+					"Add to DependencyControl"
+				]
+			}
+		},
+		"phos.AssfPlus": {
+			"fileBaseUrl": "@{fileBaseUrl}/modules/@{namespacePath}",
+			"url": "@{baseUrl}#@{namespace}",
+			"author": "PhosCity",
+			"name": "AssfPlus",
+			"description": "Adds more features to ASSFoundation",
+			"channels": {
+				"main": {
+					"version": "1.0.5",
+					"released": "2024-09-27",
+					"default": true,
+					"files": [
+						{
+							"name": ".moon",
+							"url": "@{fileBaseUrl}@{fileName}",
+							"sha1": "4906983c2a9b26180ff47bfa7b50fd4cf813ba5d"
+						}
+					],
+					"requiredModules": [
+						{
+							"moduleName": "l0.ASSFoundation",
+							"name": "ASSFoundation",
+							"url": "https://github.com/TypesettingTools/ASSFoundation",
+							"version": "0.5.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json"
+						},
+						{
+							"moduleName": "l0.Functional",
+							"name": "(Almost) Functional Suite",
+							"url": "https://github.com/TypesettingTools/ASSFoundation",
+							"version": "0.6.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/Functional/master/DependencyControl.json"
+						},
+						{
+							"moduleName": "arch.Perspective",
+							"name": "Perspective",
+							"url": "https://github.com/TypesettingTools/arch1t3cht-Aegisub-Scripts",
+							"version": "1.1.0",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/arch1t3cht-Aegisub-Scripts/main/DependencyControl.json"
+						},
+						{
+							"moduleName": "Yutils"
+						},
+						{
+							"moduleName": "ILL.ILL",
+							"name": "ILL Library",
+							"url": "https://github.com/TypesettingTools/ILL-Aegisub-Scripts",
+							"version": "1.5.1",
+							"feed": "https://raw.githubusercontent.com/TypesettingTools/ILL-Aegisub-Scripts/main/DependencyControl.json"
+						}
+					]
+				}
+			},
+			"changelog": {
+				"1.0.0": [
+					"Add to DependencyControl"
+				]
+			}
+		}
+	}
+}

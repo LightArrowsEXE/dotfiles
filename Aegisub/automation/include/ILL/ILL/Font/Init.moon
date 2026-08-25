@@ -1,6 +1,8 @@
 class Init
 
 	new: (data) =>
+		@initialized = false
+
 		{
 			fontname:  @family
 			bold:      @bold

@@ -1,0 +1,238 @@
+{
+  "dependencyControlFeedFormatVersion": "0.2.0",
+  "name": "CoffeeFlux's Aegisub Scripts",
+  "description": "striving to create scripts even dumber than torque's",
+  "baseUrl": "https://github.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts",
+  "fileBaseUrl": "https://raw.githubusercontent.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/@{channel}",
+  "url": "@{baseUrl}",
+  "maintainer": "CoffeeFlux",
+  "knownFeeds": {
+    "a-mo": "https://raw.githubusercontent.com/TypesettingTools/Aegisub-Motion/DepCtrl/DependencyControl.json",
+    "ASSFoundation": "https://raw.githubusercontent.com/TypesettingTools/ASSFoundation/master/DependencyControl.json",
+    "Flux": "https://raw.githubusercontent.com/TypesettingTools/CoffeeFlux-Aegisub-Scripts/master/DependencyControl.json"
+  },
+  "macros": {
+    
+    "Flux.DialogSwapper": {
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "CoffeeFlux",
+      "name": "Dialog Swapper",
+      "description": "Perform text swapping operations on a script",
+      "fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+      "channels": {
+        "master": {
+          "version": "1.4.0",
+          "released": "2017-03-08",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "F9533DAE70F9062FBB3733E9766F80A407242DE2"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "1.4.0": ["Remove legacy settings conversion"],
+        "1.3.0": ["Updated to use camelCase and single quotes"],
+        "1.2.3": ["Fixed old dialog bug"],
+        "1.2.2": ["Updated to reflect new directory structure"],
+        "1.2.1": ["Fixed feed error"],
+        "1.2.0": ["Added configuration dialog"],
+        "1.1.3": ["Yet another dumb issue"],
+        "1.1.2": ["Fixed silly DepCtrl usage error"],
+        "1.1.1": ["Mild pattern adjustments"],
+        "1.1.0": ["Rewritten for moonscript"],
+        "1.0.1": ["Fixed line endings"],
+        "1.0.0": ["Initial upload"]
+      }
+    },
+
+    "Flux.TitleCase": {
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "CoffeeFlux",
+      "name": "Title Case",
+      "description": "Applies English Title Case to selected lines",
+      "fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+      "channels": {
+        "master": {
+          "version": "1.3.3",
+          "released": "2016-03-22",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "987FC1507D63059DFBF54C3AE162367A79A7977B"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "aegisub.re"
+            },
+            {
+              "moduleName": "unicode"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "1.3.3": ["Updated to use single quotes"],
+        "1.3.2": ["Removed unnecessary dependencies"],
+        "1.3.1": ["Significant structural changes"],
+        "1.1.3": ["Fixed feed error"],
+        "1.1.2": ["Fixed namespace"],
+        "1.1.1": ["Quick bugfix"],
+        "1.1.0": ["Added to DepCtrl"]
+      }
+    },
+
+    "Flux.Selegator": {
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "tophf",
+      "name": "Selegator",
+      "description": "Select/navigate in the subtitle grid",
+      "fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+      "channels": {
+        "master": {
+          "version": "1.1.5",
+          "released": "2016-03-22",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "26CA040E6D2F8FA74A1282209820B99DEE2B8E01"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "1.1.5": ["Updated to use single quotes"],
+        "1.1.4": ["Updated to reflect new directory structure"],
+        "1.1.3": ["Fixed feed error"],
+        "1.1.2": ["Removed superfluous commas"],
+        "1.1.1": ["Mild cleanup"],
+        "1.1.0": ["Added to DepCtrl"]
+      }
+    },
+
+    "Flux.JumpScroll": {
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "CoffeeFlux",
+      "name": "JumpScroll",
+      "description": "Save and load subtitle grid scrollbar positions on Windows",
+      "fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+      "channels": {
+        "master": {
+          "version": "2.3.0",
+          "released": "2016-03-22",
+          "default": true,
+          "platforms": ["Windows-x86", "Windows-x64"],
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "59ECC92F208E9B08E51D560C2A8D3963FBE55319"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "Flux.ScrollHandler",
+              "name": "ScrollHandler",
+              "url": "@{baseUrl}",
+              "version": "1.0.0",
+              "feed": "@{feed:Flux}"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "2.3.0": ["Move platform check to DepCtrl"],
+        "2.2.2": ["General cleanup, updated to use single quotes"],
+        "2.1.0": ["Added configuration"],
+        "2.0.0": ["Rewritten to use the corresponding module"],
+        "1.0.0": ["Script creation"]
+      }
+    },
+
+    "Flux.ScaleRotTags": {
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "CoffeeFlux",
+      "name": "Scale Rotation Tags (Incorrectly)",
+      "description": "Adjust frx/fry in lines post-upsample to be less terrible, though still wrong",
+      "fileBaseUrl": "@{fileBaseUrl}/macros/@{namespace}",
+      "channels": {
+        "master": {
+          "version": "1.1.0",
+          "released": "2017-03-08",
+          "default": true,
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "B20E4D01F97D863C79EB7ECFDFF4F876F047FE96"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "a-mo.LineCollection",
+              "name": "Aegisub-Motion (LineCollection)",
+              "url": "https://github.com/torque/Aegisub-Motion",
+              "version": "1.1.4",
+              "feed": "@{feed:a-mo}"
+            },
+            {
+              "moduleName": "l0.ASSFoundation",
+              "name": "ASSFoundation",
+              "url": "https://github.com/TypesettingTools/ASSFoundation",
+              "version": "0.3.3",
+              "feed": "@{feed:ASSFoundation}"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "1.1.0": ["Add configuration capability"],
+        "1.0.0": ["Script creation"]
+      }
+    }
+  },
+
+  "modules": {
+
+    "Flux.ScrollHandler": {
+      "url": "@{baseUrl}#@{namespace}",
+      "author": "CoffeeFlux",
+      "name": "ScrollHandler",
+      "description": "Library to store and load scrollbar positions on Windows",
+      "fileBaseUrl": "@{fileBaseUrl}/modules/@{namespace}",
+      "channels": {
+        "master": {
+          "version": "1.1.0",
+          "released": "2016-03-22",
+          "default": true,
+          "platforms": ["Windows-x86", "Windows-x64"],
+          "files": [
+            {
+              "name": ".moon",
+              "url": "@{fileBaseUrl}@{fileName}",
+              "sha1": "8D0729EAE5B484C8F5C9057E4D1F296FF050A8DA"
+            }
+          ],
+          "requiredModules": [
+            {
+              "moduleName": "ffi"
+            }
+          ]
+        }
+      },
+      "changelog": {
+        "1.1.0": ["Move platform check to DepCtrl"],
+        "1.0.1": ["Updated to use single quotes"],
+        "1.0.0": ["Module creation"]
+      }
+    }
+  }
+}
