@@ -1,1 +1,22 @@
-{"alpha":{"pixX":0,"a4":false,"pixY":0,"a3":false,"setting":"Defined pixels","a2":false,"all":true,"a":true},"__version":"2.1.1","main":{"pixX":893,"c":true,"pixY":893,"c4":false,"setting":"Defined pixels","c3":false,"c2":false}}
+{
+  "alpha": {
+    "pixX": 0,
+    "a4": false,
+    "pixY": 0,
+    "a3": false,
+    "setting": "Defined pixels",
+    "a2": false,
+    "all": true,
+    "a": true
+  },
+  "__version": "2.1.1",
+  "main": {
+    "pixX": 893,
+    "c": true,
+    "pixY": 893,
+    "c4": false,
+    "setting": "Defined pixels",
+    "c3": false,
+    "c2": false
+  }
+}

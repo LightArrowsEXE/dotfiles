@@ -1,1 +1,7 @@
-{"radius":15,"shadow":"Inner shadow","cornerStyle":"Rounded","rounding":"Absolute","__VERSION__":"2.6.6"}
+{
+  "radius": 15,
+  "shadow": "Inner shadow",
+  "cornerStyle": "Rounded",
+  "rounding": "Absolute",
+  "__VERSION__": "2.6.6"
+}

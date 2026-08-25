@@ -1,1 +1,9 @@
-{"expandBordShadow":false,"__VERSION__":"2.6.6","cutBordShadow":1,"reverseShape":true,"saveLines":false,"reset":"All","reverseClip":true}
+{
+  "expandBordShadow": false,
+  "__VERSION__": "2.6.6",
+  "cutBordShadow": 1,
+  "reverseShape": true,
+  "saveLines": false,
+  "reset": "All",
+  "reverseClip": true
+}

@@ -1,1 +1,9 @@
-{"perspective":false,"lineType":"Straight","rows":2,"cols":2,"tolerance":1,"__VERSION__":"1.1.3","keepMesh":false}
+{
+  "perspective": false,
+  "lineType": "Straight",
+  "rows": 2,
+  "cols": 2,
+  "tolerance": 1,
+  "__VERSION__": "1.1.3",
+  "keepMesh": false
+}
